@@ -1,0 +1,22 @@
+* begin:	28/10/2023 11:53:00
+* script file:	D:\data\Cycle 194\exp_CRG-3061\rawdata\sc\ifg_wide_5s.cfg
+*
+[STANDARD]
+		
+[ifg_wide_5s]
+	created 28/10/2023   11:51
+[SCAN]
+	file path	.
+	name		*
+	category	standard
+	# repeats	1
+	notes		room to enter remarks
+[SUBSCAN]
+	S18.axis2.phaseshifter 1	61	deg	-7.000000	5.000000	0.200000	0.090000	FALSE	time	5.000000			
+[ENDSCAN]
+[END]
+
+* remarks:	room to enter remarks
+*
+1	-6.9982910	4.0	0	61	29897	2	3781331591	61	0.0000000	0.0000000
+* stopped by user: 28/10/2023 11:53:12

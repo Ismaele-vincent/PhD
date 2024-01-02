@@ -1,0 +1,21 @@
+* begin:	28/10/2023 21:01:18
+* script file:	D:\data\Cycle 194\exp_CRG-3061\rawdata\sc\auxpos.cfg
+*
+[STANDARD]
+		
+[auxpos]
+	created 28/10/2023   21:01
+[SCAN]
+	file path	.
+	name		*
+	category	standard
+	# repeats	1
+	notes		room to enter remarks
+[SUBSCAN]
+	S18.auxiliary.Superspiegel 2	-49	mm	0.000000	25.000000	-0.500000	0.000000	FALSE	time	10.000000			
+[ENDSCAN]
+[END]
+
+* remarks:	room to enter remarks
+*
+* end: 28/10/2023 21:01:19

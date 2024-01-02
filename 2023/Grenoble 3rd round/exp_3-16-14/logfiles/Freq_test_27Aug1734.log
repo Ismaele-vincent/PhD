@@ -1,0 +1,5 @@
+27/08/2023 17:34:20:	function generator:  GPIB1::8 fn1=SIN *am1=5.0 *fr1=80000 *ph1=0 of1=0 bt1=8 DONE
+27/08/2023 17:34:21:	function generator:  GPIB1::8 start1 DONE
+27/08/2023 17:34:22:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\Freq_test_27Aug1734.dat	 DONE
+27/08/2023 17:34:22:	1	TOF	4	time=20	period=104µ	binwidth=1µ	delay=5µO Det=521	H Det=3266	Mon Det=115408	Aux Det=1667	O+H=5454	STOPPED BY USER	27/08/2023 17:34:41:	close file and end scan	 DONE
+call of TOF_freq_test.sc DONE

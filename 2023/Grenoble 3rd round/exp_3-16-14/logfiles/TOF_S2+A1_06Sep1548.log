@@ -1,0 +1,9 @@
+06/09/2023 15:48:19:	function generator:  GPIB1::8 fn1=SIN *am1=3.1 *fr1=10000 *ph1=0 of1=0 bt1=2 DONE
+06/09/2023 15:48:39:	function generator:  GPIB1::8 fn2=SIN *am2=4.0 *fr2=15000 *ph2=0 of2=0 bt2=3 DONE
+06/09/2023 15:48:40:	function generator:  GPIB1::8 start1 DONE
+06/09/2023 15:48:41:	function generator:  GPIB1::8 start2 DONE
+06/09/2023 15:48:41:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\TOF_S2+A1_06Sep1548.dat	 DONE
+06/09/2023 15:48:42:	1	TOF	4	time=1200	period=404µ	binwidth=3µ	delay=60µO Det=16348	H Det=2341	Mon Det=59693	Aux Det=33594	O+H=18689	 DONE
+06/09/2023 16:08:46:	function generator:  GPIB1::8 stop1 DONE
+06/09/2023 16:08:46:	function generator:  GPIB1::8 stop2 DONE
+06/09/2023 16:08:47:	close file and end scan	 DONE

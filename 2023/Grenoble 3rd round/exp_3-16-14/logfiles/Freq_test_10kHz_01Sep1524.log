@@ -1,0 +1,11 @@
+01/09/2023 15:24:05:	function generator:  GPIB1::8 fn1=SIN *am1=4.7 *fr1=10000 *ph1=0 of1=0 bt1=3 DONE
+01/09/2023 15:24:05:	function generator:  GPIB1::8 start1 DONE
+01/09/2023 15:24:06:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\Freq_test_10kHz_01Sep1524.dat	 DONE
+room to enter remarks DONE
+01/09/2023 15:24:07:	move motor	S18.axis2.phaseshifter 1 to -2.000000deg	 DONE
+01/09/2023 15:24:12:	1	count	time	10.000000s/cts	O Det=406	H Det=1368	Mon Det=63795	Aux Det=1140	O+H=2914	 DONE
+01/09/2023 15:24:25:	move motor	S18.axis2.phaseshifter 1 to -1.800000deg	 DONE
+01/09/2023 15:24:29:	2	count	time	10.000000s/cts	O Det=353	H Det=1667	Mon Det=63185	Aux Det=909	O+H=2929	 DONE
+01/09/2023 15:24:41:	move motor	S18.axis2.phaseshifter 1 to -1.600000deg	 DONE
+01/09/2023 15:24:45:	3	count	time	10.000000s/cts	O Det=272	H Det=2298	Mon Det=63259	Aux Det=515	O+H=3085	 DONE
+01/09/2023 15:24:58:	move motor	S18.axis2.phaseshifter 1 to -1.400000deg	STOPPED BY USER	

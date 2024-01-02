@@ -1,0 +1,10 @@
+18/09/2023 16:06:24:	start execution of script D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\ifg_TOF_A1_pi8.sc	 DONE
+18/09/2023 16:06:24:	function generator:  GPIB1::8 fn1=SIN *am1=0.74 *fr1=10000 *ph1=0 of1=0 bt1=4 dy1=29.43us DONE
+18/09/2023 16:06:25:	function generator:  GPIB1::8 start1 DONE
+18/09/2023 16:06:26:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\ifg_TOF_A1_18Sep1606.dat	 DONE
+room to enter remarks DONE
+18/09/2023 16:06:27:	move motor	S18.axis2.phaseshifter 1 to -2.000000deg	 DONE
+18/09/2023 16:06:31:	1	TOF	5	time=20	period=434µ	binwidth=3µ	delay=95µO Det=325	H Det=130	Mon Det=31171	Aux Det=934	O+H=455	 DONE
+18/09/2023 16:06:55:	move motor	S18.axis2.phaseshifter 1 to -1.800000deg	 DONE
+18/09/2023 16:06:59:	2	TOF	5	time=20	period=434µ	binwidth=3µ	delay=95µO Det=167	H Det=130	Mon Det=31171	Aux Det=498	O+H=297	STOPPED BY USER	18/09/2023 16:07:12:	close file and end scan	 DONE
+18/09/2023 16:07:12:	END OF SCRIPT	 DONE

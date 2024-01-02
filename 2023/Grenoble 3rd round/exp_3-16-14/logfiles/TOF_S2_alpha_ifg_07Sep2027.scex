@@ -1,0 +1,49 @@
+G	GPIB1::8	fn2=SIN	*am2=1.0	*fr2=10000	*ph2=0	of2=0	bt1=4	dy2=0us
+CALL	ifg_TOF_S2.sc
+G	GPIB1::8	start1
+F	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\*.dat
+TOF	4	time=1200	period=434µ	binwidth=3µ	delay=126µ
+G	GPIB1::8	stop1
+G	GPIB1::8	fn2=SIN	*am2=1.4	*fr2=10000	*ph2=0	of2=0	bt1=4	dy2=0us
+CALL	ifg_TOF_S2.sc
+G	GPIB1::8	start1
+F	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\*.dat
+TOF	4	time=1200	period=434µ	binwidth=3µ	delay=126µ
+G	GPIB1::8	stop1
+G	GPIB1::8	fn2=SIN	*am2=1.8	*fr2=10000	*ph2=0	of2=0	bt1=4	dy2=0us
+CALL	ifg_TOF_S2.sc
+G	GPIB1::8	start1
+F	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\*.dat
+TOF	4	time=1200	period=434µ	binwidth=3µ	delay=126µ
+G	GPIB1::8	stop1
+G	GPIB1::8	fn2=SIN	*am2=2.2	*fr2=10000	*ph2=0	of2=0	bt1=4	dy2=0us
+CALL	ifg_TOF_S2.sc
+G	GPIB1::8	start1
+F	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\*.dat
+TOF	4	time=1200	period=434µ	binwidth=3µ	delay=126µ
+G	GPIB1::8	stop1
+G	GPIB1::8	fn2=SIN	*am2=2.6	*fr2=10000	*ph2=0	of2=0	bt1=4	dy2=0us
+CALL	ifg_TOF_S2.sc
+G	GPIB1::8	start1
+F	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\*.dat
+TOF	4	time=1200	period=434µ	binwidth=3µ	delay=126µ
+G	GPIB1::8	stop1
+G	GPIB1::8	fn2=SIN	*am2=3.0	*fr2=10000	*ph2=0	of2=0	bt1=4	dy2=0us
+CALL	ifg_TOF_S2.sc
+G	GPIB1::8	start1
+F	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\*.dat
+TOF	4	time=1200	period=434µ	binwidth=3µ	delay=126µ
+G	GPIB1::8	stop1
+G	GPIB1::8	fn2=SIN	*am2=3.4	*fr2=10000	*ph2=0	of2=0	bt1=4	dy2=0us
+CALL	ifg_TOF_S2.sc
+G	GPIB1::8	start1
+F	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\*.dat
+TOF	4	time=1200	period=434µ	binwidth=3µ	delay=126µ
+G	GPIB1::8	stop1
+G	GPIB1::8	fn2=SIN	*am2=3.8	*fr2=10000	*ph2=0	of2=0	bt1=4	dy2=0us
+CALL	ifg_TOF_S2.sc
+G	GPIB1::8	start1
+F	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\*.dat
+TOF	4	time=1200	period=434µ	binwidth=3µ	delay=126µ
+G	GPIB1::8	stop1
+E

@@ -1,0 +1,35 @@
+START	standard
+M	S18.axis2.phaseshifter 1	deg	-1.500000	FALSE
+CALL	TOF_test.sc
+M	S18.axis2.phaseshifter 1	deg	-1.300000	FALSE
+CALL	TOF_test.sc
+M	S18.axis2.phaseshifter 1	deg	-1.100000	FALSE
+CALL	TOF_test.sc
+M	S18.axis2.phaseshifter 1	deg	-0.900000	FALSE
+CALL	TOF_test.sc
+M	S18.axis2.phaseshifter 1	deg	-0.700000	FALSE
+CALL	TOF_test.sc
+M	S18.axis2.phaseshifter 1	deg	-0.500000	FALSE
+CALL	TOF_test.sc
+M	S18.axis2.phaseshifter 1	deg	-0.300000	FALSE
+CALL	TOF_test.sc
+M	S18.axis2.phaseshifter 1	deg	-0.100000	FALSE
+CALL	TOF_test.sc
+M	S18.axis2.phaseshifter 1	deg	0.100000	FALSE
+CALL	TOF_test.sc
+M	S18.axis2.phaseshifter 1	deg	0.300000	FALSE
+CALL	TOF_test.sc
+M	S18.axis2.phaseshifter 1	deg	0.500000	FALSE
+CALL	TOF_test.sc
+M	S18.axis2.phaseshifter 1	deg	0.700000	FALSE
+CALL	TOF_test.sc
+M	S18.axis2.phaseshifter 1	deg	0.900000	FALSE
+CALL	TOF_test.sc
+M	S18.axis2.phaseshifter 1	deg	1.100000	FALSE
+CALL	TOF_test.sc
+M	S18.axis2.phaseshifter 1	deg	1.300000	FALSE
+CALL	TOF_test.sc
+M	S18.axis2.phaseshifter 1	deg	1.500000	FALSE
+CALL	TOF_test.sc
+E
+END

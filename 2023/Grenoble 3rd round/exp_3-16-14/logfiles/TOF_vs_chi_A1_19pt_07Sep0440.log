@@ -1,0 +1,157 @@
+07/09/2023 04:40:55:	start execution of script D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\TOF_vs_chi_A1_19pt.sc	 DONE
+07/09/2023 04:40:55:	function generator:  GPIB1::8 fn1=SIN *am1=0.0 *fr1=0 *ph1=0 of1=0 bt1=3 DONE
+07/09/2023 04:40:56:	function generator:  GPIB1::8 fn2=SIN *am2=0.0 *fr2=0 *ph2=0 of2=0 bt2=3 DONE
+07/09/2023 04:40:57:	move motor	S18.axis2.phaseshifter 1 to -1.500000deg	reached -1.50513  DONE
+07/09/2023 04:41:01:	function generator:  GPIB1::8 fn1=SIN *am1=1.1 *fr1=10000 *ph1=0 of1=0 bt1=4 dy1=29.43us DONE
+07/09/2023 04:41:02:	function generator:  GPIB1::8 start1 DONE
+07/09/2023 04:41:03:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\TOF_vs_chi_A1_19pt_07Sep0441.dat	 DONE
+07/09/2023 04:41:03:	1	TOF	4	time=1200	period=434µ	binwidth=3µ	delay=95µO Det=11470	H Det=355	Mon Det=29627	Aux Det=20623	O+H=11825	 DONE
+07/09/2023 05:01:07:	function generator:  GPIB1::8 stop1 DONE
+07/09/2023 05:01:08:	close file and end scan	 DONE
+call of TOF_A1.sc DONE
+07/09/2023 05:01:09:	move motor	S18.axis2.phaseshifter 1 to -1.333333deg	reached -1.32935  DONE
+07/09/2023 05:01:12:	function generator:  GPIB1::8 fn1=SIN *am1=1.1 *fr1=10000 *ph1=0 of1=0 bt1=4 dy1=29.43us DONE
+07/09/2023 05:01:13:	function generator:  GPIB1::8 start1 DONE
+07/09/2023 05:01:14:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\TOF_vs_chi_A1_19pt_07Sep0501.dat	 DONE
+07/09/2023 05:01:14:	1	TOF	4	time=1200	period=434µ	binwidth=3µ	delay=95µO Det=15275	H Det=355	Mon Det=29627	Aux Det=45231	O+H=15630	 DONE
+07/09/2023 05:21:18:	function generator:  GPIB1::8 stop1 DONE
+07/09/2023 05:21:19:	close file and end scan	 DONE
+call of TOF_A1.sc DONE
+07/09/2023 05:21:20:	move motor	S18.axis2.phaseshifter 1 to -1.166666deg	reached -1.16455  DONE
+07/09/2023 05:21:23:	function generator:  GPIB1::8 fn1=SIN *am1=1.1 *fr1=10000 *ph1=0 of1=0 bt1=4 dy1=29.43us DONE
+07/09/2023 05:21:24:	function generator:  GPIB1::8 start1 DONE
+07/09/2023 05:21:25:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\TOF_vs_chi_A1_19pt_07Sep0521.dat	 DONE
+07/09/2023 05:21:25:	1	TOF	4	time=1200	period=434µ	binwidth=3µ	delay=95µO Det=22125	H Det=355	Mon Det=29627	Aux Det=73752	O+H=22480	 DONE
+07/09/2023 05:41:29:	function generator:  GPIB1::8 stop1 DONE
+07/09/2023 05:41:30:	close file and end scan	 DONE
+call of TOF_A1.sc DONE
+07/09/2023 05:41:31:	move motor	S18.axis2.phaseshifter 1 to -0.999999deg	reached -0.99976  DONE
+07/09/2023 05:41:34:	function generator:  GPIB1::8 fn1=SIN *am1=1.1 *fr1=10000 *ph1=0 of1=0 bt1=4 dy1=29.43us DONE
+07/09/2023 05:41:35:	function generator:  GPIB1::8 start1 DONE
+07/09/2023 05:41:36:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\TOF_vs_chi_A1_19pt_07Sep0541.dat	 DONE
+07/09/2023 05:41:37:	1	TOF	4	time=1200	period=434µ	binwidth=3µ	delay=95µO Det=31543	H Det=355	Mon Det=29627	Aux Det=106137	O+H=31898	 DONE
+07/09/2023 06:01:40:	function generator:  GPIB1::8 stop1 DONE
+07/09/2023 06:01:41:	close file and end scan	 DONE
+call of TOF_A1.sc DONE
+07/09/2023 06:01:42:	move motor	S18.axis2.phaseshifter 1 to -0.833332deg	reached -0.83496  DONE
+07/09/2023 06:01:46:	function generator:  GPIB1::8 fn1=SIN *am1=1.1 *fr1=10000 *ph1=0 of1=0 bt1=4 dy1=29.43us DONE
+07/09/2023 06:01:46:	function generator:  GPIB1::8 start1 DONE
+07/09/2023 06:01:47:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\TOF_vs_chi_A1_19pt_07Sep0601.dat	 DONE
+07/09/2023 06:01:48:	1	TOF	4	time=1200	period=434µ	binwidth=3µ	delay=95µO Det=41633	H Det=355	Mon Det=29627	Aux Det=132734	O+H=41988	 DONE
+07/09/2023 06:21:52:	function generator:  GPIB1::8 stop1 DONE
+07/09/2023 06:21:53:	close file and end scan	 DONE
+call of TOF_A1.sc DONE
+07/09/2023 06:21:54:	move motor	S18.axis2.phaseshifter 1 to -0.666665deg	reached -0.67017  DONE
+07/09/2023 06:21:57:	function generator:  GPIB1::8 fn1=SIN *am1=1.1 *fr1=10000 *ph1=0 of1=0 bt1=4 dy1=29.43us DONE
+07/09/2023 06:21:58:	function generator:  GPIB1::8 start1 DONE
+07/09/2023 06:21:58:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\TOF_vs_chi_A1_19pt_07Sep0621.dat	 DONE
+07/09/2023 06:21:59:	1	TOF	4	time=1200	period=434µ	binwidth=3µ	delay=95µO Det=48263	H Det=355	Mon Det=29627	Aux Det=143602	O+H=48618	 DONE
+07/09/2023 06:42:03:	function generator:  GPIB1::8 stop1 DONE
+07/09/2023 06:42:04:	close file and end scan	 DONE
+call of TOF_A1.sc DONE
+07/09/2023 06:42:05:	move motor	S18.axis2.phaseshifter 1 to -0.499998deg	reached -0.51636  DONE
+07/09/2023 06:42:08:	function generator:  GPIB1::8 fn1=SIN *am1=1.1 *fr1=10000 *ph1=0 of1=0 bt1=4 dy1=29.43us DONE
+07/09/2023 06:42:09:	function generator:  GPIB1::8 start1 DONE
+07/09/2023 06:42:10:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\TOF_vs_chi_A1_19pt_07Sep0642.dat	 DONE
+07/09/2023 06:42:10:	1	TOF	4	time=1200	period=434µ	binwidth=3µ	delay=95µO Det=50144	H Det=355	Mon Det=29627	Aux Det=138527	O+H=50499	 DONE
+07/09/2023 07:02:14:	function generator:  GPIB1::8 stop1 DONE
+07/09/2023 07:02:15:	close file and end scan	 DONE
+call of TOF_A1.sc DONE
+07/09/2023 07:02:16:	move motor	S18.axis2.phaseshifter 1 to -0.333331deg	reached -0.32959  DONE
+07/09/2023 07:02:19:	function generator:  GPIB1::8 fn1=SIN *am1=1.1 *fr1=10000 *ph1=0 of1=0 bt1=4 dy1=29.43us DONE
+07/09/2023 07:02:20:	function generator:  GPIB1::8 start1 DONE
+07/09/2023 07:02:21:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\TOF_vs_chi_A1_19pt_07Sep0702.dat	 DONE
+07/09/2023 07:02:22:	1	TOF	4	time=1200	period=434µ	binwidth=3µ	delay=95µO Det=47111	H Det=355	Mon Det=29627	Aux Det=116845	O+H=47466	 DONE
+07/09/2023 07:22:25:	function generator:  GPIB1::8 stop1 DONE
+07/09/2023 07:22:26:	close file and end scan	 DONE
+call of TOF_A1.sc DONE
+07/09/2023 07:22:27:	move motor	S18.axis2.phaseshifter 1 to -0.166664deg	reached -0.17578  DONE
+07/09/2023 07:22:30:	function generator:  GPIB1::8 fn1=SIN *am1=1.1 *fr1=10000 *ph1=0 of1=0 bt1=4 dy1=29.43us DONE
+07/09/2023 07:22:31:	function generator:  GPIB1::8 start1 DONE
+07/09/2023 07:22:32:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\TOF_vs_chi_A1_19pt_07Sep0722.dat	 DONE
+07/09/2023 07:22:33:	1	TOF	4	time=1200	period=434µ	binwidth=3µ	delay=95µO Det=40376	H Det=355	Mon Det=29627	Aux Det=88500	O+H=40731	 DONE
+07/09/2023 07:42:36:	function generator:  GPIB1::8 stop1 DONE
+07/09/2023 07:42:37:	close file and end scan	 DONE
+call of TOF_A1.sc DONE
+07/09/2023 07:42:38:	move motor	S18.axis2.phaseshifter 1 to 0.000003deg	reached 0.00000  DONE
+07/09/2023 07:42:41:	function generator:  GPIB1::8 fn1=SIN *am1=1.1 *fr1=10000 *ph1=0 of1=0 bt1=4 dy1=29.43us DONE
+07/09/2023 07:42:42:	function generator:  GPIB1::8 start1 DONE
+07/09/2023 07:42:43:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\TOF_vs_chi_A1_19pt_07Sep0742.dat	 DONE
+07/09/2023 07:42:44:	1	TOF	4	time=1200	period=434µ	binwidth=3µ	delay=95µO Det=30653	H Det=355	Mon Det=29627	Aux Det=56628	O+H=31008	 DONE
+07/09/2023 08:02:48:	function generator:  GPIB1::8 stop1 DONE
+07/09/2023 08:02:49:	close file and end scan	 DONE
+call of TOF_A1.sc DONE
+07/09/2023 08:02:50:	move motor	S18.axis2.phaseshifter 1 to 0.166670deg	reached 0.15381  DONE
+07/09/2023 08:02:53:	function generator:  GPIB1::8 fn1=SIN *am1=1.1 *fr1=10000 *ph1=0 of1=0 bt1=4 dy1=29.43us DONE
+07/09/2023 08:02:53:	function generator:  GPIB1::8 start1 DONE
+07/09/2023 08:02:54:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\TOF_vs_chi_A1_19pt_07Sep0802.dat	 DONE
+07/09/2023 08:02:55:	1	TOF	4	time=1200	period=434µ	binwidth=3µ	delay=95µO Det=21221	H Det=355	Mon Det=29627	Aux Det=29992	O+H=21576	 DONE
+07/09/2023 08:22:59:	function generator:  GPIB1::8 stop1 DONE
+07/09/2023 08:23:00:	close file and end scan	 DONE
+call of TOF_A1.sc DONE
+07/09/2023 08:23:01:	move motor	S18.axis2.phaseshifter 1 to 0.333337deg	reached 0.32959  DONE
+07/09/2023 08:23:04:	function generator:  GPIB1::8 fn1=SIN *am1=1.1 *fr1=10000 *ph1=0 of1=0 bt1=4 dy1=29.43us DONE
+07/09/2023 08:23:05:	function generator:  GPIB1::8 start1 DONE
+07/09/2023 08:23:06:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\TOF_vs_chi_A1_19pt_07Sep0823.dat	 DONE
+07/09/2023 08:23:06:	1	TOF	4	time=1200	period=434µ	binwidth=3µ	delay=95µO Det=13916	H Det=355	Mon Det=29627	Aux Det=15928	O+H=14271	 DONE
+07/09/2023 08:43:10:	function generator:  GPIB1::8 stop1 DONE
+07/09/2023 08:43:11:	close file and end scan	 DONE
+call of TOF_A1.sc DONE
+07/09/2023 08:43:12:	move motor	S18.axis2.phaseshifter 1 to 0.500004deg	reached 0.50537  DONE
+07/09/2023 08:43:15:	function generator:  GPIB1::8 fn1=SIN *am1=1.1 *fr1=10000 *ph1=0 of1=0 bt1=4 dy1=29.43us DONE
+07/09/2023 08:43:16:	function generator:  GPIB1::8 start1 DONE
+07/09/2023 08:43:17:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\TOF_vs_chi_A1_19pt_07Sep0843.dat	 DONE
+07/09/2023 08:43:17:	1	TOF	4	time=1200	period=434µ	binwidth=3µ	delay=95µO Det=11166	H Det=355	Mon Det=29627	Aux Det=19849	O+H=11521	 DONE
+07/09/2023 09:03:21:	function generator:  GPIB1::8 stop1 DONE
+07/09/2023 09:03:22:	close file and end scan	 DONE
+call of TOF_A1.sc DONE
+07/09/2023 09:03:23:	move motor	S18.axis2.phaseshifter 1 to 0.666671deg	reached 0.67017  DONE
+07/09/2023 09:03:26:	function generator:  GPIB1::8 fn1=SIN *am1=1.1 *fr1=10000 *ph1=0 of1=0 bt1=4 dy1=29.43us DONE
+07/09/2023 09:03:27:	function generator:  GPIB1::8 start1 DONE
+07/09/2023 09:03:28:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\TOF_vs_chi_A1_19pt_07Sep0903.dat	 DONE
+07/09/2023 09:03:28:	1	TOF	4	time=1200	period=434µ	binwidth=3µ	delay=95µO Det=13177	H Det=355	Mon Det=29627	Aux Det=36538	O+H=13532	 DONE
+07/09/2023 09:23:32:	function generator:  GPIB1::8 stop1 DONE
+07/09/2023 09:23:33:	close file and end scan	 DONE
+call of TOF_A1.sc DONE
+07/09/2023 09:23:34:	move motor	S18.axis2.phaseshifter 1 to 0.833338deg	reached 0.82397  DONE
+07/09/2023 09:23:37:	function generator:  GPIB1::8 fn1=SIN *am1=1.1 *fr1=10000 *ph1=0 of1=0 bt1=4 dy1=29.43us DONE
+07/09/2023 09:23:38:	function generator:  GPIB1::8 start1 DONE
+07/09/2023 09:23:39:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\TOF_vs_chi_A1_19pt_07Sep0923.dat	 DONE
+07/09/2023 09:23:39:	1	TOF	4	time=1200	period=434µ	binwidth=3µ	delay=95µO Det=20375	H Det=355	Mon Det=29627	Aux Det=66494	O+H=20730	 DONE
+07/09/2023 09:43:43:	function generator:  GPIB1::8 stop1 DONE
+07/09/2023 09:43:44:	close file and end scan	 DONE
+call of TOF_A1.sc DONE
+07/09/2023 09:43:45:	move motor	S18.axis2.phaseshifter 1 to 1.000005deg	reached 0.99976  DONE
+07/09/2023 09:43:48:	function generator:  GPIB1::8 fn1=SIN *am1=1.1 *fr1=10000 *ph1=0 of1=0 bt1=4 dy1=29.43us DONE
+07/09/2023 09:43:49:	function generator:  GPIB1::8 start1 DONE
+07/09/2023 09:43:50:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\TOF_vs_chi_A1_19pt_07Sep0943.dat	 DONE
+07/09/2023 09:43:51:	1	TOF	4	time=1200	period=434µ	binwidth=3µ	delay=95µO Det=29273	H Det=355	Mon Det=29627	Aux Det=98530	O+H=29628	 DONE
+07/09/2023 10:03:54:	function generator:  GPIB1::8 stop1 DONE
+07/09/2023 10:03:55:	close file and end scan	 DONE
+call of TOF_A1.sc DONE
+07/09/2023 10:03:56:	move motor	S18.axis2.phaseshifter 1 to 1.166672deg	reached 1.16455  DONE
+07/09/2023 10:03:59:	function generator:  GPIB1::8 fn1=SIN *am1=1.1 *fr1=10000 *ph1=0 of1=0 bt1=4 dy1=29.43us DONE
+07/09/2023 10:04:00:	function generator:  GPIB1::8 start1 DONE
+07/09/2023 10:04:01:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\TOF_vs_chi_A1_19pt_07Sep1004.dat	 DONE
+07/09/2023 10:04:02:	1	TOF	4	time=1200	period=434µ	binwidth=3µ	delay=95µO Det=39383	H Det=355	Mon Det=29627	Aux Det=125384	O+H=39738	 DONE
+07/09/2023 10:24:06:	function generator:  GPIB1::8 stop1 DONE
+07/09/2023 10:24:06:	close file and end scan	 DONE
+call of TOF_A1.sc DONE
+07/09/2023 10:24:08:	move motor	S18.axis2.phaseshifter 1 to 1.333339deg	reached 1.31836  DONE
+07/09/2023 10:24:11:	function generator:  GPIB1::8 fn1=SIN *am1=1.1 *fr1=10000 *ph1=0 of1=0 bt1=4 dy1=29.43us DONE
+07/09/2023 10:24:11:	function generator:  GPIB1::8 start1 DONE
+07/09/2023 10:24:12:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\TOF_vs_chi_A1_19pt_07Sep1024.dat	 DONE
+07/09/2023 10:24:13:	1	TOF	4	time=1200	period=434µ	binwidth=3µ	delay=95µO Det=46699	H Det=355	Mon Det=29627	Aux Det=142787	O+H=47054	 DONE
+07/09/2023 10:44:17:	function generator:  GPIB1::8 stop1 DONE
+07/09/2023 10:44:18:	close file and end scan	 DONE
+call of TOF_A1.sc DONE
+07/09/2023 10:44:19:	move motor	S18.axis2.phaseshifter 1 to 1.500006deg	reached 1.50513  DONE
+07/09/2023 10:44:22:	function generator:  GPIB1::8 fn1=SIN *am1=1.1 *fr1=10000 *ph1=0 of1=0 bt1=4 dy1=29.43us DONE
+07/09/2023 10:44:23:	function generator:  GPIB1::8 start1 DONE
+07/09/2023 10:44:24:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\TOF_vs_chi_A1_19pt_07Sep1044.dat	 DONE
+07/09/2023 10:44:24:	1	TOF	4	time=1200	period=434µ	binwidth=3µ	delay=95µO Det=50555	H Det=355	Mon Det=29627	Aux Det=142660	O+H=50910	 DONE
+07/09/2023 11:04:28:	function generator:  GPIB1::8 stop1 DONE
+07/09/2023 11:04:29:	close file and end scan	 DONE
+call of TOF_A1.sc DONE
+07/09/2023 11:04:30:	close file and end scan	 DONE
+07/09/2023 11:04:30:	END OF SCRIPT	 DONE

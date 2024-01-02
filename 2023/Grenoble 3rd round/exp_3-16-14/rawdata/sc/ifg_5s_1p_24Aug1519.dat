@@ -1,0 +1,23 @@
+* begin:	24/08/2023 15:19:38
+* script file:	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\ifg_5s_1p.cfg
+*
+[STANDARD]
+		
+[ifg_5s_1p]
+	created 23/08/2023   15:04
+[SCAN]
+	file path	.
+	name		*
+	category	standard
+	# repeats	1
+	notes		room to enter remarks
+[SUBSCAN]
+	S18.axis2.phaseshifter 1	16	deg	-1.500000	1.500000	0.200000	0.000000	FALSE	time	5.000000			
+[ENDSCAN]
+[END]
+
+* remarks:	room to enter remarks
+*
+1	-1.5161133	5.0	61	442	29667	3	3775727990	503	0.0000000	0.0000000
+2	-1.2963867	5.0	74	422	29143	2	3775728002	496	0.0000000	0.0000000
+* stopped by user: 24/08/2023 15:20:06

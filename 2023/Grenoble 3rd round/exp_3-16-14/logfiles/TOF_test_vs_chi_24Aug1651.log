@@ -1,0 +1,51 @@
+24/08/2023 16:51:59:	start execution of script D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\TOF_test_vs_chi.sc	 DONE
+24/08/2023 16:51:59:	move motor	S18.axis2.phaseshifter 1 to -1.500000deg	reached -1.50513  DONE
+24/08/2023 16:52:02:	function generator:  GPIB1::8 fn1=SIN am1=2.0 fr1=10000 ph1=0 of1=0 bt1=3 DONE
+24/08/2023 16:52:03:	function generator:  GPIB1::8 start1 DONE
+24/08/2023 16:52:04:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\TOF_test_vs_chi_24Aug1652.dat	 DONE
+24/08/2023 16:52:04:	1	TOF	4	time=1	period=304µ	binwidth=3µ	delay=95µO Det=0	H Det=1244	Mon Det=58750	Aux Det=0	O+H=1244	 DONE
+24/08/2023 16:52:09:	function generator:  GPIB1::8 stop1 DONE
+24/08/2023 16:52:10:	close file and end scan	 DONE
+call of TOF_test.sc DONE
+24/08/2023 16:52:11:	move motor	S18.axis2.phaseshifter 1 to -1.300000deg	reached -1.30737  DONE
+24/08/2023 16:52:14:	function generator:  GPIB1::8 fn1=SIN am1=2.0 fr1=10000 ph1=0 of1=0 bt1=3 DONE
+24/08/2023 16:52:14:	function generator:  GPIB1::8 start1 DONE
+24/08/2023 16:52:15:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\TOF_test_vs_chi_24Aug1652.dat	 DONE
+24/08/2023 16:52:15:	1	TOF	4	time=1	period=304µ	binwidth=3µ	delay=95µO Det=0	H Det=1244	Mon Det=58750	Aux Det=0	O+H=1244	 DONE
+24/08/2023 16:52:20:	function generator:  GPIB1::8 stop1 DONE
+24/08/2023 16:52:21:	close file and end scan	 DONE
+call of TOF_test.sc DONE
+24/08/2023 16:52:22:	move motor	S18.axis2.phaseshifter 1 to -1.100000deg	reached -1.09863  DONE
+24/08/2023 16:52:25:	function generator:  GPIB1::8 fn1=SIN am1=2.0 fr1=10000 ph1=0 of1=0 bt1=3 DONE
+24/08/2023 16:52:26:	function generator:  GPIB1::8 start1 DONE
+24/08/2023 16:52:26:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\TOF_test_vs_chi_24Aug1652.dat	 DONE
+24/08/2023 16:52:27:	1	TOF	4	time=1	period=304µ	binwidth=3µ	delay=95µO Det=0	H Det=1244	Mon Det=58750	Aux Det=0	O+H=1244	 DONE
+24/08/2023 16:52:31:	function generator:  GPIB1::8 stop1 DONE
+24/08/2023 16:52:32:	close file and end scan	 DONE
+call of TOF_test.sc DONE
+24/08/2023 16:52:33:	move motor	S18.axis2.phaseshifter 1 to -0.900000deg	reached -0.91187  DONE
+24/08/2023 16:52:36:	function generator:  GPIB1::8 fn1=SIN am1=2.0 fr1=10000 ph1=0 of1=0 bt1=3 DONE
+24/08/2023 16:52:37:	function generator:  GPIB1::8 start1 DONE
+24/08/2023 16:52:37:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\TOF_test_vs_chi_24Aug1652.dat	 DONE
+24/08/2023 16:52:38:	1	TOF	4	time=1	period=304µ	binwidth=3µ	delay=95µO Det=0	H Det=1244	Mon Det=58750	Aux Det=1	O+H=1244	 DONE
+24/08/2023 16:52:42:	function generator:  GPIB1::8 stop1 DONE
+24/08/2023 16:52:43:	close file and end scan	 DONE
+call of TOF_test.sc DONE
+24/08/2023 16:52:44:	move motor	S18.axis2.phaseshifter 1 to -0.700000deg	reached -0.71411  DONE
+24/08/2023 16:52:47:	function generator:  GPIB1::8 fn1=SIN am1=2.0 fr1=10000 ph1=0 of1=0 bt1=3 DONE
+24/08/2023 16:52:48:	function generator:  GPIB1::8 start1 DONE
+24/08/2023 16:52:48:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\TOF_test_vs_chi_24Aug1652.dat	 DONE
+24/08/2023 16:52:49:	1	TOF	4	time=1	period=304µ	binwidth=3µ	delay=95µO Det=0	H Det=1244	Mon Det=58750	Aux Det=0	O+H=1244	 DONE
+24/08/2023 16:52:53:	function generator:  GPIB1::8 stop1 DONE
+24/08/2023 16:52:54:	close file and end scan	 DONE
+call of TOF_test.sc DONE
+24/08/2023 16:52:55:	move motor	S18.axis2.phaseshifter 1 to -0.500000deg	reached -0.51636  DONE
+24/08/2023 16:52:58:	function generator:  GPIB1::8 fn1=SIN am1=2.0 fr1=10000 ph1=0 of1=0 bt1=3 DONE
+24/08/2023 16:52:59:	function generator:  GPIB1::8 start1 DONE
+24/08/2023 16:52:59:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\TOF_test_vs_chi_24Aug1652.dat	 DONE
+24/08/2023 16:53:00:	1	TOF	4	time=1	period=304µ	binwidth=3µ	delay=95µO Det=0	H Det=1244	Mon Det=58750	Aux Det=3	O+H=1244	 DONE
+24/08/2023 16:53:05:	function generator:  GPIB1::8 stop1 DONE
+24/08/2023 16:53:05:	close file and end scan	 DONE
+call of TOF_test.sc DONE
+24/08/2023 16:53:06:	move motor	S18.axis2.phaseshifter 1 to -0.300000deg	reached -0.29663  DONE
+24/08/2023 16:53:09:	close file and end scan	 DONE

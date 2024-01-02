@@ -1,0 +1,31 @@
+08/09/2023 15:29:38:	function generator:  GPIB1::8 fn2=SIN *am2=0.6 *fr2=10000 *ph2=0 of2=0 bt2=4 dy2=0us DONE
+08/09/2023 15:29:39:	function generator:  GPIB1::8 start2 DONE
+08/09/2023 15:29:40:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\TOF_S2_alpha_ifg_08Sep1529.dat	 DONE
+room to enter remarks DONE
+08/09/2023 15:29:41:	move motor	S18.axis2.phaseshifter 1 to -2.000000deg	 DONE
+08/09/2023 15:29:45:	1	TOF	4	time=20	period=434µ	binwidth=3µ	delay=95µO Det=437	H Det=2269	Mon Det=61043	Aux Det=715	O+H=2706	 DONE
+08/09/2023 15:30:09:	move motor	S18.axis2.phaseshifter 1 to -1.800000deg	 DONE
+08/09/2023 15:30:13:	2	TOF	4	time=20	period=434µ	binwidth=3µ	delay=95µO Det=263	H Det=2269	Mon Det=61043	Aux Det=267	O+H=2532	 DONE
+08/09/2023 15:30:37:	move motor	S18.axis2.phaseshifter 1 to -1.600000deg	 DONE
+08/09/2023 15:30:41:	3	TOF	4	time=20	period=434µ	binwidth=3µ	delay=95µO Det=181	H Det=2269	Mon Det=61043	Aux Det=315	O+H=2450	 DONE
+08/09/2023 15:31:04:	move motor	S18.axis2.phaseshifter 1 to -1.400000deg	 DONE
+08/09/2023 15:31:08:	4	TOF	4	time=20	period=434µ	binwidth=3µ	delay=95µO Det=228	H Det=2269	Mon Det=61043	Aux Det=758	O+H=2497	 DONE
+08/09/2023 15:31:32:	move motor	S18.axis2.phaseshifter 1 to -1.200000deg	 DONE
+08/09/2023 15:31:36:	5	TOF	4	time=20	period=434µ	binwidth=3µ	delay=95µO Det=445	H Det=2269	Mon Det=61043	Aux Det=1485	O+H=2714	 DONE
+08/09/2023 15:31:59:	move motor	S18.axis2.phaseshifter 1 to -1.000000deg	 DONE
+08/09/2023 15:32:04:	6	TOF	4	time=20	period=434µ	binwidth=3µ	delay=95µO Det=193	H Det=2269	Mon Det=61043	Aux Det=604	O+H=2462	 DONE
+08/09/2023 15:32:14:	move motor	S18.axis2.phaseshifter 1 to -0.800000deg	 DONE
+08/09/2023 15:32:17:	7	TOF	4	time=20	period=434µ	binwidth=3µ	delay=95µO Det=490	H Det=2269	Mon Det=61043	Aux Det=1468	O+H=2759	STOPPED BY USER	08/09/2023 15:32:34:	close file and end scan	 DONE
+08/09/2023 15:32:34:	move motor	S18.axis2.phaseshifter 1 to fit AUX COS45	-1.637549reached -1.63696  DONE
+call of ifg_TOF_S2.sc DONE
+08/09/2023 15:32:38:	function generator:  GPIB1::8 start2 DONE
+08/09/2023 15:32:39:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\TOF_S2_alpha_ifg_08Sep1532.dat	 DONE
+08/09/2023 15:32:40:	1	TOF	4	time=30	period=434µ	binwidth=3µ	delay=126µO Det=77	H Det=2269	Mon Det=61043	Aux Det=136	O+H=2346	 DONE
+08/09/2023 15:32:52:	function generator:  GPIB1::8 stop2 DONE
+08/09/2023 15:32:53:	function generator:  GPIB1::8 fn2=SIN *am2=0.94 *fr2=10000 *ph2=0 of2=0 bt2=4 dy2=0us DONE
+08/09/2023 15:32:54:	function generator:  GPIB1::8 start2 DONE
+08/09/2023 15:32:55:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\TOF_S2_alpha_ifg_08Sep1532.dat	 DONE
+room to enter remarks DONE
+08/09/2023 15:32:56:	move motor	S18.axis2.phaseshifter 1 to -2.000000deg	 DONE
+08/09/2023 15:33:00:	2	TOF	4	time=20	period=434µ	binwidth=3µ	delay=95µO Det=85	H Det=2269	Mon Det=61043	Aux Det=183	O+H=2354	STOPPED BY USER	08/09/2023 15:33:09:	close file and end scan	 DONE
+08/09/2023 15:33:09:	move motor	S18.axis2.phaseshifter 1 to fit AUX COS45	Inf

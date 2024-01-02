@@ -1,0 +1,18 @@
+01/09/2023 21:49:00:	start execution of script D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\alpha.sc	 DONE
+01/09/2023 21:49:00:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\alpha_01Sep2149.dat	 DONE
+room to enter remarks DONE
+01/09/2023 21:49:02:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\movePS_90_01Sep2149.dat	 DONE
+room to enter remarks DONE
+01/09/2023 21:49:03:	move motor	S18.axis2.phaseshifter 1 to -2.000000deg	 DONE
+01/09/2023 21:49:07:	1	count	time	10.000000s/cts	O Det=324	H Det=2008	Mon Det=62871	Aux Det=679	O+H=3011	 DONE
+01/09/2023 21:49:20:	move motor	S18.axis2.phaseshifter 1 to -1.800000deg	 DONE
+01/09/2023 21:49:23:	2	count	time	10.000000s/cts	O Det=199	H Det=2468	Mon Det=62625	Aux Det=376	O+H=3043	 DONE
+01/09/2023 21:49:36:	move motor	S18.axis2.phaseshifter 1 to -1.600000deg	 DONE
+01/09/2023 21:49:40:	3	count	time	10.000000s/cts	O Det=0	H Det=0	Mon Det=1	Aux Det=0	O+H=0	STOPPED BY USER	01/09/2023 21:49:43:	close file and end scan	 DONE
+01/09/2023 21:49:43:	move motor	S18.axis2.phaseshifter 1 to fit H COS270	-2.464557reached -2.47192  DONE
+call of movePS_90.sc DONE
+01/09/2023 21:49:47:	set AO_S1Z (PXIDAQ2/ao2) to 0.000000Amps 0.000V DONE
+01/09/2023 21:49:48:	1	count	time	20.000000s/cts	O Det=741	H Det=2751	Mon Det=126577	Aux Det=2262	O+H=5754	 DONE
+01/09/2023 21:50:10:	set AO_S1Z (PXIDAQ2/ao2) to -0.100000Amps -0.200V DONE
+01/09/2023 21:50:11:	2	count	time	20.000000s/cts	O Det=31	H Det=101	Mon Det=4411	Aux Det=90	O+H=222	STOPPED BY USER	01/09/2023 21:50:14:	close file and end scan	 DONE
+01/09/2023 21:50:15:	END OF SCRIPT	 DONE

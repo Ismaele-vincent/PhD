@@ -1,0 +1,50 @@
+25/09/2023 00:11:12:	start execution of script D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\ifg_TOF_A1_pi8.sc	 DONE
+25/09/2023 00:11:13:	function generator:  GPIB1::8 fn1=SIN *am1=0.74 *fr1=10000 *ph1=0 of1=0 bt1=4 dy1=29.43us DONE
+25/09/2023 00:11:13:	function generator:  GPIB1::8 start1 DONE
+25/09/2023 00:11:14:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\ifg_TOF_A1_pi8_25Sep0011.dat	 DONE
+room to enter remarks DONE
+25/09/2023 00:11:15:	move motor	S18.axis2.phaseshifter 1 to -2.000000deg	 DONE
+25/09/2023 00:11:20:	1	TOF	5	time=20	period=434µ	binwidth=3µ	delay=95µO Det=608	H Det=64	Mon Det=30940	Aux Det=1953	O+H=672	 DONE
+25/09/2023 00:11:43:	move motor	S18.axis2.phaseshifter 1 to -1.800000deg	 DONE
+25/09/2023 00:11:47:	2	TOF	5	time=20	period=434µ	binwidth=3µ	delay=95µO Det=704	H Det=64	Mon Det=30940	Aux Det=2258	O+H=768	 DONE
+25/09/2023 00:12:11:	move motor	S18.axis2.phaseshifter 1 to -1.600000deg	 DONE
+25/09/2023 00:12:14:	3	TOF	5	time=20	period=434µ	binwidth=3µ	delay=95µO Det=725	H Det=64	Mon Det=30940	Aux Det=2209	O+H=789	 DONE
+25/09/2023 00:12:38:	move motor	S18.axis2.phaseshifter 1 to -1.400000deg	 DONE
+25/09/2023 00:12:41:	4	TOF	5	time=20	period=434µ	binwidth=3µ	delay=95µO Det=719	H Det=64	Mon Det=30940	Aux Det=2306	O+H=783	 DONE
+25/09/2023 00:13:05:	move motor	S18.axis2.phaseshifter 1 to -1.200000deg	 DONE
+25/09/2023 00:13:09:	5	TOF	5	time=20	period=434µ	binwidth=3µ	delay=95µO Det=472	H Det=64	Mon Det=30940	Aux Det=1030	O+H=536	 DONE
+25/09/2023 00:13:33:	move motor	S18.axis2.phaseshifter 1 to -1.000000deg	 DONE
+25/09/2023 00:13:36:	6	TOF	5	time=20	period=434µ	binwidth=3µ	delay=95µO Det=407	H Det=64	Mon Det=30940	Aux Det=579	O+H=471	 DONE
+25/09/2023 00:14:00:	move motor	S18.axis2.phaseshifter 1 to -0.800000deg	 DONE
+25/09/2023 00:14:03:	7	TOF	5	time=20	period=434µ	binwidth=3µ	delay=95µO Det=290	H Det=64	Mon Det=30940	Aux Det=430	O+H=354	 DONE
+25/09/2023 00:14:27:	move motor	S18.axis2.phaseshifter 1 to -0.600000deg	 DONE
+25/09/2023 00:14:31:	8	TOF	5	time=20	period=434µ	binwidth=3µ	delay=95µO Det=310	H Det=64	Mon Det=30940	Aux Det=515	O+H=374	 DONE
+25/09/2023 00:14:54:	move motor	S18.axis2.phaseshifter 1 to -0.400000deg	 DONE
+25/09/2023 00:14:58:	9	TOF	5	time=20	period=434µ	binwidth=3µ	delay=95µO Det=404	H Det=64	Mon Det=30940	Aux Det=1054	O+H=468	 DONE
+25/09/2023 00:15:22:	move motor	S18.axis2.phaseshifter 1 to -0.200000deg	 DONE
+25/09/2023 00:15:25:	10	TOF	5	time=20	period=434µ	binwidth=3µ	delay=95µO Det=517	H Det=64	Mon Det=30940	Aux Det=1483	O+H=581	 DONE
+25/09/2023 00:15:49:	move motor	S18.axis2.phaseshifter 1 to 0.000000deg	 DONE
+25/09/2023 00:15:53:	11	TOF	5	time=20	period=434µ	binwidth=3µ	delay=95µO Det=668	H Det=64	Mon Det=30940	Aux Det=2226	O+H=732	 DONE
+25/09/2023 00:16:16:	move motor	S18.axis2.phaseshifter 1 to 0.200000deg	 DONE
+25/09/2023 00:16:20:	12	TOF	5	time=20	period=434µ	binwidth=3µ	delay=95µO Det=749	H Det=64	Mon Det=30940	Aux Det=2382	O+H=813	 DONE
+25/09/2023 00:16:44:	move motor	S18.axis2.phaseshifter 1 to 0.400000deg	 DONE
+25/09/2023 00:16:47:	13	TOF	5	time=20	period=434µ	binwidth=3µ	delay=95µO Det=739	H Det=64	Mon Det=30940	Aux Det=2185	O+H=803	 DONE
+25/09/2023 00:17:11:	move motor	S18.axis2.phaseshifter 1 to 0.600000deg	 DONE
+25/09/2023 00:17:14:	14	TOF	5	time=20	period=434µ	binwidth=3µ	delay=95µO Det=690	H Det=64	Mon Det=30940	Aux Det=1831	O+H=754	 DONE
+25/09/2023 00:17:38:	move motor	S18.axis2.phaseshifter 1 to 0.800000deg	 DONE
+25/09/2023 00:17:42:	15	TOF	5	time=20	period=434µ	binwidth=3µ	delay=95µO Det=539	H Det=64	Mon Det=30940	Aux Det=1214	O+H=603	 DONE
+25/09/2023 00:18:06:	move motor	S18.axis2.phaseshifter 1 to 1.000000deg	 DONE
+25/09/2023 00:18:09:	16	TOF	5	time=20	period=434µ	binwidth=3µ	delay=95µO Det=384	H Det=64	Mon Det=30940	Aux Det=604	O+H=448	 DONE
+25/09/2023 00:18:33:	move motor	S18.axis2.phaseshifter 1 to 1.200000deg	 DONE
+25/09/2023 00:18:36:	17	TOF	5	time=20	period=434µ	binwidth=3µ	delay=95µO Det=294	H Det=64	Mon Det=30940	Aux Det=358	O+H=358	 DONE
+25/09/2023 00:19:00:	move motor	S18.axis2.phaseshifter 1 to 1.400000deg	 DONE
+25/09/2023 00:19:04:	18	TOF	5	time=20	period=434µ	binwidth=3µ	delay=95µO Det=271	H Det=64	Mon Det=30940	Aux Det=471	O+H=335	 DONE
+25/09/2023 00:19:27:	move motor	S18.axis2.phaseshifter 1 to 1.600000deg	 DONE
+25/09/2023 00:19:31:	19	TOF	5	time=20	period=434µ	binwidth=3µ	delay=95µO Det=364	H Det=64	Mon Det=30940	Aux Det=917	O+H=428	 DONE
+25/09/2023 00:19:55:	move motor	S18.axis2.phaseshifter 1 to 1.800000deg	 DONE
+25/09/2023 00:19:59:	20	TOF	5	time=20	period=434µ	binwidth=3µ	delay=95µO Det=500	H Det=64	Mon Det=30940	Aux Det=1350	O+H=564	 DONE
+25/09/2023 00:20:22:	move motor	S18.axis2.phaseshifter 1 to 2.000000deg	 DONE
+25/09/2023 00:20:26:	21	TOF	5	time=20	period=434µ	binwidth=3µ	delay=95µO Det=692	H Det=64	Mon Det=30940	Aux Det=2040	O+H=756	 DONE
+25/09/2023 00:20:50:	function generator:  GPIB1::8 stop1 DONE
+25/09/2023 00:20:50:	close file and end scan	 DONE
+25/09/2023 00:20:51:	END OF SCRIPT	 DONE

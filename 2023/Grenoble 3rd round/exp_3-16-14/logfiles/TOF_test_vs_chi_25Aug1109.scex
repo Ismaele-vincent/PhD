@@ -1,0 +1,37 @@
+START	standard
+G	GPIB1::8	fn1=SIN	*am1=2.0	*fr1=10000	*ph1=0	of1=0	bt1=3
+G	GPIB1::8	fn2=SIN	*am2=2.0	*fr2=10000	*ph2=0	of2=0	bt2=3
+MS	S18.axis2.phaseshifter 1	1	deg	absolute	-1.500000
+CALL	TOF_test.sc
+MS	S18.axis2.phaseshifter 1	1	deg	absolute	-1.300000
+CALL	TOF_test.sc
+MS	S18.axis2.phaseshifter 1	1	deg	absolute	-1.100000
+CALL	TOF_test.sc
+MS	S18.axis2.phaseshifter 1	1	deg	absolute	-0.900000
+CALL	TOF_test.sc
+MS	S18.axis2.phaseshifter 1	1	deg	absolute	-0.700000
+CALL	TOF_test.sc
+MS	S18.axis2.phaseshifter 1	1	deg	absolute	-0.500000
+CALL	TOF_test.sc
+MS	S18.axis2.phaseshifter 1	1	deg	absolute	-0.300000
+CALL	TOF_test.sc
+MS	S18.axis2.phaseshifter 1	1	deg	absolute	-0.100000
+CALL	TOF_test.sc
+MS	S18.axis2.phaseshifter 1	1	deg	absolute	0.100000
+CALL	TOF_test.sc
+MS	S18.axis2.phaseshifter 1	1	deg	absolute	0.300000
+CALL	TOF_test.sc
+MS	S18.axis2.phaseshifter 1	1	deg	absolute	0.500000
+CALL	TOF_test.sc
+MS	S18.axis2.phaseshifter 1	1	deg	absolute	0.700000
+CALL	TOF_test.sc
+MS	S18.axis2.phaseshifter 1	1	deg	absolute	0.900000
+CALL	TOF_test.sc
+MS	S18.axis2.phaseshifter 1	1	deg	absolute	1.100000
+CALL	TOF_test.sc
+MS	S18.axis2.phaseshifter 1	1	deg	absolute	1.300000
+CALL	TOF_test.sc
+MS	S18.axis2.phaseshifter 1	1	deg	absolute	1.500000
+CALL	TOF_test.sc
+E
+END

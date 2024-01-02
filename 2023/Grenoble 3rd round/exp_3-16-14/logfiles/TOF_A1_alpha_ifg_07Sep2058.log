@@ -1,0 +1,13 @@
+07/09/2023 20:58:05:	function generator:  GPIB1::8 fn1=SIN *am1=1.0 *fr1=10000 *ph1=0 of1=0 bt1=4 dy1=29.43us DONE
+07/09/2023 20:58:06:	function generator:  GPIB1::8 start1 DONE
+07/09/2023 20:58:07:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\TOF_A1_alpha_ifg_07Sep2058.dat	 DONE
+room to enter remarks DONE
+07/09/2023 20:58:08:	move motor	S18.axis2.phaseshifter 1 to -2.000000deg	 DONE
+07/09/2023 20:58:12:	2	TOF	4	time=20	period=434µ	binwidth=3µ	delay=95µO Det=764	H Det=2269	Mon Det=61043	Aux Det=1965	O+H=3033	 DONE
+07/09/2023 20:58:36:	move motor	S18.axis2.phaseshifter 1 to -1.800000deg	 DONE
+07/09/2023 20:58:40:	3	TOF	4	time=20	period=434µ	binwidth=3µ	delay=95µO Det=439	H Det=2269	Mon Det=61043	Aux Det=915	O+H=2708	 DONE
+07/09/2023 20:59:03:	move motor	S18.axis2.phaseshifter 1 to -1.600000deg	 DONE
+07/09/2023 20:59:07:	4	TOF	4	time=20	period=434µ	binwidth=3µ	delay=95µO Det=152	H Det=2269	Mon Det=61043	Aux Det=179	O+H=2421	 DONE
+07/09/2023 20:59:21:	move motor	S18.axis2.phaseshifter 1 to -1.400000deg	 DONE
+07/09/2023 20:59:25:	5	TOF	4	time=20	period=434µ	binwidth=3µ	delay=95µO Det=73	H Det=2269	Mon Det=61043	Aux Det=156	O+H=2342	STOPPED BY USER	07/09/2023 20:59:36:	close file and end scan	 DONE
+07/09/2023 20:59:37:	move motor	S18.axis2.phaseshifter 1 to fit AUX COS45	-0.858956reached -0.86792  DONE

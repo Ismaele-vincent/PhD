@@ -1,0 +1,50 @@
+START	standard
+G	GPIB1::8	start2
+F	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\ifg_TOF_S2.dat
+R	room to enter remarks
+M	S18.axis2.phaseshifter 1	deg	-2.000000	FALSE
+TOF	5	time=20	period=434µ	binwidth=3µ	delay=95µ
+M	S18.axis2.phaseshifter 1	deg	-1.800000	FALSE
+TOF	5	time=20	period=434µ	binwidth=3µ	delay=95µ
+M	S18.axis2.phaseshifter 1	deg	-1.600000	FALSE
+TOF	5	time=20	period=434µ	binwidth=3µ	delay=95µ
+M	S18.axis2.phaseshifter 1	deg	-1.400000	FALSE
+TOF	5	time=20	period=434µ	binwidth=3µ	delay=95µ
+M	S18.axis2.phaseshifter 1	deg	-1.200000	FALSE
+TOF	5	time=20	period=434µ	binwidth=3µ	delay=95µ
+M	S18.axis2.phaseshifter 1	deg	-1.000000	FALSE
+TOF	5	time=20	period=434µ	binwidth=3µ	delay=95µ
+M	S18.axis2.phaseshifter 1	deg	-0.800000	FALSE
+TOF	5	time=20	period=434µ	binwidth=3µ	delay=95µ
+M	S18.axis2.phaseshifter 1	deg	-0.600000	FALSE
+TOF	5	time=20	period=434µ	binwidth=3µ	delay=95µ
+M	S18.axis2.phaseshifter 1	deg	-0.400000	FALSE
+TOF	5	time=20	period=434µ	binwidth=3µ	delay=95µ
+M	S18.axis2.phaseshifter 1	deg	-0.200000	FALSE
+TOF	5	time=20	period=434µ	binwidth=3µ	delay=95µ
+M	S18.axis2.phaseshifter 1	deg	0.000000	FALSE
+TOF	5	time=20	period=434µ	binwidth=3µ	delay=95µ
+M	S18.axis2.phaseshifter 1	deg	0.200000	FALSE
+TOF	5	time=20	period=434µ	binwidth=3µ	delay=95µ
+M	S18.axis2.phaseshifter 1	deg	0.400000	FALSE
+TOF	5	time=20	period=434µ	binwidth=3µ	delay=95µ
+M	S18.axis2.phaseshifter 1	deg	0.600000	FALSE
+TOF	5	time=20	period=434µ	binwidth=3µ	delay=95µ
+M	S18.axis2.phaseshifter 1	deg	0.800000	FALSE
+TOF	5	time=20	period=434µ	binwidth=3µ	delay=95µ
+M	S18.axis2.phaseshifter 1	deg	1.000000	FALSE
+TOF	5	time=20	period=434µ	binwidth=3µ	delay=95µ
+M	S18.axis2.phaseshifter 1	deg	1.200000	FALSE
+TOF	5	time=20	period=434µ	binwidth=3µ	delay=95µ
+M	S18.axis2.phaseshifter 1	deg	1.400000	FALSE
+TOF	5	time=20	period=434µ	binwidth=3µ	delay=95µ
+M	S18.axis2.phaseshifter 1	deg	1.600000	FALSE
+TOF	5	time=20	period=434µ	binwidth=3µ	delay=95µ
+M	S18.axis2.phaseshifter 1	deg	1.800000	FALSE
+TOF	5	time=20	period=434µ	binwidth=3µ	delay=95µ
+M	S18.axis2.phaseshifter 1	deg	2.000000	FALSE
+TOF	5	time=20	period=434µ	binwidth=3µ	delay=95µ
+G	GPIB1::8	stop2
+E
+MS	S18.axis2.phaseshifter 1	1	deg	FIT	AUX	COS45
+END

@@ -1,0 +1,22 @@
+25/08/2023 14:22:44:	start execution of script D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\TOF_vs_chi_A1_CdS2.sc	 DONE
+25/08/2023 14:22:45:	function generator:  GPIB1::8 fn1=SIN *am1=0.0 *fr1=0 *ph1=0 of1=0 bt1=3 DONE
+25/08/2023 14:22:46:	function generator:  GPIB1::8 fn2=SIN *am2=0.0 *fr2=0 *ph2=0 of2=0 bt2=3 DONE
+25/08/2023 14:22:46:	move motor	S18.axis2.phaseshifter 1 to -1.500000deg	reached -1.50513  DONE
+25/08/2023 14:22:50:	function generator:  GPIB1::8 fn1=SIN *am1=2.0 *fr1=10000 *ph1=0 of1=0 bt1=3 DONE
+25/08/2023 14:22:51:	function generator:  GPIB1::8 start1 DONE
+25/08/2023 14:22:52:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\TOF_vs_chi_A1_CdS2_25Aug1422.dat	 DONE
+25/08/2023 14:22:52:	1	TOF	4	time=1200	period=301µ	binwidth=3µ	delay=95µO Det=9044	H Det=483	Mon Det=29640	Aux Det=22260	O+H=31787	 DONE
+25/08/2023 14:36:22:	function generator:  GPIB1::8 stop1 DONE
+25/08/2023 14:36:23:	close file and end scan	 DONE
+call of TOF_A1.sc DONE
+25/08/2023 14:36:24:	move motor	S18.axis2.phaseshifter 1 to -1.100000deg	reached -1.09863  DONE
+25/08/2023 14:36:28:	function generator:  GPIB1::8 fn1=SIN *am1=2.0 *fr1=10000 *ph1=0 of1=0 bt1=3 DONE
+25/08/2023 14:36:28:	function generator:  GPIB1::8 start1 DONE
+25/08/2023 14:36:29:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\TOF_vs_chi_A1_CdS2_25Aug1436.dat	 DONE
+25/08/2023 14:36:29:	1	TOF	4	time=1200	period=301µ	binwidth=3µ	delay=95µO Det=52	H Det=483	Mon Det=29640	Aux Det=174	O+H=709	STOPPED BY USER	25/08/2023 14:36:39:	close file and end scan	 DONE
+call of TOF_A1.sc DONE
+25/08/2023 14:36:40:	move motor	S18.axis2.phaseshifter 1 to -0.700000deg	reached -0.70313  DONE
+25/08/2023 14:36:44:	function generator:  GPIB1::8 fn1=SIN *am1=2.0 *fr1=10000 *ph1=0 of1=0 bt1=3 DONE
+25/08/2023 14:36:44:	function generator:  GPIB1::8 start1 DONE
+25/08/2023 14:36:45:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\TOF_vs_chi_A1_CdS2_25Aug1436.dat	 DONE
+25/08/2023 14:36:46:	1	TOF	4	time=1200	period=301µ	binwidth=3µ	delay=95µO Det=24	H Det=483	Mon Det=29640	Aux Det=63	O+H=570	 DONE

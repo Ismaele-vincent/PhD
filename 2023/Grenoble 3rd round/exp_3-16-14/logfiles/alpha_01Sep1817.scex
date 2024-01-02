@@ -1,0 +1,57 @@
+START	standard
+F	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\*.dat
+R	1
+CALL	movePS_0.sc
+I	AO_S1Z	Amps	-2.000000	0
+C	time	10.000000
+CALL	movePS_0.sc
+I	AO_S1Z	Amps	-1.750000	0
+C	time	10.000000
+CALL	movePS_0.sc
+I	AO_S1Z	Amps	-1.500000	0
+C	time	10.000000
+CALL	movePS_0.sc
+I	AO_S1Z	Amps	-1.250000	0
+C	time	10.000000
+CALL	movePS_0.sc
+I	AO_S1Z	Amps	-1.000000	0
+C	time	10.000000
+CALL	movePS_0.sc
+I	AO_S1Z	Amps	-0.750000	0
+C	time	10.000000
+CALL	movePS_0.sc
+I	AO_S1Z	Amps	-0.500000	0
+C	time	10.000000
+CALL	movePS_0.sc
+I	AO_S1Z	Amps	-0.250000	0
+C	time	10.000000
+CALL	movePS_0.sc
+I	AO_S1Z	Amps	0.000000	0
+C	time	10.000000
+CALL	movePS_0.sc
+I	AO_S1Z	Amps	0.250000	0
+C	time	10.000000
+CALL	movePS_0.sc
+I	AO_S1Z	Amps	0.500000	0
+C	time	10.000000
+CALL	movePS_0.sc
+I	AO_S1Z	Amps	0.750000	0
+C	time	10.000000
+CALL	movePS_0.sc
+I	AO_S1Z	Amps	1.000000	0
+C	time	10.000000
+CALL	movePS_0.sc
+I	AO_S1Z	Amps	1.250000	0
+C	time	10.000000
+CALL	movePS_0.sc
+I	AO_S1Z	Amps	1.500000	0
+C	time	10.000000
+CALL	movePS_0.sc
+I	AO_S1Z	Amps	1.750000	0
+C	time	10.000000
+CALL	movePS_0.sc
+I	AO_S1Z	Amps	2.000000	0
+C	time	10.000000
+CALL	movePS_0.sc
+E
+END

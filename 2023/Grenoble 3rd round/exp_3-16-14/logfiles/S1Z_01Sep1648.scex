@@ -1,0 +1,31 @@
+START	standard		
+F	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\*.dat
+R	room to enter remarks
+I	AO_S1Z	Amps	-3.000000	0
+C	time	10.000000
+I	AO_S1Z	Amps	-2.500000	0
+C	time	10.000000
+I	AO_S1Z	Amps	-2.000000	0
+C	time	10.000000
+I	AO_S1Z	Amps	-1.500000	0
+C	time	10.000000
+I	AO_S1Z	Amps	-1.000000	0
+C	time	10.000000
+I	AO_S1Z	Amps	-0.500000	0
+C	time	10.000000
+I	AO_S1Z	Amps	0.000000	0
+C	time	10.000000
+I	AO_S1Z	Amps	0.500000	0
+C	time	10.000000
+I	AO_S1Z	Amps	1.000000	0
+C	time	10.000000
+I	AO_S1Z	Amps	1.500000	0
+C	time	10.000000
+I	AO_S1Z	Amps	2.000000	0
+C	time	10.000000
+I	AO_S1Z	Amps	2.500000	0
+C	time	10.000000
+I	AO_S1Z	Amps	3.000000	0
+C	time	10.000000
+E
+END

@@ -1,0 +1,35 @@
+26/08/2023 10:43:10:	function generator:  GPIB1::8 fn1=SIN *am1=5.0 *fr1=80000 *ph1=0 of1=0 bt1=4 DONE
+26/08/2023 10:43:11:	function generator:  GPIB1::8 start1 DONE
+26/08/2023 10:43:11:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\Freq_test_26Aug1043.dat	 DONE
+26/08/2023 10:43:12:	1	TOF	4	time=10	period=52µ	binwidth=1µ	delay=95µO Det=26	H Det=0	Mon Det=0	Aux Det=63	O+H=89	 DONE
+26/08/2023 10:43:19:	function generator:  GPIB1::8 stop1 DONE
+26/08/2023 10:43:19:	function generator:  GPIB1::8 fn1=SIN *am1=5.0 *fr1=90000 *ph1=0 of1=0 bt1=4 DONE
+26/08/2023 10:43:20:	function generator:  GPIB1::8 start1 DONE
+26/08/2023 10:43:21:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\Freq_test_26Aug1043.dat	 DONE
+26/08/2023 10:43:22:	2	TOF	4	time=10	period=52µ	binwidth=1µ	delay=95µO Det=0	H Det=0	Mon Det=0	Aux Det=1	O+H=1	 DONE
+26/08/2023 10:43:25:	function generator:  GPIB1::8 stop1 DONE
+26/08/2023 10:43:26:	function generator:  GPIB1::8 fn1=SIN *am1=5.0 *fr1=100000 *ph1=0 of1=0 bt1=5 DONE
+26/08/2023 10:43:27:	function generator:  GPIB1::8 start1 DONE
+26/08/2023 10:43:27:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\Freq_test_26Aug1043.dat	 DONE
+26/08/2023 10:43:28:	3	TOF	4	time=10	period=52µ	binwidth=1µ	delay=95µO Det=0	H Det=0	Mon Det=0	Aux Det=0	O+H=0	 DONE
+26/08/2023 10:43:32:	function generator:  GPIB1::8 stop1 DONE
+26/08/2023 10:43:33:	function generator:  GPIB1::8 fn1=SIN *am1=5.0 *fr1=110000 *ph1=0 of1=0 bt1=5 DONE
+26/08/2023 10:43:33:	function generator:  GPIB1::8 start1 DONE
+26/08/2023 10:43:34:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\Freq_test_26Aug1043.dat	 DONE
+26/08/2023 10:43:35:	4	TOF	4	time=10	period=52µ	binwidth=1µ	delay=95µO Det=0	H Det=0	Mon Det=0	Aux Det=0	O+H=0	 DONE
+26/08/2023 10:43:38:	function generator:  GPIB1::8 stop1 DONE
+26/08/2023 10:43:39:	function generator:  GPIB1::8 fn1=SIN *am1=5.0 *fr1=120000 *ph1=0 of1=0 bt1=6 DONE
+26/08/2023 10:43:40:	function generator:  GPIB1::8 start1 DONE
+26/08/2023 10:43:40:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\Freq_test_26Aug1043.dat	 DONE
+26/08/2023 10:43:41:	5	TOF	4	time=10	period=52µ	binwidth=1µ	delay=95µO Det=0	H Det=0	Mon Det=0	Aux Det=0	O+H=0	 DONE
+26/08/2023 10:43:45:	function generator:  GPIB1::8 stop1 DONE
+26/08/2023 10:43:45:	close file and end scan	 DONE
+26/08/2023 10:43:46:	function generator:  GPIB1::8 fn1=SIN *am1=5.0 *fr1=80000 *ph1=0 of1=0 bt1=4 DONE
+26/08/2023 10:43:46:	function generator:  GPIB1::8 start1 DONE
+26/08/2023 10:43:47:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\Freq_test_26Aug1043.dat	 DONE
+26/08/2023 10:43:48:	1	TOF	4	time=10	period=52µ	binwidth=1µ	delay=95µO Det=55	H Det=0	Mon Det=0	Aux Det=120	O+H=175	 DONE
+26/08/2023 10:43:57:	function generator:  GPIB1::8 stop1 DONE
+26/08/2023 10:43:57:	function generator:  GPIB1::8 fn1=SIN *am1=5.0 *fr1=90000 *ph1=0 of1=0 bt1=4 DONE
+26/08/2023 10:43:58:	function generator:  GPIB1::8 start1 DONE
+26/08/2023 10:43:59:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\Freq_test_26Aug1043.dat	 DONE
+26/08/2023 10:43:59:	2	TOF	4	time=10	period=52µ	binwidth=1µ	delay=95µO Det=34	H Det=0	Mon Det=0	Aux Det=74	O+H=108	STOPPED BY USER	26/08/2023 10:44:06:	close file and end scan	 DONE

@@ -1,0 +1,24 @@
+23/09/2023 14:41:09:	start execution of script D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\TOF_vs_chi_A1_19pt_pi4_1500s.sc	 DONE
+23/09/2023 14:41:10:	function generator:  GPIB1::8 fn1=SIN *am1=0.0 *fr1=0 *ph1=0 of1=0 bt1=3 DONE
+23/09/2023 14:41:10:	function generator:  GPIB1::8 fn2=SIN *am2=0.0 *fr2=0 *ph2=0 of2=0 bt2=3 DONE
+23/09/2023 14:41:11:	move motor	S18.axis2.phaseshifter 1 to -1.500000deg	reached -1.49414  DONE
+23/09/2023 14:41:14:	function generator:  GPIB1::8 fn1=SIN *am1=1.52 *fr1=10000 *ph1=0 of1=0 bt1=4 dy1=29.43us DONE
+23/09/2023 14:41:15:	function generator:  GPIB1::8 start1 DONE
+23/09/2023 14:41:15:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\TOF_vs_chi_A1_19pt_pi4_1500s_23Sep1441.dat	 DONE
+23/09/2023 14:41:16:	1	TOF	4	time=1500	period=434µ	binwidth=3µ	delay=95µO Det=43725	H Det=93	Mon Det=31739	Aux Det=108956	O+H=43818	 DONE
+23/09/2023 15:06:19:	function generator:  GPIB1::8 stop1 DONE
+23/09/2023 15:06:20:	close file and end scan	 DONE
+call of TOF_A1_pi4_1500s.sc DONE
+23/09/2023 15:06:21:	move motor	S18.axis2.phaseshifter 1 to -1.333333deg	reached -1.31836  DONE
+23/09/2023 15:06:24:	function generator:  GPIB1::8 fn1=SIN *am1=1.52 *fr1=10000 *ph1=0 of1=0 bt1=4 dy1=29.43us DONE
+23/09/2023 15:06:24:	function generator:  GPIB1::8 start1 DONE
+23/09/2023 15:06:25:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\TOF_vs_chi_A1_19pt_pi4_1500s_23Sep1506.dat	 DONE
+23/09/2023 15:06:26:	1	TOF	4	time=1500	period=434µ	binwidth=3µ	delay=95µO Det=33900	H Det=93	Mon Det=31739	Aux Det=68748	O+H=33993	 DONE
+23/09/2023 15:31:29:	function generator:  GPIB1::8 stop1 DONE
+23/09/2023 15:31:30:	close file and end scan	 DONE
+call of TOF_A1_pi4_1500s.sc DONE
+23/09/2023 15:31:31:	move motor	S18.axis2.phaseshifter 1 to -1.166666deg	reached -1.17554  DONE
+23/09/2023 15:31:34:	function generator:  GPIB1::8 fn1=SIN *am1=1.52 *fr1=10000 *ph1=0 of1=0 bt1=4 dy1=29.43us DONE
+23/09/2023 15:31:34:	function generator:  GPIB1::8 start1 DONE
+23/09/2023 15:31:35:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\TOF_vs_chi_A1_19pt_pi4_1500s_23Sep1531.dat	 DONE
+23/09/2023 15:31:36:	1	TOF	4	time=1500	period=434µ	binwidth=3µ	delay=95µO Det=8516	H Det=93	Mon Det=31739	Aux Det=13262	O+H=8609	STOPPED BY USER	23/09/2023 15:39:36:	close file and end scan	 DONE

@@ -1,0 +1,9 @@
+29/08/2023 11:55:56:	start execution of script D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\TOF_vs_chi_S2.sc	 DONE
+29/08/2023 11:55:56:	function generator:  GPIB1::8 fn1=SIN *am1=0.0 *fr1=0 *ph1=0 of1=0 bt1=3 DONE
+29/08/2023 11:55:57:	function generator:  GPIB1::8 fn2=SIN *am2=0.0 *fr2=0 *ph2=0 of2=0 bt2=3 DONE
+29/08/2023 11:55:58:	create file	D:\data\Cycle 192ter\exp_3-16-14\rawdata\sc\TOF_vs_chi_S2_29Aug1155.dat	 DONE
+room to enter remarks DONE
+29/08/2023 11:55:59:	move motor	S18.axis2.phaseshifter 1 to -3.000000deg	 DONE
+29/08/2023 11:56:03:	1	count	time	20.000000s/cts	O Det=1	H Det=30	Mon Det=7960	Aux Det=2	O+H=33	STOPPED BY USER	29/08/2023 11:56:07:	close file and end scan	 DONE
+call of ifg_20s_3p.sc DONE
+29/08/2023 11:56:08:	move motor	S18.axis2.phaseshifter 1 to -1.500000deg	reached -1.51611  DONE
