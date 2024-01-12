@@ -79,9 +79,9 @@ def fit_O_beam(t, A, B, a_1, xi_1):
     chi_fit=chi
     return A + B*np.cos(chi_fit-a_1*np.sin(2*np.pi*1e-3*f_1*t+xi_1))/2
 # inf_file_name="ifg_vs_A_2kHzB_12p_14Nov0129"
-inf_file_name="ifg_vs_A_2kHzB_12p_13Nov2313"
+# inf_file_name="ifg_vs_A_2kHzB_12p_13Nov2313"
 # inf_file_name="ifg_vs_A_2kHzB_12p_13Nov2129"
-# inf_file_name="ifg_vs_B_3kHzB_09Nov1137"
+inf_file_name="ifg_vs_B_3kHzB_09Nov1137"
 # inf_file_name="ifg_vs_B_3kHzB_13p_30s_17Nov0603"
 print(inf_file_name)
 sorted_fold_path="/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/exp_CRG-3061/Sorted data/Ifg vs B-field/"+inf_file_name
@@ -93,7 +93,7 @@ for root, dirs, files in os.walk(cleandata, topdown=False):
         if i==0:
             tot_data=np.loadtxt(os.path.join(root, name))[:,:]
             ps_pos=tot_data[:,0]
-            f_1=3
+            f_1=2
             print(name)
             i+=1
         else:
@@ -157,7 +157,7 @@ alpha_0=alpha_plt[contr(curr_plt,*p)==np.amin(contr(curr_plt,*p))]
 curr_0=curr_plt[contr(curr_plt,*p)==np.amin(contr(curr_plt,*p))]
 print(alpha_0, curr_0)
 print("alpha/V_c=",p[1],"+-",err[1])
-print("alpha=",p[1]*6.85,"+-", err[1]*6.85)
+print("alpha=",p[1]*2.01,"+-", err[1]*2.01)
 fig = plt.figure(figsize=(5,5))
 ax = fig.add_subplot(111)
 # ax.errorbar(amplitude, chi_0, yerr= chi_0_err, fmt="ko")

@@ -46,7 +46,7 @@ a_2=1/2**0.5
 # inf_file_name="TOF_vs_chi_A_19pt_pi16_1200s_05Nov1903" #-4932.994206753456
 # inf_file_name="TOF_vs_chi_A_22pt_pi16_1200s_07Nov1808" #-3597.8672630959286
 # inf_file_name="TOF_vs_chi_A_19pt_pi8_1200s_04Nov1722" #-4986.682519843703
-inf_file_name="TOF_vs_chi_A_22pt_pi8_1200s_06Nov1855" #-3932.178382693772
+# inf_file_name="TOF_vs_chi_A_22pt_pi8_1200s_06Nov1855" #-3932.178382693772
 
 # In2, pi/8
 # spin up, pi/4
@@ -161,23 +161,23 @@ for i in range(len(ps_pos)):
         x_1=f_1#xf[xf>0][abs(yf_data[xf>0])==np.amax(abs(yf_data[xf>0]))]
         print(x_1)
     c_1_data=(yf_data[abs(xf-x_1)<1/S_F/2]).astype(complex)
-    c_0_data=abs(yf_data[abs(xf)<1/S_F/2]).astype(complex)#-3932.178382693772
+    c_0_data=abs(yf_data[abs(xf)<1/S_F/2]).astype(complex)-3597.8672630959286#-3932.178382693772
     var=np.sum(func_data)**0.5/2
     c_1_data_err=var
     c_0_data_err=(var**2+350.517133876094**2)**0.5
     
     # print(chi[i], np.angle(c_1_data))
-    if np.angle(c_1_data)>0:
+    if c_1_data.real>0:
         # print("here")
         e_m1xi=np.exp(-1j*(np.angle(c_1_data)))
     else:
         e_m1xi=np.exp(-1j*(np.angle(c_1_data)+np.pi))
     e_m2xi=e_m1xi**2
-    
+    e_m1xi=np.exp(-1j*(np.angle(c_1_data)))
     cos2[i]=abs(c_0_data)
     cos2_err[i]=abs(c_0_data_err)
     
-    Im_data[i]=(c_1_data*e_m1xi).real/(cos2[i])/alpha_1
+    Im_data[i]=(c_1_data).real/(cos2[i])/alpha_1/np.abs(e_m1xi.real)
     Im_data_err[i]=(abs(c_1_data_err/cos2[i])**2 + (abs((c_1_data*e_m1xi)/cos2[i]**2)*cos2_err[i])**2+abs((c_1_data*e_m1xi)/cos2[i]/alpha_1*alpha_1_err)**2)**0.5/abs(alpha_1)
     Im_err_rel[i]=abs(Im_data_err[i]/Im_data[i])
     # data_txt=np.array([time, func_data,func_data_err ]) 

@@ -53,14 +53,14 @@ a_2=1/2**0.5
 # inf_file_name="TOF_vs_chi_A_19pt_pi16_1200s_05Nov1903" #-4932.994206753456
 # inf_file_name="TOF_vs_chi_A_22pt_pi16_1200s_07Nov1808" #-3597.8672630959286
 # inf_file_name="TOF_vs_chi_A_19pt_pi8_1200s_04Nov1722" #-4986.682519843703
-inf_file_name="TOF_vs_chi_A_22pt_pi8_1200s_06Nov1855" #-3932.178382693772
+# inf_file_name="TOF_vs_chi_A_22pt_pi8_1200s_06Nov1855" #-3932.178382693772
 
 # In2, pi/8
 # spin up, pi/4
 # Un, pi/4
 # Un, pi/8
 
-alpha_1= -np.pi/8 #0.19181329#np.pi/16 #/2.354
+alpha_1= -0.3847 #0.19181329#np.pi/16 #/2.354
 alpha_1_err=0.1*alpha_1
 def w2(chi):
     return (1-1/(1+a_21*np.exp(1j*chi)))
@@ -85,7 +85,7 @@ chi_aus=0
 # def fit_Im(t, A, B, Im, xi_1):
 #     return A*((1-Co)/2+Co*np.cos(chi_aus/2)**2*(1+2*Im*alpha_1*np.sin(2*np.pi*1e-3*f_1*t+xi_1)))
 A_aus=1493.880147983857
-def fit_Im(t, A, B, Im, xi_1):
+def fit_Im(t, B, Im, xi_1):
     return A_aus*((1-Co)/2+Co*B*(1+2*Im*alpha_1*np.sin(2*np.pi*1e-3*f_1*t+xi_1)))
 
 
@@ -172,26 +172,26 @@ for i in range(len(ps_pos)):
     # print(len(func_data))
     func_data_err=matrix_err[i]
     chi_aus=chi[i]
-    P0=[3932.178382693772*2/(1-Co),np.cos(chi[i]/2)**2, w2(chi[i]).imag, 0.9]
+    P0=[np.cos(chi[i]/2)**2, w2(chi[i]).imag, 1]
     # print(P0)
-    B0=([100,0,-np.inf, -2*np.pi],[np.inf,np.inf, np.inf, 2*np.pi])
+    B0=([0,-np.inf, -2*np.pi],[np.inf, np.inf, 2*np.pi])
     p_Im,cov_Im = fit(fit_Im, time, func_data, p0=P0, bounds=B0)
     err_Im=np.diag(cov_Im)**0.5
     # print(p_Im[0])
     # print(p_Im,err_Im)
-    Im_data_fit[i]=p_Im[2]
-    Im_data_fit_err[i]=(err_Im[2]**2+np.sin(chi[i])**2*chi_0_err**2)**0.5
-    cos2_fit[i]=p_Im[1]*p_Im[0]#*Co#+p_Im[0]*(1-Co)/2
-    cos2_fit_err[i]=err_Im[1]
+    Im_data_fit[i]=p_Im[1]
+    Im_data_fit_err[i]=(err_Im[1]**2+np.sin(chi[i])**2*chi_0_err**2)**0.5
+    cos2_fit[i]=p_Im[0]*A_aus#*Co#+p_Im[0]*(1-Co)/2
+    cos2_fit_err[i]=err_Im[0]
     
     yf_data = fft(func_data)
     yf_data_err = np.ones(len(yf_data))*np.sum(matrix_err)**0.5
     # print(sum(abs(yf_data)))
     xf = fftfreq(N, S_F)*1e3
-    # fig = plt.figure(figsize=(8,6))
-    # ax = fig.add_subplot(111)
-    # ax.errorbar(time, matrix[i], yerr= matrix_err[i], fmt="k.", capsize=3)
-    # ax.plot(time_plt, fit_Im(time_plt, *p_Im))
+    fig = plt.figure(figsize=(8,6))
+    ax = fig.add_subplot(111)
+    ax.errorbar(time, matrix[i], yerr= matrix_err[i], fmt="k.", capsize=3)
+    ax.plot(time_plt, fit_Im(time_plt, *p_Im))
     # ax.set_title(str("%.2f"%chi[i],))
     # ax.errorbar(xf, np.abs(yf_data), np.abs(yf_data_err), fmt="k.", capsize=5)
     # ax.set_xlim([-5,5])
@@ -200,7 +200,7 @@ for i in range(len(ps_pos)):
         x_1=f_1#xf[xf>0][abs(yf_data[xf>0])==np.amax(abs(yf_data[xf>0]))]
         print(x_1)
     c_1_data=(yf_data[abs(xf-x_1)<1/S_F/2]).astype(complex)
-    c_0_data=abs(yf_data[abs(xf)<1/S_F/2]).astype(complex) - A #-3607.1413237746724#-3597.8672630959286
+    c_0_data=abs(yf_data[abs(xf)<1/S_F/2]).astype(complex)#-A  #-3607.1413237746724#-3597.8672630959286
     var=np.sum(func_data)**0.5/2
     c_1_data_err=var
     c_0_data_err=(var**2+14)**0.5
@@ -250,8 +250,8 @@ fig = plt.figure(figsize=(6,6), dpi=200)
 ax = fig.add_subplot(111)
 ax.errorbar(ps_pos, cos2, yerr=cos2_err, fmt="ko", capsize=5, label="$c_0$")
 ax.plot(ps_plt, fit_cos_unb(ps_plt,*p_cos_unb), "b-", label="Fit")
-ax.errorbar(ps_pos, ps_data*len(time), yerr=cos2_fit_err, fmt="g.", capsize=5, label="$c_0$")
-ax.legend()
+ax.errorbar(ps_pos, ps_data, yerr=cos2_fit_err, fmt="g.", capsize=5, label="$c_0$")
+# ax.set_ylim([5000,10000]) 
 print(cos2/cos2_fit)
 print("param cos_unb=",p_cos_unb)
 corr_unb=p_cos_unb[0]

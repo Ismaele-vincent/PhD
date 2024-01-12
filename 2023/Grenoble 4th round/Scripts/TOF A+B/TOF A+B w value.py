@@ -45,7 +45,7 @@ a_21=1
 a_1=1/2**0.5
 a_2=1/2**0.5
 # inf_file_name="TOF_vs_chi_A+B_22pt_pi16_1200s_09Nov1808" #-4530.323016615687
-# inf_file_name="TOF_vs_chi_A+B_22pt_pi16_1200s_4P_11Nov0502" #-4093.081538302083
+# inf_file_name="TOF_vs_chi_A+B_22pt_pi16_1200s_4P_11Nov0502" 
 # inf_file_name="TOF_vs_chi_A+B_22pt_pi16_1200s_4P_11Nov1354"  #-3987.079172959252
 # inf_file_name="TOF_vs_chi_A+B_22pt_pi8_1200s_10Nov0133" #-4915.5654341296095
 # inf_file_name="TOF_vs_chi_A+B_22pt_pi8_1200s_2xbin_10Nov1156" #-4602.040834697588
@@ -55,10 +55,10 @@ a_2=1/2**0.5
 # spin up, pi/4
 # Un, pi/4
 # Un, pi/8
-alpha_1=-np.pi/16 #/2.354
-alpha_1_err=0.01*alpha_1
-alpha_2=np.pi/16 #/2.354
-alpha_2_err=0.01*alpha_2
+alpha_1=-0.38#/2.354
+alpha_1_err=0.001*alpha_1
+alpha_2=0.38 #/2.354
+alpha_2_err=0.001*alpha_2
 
 def w1(chi):
     return (1/(1+a_21*np.exp(1j*chi)))
@@ -73,7 +73,7 @@ def fit_cos_unb(x, A, B, C):
     return A*((1 - Co)/2 + Co*(1/2+a_1*a_2*np.cos(B*x-C)))
 
 def fit_cos(x, A, B, C, D):
-    return A+B*jv(0,alpha_1/2)*jv(0,alpha_2/2)*np.cos(C*x-D)
+    return A+B*jv(0,abs(alpha_1))*jv(0,abs(alpha_2))*np.cos(C*x-D)
 
 def alpha(T,f,B):
     w=f*2*np.pi
@@ -109,8 +109,12 @@ for root, dirs, files in os.walk(cleandata, topdown=False):
             time=tot_data[:,1]
             f_2=tot_data[0,-3]*1e-3
             f_1=tot_data[0,-6]*1e-3
+            a_2=tot_data[0,-4]
+            a_1=tot_data[0,-7]
             print("f1=", f_1)
             print("f2=", f_2)
+            print("a1=", a_1)
+            print("a2=", a_2)
             i=1
         else:
             data=np.loadtxt(os.path.join(root, name))[:,:]
@@ -130,7 +134,6 @@ B0=([1000,0,0.01,-10],[np.amax(ps_data)+1000,np.amax(ps_data)+1000,5, 10])
 p,cov=fit(fit_cos, ps_pos, ps_data, p0=P0,  bounds=B0)
 err=np.diag(cov)**0.5
 Co= p[1]/p[0]
-Co=0.70
 w_ps=p[-2]
 chi_0=p[-1]
 chi_0_err=err[-1]
@@ -169,8 +172,8 @@ for i in range(len(ps_pos)):
     
     # fig = plt.figure(figsize=(8,6))
     # ax = fig.add_subplot(111)
-    # # ax.errorbar(time, matrix[i], yerr= matrix_err[i], fmt="ko")
-    # # ax.set_title(str("%.2f"%chi[i],))
+    # ax.errorbar(time, matrix[i], yerr= matrix_err[i], fmt="ko")
+    # ax.set_title(str("%.2f"%chi[i],))
     # ax.errorbar(xf, np.abs(yf_data), np.abs(yf_data_err), fmt="k.", capsize=5)
     # ax.set_xlim([-5,5])
     
@@ -178,7 +181,7 @@ for i in range(len(ps_pos)):
         x_1=f_1#xf[xf>0][abs(yf_data[xf>0])==np.amax(abs(yf_data[xf>0]))]
         x_2=f_2
         print(x_1)
-    c_0_data=abs(yf_data[abs(xf)<1/S_F/2]).astype(complex)-3987.079172959252#-4674.84261136054#-4143.756564183297#-4220.601952637239#-3798.2582242269036
+    c_0_data=abs(yf_data[abs(xf)<1/S_F/2]).astype(complex)-3325.354816145707 #-3738.9637371778044#-3325.354816145707#-3987.079172959252#-4674.84261136054#-4143.756564183297#-4220.601952637239#-3798.2582242269036
     c_1_data_1=(yf_data[abs(xf-x_1)<1/S_F/2]).astype(complex)
     c_1_data_2=(yf_data[abs(xf-x_2)<1/S_F/2]).astype(complex)
     

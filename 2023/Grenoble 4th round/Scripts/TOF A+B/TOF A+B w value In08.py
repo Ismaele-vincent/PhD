@@ -46,7 +46,7 @@ a_2 = 0.808#
 
 
 # inf_file_name="TOF_vs_chi_A+B_In1_22pt_pi16_1200s_4P_15Nov0927" #-2072.529811958154
-inf_file_name="TOF_vs_chi_A+B_In1_08mm_22pt_pi8_1200s_4P_16Nov0930"
+# inf_file_name="TOF_vs_chi_A+B_In1_08mm_22pt_pi8_1200s_4P_16Nov0930"
 inf_file_name="TOF_vs_chi_A+B_In1_08mm_22pt_pi16_1200s_4P_16Nov0206"
 # In2, pi/8
 # spin up, pi/4

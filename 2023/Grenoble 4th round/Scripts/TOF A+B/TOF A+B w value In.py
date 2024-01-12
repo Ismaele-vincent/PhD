@@ -228,7 +228,7 @@ ax.plot(chi_plt+np.pi, w2(chi_plt+np.pi).real,"k--", alpha=0.5)
 ax.errorbar(chi+np.pi, Re_chi_pi_2,yerr=Re_err_2, capsize=3,fmt="k.")
 if a_21==2:
     ax.set_ylim([-2,3])  
-
+ax.set_ylim(-1,1)
 fig = plt.figure(figsize=(8,6), dpi=200)
 ax = fig.add_subplot(111)
 ax.errorbar(ps_pos, cos2, yerr=cos2_err, fmt="ko", capsize=5, label="$c_0$")

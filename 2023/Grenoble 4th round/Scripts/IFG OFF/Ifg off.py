@@ -6,7 +6,41 @@ Created on Sun Aug 27 15:37:41 2023
 """
 """
 inf_file_names:
-"ifg_TOF_A+B_off_05Nov1230",
+"ifg_-2to2_30s_09Nov1637", 
+"ifg_-2to2_30s_09Nov1411",
+"ifg_-2to2_30s_09Nov1609", 
+"ifg_-2to2_30s_09Nov1438",     
+    
+"ifg_-2to2_30s_10Nov2001", 
+"ifg_-2to2_30s_10Nov0953", 
+
+"ifg_-2to2_30s_12Nov1956", 
+"ifg_-2to2_30s_12Nov0443", 
+"ifg_-2to2_30s_12Nov2048", 
+"ifg_-2to2_30s_12Nov2024", 
+"ifg_-2to2_30s_12Nov1219", 
+
+"ifg_-2to2_30s_13Nov1149", 
+"ifg_-2to2_30s_13Nov0425", 
+
+"ifg_-2to2_30s_14Nov0308", (Bad)
+"ifg_-2to2_30s_14Nov1756", 
+"ifg_-2to2_30s_14Nov1814", 
+"ifg_-2to2_30s_14Nov1046",
+"ifg_-2to2_30s_14Nov1340",
+
+"ifg_-2to2_30s_15Nov1710", 
+"ifg_-2to2_30s_15Nov0151",
+
+"ifg_-2to2_30s_16Nov1655", 
+"ifg_-2to2_30s_16Nov1720", 
+
+"ifg_-2to2_30s_17Nov0550", 
+
+"ifg_-2to2_15s_09Nov1403", 
+"ifg_-2to2_15s_17Nov2318", 
+"ifg_-2to2_15s_17Nov1459", 
+    
 """
 
 
@@ -21,9 +55,24 @@ def fit_cos(x, A, B, C, D):
     return A+B*np.cos(C*x-D)
 
 inf_file_names=[
-"ifg_-2to2_30s_07Nov1755"
+"ifg_-2to2_30s_14Nov1756", 
+"ifg_-2to2_30s_14Nov1814", 
+"ifg_-2to2_30s_14Nov1046",
+"ifg_-2to2_30s_14Nov1340",
+
+"ifg_-2to2_30s_15Nov1710", 
+"ifg_-2to2_30s_15Nov0151",
+
+# "ifg_-2to2_30s_13Nov0425", 
+# "ifg_-2to2_30s_12Nov0443", 
+# "ifg_-2to2_30s_15Nov1710", 
+
+ 
 ]
 
+
+C=np.array([])
+C_err=np.array([])
 for inf_file_name in inf_file_names:
     # if "20s" in inf_file_name:
         print(inf_file_name)
@@ -31,8 +80,6 @@ for inf_file_name in inf_file_names:
         cleandata=sorted_fold_path+"/Cleantxt"
         for root, dirs, files in os.walk(cleandata, topdown=False):
             files=np.sort(files) 
-            C=np.array([])
-            C_err=np.array([])
             for name in files[:]:
                 # print(name)
                 tot_data=np.loadtxt(os.path.join(root, name))[:,:]
@@ -60,4 +107,5 @@ print("C=", np.average(C), "+-", np.average(C_err))
 plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Report/Images/C_ifg_07Nov.pdf", format="pdf",bbox_inches="tight")
 # print("w_ps=", p[-2])
 # print("chi_0=", p[-1])
+# print(0.6094600070882551/0.7164077689326444)
 plt.show()
