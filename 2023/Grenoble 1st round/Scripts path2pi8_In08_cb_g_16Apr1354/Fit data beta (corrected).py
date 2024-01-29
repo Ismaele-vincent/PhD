@@ -119,7 +119,7 @@ ax.set_xlabel("$\chi$ ($\pi$)")
 ax.errorbar(chi/np.pi, beta, yerr=err_b,fmt="ko",capsize=5)
 ax.plot(x_plt/np.pi,exp_w1p(x_plt, 0),"g", label="Exp Re{"+"$\omega_{1+}$}")
 ax.legend()
-
+plt.show()
 datatxt= np.array([chi,beta,err_b])
 
 with open(correct_fold_path+"/Beta_corrected.txt","w") as f:

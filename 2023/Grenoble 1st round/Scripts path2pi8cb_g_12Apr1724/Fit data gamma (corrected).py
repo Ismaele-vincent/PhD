@@ -70,16 +70,16 @@ for i in range(len(ps_pos)):
     err_g[i]=(err[3]**2+err_res0[3]**2)**0.5/rad
     # err_g[i]=((w[i]*err_eps)**2 +(eps*err_res0[2])**2)**0.5/rad
     gamma[i]=(fit_res0[-1]-g[i])/rad
-    fig = plt.figure(figsize=(5,5))
-    ax = fig.add_subplot(111)
-    fig.suptitle("ps_pos="+str(ps_pos[i]))
-    ax.errorbar(coil,matrix[i],yerr=matrix_err[i],fmt="ko",capsize=5)
-    ax.vlines(g[i]/w[i],0,fit_cos(g[i]/w[i], *p),ls="dashed",color="b",label="$\\gamma$="+str("%.3f" % (g[i]/w[i]),))
-    # ax.vlines(g0[i]/w0[i],0,fit_cos(g0[i]/w0[i], p[0],p[1],*p0[2:]),ls="dashed",color="r",label="$\\gamma_0$="+str("%.3f" % (g0[i]/w0[i]),))
-    ax.plot(x_plt,fit_cos(x_plt, *p), "b")
-    ax.set_ylim([0, P0[1]+P0[1]/10])
-    # ax.plot(x_plt,fit_cos(x_plt, p[0],p[1],*p0[2:]), "r")
-    ax.legend(loc=4)
+    # fig = plt.figure(figsize=(5,5))
+    # ax = fig.add_subplot(111)
+    # fig.suptitle("ps_pos="+str(ps_pos[i]))
+    # ax.errorbar(coil,matrix[i],yerr=matrix_err[i],fmt="ko",capsize=5)
+    # ax.vlines(g[i]/w[i],0,fit_cos(g[i]/w[i], *p),ls="dashed",color="b",label="$\\gamma$="+str("%.3f" % (g[i]/w[i]),))
+    # # ax.vlines(g0[i]/w0[i],0,fit_cos(g0[i]/w0[i], p[0],p[1],*p0[2:]),ls="dashed",color="r",label="$\\gamma_0$="+str("%.3f" % (g0[i]/w0[i]),))
+    # ax.plot(x_plt,fit_cos(x_plt, *p), "b")
+    # ax.set_ylim([0, P0[1]+P0[1]/10])
+    # # ax.plot(x_plt,fit_cos(x_plt, p[0],p[1],*p0[2:]), "r")
+    # ax.legend(loc=4)
 
 ps_data=np.sum(matrix,axis=1)
 P0=[(np.amax(ps_data)+np.amin(ps_data))/2, np.amax(ps_data)-np.amin(ps_data), 8,ps_pos[0]*8]
@@ -121,7 +121,7 @@ ax.plot(x_plt/np.pi,exp_w1p(x_plt, 0),"g", label="Exp Re{"+"$\omega_{1+}$}")
 ax.legend()
 
 plt.show()
-datatxt= np.array([chi,-gamma,err_g])
+datatxt= np.array([ps_pos,-gamma,err_g])
 # # print(datatxt)
-with open(correct_fold_path+"/"+inf_file_name[:8]+"_Gamma_corrected.txt","w") as f:
-    np.savetxt(f,np.transpose(datatxt), header="chi w+ err", fmt='%.7f %.7f %.7f')
+with open(correct_fold_path+"/"+inf_file_name[:]+"_Gamma_corrected.txt","w") as f:
+    np.savetxt(f,np.transpose(datatxt), header="ps_pos w+ err", fmt='%.7f %.7f %.7f')

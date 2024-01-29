@@ -117,6 +117,6 @@ ax.errorbar(chi/np.pi, (- gamma), yerr=err_g,fmt="ko",capsize=5)
 ax.plot(x_plt/np.pi,exp_w1p(x_plt, 0),"g", label="Exp Re{"+"$\omega_{1+}$}")
 ax.legend()
 plt.show()
-datatxt= np.array([chi,-gamma,err_g])
-with open(correct_fold_path+"/"+inf_file_name[:8]+"_Gamma_corrected.txt","w") as f:
-    np.savetxt(f,np.transpose(datatxt), header="chi w+ err", fmt='%.7f %.7f %.7f')
+datatxt= np.array([ps_pos,-gamma,err_g])
+with open(correct_fold_path+"/"+inf_file_name[:]+"_Gamma_corrected.txt","w") as f:
+    np.savetxt(f,np.transpose(datatxt), header="ps_pos w+ err", fmt='%.7f %.7f %.7f')

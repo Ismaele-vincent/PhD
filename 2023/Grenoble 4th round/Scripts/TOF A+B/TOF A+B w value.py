@@ -49,8 +49,7 @@ a_2=1/2**0.5
 # inf_file_name="TOF_vs_chi_A+B_22pt_pi16_1200s_4P_11Nov1354"  #-3987.079172959252
 # inf_file_name="TOF_vs_chi_A+B_22pt_pi8_1200s_10Nov0133" #-4915.5654341296095
 # inf_file_name="TOF_vs_chi_A+B_22pt_pi8_1200s_2xbin_10Nov1156" #-4602.040834697588
-# inf_file_name="TOF_vs_chi_A+B_22pt_pi8_1200s_4P_10Nov2138" #-4220.601952637239
-# inf_file_name="TOF_vs_chi_A+B_22pt_pi8_1200s_4P_11Nov2118" #-3798.2582242269036
+
 # In2, pi/8
 # spin up, pi/4
 # Un, pi/4

@@ -26,7 +26,6 @@ def exp_w1p(x,x0):
 def fit_cos(x,A,B,C,D):
     return A+B*np.cos(C*x-D)
 
-
 rad=np.pi/180
 inf_file_name="path1pi8cb_g_09Apr1441"
 sorted_fold_path="/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 1st round/exp_3-16-13/Sorted data/"+inf_file_name
@@ -114,15 +113,15 @@ gs_b =GridSpec(4,1, figure=fig, wspace=0, top=0.5)
 ax = fig.add_subplot(111)
 ax.set_title(inf_file_name)
 ax.set_xlabel("$\chi$ ($\pi$)")
-# ax.set_ylim([-1,1])
+# ax.set_xlim([2,1])
 ax.errorbar(chi/np.pi, beta, yerr=err_b,fmt="ko",capsize=5)
 ax.plot(x_plt/np.pi,exp_w1p(x_plt, 0),"g", label="Exp Re{"+"$\omega_{1+}$}")
 ax.legend()
 plt.show(True)
-datatxt= np.array([chi,beta,err_b])
+datatxt= np.array([ps_pos,beta,err_b])
 
-with open(correct_fold_path+"/"+inf_file_name[:8]+"_Beta_corrected.txt","w") as f:
-    np.savetxt(f,np.transpose(datatxt), header="chi w+ err", fmt='%.7f %.7f %.7f')
+with open(correct_fold_path+"/"+inf_file_name[:]+"_Beta_corrected.txt","w") as f:
+    np.savetxt(f,np.transpose(datatxt), header="ps_pos w+ err", fmt='%.7f %.7f %.7f')
 
 # data=np.loadtxt("/home/aaa/Desktop/path1pi8cb_g_09Apr1441.txt")
 

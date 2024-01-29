@@ -120,10 +120,10 @@ ax.plot(x_plt/np.pi,exp_w1p(x_plt, 0),"g", label="Exp Re{"+"$\omega_{1+}$}")
 ax.legend()
 plt.show()
 
-datatxt= np.array([chi,beta,err_b])
+datatxt= np.array([ps_pos,beta,err_b])
 
-with open(correct_fold_path+"/"+inf_file_name[:8]+"_Beta_corrected.txt","w") as f:
-    np.savetxt(f,np.transpose(datatxt), header="chi w+ err", fmt='%.7f %.7f %.7f')
+with open(correct_fold_path+"/"+inf_file_name[:]+"_Beta_corrected.txt","w") as f:
+    np.savetxt(f,np.transpose(datatxt), header="ps_pos w+ err", fmt='%.7f %.7f %.7f')
 
 # data=np.loadtxt("/home/aaa/Desktop/path1pi8cb_g_09Apr1441.txt")
 

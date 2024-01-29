@@ -40,17 +40,19 @@ a_2=1/2**0.5
 
 # inf_file_name="TOF_vs_chi_A_19pt_pi4_1200s_03Nov2326"
 # inf_file_name="TOF_vs_chi_A_22pt_pi2_SD_1200s_13Nov0438"
-inf_file_name="TOF_vs_chi_A_22pt_pi2_1200s_12Nov0455"
+# inf_file_name="TOF_vs_chi_A_22pt_pi2_1200s_12Nov0455"
 # inf_file_name="TOF_vs_chi_A_22pt_pi4_SD_1200s_12Nov2101"
-# inf_file_name="TOF_vs_chi_A_22pt_pi4_1200s_08Nov0132"
+inf_file_name="TOF_vs_chi_A_22pt_pi4_1200s_08Nov0132"
 # inf_file_name="TOF_vs_chi_B_22pt_pi4_1200s_08Nov0856"
 # inf_file_name="TOF_vs_chi_A_22pt_pi_1200s_12Nov1232"
+# inf_file_name="TOF_vs_chi_A+B_22pt_pi8_1200s_4P_11Nov2118"
 # In2, pi/8
 # spin up, pi/4
 # Un, pi/4
 # Un, pi/8
+# inf_file_name="TOF_vs_chi_A_22pt_pi8_1200s_06Nov1855"
 
-alpha_1= -1.5#0.19181329#np.pi/16 #/2.354
+alpha_1= np.pi/4 #0.19181329#np.pi/16 #/2.354
 alpha_1_err=0.1*alpha_1
 def w1(chi):
     return (1/(1+a_21*np.exp(1j*chi)))
@@ -123,7 +125,7 @@ for i in range(len(ps_pos)):
     matrix_err[i]=matrix[i]**0.5
     
 ps_data=np.average(matrix, axis=1)
-P0=[(np.amax(ps_data)+np.amin(ps_data))/2, (np.amax(ps_data)-np.amin(ps_data))/2, 3, -0.1]
+P0=[(np.amax(ps_data)+np.amin(ps_data))/2, (np.amax(ps_data)-np.amin(ps_data))/2, 3, 2]
 B0=([10,0,0.01,-10],[np.amax(ps_data)+1000,np.amax(ps_data)+1000,5, 10])
 p,cov=fit(fit_cos, ps_pos, ps_data, p0=P0,  bounds=B0)
 err=np.diag(cov)**0.5
