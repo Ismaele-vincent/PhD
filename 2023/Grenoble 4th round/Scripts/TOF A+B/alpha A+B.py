@@ -94,8 +94,6 @@ print(w_ps, chi_0)
 # chi_plt=np.linspace(chi[0], chi[-1], 100)
 
 eta = 1-C
-beta = 2*np.pi*1e-3*f_2*time+xi_0
-
 
 def fit_I_px(x, xi_1, xi_2, A, alpha_1, alpha_2):
     beta_1 = 2*np.pi*1e-3*f_1*time+xi_1
@@ -134,18 +132,18 @@ def I_px(x, xi_1, xi_2, A, alpha_1, alpha_2):
     # print(fit_I_px)
     return fit_I_px
 
-# fig = plt.figure(figsize=(10, 10))
-# ax = plt.axes(projection='3d')
-# beta, chi = np.meshgrid(time, chi)
-# Z = matrix
-# Z1 = I_px(0, *p)*np.amax(matrix)
+fig = plt.figure(figsize=(10, 10))
+ax = plt.axes(projection='3d')
+beta, chi = np.meshgrid(time, chi)
+Z = matrix
+Z1 = I_px(0, *p)*np.amax(matrix)
 
-# Z=I_px_co(beta, chi, C, alpha, beta)+I_px_in(beta, chi, eta, alpha, beta)
-# ax.contour3D(beta, chi, Z, 20, cmap='binary')
-# ax.contour3D(beta, chi, Z1, 20, cmap='plasma')  # cmap='Blues')
-# ax.set_xlabel('time')
-# ax.set_ylabel('$\chi$')
-# ax.set_zlabel('z')
-# ax.view_init(40, 45)
-# plt.show()
+Z=I_px_co(beta, chi, C, alpha, beta)+I_px_in(beta, chi, eta, alpha, beta)
+ax.contour3D(beta, chi, Z, 20, cmap='binary')
+ax.contour3D(beta, chi, Z1, 20, cmap='plasma')  # cmap='Blues')
+ax.set_xlabel('time')
+ax.set_ylabel('$\chi$')
+ax.set_zlabel('z')
+ax.view_init(40, 45)
+plt.show()
 

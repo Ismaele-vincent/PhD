@@ -49,7 +49,7 @@ def fit_mean(x, A, B, D, x0):
 
 
 # "TOF_PS_RF1_pi2_1h_10Jun1748" #"TOF_PS_RF2_weak_1h.tof_18Jun1231"#"TOF_PS_RF2_pi2_1h_12Jun0717"#
-inf_file_name = "TOF_PS_RF1_weak_1h_17Jun1717"
+inf_file_name = "TOF_single _RF1+2_weak_1h.tof_23Jun0620.inf"
 sorted_fold_path = "/home/aaa/Desktop/Fisica/PhD/2023//Armin's simultaneous weak path measurement/Sorted data/"+inf_file_name
 cleandata = sorted_fold_path+"/Cleantxt"
 # correct_fold_path="/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 1st round/exp_3-16-13/Corrected data/"+inf_file_name+"/Beta"
