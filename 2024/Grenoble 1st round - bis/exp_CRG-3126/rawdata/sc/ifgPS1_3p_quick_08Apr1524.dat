@@ -1,0 +1,25 @@
+* begin:	08/04/2024 15:24:35
+* script file:	D:\data\Cycle 195\exp_CRG-3126\rawdata\sc\ifgPS1_3p_quick.cfg
+*
+[STANDARD]
+		
+[ifgPS1_3p_quick]
+	created 27/03/2024   17:12
+[SCAN]
+	file path	.
+	name		*
+	category	standard
+	# repeats	1
+	notes		room to enter remarks
+[SUBSCAN]
+	S18.axis2.phaseshifter 1	35	deg	-3.000000	3.120000	0.180000	0.100000	FALSE	time	5.000000			
+[ENDSCAN]
+[END]
+
+* remarks:	room to enter remarks
+*
+1	-2.9992676	5.0	1166	1673	0	1	3795427487	2839	0.0000000	0.0000000
+2	-2.8344727	5.0	1363	1526	2	2	3795427498	2889	0.0000000	0.0000000
+3	-2.6477051	5.0	1568	1238	1	5	3795427509	2806	0.0000000	0.0000000
+4	-2.4499512	5.0	1606	1193	0	5	3795427520	2799	0.0000000	0.0000000
+* stopped by user: 08/04/2024 15:25:24

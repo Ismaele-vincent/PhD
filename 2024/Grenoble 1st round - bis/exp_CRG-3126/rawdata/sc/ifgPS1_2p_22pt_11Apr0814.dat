@@ -1,0 +1,24 @@
+* begin:	11/04/2024 08:14:03
+* script file:	D:\data\Cycle 195\exp_CRG-3126\rawdata\sc\ifgPS1_2p_22pt.cfg
+*
+[STANDARD]
+		
+[ifgPS1_2p_22pt]
+	created 28/03/2024   10:36
+[SCAN]
+	file path	.
+	name		*
+	category	standard
+	# repeats	1
+	notes		room to enter remarks
+[SUBSCAN]
+	S18.axis2.phaseshifter 1	22	deg	-2.100000	2.310000	0.210000	0.100000	FALSE	time	20.000000			
+[ENDSCAN]
+[END]
+
+* remarks:	room to enter remarks
+*
+1	-2.0983887	20.0	2047	4880	0	0	3795660869	6927	0.0000000	0.0000000
+2	-1.8896484	20.0	2902	4121	0	2	3795660895	7023	0.0000000	0.0000000
+3	-1.6809082	20.0	3825	3263	0	1	3795660922	7088	0.0000000	0.0000000
+4	-1.4721680	20.0	4228	2837	0	4	3795660948	7065	0.0000000	0.0000000

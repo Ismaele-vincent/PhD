@@ -1,0 +1,3 @@
+G	GPIB1::8	stop1
+G	GPIB1::8	stop2
+T	COM3	1	23.7

@@ -12,13 +12,13 @@ import os
 import numpy as np
 import shutil
 
-sc_fold_path="/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/exp_CRG-3125/rawdata/sc/"
-
+# sc_fold_path="/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/exp_CRG-3125/rawdata/sc/"
+sc_fold_path="/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round - bis/exp_CRG-3126/rawdata/sc"
 bad_apples=[]
 for root, dirs, files in os.walk(sc_fold_path, topdown=False):
     files=np.sort(files)
     for name in files:
-        if ("ifgPS1_PS2_" in name):#(("ifg_" in name) or ("movePS" in name)) and (".inf" in name) and ("TOF_vs_chi" not in name) and ("alpha" not in name) :
+        if ("ifg_Indium00_or_Boxout" in name):#(("ifg_" in name) or ("movePS" in name)) and (".inf" in name) and ("TOF_vs_chi" not in name) and ("alpha" not in name) :
             if (name[:-4] in bad_apples):
                 print('bad "'+name[:-4]+'", ')
             else:

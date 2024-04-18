@@ -1,0 +1,25 @@
+* begin:	11/04/2024 17:06:29
+* script file:	D:\data\Cycle 195\exp_CRG-3126\rawdata\sc\rocking.cfg
+*
+[STANDARD]
+		
+[rocking]
+	created 11/04/2024   17:04
+[SCAN]
+	file path	.
+	name		rocking
+	category	standard
+	# repeats	1
+	notes		room to enter remarks
+[SUBSCAN]
+	S18.axis2.piezo rotation	40	deg	0.495200	0.497150	0.000050	0.000000	FALSE	time	5.000000			
+[ENDSCAN]
+[MOTOR]
+	S18.axis2.piezo rotation	1	deg	FIT	SUM	PEAK50			
+[END]
+
+* remarks:	room to enter remarks
+*
+1	0.4952100	5.1	75	4100	0	2	3795692823	4175	0.0000000	0.0000000
+2	0.4952500	5.1	59	3358	0	0	3795692834	3417	0.0000000	0.0000000
+* stopped by user: 11/04/2024 17:07:15

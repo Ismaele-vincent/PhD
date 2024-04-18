@@ -1,0 +1,29 @@
+* begin:	07/04/2024 17:18:34
+* script file:	D:\data\Cycle 195\exp_CRG-3126\rawdata\sc\rockingR.cfg
+*
+[STANDARD]
+		
+[rockingR]
+	created 27/03/2024   18:25
+[SCAN]
+	file path	.
+	name		rockingR
+	category	standard
+	# repeats	1
+	notes		room to enter remarks
+[SUBSCAN]
+	S18.axis2.piezo rotation	60	deg	0.930750	0.933700	0.000050	0.000000	FALSE	time	5.000000			
+[ENDSCAN]
+[MOTOR]
+	S18.axis2.piezo rotation	1	deg	FIT	SUM	RPEAK50			
+[END]
+
+* remarks:	room to enter remarks
+*
+1	0.9307600	5.0	9	52	1	2	3795347926	61	0.0000000	0.0000000
+2	0.9308000	5.0	10	54	1	3	3795347937	64	0.0000000	0.0000000
+3	0.9308600	5.0	13	68	0	5	3795347947	81	0.0000000	0.0000000
+4	0.9309000	5.0	14	91	0	1	3795347958	105	0.0000000	0.0000000
+5	0.9309500	5.0	23	127	0	4	3795347969	150	0.0000000	0.0000000
+6	0.9310100	0.2	2	4	0	0	3795347975	6	0.0000000	0.0000000
+* stopped by user: 07/04/2024 17:19:36

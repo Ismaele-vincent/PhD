@@ -1,0 +1,9 @@
+28/03/2024 10:16:03:	function generator:  GPIB1::8 fn1=SIN *am1=8.36 *fr1=2000 *ph1=0 of1=0 mo1=CONT dy1=0us DONE
+28/03/2024 10:16:04:	function generator:  GPIB1::8 fn2=SIN *am2=5.57 *fr2=3000 *ph2=0 of2=0 mo2=CONT dy2=0us DONE
+28/03/2024 10:16:05:	function generator:  GPIB1::8 start1 DONE
+28/03/2024 10:16:05:	function generator:  GPIB1::8 start2 DONE
+28/03/2024 10:16:06:	create file	D:\data\Cycle 194\exp_CRG-3061\rawdata\sc\TOF_A+B_test_28Mar1016.dat	 DONE
+28/03/2024 10:16:07:	0	TOF	6	time=1200	period=1000µ	binwidth=50µ	trigdiv=2O Det=2511	H Det=5121	Mon Det=22	Aux Det=4	O+H=0	 DONE
+28/03/2024 10:19:55:	function generator:  GPIB1::8 stop1 DONE
+28/03/2024 10:19:56:	function generator:  GPIB1::8 stop2 DONE
+28/03/2024 10:19:57:	close file and end scan	 DONE
