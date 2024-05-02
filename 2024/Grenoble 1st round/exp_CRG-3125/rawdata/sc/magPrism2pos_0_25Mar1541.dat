@@ -1,0 +1,114 @@
+* begin:	25/03/2024 15:41:10
+* script file:	D:\data\Cycle 195\exp_CRG-3125\rawdata\sc\magPrism2pos.cfg
+*
+[STANDARD]
+		
+[magPrism2pos]
+	created 25/03/2024   15:41
+[MOTOR]
+	S18.auxiliary.TranslationY	1	mm	absolute	46.00000				
+[SCAN]
+	file path	.
+	name		magPrism2pos_0
+	category	standard
+	# repeats	1
+	notes		room to enter remarks
+[SUBSCAN]
+	S18.axis2.piezo rot2	50	deg	-159.269000	-159.266550	0.000050	0.000000	FALSE	time	5.000000			
+[ENDSCAN]
+[MOTOR]
+	S18.auxiliary.TranslationY	1	mm	absolute	47.00000				
+[SCAN]
+	file path	.
+	name		magPrism2pos_1
+	category	standard
+	# repeats	1
+	notes		room to enter remarks
+[SUBSCAN]
+	S18.axis2.piezo rot2	50	deg	-159.269000	-159.266550	0.000050	0.000000	FALSE	time	5.000000			
+[ENDSCAN]
+[MOTOR]
+	S18.auxiliary.TranslationY	1	mm	absolute	48.00000				
+[SCAN]
+	file path	.
+	name		magPrism2pos_2
+	category	standard
+	# repeats	1
+	notes		room to enter remarks
+[SUBSCAN]
+	S18.axis2.piezo rot2	50	deg	-159.269000	-159.266550	0.000050	0.000000	FALSE	time	5.000000			
+[ENDSCAN]
+[MOTOR]
+	S18.auxiliary.TranslationY	1	mm	absolute	49.00000				
+[SCAN]
+	file path	.
+	name		magPrism2pos_3
+	category	standard
+	# repeats	1
+	notes		room to enter remarks
+[SUBSCAN]
+	S18.axis2.piezo rot2	50	deg	-159.269000	-159.266550	0.000050	0.000000	FALSE	time	5.000000			
+[ENDSCAN]
+[MOTOR]
+	S18.auxiliary.TranslationY	1	mm	absolute	50.00000				
+[SCAN]
+	file path	.
+	name		magPrism2pos_4
+	category	standard
+	# repeats	1
+	notes		room to enter remarks
+[SUBSCAN]
+	S18.axis2.piezo rot2	50	deg	-159.269000	-159.266550	0.000050	0.000000	FALSE	time	5.000000			
+[ENDSCAN]
+[MOTOR]
+	S18.auxiliary.TranslationY	1	mm	absolute	51.00000				
+[SCAN]
+	file path	.
+	name		magPrism2pos_5
+	category	standard
+	# repeats	1
+	notes		room to enter remarks
+[SUBSCAN]
+	S18.axis2.piezo rot2	50	deg	-159.269000	-159.266550	0.000050	0.000000	FALSE	time	5.000000			
+[ENDSCAN]
+[MOTOR]
+	S18.auxiliary.TranslationY	1	mm	absolute	52.00000				
+[SCAN]
+	file path	.
+	name		magPrism2pos_6
+	category	standard
+	# repeats	1
+	notes		room to enter remarks
+[SUBSCAN]
+	S18.axis2.piezo rot2	50	deg	-159.269000	-159.266550	0.000050	0.000000	FALSE	time	5.000000			
+[ENDSCAN]
+[MOTOR]
+	S18.auxiliary.TranslationY	1	mm	absolute	53.00000				
+[SCAN]
+	file path	.
+	name		magPrism2pos_7
+	category	standard
+	# repeats	1
+	notes		room to enter remarks
+[SUBSCAN]
+	S18.axis2.piezo rot2	50	deg	-159.269000	-159.266550	0.000050	0.000000	FALSE	time	5.000000			
+[ENDSCAN]
+[MOTOR]
+	S18.auxiliary.TranslationY	1	mm	absolute	54.00000				
+[SCAN]
+	file path	.
+	name		magPrism2pos_8
+	category	standard
+	# repeats	1
+	notes		room to enter remarks
+[SUBSCAN]
+	S18.axis2.piezo rot2	50	deg	-159.269000	-159.266550	0.000050	0.000000	FALSE	time	5.000000			
+[ENDSCAN]
+[END]
+
+* remarks:	room to enter remarks
+*
+1	-159.2690025	5.0	749	2165	33528	10	3794222482	759	0.0000000	0.0000000
+2	-159.2689494	5.0	763	2110	33477	11	3794222494	774	0.0000000	0.0000000
+3	-159.2689007	5.0	737	2216	33933	17	3794222506	754	0.0000000	0.0000000
+4	-159.2688502	5.0	770	2182	33697	10	3794222518	780	0.0000000	0.0000000

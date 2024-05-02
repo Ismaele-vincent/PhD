@@ -12,17 +12,17 @@ import os
 import numpy as np
 import shutil
 
-# sc_fold_path="/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/exp_CRG-3125/rawdata/sc/"
-sc_fold_path="/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round - bis/exp_CRG-3126/rawdata/sc"
+sc_fold_path="/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/exp_CRG-3125/rawdata/sc/"
+# sc_fold_path="/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round - bis/exp_CRG-3126/rawdata/sc"
 bad_apples=[]
 for root, dirs, files in os.walk(sc_fold_path, topdown=False):
     files=np.sort(files)
     for name in files:
-        if ("ifg_Indium00_or_Boxout" in name):#(("ifg_" in name) or ("movePS" in name)) and (".inf" in name) and ("TOF_vs_chi" not in name) and ("alpha" not in name) :
+        if ("ifgPS1_35pt_In10" in name) and (".inf" in name):#(("ifg_" in name) or ("movePS" in name)) and (".inf" in name) and ("TOF_vs_chi" not in name) and ("alpha" not in name) :
             if (name[:-4] in bad_apples):
                 print('bad "'+name[:-4]+'", ')
             else:
-                print('"'+name[:-4]+'", ')
+                print('inf_file_name="'+name[:-4]+'"')
                 inf_file_path=os.path.join(root, name)
                 inf_file_name=name[:-4]
                 sorted_fold_path="/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/exp_CRG-3125/Sorted data/Ifg/"+inf_file_name
@@ -40,15 +40,13 @@ for root, dirs, files in os.walk(sc_fold_path, topdown=False):
                     
     
                 dat_files = np.genfromtxt(inf_file_path, dtype=str, usecols=0)
+                # print(dat_files)
                 chi_names=["_0","_pi2","_pi","_3pi2"]
-                for root1, dirs1, files1 in os.walk(sc_fold_path, topdown=False):
-                    i=0
-                    files1=np.sort(files1)
-                    for name in files1:
-                        if (name in dat_files):
-                            # print(name)
-                            shutil.copy(os.path.join(root, name), rawdata+"/"+name)
-                            cleantxt=np.loadtxt(os.path.join(root, name), encoding='windows-1252', comments="*", skiprows=20,delimiter="\t")[:,1:]
-                            with open(cleandata+"/"+name[:-4]+chi_names[i]+".txt", 'w') as f:
-                                    np.savetxt(f, cleantxt, header= "ps_pos exposure_time(s) O-Beam H-Beam Monitor AUX-Beam time(s) O+H+AUX encod1 encod2", fmt='%f %.1f %i %i %i %i %i %i %f %f')
-                            i+=1
+                i=0
+                for name_dat in dat_files:
+                        # print(name_dat)
+                        shutil.copy(sc_fold_path+name_dat, rawdata+"/"+name)
+                        cleantxt=np.loadtxt(sc_fold_path+name_dat, encoding='windows-1252', comments="*", skiprows=26,delimiter="\t")[:,1:]
+                        with open(cleandata+"/ifgPS1_"+name_dat[-13:-4]+chi_names[i]+".txt", 'w') as f:
+                                np.savetxt(f, cleantxt, header= "ps_pos exposure_time(s) O-Beam H-Beam Monitor AUX-Beam time(s) O+H+AUX encod1 encod2", fmt='%f %.1f %i %i %i %i %i %i %f %f')
+                        i+=1

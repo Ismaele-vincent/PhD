@@ -219,7 +219,7 @@ print("C=", p[1], "+-", cov[1,1]**0.5)
 fig = plt.figure(figsize=(8,6))
 ax = fig.add_subplot(111)
 ps_plt = np.linspace(ps_pos[0], ps_pos[-1],100)
-ax.errorbar(ps_pos,ps_data, yerr=ps_data*0,fmt="ko",capsize=5, ms=3)
+ax.errorbar(ps_pos,ps_data, yerr=ps_data*0.05,fmt="ko",capsize=5, ms=3)
 # ax.plot(ps_plt,fit_cos(ps_plt, *p), "b")
 
 P0=[300,300, -0.8, 1]
