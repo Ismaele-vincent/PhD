@@ -78,7 +78,7 @@ def alpha(T,f,B):
 
 def contr(x, A, a_1, b):
     B=a_1*x
-    return b+A*abs(jv(0,B))
+    return b+A*(jv(0,B))
     # return A*(1/(1+c*x**2))*abs(jv(0,B))
 
 def B(T,f,alpha):
@@ -94,19 +94,19 @@ def fit_O_beam(t, A, B, a_1, xi_1):
     return A + B*np.cos(chi_fit-a_1*np.sin(2*np.pi*1e-3*f_1*t+xi_1))/2
 inf_file_name="ifg_vs_alpha2_12pt_2kHz_no_rock_05Apr2204"#"ifg_vs_alpha2_20pt_risingtemp_no_rock_30Mar1813"#"ifg_vs_alpha2_9pt_2kHz_no_rock_03Apr1211"#"ifg_vs_alpha2_20pt_risingtemp_no_rock_30Mar1813"#"ifg_vs_alpha2_19pt_risingtemp_28Mar2200_no_rock"
 print(inf_file_name)
-sorted_fold_path="C:/Users/S18/Desktop/Grenoble-2024 Ismaele/2024/Grenoble 1st round - bis/exp_CRG-3126/Sorted data/Ifg vs alpha2/"+inf_file_name
+sorted_fold_path="/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round - bis/exp_CRG-3126/Sorted data/Ifg vs alpha2/"+inf_file_name
 cleandata=sorted_fold_path+"/Cleantxt"
 i=0
 for root, dirs, files in os.walk(cleandata, topdown=False):
     files=np.sort(files)
     for name in files[0:]:
         if i==0:
-            tot_data=np.loadtxt(os.path.join(root, name))[:,:]
+            tot_data=np.loadtxt(os.path.join(root, name))[1:,:]
             ps_pos=tot_data[:,0]
             print(name)
             i+=1
         else:
-            data=np.loadtxt(os.path.join(root, name))[:,:]
+            data=np.loadtxt(os.path.join(root, name))[1:,:]
             tot_data = np.vstack((tot_data, data))
                
 amplitude=tot_data[::len(ps_pos),-1]
@@ -118,7 +118,7 @@ current=amplitude
 matrix=np.zeros((len(amplitude),len(ps_pos)))
 matrix_err=np.zeros((len(amplitude),len(ps_pos)))
 for i in range(len(amplitude)):
-    matrix[i]=tot_data[:,2][tot_data[:,-1]==amplitude[i]]+tot_data[:,4][tot_data[:,-1]==amplitude[i]]
+    matrix[i]=tot_data[:,2][tot_data[:,-1]==amplitude[i]]
     matrix_err[i]=matrix[i]**0.5
 
 ps_plt=np.linspace(ps_pos[0], ps_pos[-1], 500)
@@ -130,7 +130,7 @@ C_err=np.zeros(len(amplitude))
 for i in range(len(amplitude)):
     ps_data=matrix[i]
     P0=[(np.amax(ps_data)+np.amin(ps_data))/2, (np.amax(ps_data)-np.amin(ps_data))/2, 3, 0]
-    B0=([0,0,2.5,-10],[np.amax(ps_data)+1000,np.amax(ps_data)+100,4, 10])
+    B0=([0,-10000,2.5,-10],[np.amax(ps_data)+100,10000,3.5, 10])
     p,cov=fit(fit_cos, ps_pos, ps_data, p0=P0,  bounds=B0, sigma=matrix_err[i])
     err=np.diag(cov)**0.5
     C[i] = p[1]/p[0]
@@ -138,11 +138,11 @@ for i in range(len(amplitude)):
     w_ps=p[-2]
     chi_0[i]=p[-1]
     chi_0_err[i]=err[-1]
-    # fig = plt.figure(figsize=(8,6))
-    # ax = fig.add_subplot(111)
-    # ax.errorbar(ps_pos, matrix[i], yerr= matrix_err[i], fmt="ko")
-    # ax.plot(ps_plt, fit_cos(ps_plt,*p))
-    # ax.set_title(str("%.2f"%amplitude[i],))
+    fig = plt.figure(figsize=(8,6))
+    ax = fig.add_subplot(111)
+    ax.errorbar(ps_pos, matrix[i], yerr= matrix_err[i], fmt="ko")
+    ax.plot(ps_plt, fit_cos(ps_plt,*p))
+    ax.set_title(str("%.2f"%amplitude[i],))
     print(C[i], w_ps, chi_0[i])
 # C[6]=0
 curr_plt=np.linspace(current[0], current[-1], 10000)
@@ -164,9 +164,11 @@ ax = fig.add_subplot(111)
 # ax.errorbar(amplitude, chi_0, yerr= chi_0_err, fmt="ko")
 ax.errorbar(current, C, yerr= C_err, fmt="k.")
 ax.errorbar(curr_plt, contr(curr_plt,*p))
-ax.set_xlabel("$V_p$ [V]")
-ax.vlines(2.4048/p[1], 0, 0.5, color="k", ls="dashed")
+ax.set_xlabel("$V_2$ [V]")
+ax.vlines(2.4048/p[1], 0, -0.2, color="k", ls="dashed")
+ax.hlines(0, 0, 2.4048/p[1], color="k", ls="dashed")
+ax.text(2.4048/p[1], -0.21, "$V_2$=" + str("%.3f"%(2.4048/p[1]),), va="top", ha="center")
 # ax.text(curr_0, 0.5, "$\\alpha\\approx$"+str("%.4f" %(alpha_0,)) ,va="bottom", ha="center")
 # ax.set_ylim([0,1])
-# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Report/Images/C_bessel_B_3kHz.pdf", format="pdf",bbox_inches="tight")
+plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round - bis/Report/Images/alpha2_2kHz.pdf", format="pdf",bbox_inches="tight")
 plt.show()

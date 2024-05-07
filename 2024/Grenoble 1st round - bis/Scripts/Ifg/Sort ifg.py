@@ -45,11 +45,11 @@ import numpy as np
 import shutil
 
 sc_fold_path="/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round - bis/exp_CRG-3126/rawdata/sc"
-bad_apples=["ifgPS1_2p_22pt_08Apr1523", "ifgPS1_2p_22pt_04Apr2354",]
+bad_apples=["ifgPS1_2p_22pt_08Apr1523", "ifgPS1_2p_22pt_04Apr2354","ifgPS1_2p_22pt_11Apr1655", "ifgPS1_2p_22pt_300s_11Apr1707", "ifgPS1_2p_22pt_300s_12Apr1204" ]
 for root, dirs, files in os.walk(sc_fold_path, topdown=False):
     files=np.sort(files)
     for name in files:
-        if ("ifgPS1_2p_" in name) and ("11Apr" in name) and (".inf" in name) and (name not in bad_apples):#(("ifg_" in name) or ("movePS" in name)) and (".inf" in name) and ("TOF_vs_chi" not in name) and ("alpha" not in name) :
+        if ("ifgPS1_2p_" in name) and (".inf" in name) and (name not in bad_apples):#(("ifg_" in name) or ("movePS" in name)) and (".inf" in name) and ("TOF_vs_chi" not in name) and ("alpha" not in name) :
             if (name[:-4] in bad_apples):
                 print('bad "'+name[:-4]+'", ')
             else:

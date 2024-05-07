@@ -13,18 +13,18 @@ import numpy as np
 import shutil
 
 sc_fold_path="/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round - bis/exp_CRG-3126/rawdata/sc"
-bad_apples=["TOF_vs_chi_alpha2_22pt_Bessel_0_2kHz_900s_04Apr2354"]
+bad_apples=["TOF_vs_chi_alpha2_22pt_Bessel_0_2kHz_900s_04Apr2354","TOF_vs_chi_alpha2_22pt_pi16_1200s_29Mar1500", "TOF_vs_chi_alpha2_22pt_pi16_1200s_29Mar1500", "TOF_vs_chi_alpha2_22pt_Bessel_0_2kHz_900s_ps_m0.2_07Apr1248","TOF_vs_chi_alpha2_22pt_Bessel_0_2kHz_1200s_07Apr1903"]
 
 for root, dirs, files in os.walk(sc_fold_path, topdown=False):
     for name1 in files:
-        if ("TOF_vs_chi_alpha2_" in name1) and ("10Apr" in name1) and (".inf" in name1) and (name1 not in bad_apples):
+        if ("TOF_vs_chi_alpha2_" in name1)  and ("Bessel_0" in name1) and (".inf" in name1) and (name1 not in bad_apples):
             if (name1[:-4] in bad_apples):
                 print('bad "'+name1[:-4]+'", ')
             else:
                 print('inf_file_name="'+name1[:-4]+'"')
                 inf_file_path=os.path.join(root, name1)
                 inf_file_name=name1[:-4]
-                sorted_fold_path="/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round - bis/exp_CRG-3126/Sorted data/TOF vs alpha2/"+inf_file_name
+                sorted_fold_path="/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round - bis/exp_CRG-3126/Sorted data/TOF vs chi alpha2/"+inf_file_name
                 
                 if not os.path.exists(sorted_fold_path):
                     os.makedirs(sorted_fold_path)

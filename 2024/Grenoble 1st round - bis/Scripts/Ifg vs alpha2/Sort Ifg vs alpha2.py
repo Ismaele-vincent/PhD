@@ -16,7 +16,7 @@ import numpy as np
 import shutil
 import matplotlib.pyplot as plt
 
-sc_fold_path="D:/data/cycle 195/exp_CRG-3126/rawdata/sc"
+sc_fold_path="/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round - bis/exp_CRG-3126/rawdata/sc"
 bad_apples=[]
 
 for root1, dirs1, files1 in os.walk(sc_fold_path, topdown=False):
@@ -28,7 +28,7 @@ for root1, dirs1, files1 in os.walk(sc_fold_path, topdown=False):
                 print('"'+name1[:-4]+'", ')
                 inf_file_path=os.path.join(root1, name1)
                 inf_file_name=name1[:-4]
-                sorted_fold_path="C:/Users/S18/Desktop/Grenoble-2024 Ismaele/2024/Grenoble 1st round - bis/exp_CRG-3126/Sorted data/Ifg vs alpha2/"+inf_file_name
+                sorted_fold_path="/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round - bis/exp_CRG-3126/Sorted data/Ifg vs alpha2/"+inf_file_name
                 
                 if not os.path.exists(sorted_fold_path):
                     os.makedirs(sorted_fold_path)
