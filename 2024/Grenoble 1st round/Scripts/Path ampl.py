@@ -6,8 +6,8 @@ Created on Mon Apr 29 14:51:31 2024
 @author: aaa
 """
 
-# a=63441
-# b=19747
+# a=101258
+# b=25520
 # R=b/a
 # DR=(b**2/a**3+b/a**2)**0.5
 # print("R=",R)
@@ -28,8 +28,8 @@ Created on Mon Apr 29 14:51:31 2024
 # print("a_1=", a_1,"+-", Da_1)
 # print("a_2=", a_2,"+-", Da_2)
 
-a=63441
-b=19747
+a=101258
+b=25520
 R=b/a
 DR=(b**2/a**3+b/a**2)**0.5
 print("R=",R)

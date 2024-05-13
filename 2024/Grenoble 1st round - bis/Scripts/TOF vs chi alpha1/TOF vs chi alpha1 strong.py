@@ -26,6 +26,8 @@ rad=np.pi/180
 """
 No indium, pencil detector in
 """
+# T_1= 0.5638959255337962 +- 0.002012633569493103
+# T_2= 0.4361040744662038 +- 0.002012633569493103
 # a_1= 0.751
 # a_1_err= 0.003
 # a_2= 0.660
@@ -75,16 +77,16 @@ Indium 1mm path2, pencil detector out - Great measurement!
 """
 # T_1= 0.733036893619524 +- 0.0027541752345118893
 # T_2= 0.26696310638047605 +- 0.0027541752345118893
-a_1= 0.856
-a_1_err= 0.003
-a_2= 0.517
-a_2_err= 0.005
-a_21=a_2/a_1
-pencil_in=False
-# inf_file_name_ifg="ifgPS1_2p_22pt_05Apr0720"
-inf_file_name="TOF_vs_chi_alpha1_22pt_Bessel_0_2kHz_900s_05Apr0730"
-inf_file_name_ifg="ifgPS1_2p_22pt_05Apr1303" 
-xi_0=0.9
+# a_1= 0.856
+# a_1_err= 0.003
+# a_2= 0.517
+# a_2_err= 0.005
+# a_21=a_2/a_1
+# pencil_in=False
+# # inf_file_name_ifg="ifgPS1_2p_22pt_05Apr0720"
+# inf_file_name="TOF_vs_chi_alpha1_22pt_Bessel_0_2kHz_900s_05Apr0730"
+# inf_file_name_ifg="ifgPS1_2p_22pt_05Apr1303" 
+# xi_0=0.9
 
 """
 Indium 1mm path2, pencil detector out
@@ -103,23 +105,6 @@ Indium 1mm path2, pencil detector out
 """
 Indium 1.5mm path1, pencil detector out
 """
-# T_1= 0.805979978856342 +- 0.003091309944344375
-# T_2= 0.19402002114365802 +- 0.003091309944344375
-# a_1= 0.898
-# a_1_err= 0.003
-# a_2= 0.440
-# a_2_err= 0.007
-# a_21=a_2/a_1
-# pencil_in=False
-# inf_file_name_ifg="ifgPS1_2p_22pt_06Apr2249"
-# inf_file_name="TOF_vs_chi_alpha1_22pt_Bessel_0_2kHz_900s_06Apr2259"
-# # inf_file_name_ifg="ifgPS1_2p_22pt_07Apr0433"
-
-# xi_0=-2.3
-
-"""
-Indium 1.5mm path2, pencil detector out
-"""
 # T_1= 0.28697528798598826 +- 0.0016654280796631897
 # T_2= 0.7130247120140117 +- 0.0016654280796631897
 # a_1= 0.536
@@ -128,14 +113,61 @@ Indium 1.5mm path2, pencil detector out
 # a_2_err= 0.002
 # a_21=a_2/a_1
 # pencil_in=False
-# # inf_file_name_ifg="ifgPS1_2p_22pt_11Apr0209"
-# inf_file_name="TOF_vs_chi_alpha1_22pt_Bessel_0_2kHz_900s_11Apr0219"
-# inf_file_name_ifg="ifgPS1_2p_22pt_11Apr0753"
+# inf_file_name_ifg="ifgPS1_2p_22pt_06Apr2249"
+# inf_file_name="TOF_vs_chi_alpha1_22pt_Bessel_0_2kHz_900s_06Apr2259"
+# # inf_file_name_ifg="ifgPS1_2p_22pt_07Apr0433"
+# xi_0=-2.3
+
+
+"""
+Indium 1.8mm path1, pencil detector out
+"""
+# T_1= 0.2457849692234557 +- 0.0015595993045329918
+# T_2= 0.7542150307765443 +- 0.0015595993045329918
+# a_1= 0.496
+# a_1_err= 0.003
+# a_2= 0.868
+# a_2_err= 0.002
+# a_21=a_2/a_1
+# pencil_in=False
+# # inf_file_name_ifg="ifgPS1_2p_22pt_07Apr2027"
+# inf_file_name="TOF_vs_chi_alpha1_22pt_Bessel_0_2kHz_1200s_07Apr2037"
+# inf_file_name_ifg="ifgPS1_2p_22pt_08Apr0400"
+# # inf_file_name_ifg="ifgPS1_2p_22pt_08Apr0421"
 # xi_0=-2.1
 
+"""
+Indium 1.8mm path1, pencil detector out (bad)
+"""
+# T_1= 0.2457849692234557 +- 0.0015595993045329918
+# T_2= 0.7542150307765443 +- 0.0015595993045329918
+# a_1= 0.496
+# a_1_err= 0.003
+# a_2= 0.868
+# a_2_err= 0.002
+# a_21=a_2/a_1
+# pencil_in=False
+# # inf_file_name_ifg="ifgPS1_2p_22pt_09Apr0601"
+# inf_file_name="TOF_vs_chi_alpha1_22pt_Bessel_0_2kHz_1200s_09Apr0611"
+# inf_file_name_ifg="ifgPS1_2p_22pt_09Apr1216"
+# # inf_file_name_ifg="ifgPS1_2p_22pt_08Apr0421"
+# xi_0=-2.1
 
-
-
+"""
+Indium 1.5mm path2, pencil detector out
+"""
+T_1= 0.805979978856342 +- 0.003091309944344375
+T_2= 0.19402002114365802 +- 0.003091309944344375
+a_1= 0.898
+a_1_err= 0.003
+a_2= 0.440
+a_2_err= 0.007
+a_21=a_2/a_1
+pencil_in=False
+# inf_file_name_ifg="ifgPS1_2p_22pt_11Apr0209"
+inf_file_name="TOF_vs_chi_alpha1_22pt_Bessel_0_2kHz_900s_11Apr0219"
+inf_file_name_ifg="ifgPS1_2p_22pt_11Apr0753"
+xi_0=-2.1
 
 sorted_fold_path="/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round - bis/exp_CRG-3126/Sorted data/TOF vs chi alpha1/"+inf_file_name
 cleandata=sorted_fold_path+"/Cleantxt"
@@ -145,13 +177,13 @@ cleandata_ifg=sorted_fold_path_ifg+"/Cleantxt"
 
 
 alpha_1=-2.4048
-alpha_1_err=0.0035 
+alpha_1_err=0.0035
 
-def w1(chi):
-    return (1/(1+a_21*np.exp(1j*chi)))
+def w1(chi, a_21):
+    return 1/(1+a_21*np.exp(1j*chi))
 
-def w2(chi):
-    return (1-1/(1+a_21*np.exp(1j*chi)))
+def w2(chi, a_21):
+    return 1-w1(chi, a_21)
 
 def fit_cos(x, A, B, C, D):
     return A/2*(1+B*np.cos(C*x-D))
@@ -209,7 +241,7 @@ for root, dirs, files in os.walk(cleandata, topdown=False):
             tot_data = np.vstack((tot_data, data))
 time_plt=np.linspace(time[0], time[-1], 1000)
 ps_pos=tot_data[::len(time),-1]
-
+ps_plt = np.linspace(ps_pos[0], ps_pos[-1],100)
 N = len(time)
 S_F=25
 matrix=np.zeros((len(ps_pos),len(time)))
@@ -231,16 +263,24 @@ ps_data=np.sum(matrix, axis=1)
 ps_data_err=np.sum(matrix_err**2, axis=1)**0.5
 P0=[(np.amax(ps_data)+np.amin(ps_data))/2, 0.001, *p_ifg[2:]]
 B0=([0.01,0,0.01,-10],[np.amax(ps_data)+100000,1000,5, 10])
-p_int,cov=fit(fit_cos, ps_pos, ps_data, p0=P0,  bounds=B0)
-err_int=np.diag(cov)**0.5
-A_avg=np.average(ps_data)/len(time)*2
-A_avg_err=np.sum(ps_data)**0.5/len(ps_data)/len(time)*2
-print("C=", p_int[1], "+-", cov[1,1]**0.5)
-fig = plt.figure(figsize=(8,6))
+# p_int,cov=fit(fit_cos, ps_pos, ps_data, p0=P0,  bounds=B0)
+# err_int=np.diag(cov)**0.5
+A_avg=np.average(ps_data[3:-4])/len(time)*2
+A_avg_err=np.sum(ps_data[3:-4])**0.5/len(ps_data)/len(time)*2
+# print("C=", p_int[1], "+-", cov[1,1]**0.5)
+fig = plt.figure(figsize=(7,3))
 ax = fig.add_subplot(111)
-ps_plt = np.linspace(ps_pos[0], ps_pos[-1],100)
+ax.set_title("Integrated intensity")
 ax.errorbar(ps_pos,ps_data, yerr=ps_data_err,fmt="ko",capsize=5, ms=3)
 ax.set_ylim([np.average(ps_data)-1,np.average(ps_data)+1])
+ax.set_xlabel("$\chi$")
+ax.set_ylabel("Arb.")
+avg_err=np.sum(ps_data_err**2)**0.5/len(ps_data)
+C_int=(np.amax(ps_data)-np.amin(ps_data))/(2*np.average(ps_data))
+C_int_err=(ps_data_err[ps_data==np.amax(ps_data)]**2+ps_data_err[ps_data==np.amin(ps_data)]**2+4*C_int**2*avg_err**2)**0.5/(2*np.average(ps_data))
+print("C_int=", str("%.3f" %(C_int),)+" $\pm$ "+str("%.3f" %(C_int_err),))
+ax.text(0,np.amax(ps_data)+2*np.amax(ps_data_err),"$C=\dfrac{max-min}{2\,avg}$="+str("%.3f" %(C_int),)+"$\\pm$"+str("%.3f" %(C_int_err),), ha="center")
+plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round - bis/Report/Images/Integ_int_"+inf_file_name[-9:]+".pdf", format="pdf",bbox_inches="tight")
 
 
 matrix_err=(matrix_err**2/(C_id*A_avg)**2+matrix**2*A_avg_err**2/(A_avg**2*C_id)**2+((matrix/A_avg-0.5)/C_id**2)**2*C_id_err**2)**0.5
@@ -269,25 +309,13 @@ cos2_err=np.zeros((len(ps_pos)))
 cos2_fit=np.zeros((len(ps_pos)))
 cos2_err_fit=np.zeros((len(ps_pos)))
 
-fig = plt.figure(figsize=(10, 4), dpi=200)
-fig.suptitle("$\mathbf{J_0(\\alpha)=0}$",bbox=dict(facecolor='none', edgecolor='k'))
-gs = GridSpec(1,2, figure=fig, wspace=0, hspace=0, top=0.85, bottom=0)
-axs=[fig.add_subplot(gs[:,:]), fig.add_subplot(gs[0,0]),fig.add_subplot(gs[0,1])]
-axs[2].tick_params(axis="y", labelleft=False, left = False, labelright=True, right=True)
-# axs[1].set_ylabel("Arb.", fontsize = plt.rcParams['axes.titlesize'])
-axs[1].set_title("$\Im(w_{1,+})$")
-axs[2].set_title("$\Re(w_{1,+})$")
-axs[0].set_xlabel("$\chi$ [rad]", labelpad=20)
-axs[0].tick_params(axis="both", labelleft=False, left = False, labelbottom=False, bottom = False)
-axs[0].set_frame_on(False)
-
 for i in range(len(ps_pos)):
     func_data=matrix[i]
     func_data_err=matrix_err[i]
     chi_aus=chi[i]
-    P0=[np.cos(chi[i]/2)**2, w1(chi[i]).imag, abs(w1(chi[i]))-w1(chi[i]).real-1000, xi_0]
+    P0=[np.cos(chi[i]/2)**2, w1(chi[i],a_21).imag, abs(w1(chi[i],a_21))-w1(chi[i],a_21).real-1000, xi_0]
     # print(P0)
-    B0=([0,w1(chi[i]).imag-1000,abs(w1(chi[i]))-w1(chi[i]).real-1000, -2*np.pi],[np.inf, w1(chi[i]).imag+1000, abs(w1(chi[i]))-w1(chi[i]).real+1000, 2*np.pi])
+    B0=([0,w1(chi[i],a_21).imag-1000,abs(w1(chi[i],a_21))-w1(chi[i],a_21).real-1000, -2*np.pi],[np.inf, w1(chi[i],a_21).imag+1000, abs(w1(chi[i],a_21))-w1(chi[i],a_21).real+1000, 2*np.pi])
     try: 
         p_wv,cov_wv = fit(fit_wv, time, func_data, p0=P0, bounds=B0, sigma=matrix_err[i])
         # print(p_wv[-1])
@@ -298,7 +326,10 @@ for i in range(len(ps_pos)):
     # print(p_wv,err_wv)
     Im[i]=p_wv[1]
     Im_err[i]=(err_wv[1]**2+np.sin(chi[i])**2*chi_0_err**2)**0.5
-    s=np.sign(1+4*(p_wv[2]-p_wv[1]**2))*abs(1+4*(p_wv[2]-p_wv[1]**2))**0.5
+    if a_1==0.751:
+        s=np.sign(1+4*(p_wv[2]-p_wv[1]**2))*abs(1+4*(p_wv[2]-p_wv[1]**2))**0.5
+    else:
+        s=(1+4*(p_wv[2]-p_wv[1]**2))**0.5
     Re[i]=(1+s)/2
     Re_err[i]=(8*err_wv[2]**2+64*Im[i]**2*Im_err[i]**2)**0.5/abs(s)/2
 
@@ -310,16 +341,25 @@ for i in range(len(ps_pos)):
     # ax.errorbar(time, matrix[i], yerr= matrix_err[i], fmt="ko")
     # ax.plot(time_plt, fit_wv(time_plt, *p_wv))
     # ax.set_title(str("%.2f'"%ps_pos[i],))
-
-axs[1].plot(chi_plt, w1(chi_plt).imag,"k--", alpha=0.5)
+fig = plt.figure(figsize=(8, 4), dpi=200)
+fig.suptitle(inf_file_name)
+gs = GridSpec(1,2, figure=fig, wspace=0, hspace=0, top=0.85, bottom=0)
+axs=[fig.add_subplot(gs[:,:]), fig.add_subplot(gs[0,0]),fig.add_subplot(gs[0,1])]
+axs[2].tick_params(axis="y", labelleft=False, left = False, labelright=True, right=True)
+# axs[1].set_ylabel("Arb.", fontsize = plt.rcParams['axes.titlesize'])
+axs[1].set_title("$\Im(w_{1,+})$")
+axs[2].set_title("$\Re(w_{1,+})$")
+axs[0].set_xlabel("$\chi$ [rad]", labelpad=20)
+axs[0].tick_params(axis="both", labelleft=False, left = False, labelbottom=False, bottom = False)
+axs[0].set_frame_on(False)
+axs[1].plot(chi_plt, w1(chi_plt,a_21).imag,"k--", alpha=0.5)
 axs[1].errorbar(chi, Im, Im_err, fmt="k.", capsize=3)
-axs[2].plot(chi_plt, w1(chi_plt).real,"r--", alpha=0.5)
+axs[2].plot(chi_plt, w1(chi_plt,a_21).real,"r--", alpha=0.5)
 axs[2].errorbar(chi, Re, abs(Re_err), fmt="r.", capsize=3)
-axs[1].set_ylim([-2,2])
-axs[2].set_ylim([0,3])
+# axs[1].set_ylim([-2,2])
+# axs[2].set_ylim([0,8])
 
-# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Report/Images/Results_A_pi4_no_In_strong_err.pdf", format="pdf",bbox_inches="tight")
-
+plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round - bis/Report/Images/Wv_"+inf_file_name[-9:]+".pdf", format="pdf",bbox_inches="tight")
 fig = plt.figure(figsize=(8,6), dpi=200)
 ax = fig.add_subplot(111)
 ax.errorbar(ps_pos, cos2_fit, yerr=cos2_err_fit, fmt="k.", capsize=5, label="$c_0$")
