@@ -19,9 +19,7 @@ from scipy.optimize import curve_fit as fit
 from scipy.special import jv
 
 rad=np.pi/180
-# a_1=0.256**0.5#0.384**0.5#0.443**0.5#1/2**0.5#
-# a_2=0.744**0.5#0.615**0.5#0.556**0.5#1/2**0.5#
-# a_21=a_2/a_1
+lim=0
 
 """
 No indium, pencil detector in
@@ -38,6 +36,7 @@ No indium, pencil detector in
 # inf_file_name="TOF_vs_chi_alpha1_22pt_Bessel_0_2kHz_1200s_02Apr2041"
 # inf_file_name_ifg="ifgPS1_2p_22pt_03Apr0405"
 # xi_0=2.4
+# sgn=1
 
 """
 Indium 1mm path1, pencil detector out (phase and contrast not stable)
@@ -54,6 +53,7 @@ Indium 1mm path1, pencil detector out (phase and contrast not stable)
 # inf_file_name="TOF_vs_chi_alpha1_22pt_Bessel_0_2kHz_1200s_03Apr2207"
 # inf_file_name_ifg="ifgPS1_2p_22pt_04Apr0531"
 # xi_0=0.9
+# sgn=-1
 
 """
 Indium 1mm path1, pencil detector out
@@ -68,9 +68,10 @@ Indium 1mm path1, pencil detector out
 # pencil_in=False
 # # inf_file_name_ifg="ifgPS1_2p_22pt_04Apr0622"
 # inf_file_name="TOF_vs_chi_alpha1_22pt_Bessel_0_2kHz_1200s_04Apr0643"
-# # inf_file_name_ifg="ifgPS1_2p_22pt_04Apr1407"
+# # inf_file_name_ifg="ifgPS1_2p_22pt_04Apr1407" #only one point
 # inf_file_name_ifg="ifgPS1_2p_22pt_04Apr1412"
 # xi_0=0.9
+# sgn=-1
 
 """
 Indium 1mm path2, pencil detector out - Great measurement!
@@ -87,6 +88,7 @@ Indium 1mm path2, pencil detector out - Great measurement!
 # inf_file_name="TOF_vs_chi_alpha1_22pt_Bessel_0_2kHz_900s_05Apr0730"
 # inf_file_name_ifg="ifgPS1_2p_22pt_05Apr1303" 
 # xi_0=0.9
+# sgn=1
 
 """
 Indium 1mm path2, pencil detector out
@@ -101,6 +103,7 @@ Indium 1mm path2, pencil detector out
 # inf_file_name="TOF_vs_chi_alpha1_22pt_Bessel_0_2kHz_900s_06Apr0800"
 # inf_file_name_ifg="ifgPS1_2p_22pt_06Apr1450"
 # xi_0=-2.03
+# sgn=1
 
 """
 Indium 1.5mm path1, pencil detector out
@@ -117,7 +120,7 @@ Indium 1.5mm path1, pencil detector out
 # inf_file_name="TOF_vs_chi_alpha1_22pt_Bessel_0_2kHz_900s_06Apr2259"
 # # inf_file_name_ifg="ifgPS1_2p_22pt_07Apr0433"
 # xi_0=-2.3
-
+# sgn=-1
 
 """
 Indium 1.8mm path1, pencil detector out
@@ -135,6 +138,7 @@ Indium 1.8mm path1, pencil detector out
 # inf_file_name_ifg="ifgPS1_2p_22pt_08Apr0400"
 # # inf_file_name_ifg="ifgPS1_2p_22pt_08Apr0421"
 # xi_0=-2.1
+# sgn=-1
 
 """
 Indium 1.8mm path1, pencil detector out (bad)
@@ -150,8 +154,9 @@ Indium 1.8mm path1, pencil detector out (bad)
 # # inf_file_name_ifg="ifgPS1_2p_22pt_09Apr0601"
 # inf_file_name="TOF_vs_chi_alpha1_22pt_Bessel_0_2kHz_1200s_09Apr0611"
 # inf_file_name_ifg="ifgPS1_2p_22pt_09Apr1216"
-# # inf_file_name_ifg="ifgPS1_2p_22pt_08Apr0421"
 # xi_0=-2.1
+# sgn=-1
+# lim=0
 
 """
 Indium 1.5mm path2, pencil detector out
@@ -168,6 +173,7 @@ pencil_in=False
 inf_file_name="TOF_vs_chi_alpha1_22pt_Bessel_0_2kHz_900s_11Apr0219"
 inf_file_name_ifg="ifgPS1_2p_22pt_11Apr0753"
 xi_0=-2.1
+sgn=1
 
 sorted_fold_path="/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round - bis/exp_CRG-3126/Sorted data/TOF vs chi alpha1/"+inf_file_name
 cleandata=sorted_fold_path+"/Cleantxt"
@@ -200,7 +206,7 @@ data_ifg_err=data_ifg**0.5
 ps_pos=tot_data[:,0]
 P0=[(np.amax(data_ifg)+np.amin(data_ifg))/2, (np.amax(data_ifg)-np.amin(data_ifg))/2, 3, -1.2]
 print(P0)
-B0=([np.amin(data_ifg),0,0.01,-3],[np.amax(data_ifg)*2,np.amax(data_ifg)*2,5, 3])
+B0=([np.amin(data_ifg),0,0.01,-5],[np.amax(data_ifg)*2,np.amax(data_ifg)*2,5, 5])
 
 p_ifg,cov_ifg=fit(fit_cos, ps_pos, data_ifg, p0=P0,  bounds=B0)
 err_ifg=np.diag(cov_ifg)**0.5
@@ -280,7 +286,7 @@ C_int=(np.amax(ps_data)-np.amin(ps_data))/(2*np.average(ps_data))
 C_int_err=(ps_data_err[ps_data==np.amax(ps_data)]**2+ps_data_err[ps_data==np.amin(ps_data)]**2+4*C_int**2*avg_err**2)**0.5/(2*np.average(ps_data))
 print("C_int=", str("%.3f" %(C_int),)+" $\pm$ "+str("%.3f" %(C_int_err),))
 ax.text(0,np.amax(ps_data)+2*np.amax(ps_data_err),"$C=\dfrac{max-min}{2\,avg}$="+str("%.3f" %(C_int),)+"$\\pm$"+str("%.3f" %(C_int_err),), ha="center")
-plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round - bis/Report/Images/Integ_int_"+inf_file_name[-9:]+".pdf", format="pdf",bbox_inches="tight")
+plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round - bis/Report/Images/Results path 1/Integ_int_"+inf_file_name[-9:]+".pdf", format="pdf",bbox_inches="tight")
 
 
 matrix_err=(matrix_err**2/(C_id*A_avg)**2+matrix**2*A_avg_err**2/(A_avg**2*C_id)**2+((matrix/A_avg-0.5)/C_id**2)**2*C_id_err**2)**0.5
@@ -330,8 +336,8 @@ for i in range(len(ps_pos)):
         s=np.sign(1+4*(p_wv[2]-p_wv[1]**2))*abs(1+4*(p_wv[2]-p_wv[1]**2))**0.5
     else:
         s=(1+4*(p_wv[2]-p_wv[1]**2))**0.5
-    Re[i]=(1+s)/2
-    Re_err[i]=(8*err_wv[2]**2+64*Im[i]**2*Im_err[i]**2)**0.5/abs(s)/2
+    Re[i]=(1+sgn*s)/2
+    Re_err[i]=(err_wv[2]**2+4*Im[i]**2*Im_err[i]**2)**0.5/abs(s)
 
     cos2_fit[i]=p_wv[0]#*Co#+p_wv[0]*(1-C_id)/2
     cos2_err_fit[i]=err_wv[0]
@@ -356,10 +362,11 @@ axs[1].plot(chi_plt, w1(chi_plt,a_21).imag,"k--", alpha=0.5)
 axs[1].errorbar(chi, Im, Im_err, fmt="k.", capsize=3)
 axs[2].plot(chi_plt, w1(chi_plt,a_21).real,"r--", alpha=0.5)
 axs[2].errorbar(chi, Re, abs(Re_err), fmt="r.", capsize=3)
-# axs[1].set_ylim([-2,2])
-# axs[2].set_ylim([0,8])
+if lim:
+    axs[1].set_ylim([-2,2])
+    axs[2].set_ylim([-sgn*1,sgn*5])
 
-plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round - bis/Report/Images/Wv_"+inf_file_name[-9:]+".pdf", format="pdf",bbox_inches="tight")
+plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round - bis/Report/Images/Results path 1/Wv_"+inf_file_name[-9:]+".pdf", format="pdf",bbox_inches="tight")
 fig = plt.figure(figsize=(8,6), dpi=200)
 ax = fig.add_subplot(111)
 ax.errorbar(ps_pos, cos2_fit, yerr=cos2_err_fit, fmt="k.", capsize=5, label="$c_0$")

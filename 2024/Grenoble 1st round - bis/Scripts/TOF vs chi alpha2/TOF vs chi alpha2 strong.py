@@ -32,12 +32,12 @@ No indium, pencil detector in
 # a_21=a_2/a_1
 # pencil_in=True
 # lim=1
-# inf_file_name_ifg="ifgPS1_2p_22pt_01Apr2148"
+# # inf_file_name_ifg="ifgPS1_2p_22pt_01Apr2148"
 # inf_file_name="TOF_vs_chi_alpha2_22pt_Bessel_0_1200s_01Apr2251"
-# # inf_file_name_ifg="ifgPS1_2p_22pt_02Apr0615"
-# xi_0=-0.4
+# inf_file_name_ifg="ifgPS1_2p_22pt_02Apr0615"
+# xi_0=0.4
 # chi_0=-0.4
-
+# sgn=1
 """
 Indium 1mm path 1, pencil detector out (ifgs in between, wrong ps_pos 1 point)
 """
@@ -58,24 +58,25 @@ Indium 1mm path 1, pencil detector out (ifgs in between, wrong ps_pos 1 point)
 # # inf_file_name_ifg="ifgPS1_2p_22pt_04Apr2237"
 # chi_0=-0.4
 # xi_0=0.9
+# sgn=1
 
 """
 Indium 1mm path2, pencil detector out
 """
-# T_1= 0.733036893619524 +- 0.0027541752345118893
-# T_2= 0.26696310638047605 +- 0.0027541752345118893
-# a_1= 0.856
-# a_1_err= 0.003
-# a_2= 0.517
-# a_2_err= 0.005
-# a_21=a_2/a_1
-# pencil_in=False
-# # inf_file_name_ifg="ifgPS1_2p_22pt_05Apr0045"
-# inf_file_name="TOF_vs_chi_alpha2_22pt_Bessel_0_2kHz_900s_05Apr0055"
+T_1= 0.733036893619524 +- 0.0027541752345118893
+T_2= 0.26696310638047605 +- 0.0027541752345118893
+a_1= 0.856
+a_1_err= 0.003
+a_2= 0.517
+a_2_err= 0.005
+a_21=a_2/a_1
+pencil_in=False
+inf_file_name_ifg="ifgPS1_2p_22pt_05Apr0045"
+inf_file_name="TOF_vs_chi_alpha2_22pt_Bessel_0_2kHz_900s_05Apr0055"
 # inf_file_name_ifg="ifgPS1_2p_22pt_05Apr0629"
-# chi_0=-0.4
-# xi_0=0.9
-
+chi_0=-0.4
+xi_0=0.9
+sgn=-1
 
 """
 Indium 1mm path2, pencil detector out
@@ -93,7 +94,7 @@ Indium 1mm path2, pencil detector out
 # inf_file_name_ifg="ifgPS1_2p_22pt_06Apr0709"
 # chi_0=-0.4
 # xi_0=-2.2
-
+# sgn=-1
 """
 Indium 1.8mm path 1
 """
@@ -110,25 +111,27 @@ Indium 1.8mm path 1
 # inf_file_name_ifg="ifgPS1_2p_22pt_08Apr1257"
 # chi_0=-1.
 # xi_0=-2.2
+# sgn=1
 
 """
 Indium 1.8mm path 1
 """
 # pencil_in=False
-# a_1=0.915
-# a_1_err=0.003
-# a_2=0.404
-# a_2_err=0.008
+# T_1= 0.2457849692234557 +- 0.0015595993045329918
+# T_2= 0.7542150307765443 +- 0.0015595993045329918
+# a_1= 0.496
+# a_1_err= 0.003
+# a_2= 0.868
+# a_2_err= 0.002
 # a_21=a_2/a_1
-# # inf_file_name_ifg="ifgPS1_2p_22pt_08Apr2022"
 # inf_file_name_ifg="ifgPS1_2p_22pt_08Apr2104"
 # inf_file_name="TOF_vs_chi_alpha2_22pt_Bessel_0_2kHz_1200s_08Apr2114"
-# # inf_file_name_ifg="ifgPS1_2p_22pt_09Apr0437"
-# # inf_file_name_ifg="ifgPS1_2p_22pt_09Apr0458"
-# # inf_file_name_ifg="ifgPS1_2p_22pt_09Apr0519"
+# # inf_file_name_ifg="ifgPS1_2p_22pt_09Apr0437" #bad
+# # inf_file_name_ifg="ifgPS1_2p_22pt_09Apr0458" #bad
+# # inf_file_name_ifg="ifgPS1_2p_22pt_09Apr0519" #bad
 # chi_0=-1.
 # xi_0=-2.2
-
+# sgn=1
 """
 Indium 1.5mm path1, pencil detector out
 """
@@ -138,13 +141,15 @@ a_1= 0.536
 a_1_err= 0.003
 a_2= 0.844
 a_2_err= 0.002
+a_21=a_2/a_1
 pencil_in=False
-inf_file_name_ifg="ifgPS1_2p_22pt_10Apr1903"
+# inf_file_name_ifg="ifgPS1_2p_22pt_10Apr1903"
 inf_file_name="TOF_vs_chi_alpha2_22pt_Bessel_0_2kHz_900s_10Apr1913"
-inf_file_name_ifg="ifgPS1_2p_22pt_11Apr0047"
-# inf_file_name_ifg="ifgPS1_2p_22pt_11Apr0107"
+# inf_file_name_ifg="ifgPS1_2p_22pt_11Apr0047"
+inf_file_name_ifg="ifgPS1_2p_22pt_11Apr0107"
 chi_0=-0.4
 xi_0=-2.2
+sgn=1
 
 sorted_fold_path="/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round - bis/exp_CRG-3126/Sorted data/TOF vs chi alpha2/"+inf_file_name
 cleandata=sorted_fold_path+"/Cleantxt"
@@ -154,8 +159,8 @@ cleandata_ifg=sorted_fold_path_ifg+"/Cleantxt"
 
 
 
-alpha_1=-2.4048
-alpha_1_err=0.0035 
+alpha_2=-2.4048
+alpha_2_err=0.0035 
 
 def w1(chi, a_21):
     return (1/(1+a_21*np.exp(1j*chi)))
@@ -166,9 +171,9 @@ def w2(chi, a_21):
 def fit_cos(x, A, B, C, D):
     return A/2*(1+B*np.cos(C*x-D))
 A_aus=1
-def fit_wv(t, B, Im_1, Re_1, xi_1):
-    return B*(1+2*Re_1*(1-np.cos(alpha_1*np.sin(2*np.pi*1e-3*f_2*t+xi_1)))+2*Im_1*np.sin(alpha_1*np.sin(2*np.pi*1e-3*f_2*t+xi_1)))
-    # return A_aus*((1-Co)/2+Co*B*(1-2*Im_1*alpha_1*np.sin(2*np.pi*1e-3*f_2*t+xi_1)))
+def fit_wv(t, B, Im_2, Re_2, xi_2):
+    return B*(1+2*Re_2*(1-np.cos(alpha_2*np.sin(2*np.pi*1e-3*f_2*t+xi_2)))+2*Im_2*np.sin(alpha_2*np.sin(2*np.pi*1e-3*f_2*t+xi_2)))
+
 for root, dirs, files in os.walk(cleandata_ifg, topdown=False):
     for name in files:
          tot_data=np.loadtxt(os.path.join(root, name))
@@ -209,7 +214,7 @@ for root, dirs, files in os.walk(cleandata, topdown=False):
             tot_data=np.loadtxt(os.path.join(root, name))[:,:]
             time=tot_data[:,1]
             f_2=tot_data[0,-2]*1e-3
-            am_2=tot_data[0,-4]
+            am_2=tot_data[0,-3]
             print("f1=", f_2)
             print("a1=", am_2)
             i=1
@@ -309,8 +314,8 @@ for i in range(len(ps_pos)):
         s=np.sign(1+4*(p_wv[2]-p_wv[1]**2))*abs(1+4*(p_wv[2]-p_wv[1]**2))**0.5
     else:
         s=(1+4*(p_wv[2]-p_wv[1]**2))**0.5
-    Re[i]=(1-s)/2
-    Re_err[i]=(8*err_wv[2]**2+64*Im[i]**2*Im_err[i]**2)**0.5/abs(s)/2
+    Re[i]=(1+sgn*s)/2
+    Re_err[i]=(err_wv[2]**2+4*Im[i]**2*Im_err[i]**2)**0.5/abs(s)
 
     cos2_fit[i]=p_wv[0]#*Co#+p_wv[0]*(1-C_id)/2
     cos2_err_fit[i]=err_wv[0]

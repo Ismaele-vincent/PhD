@@ -18,14 +18,9 @@ plt.rcParams.update({'figure.max_open_warning': 0})
 from scipy.optimize import curve_fit as fit
 a_1=1/2**0.5
 a_2=1/2**0.5
-
+sgn=1
 def fit_cos(x, A, B, C, D):
     return A+B*np.cos(C*x-D)
-
-def fit_cos_unb(x, A, C, D, Co): 
-    return A/2*(1 + 2*Co*a_1*a_2*np.cos(C*x-D))
-
-
 
 """
 Indium 0.8mm path2
@@ -53,23 +48,23 @@ Indium 1.8mm path2
 # inf_file_name="ifgPS1_PS2_3p_45pt_In18_18Mar1055"
 # points=45
 
-"""
-Indium 0.8mm path2 (Bad, intensity going down)
-"""
+# """
+# Indium 0.8mm path2 (Bad, intensity going down)
+# """
 
-# a_1=0.840
-# a_1_err=0.003
-# a_2=0.542
-# a_2_err=0.005
-# a_21=a_2/a_1
-# lim=0
-# inf_file_name="ifgPS1_PS2_42pt_In08_18Mar2141"
-# inf_file_name="ifgPS1_PS2_42pt_In08_19Mar1120"
-# points=42
+# # a_1=0.840
+# # a_1_err=0.003
+# # a_2=0.542
+# # a_2_err=0.005
+# # a_21=a_2/a_1
+# # lim=0
+# # inf_file_name="ifgPS1_PS2_42pt_In08_18Mar2141"
+# # inf_file_name="ifgPS1_PS2_42pt_In08_19Mar1120"
+# # points=42
 
-"""
-Indium 0.8mm path2  (Bad, intensity and/or phase not good. Gets progressively better, but still not good.)
-"""
+# """
+# Indium 0.8mm path2  (Bad, intensity and/or phase not good. Gets progressively better, but still not good.)
+# """
 # # a_1=0.840
 # # a_1_err=0.003
 # # a_2=0.542
@@ -82,8 +77,8 @@ Indium 0.8mm path2  (Bad, intensity and/or phase not good. Gets progressively be
 # # inf_file_name="ifgPS1_42pt_In08_19Mar1726"
 # # inf_file_name="ifgPS1_42pt_In08_19Mar1940"
 # # inf_file_name="ifgPS1_42pt_In08_19Mar2054"
-# # inf_file_name="ifgPS1_42pt_In08_19Mar2208"
-# # inf_file_name="ifgPS1_42pt_In08_19Mar2322"
+# # # inf_file_name="ifgPS1_42pt_In08_19Mar2208"
+# # # inf_file_name="ifgPS1_42pt_In08_19Mar2322"
 # # points=42
 
 """
@@ -100,7 +95,7 @@ Indium 1.8mm path2 (overall good, last two very good)
 # # inf_file_name="ifgPS1_42pt_In18_20Mar0235" #weird amplitude
 # # inf_file_name="ifgPS1_42pt_In18_20Mar0349" 
 # # inf_file_name="ifgPS1_42pt_In18_20Mar0503" #wrong phase
-# # inf_file_name="ifgPS1_42pt_In18_20Mar0617" 
+# inf_file_name="ifgPS1_42pt_In18_20Mar0617" 
 # inf_file_name="ifgPS1_42pt_In18_20Mar0731"
 # points=42
 
@@ -114,12 +109,13 @@ No Indium, 3-plates interferometer
 # a_2_err=0.003
 # a_21=a_2/a_1
 # lim=1
-# inf_file_name="ifgPS1_35pt_In00_12Apr1851" #good-ish 3p
-# inf_file_name="ifgPS1_35pt_In00_12Apr2026" #good 3p
-# inf_file_name="ifgPS1_35pt_In00_13Apr0103" #good
-# inf_file_name="ifgPS1_35pt_In00_13Apr0528"  #good
-# inf_file_name="ifgPS1_35pt_In00_13Apr0703" #good
-# inf_file_name="ifgPS1_35pt_In00_13Apr0838" #good
+# # sgn=-1
+# # inf_file_name="ifgPS1_35pt_In00_12Apr1851" #good-ish 3p
+# # inf_file_name="ifgPS1_35pt_In00_12Apr2026" #good 3p
+# # inf_file_name="ifgPS1_35pt_In00_13Apr0103" #good
+# # inf_file_name="ifgPS1_35pt_In00_13Apr0528"  #good
+# # inf_file_name="ifgPS1_35pt_In00_13Apr0703" #good
+# # inf_file_name="ifgPS1_35pt_In00_13Apr0838" #good
 # points=35
 
 """
@@ -148,39 +144,39 @@ Indium 0.5, 3-plates interferometer
 # a_2_err=0.005
 # a_21=a_2/a_1
 # lim=0
-# inf_file_name="ifgPS1_35pt_In05_14Apr0929" #good-ish (phase a bit bad)
-# inf_file_name="ifgPS1_35pt_In05_14Apr1349" #bad (wrong ps pos)
-# inf_file_name="ifgPS1_35pt_In05_14Apr1524" #bad (wrong ps pos)
-# inf_file_name="ifgPS1_35pt_In05_15Apr1731" #good-ish (big error bars)
-# inf_file_name="ifgPS1_35pt_In05_15Apr1907" #good-ish (phase a bit bad)
-# inf_file_name="ifgPS1_35pt_In05_15Apr2042" #good-ish (phase a bit bad)
+# # inf_file_name="ifgPS1_35pt_In05_14Apr0929" #good-ish (phase a bit bad)
+# # inf_file_name="ifgPS1_35pt_In05_14Apr1349" #bad (wrong ps pos)
+# # inf_file_name="ifgPS1_35pt_In05_14Apr1524" #bad (wrong ps pos)
+# # inf_file_name="ifgPS1_35pt_In05_15Apr1731" #good-ish (big error bars)
+# # inf_file_name="ifgPS1_35pt_In05_15Apr1907" #good-ish (phase a bit bad)
+# # inf_file_name="ifgPS1_35pt_In05_15Apr2042" #good-ish (phase a bit bad)
 # inf_file_name="ifgPS1_35pt_In05_15Apr2218" #probably best
-# inf_file_name="ifgPS1_35pt_In05_15Apr2354" #good-ish (1 bad point)
-# inf_file_name="ifgPS1_35pt_In05_16Apr0130" #good
-# inf_file_name="ifgPS1_35pt_In05_16Apr0305" #good-ish
-# inf_file_name="ifgPS1_35pt_In05_16Apr0441" #good
-# inf_file_name="ifgPS1_35pt_In05_16Apr0617" #good-ish (phase a bit bad)
-# inf_file_name="ifgPS1_35pt_In05_16Apr0752" #bad, last measurement incomplete
+# # inf_file_name="ifgPS1_35pt_In05_15Apr2354" #good-ish (1 bad point)
+# # inf_file_name="ifgPS1_35pt_In05_16Apr0130" #good
+# # inf_file_name="ifgPS1_35pt_In05_16Apr0305" #good-ish
+# # inf_file_name="ifgPS1_35pt_In05_16Apr0441" #good
+# # inf_file_name="ifgPS1_35pt_In05_16Apr0617" #good-ish (phase a bit bad)
+# # inf_file_name="ifgPS1_35pt_In05_16Apr0752" #bad, last measurement incomplete
 # points=35
 
 """
 Indium 1.0, 3-plates interferometer
 """
-# P1=57079/15
-# a_1= 0.821
-# a_1_err=0.004
-# a_2= 0.570
-# a_2_err=0.006
-# a_21=a_2/a_1
-# lim=0
-# # inf_file_name="ifgPS1_35pt_In10_14Apr2054" #bad (wrong ps pos)
-# # inf_file_name="ifgPS1_35pt_In10_15Apr0115" #bad (wrong ps pos)
-# # inf_file_name="ifgPS1_35pt_In10_15Apr0250" #bad (wrong ps pos)
-# # inf_file_name="ifgPS1_35pt_In10_15Apr0710" #bad (wrong ps pos)
-# # inf_file_name="ifgPS1_35pt_In10_15Apr0845" #bad (wrong ps pos)
+P1=57079/15
+a_1= 0.821
+a_1_err=0.004
+a_2= 0.570
+a_2_err=0.006
+a_21=a_2/a_1
+lim=0
+# inf_file_name="ifgPS1_35pt_In10_14Apr2054" #bad (wrong ps pos)
+# inf_file_name="ifgPS1_35pt_In10_15Apr0115" #bad (wrong ps pos)
+# inf_file_name="ifgPS1_35pt_In10_15Apr0250" #bad (wrong ps pos)
+# inf_file_name="ifgPS1_35pt_In10_15Apr0710" #bad (wrong ps pos)
+# inf_file_name="ifgPS1_35pt_In10_15Apr0845" #bad (wrong ps pos)
 # inf_file_name="ifgPS1_35pt_In10_15Apr1050" #good
-# # inf_file_name="ifgPS1_35pt_In10_15Apr1225" #good
-# points=35
+inf_file_name="ifgPS1_35pt_In10_15Apr1225" #good
+points=35
 
 def w1(chi, a_21):
     return 1/(1+a_21*np.exp(1j*chi))
@@ -243,11 +239,15 @@ A_err=A_err**0.5/4
 C_id=C_avg/(2*a_1*a_2)
 C_id_err=(C_err**2+C_avg**2/(a_1**2)*a_1_err**2+C_avg**2/(a_2**2)*a_2_err**2)**0.5/(2*a_1*a_2)
 print("C_avg=",C_avg, "+-",C_err, "C_ideal=", C_id, "+-", C_id_err)
-data_ifg_matrix_err=(data_ifg_matrix+(1-C_id)**2/4*A_err**2+A_avg**2/4*C_err**2)**0.5
+
+data_ifg_matrix_err=(data_ifg_matrix+((1-C_id)/2)**2*A_err**2+(A_avg/2)**2*C_err**2)**0.5
 data_ifg_matrix-=A_avg*(1-C_id)
+P1_corr=C_id*P1
+P1_corr_err=(P1+C_err**2)**0.5
+
 chi_plt=np.linspace(chi[0], chi[-1], 1000)
 Im=(data_ifg_matrix[3]-data_ifg_matrix[1])/data_ifg_matrix[0]/4
-Im_err=((abs(data_ifg_matrix_err[3])**2+abs(data_ifg_matrix_err[1])**2)+16*Im**2*abs(data_ifg_matrix_err[0])**2)**0.5/(4*abs(data_ifg_matrix[0]))
+Im_err=(data_ifg_matrix_err[1]**2+data_ifg_matrix_err[3]**2+(4*Im)**2*data_ifg_matrix_err[0]**2)**0.5/(4*abs(data_ifg_matrix[0]))
 fig = plt.figure(figsize=(8,6))
 ax = fig.add_subplot(111)
 ax.set_title(inf_file_name+"\n$\Re(w_{1,+})$")
@@ -259,34 +259,34 @@ plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Report/Images/
 
 sa=data_ifg_matrix[2]/data_ifg_matrix[0]-4*Im**2
 s=np.sign(sa)*abs(sa)**0.5
-Re=(1+s)/2
-Re_err=(data_ifg_matrix_err[2]**2/data_ifg_matrix[0]**2+data_ifg_matrix[2]**2*data_ifg_matrix_err[0]**2/data_ifg_matrix[0]**4+64*Im**2*Im_err**2)**0.5/abs(s)/2
-P1_corr=C_id*P1
-P1_corr_err=(P1+(1-C_id)**2/4*A_err**2+A_avg**2/4*C_err**2)**0.5
-s_1=P1_corr/data_ifg_matrix[0]-Im**2
-Re_1=np.sign(s_1)*np.abs(s_1)**0.5
-Re_1_err=(P1_corr_err**2/data_ifg_matrix[0]**2+P1_corr**2/data_ifg_matrix[0]**4*data_ifg_matrix_err[0]**2+4*Im**2*Im_err**2)**0.5/Re_1
+Re_1=(1+s)/2
+Re_1_err=((data_ifg_matrix_err[2]/data_ifg_matrix[0])**2+(data_ifg_matrix[2]*data_ifg_matrix_err[0]/data_ifg_matrix[0]**2)**2+64*Im**2*Im_err**2)**0.5/abs(s)/4
 
 Re_2=1/4+P1_corr/data_ifg_matrix[0] - data_ifg_matrix[2]/(data_ifg_matrix[0]*4)
-Re_2_err=(P1_corr_err**2+(Re_2-1/4)**2*data_ifg_matrix_err[0]**2+data_ifg_matrix_err[2]**2/8)**0.5/abs(data_ifg_matrix[0])
+Re_2_err=(P1_corr_err**2+(data_ifg_matrix_err[2]/4)**2+(Re_2-1/4)**2*data_ifg_matrix_err[0]**2)**0.5/abs(data_ifg_matrix[0])
+
+s_1=P1_corr/data_ifg_matrix[0]-Im**2
+Re_3=np.sign(s_1)*np.abs(s_1)**0.5
+Re_3_err=((P1_corr_err/data_ifg_matrix[0])**2+(P1_corr/data_ifg_matrix[0]**2)**2*data_ifg_matrix_err[0]**2+4*Im**2*Im_err**2)**0.5/Re_3/2
+
 
 fig = plt.figure(figsize=(8,6))
 ax = fig.add_subplot(111)
 ax.set_title(inf_file_name+"\n$\Re(w_{1,+})$")
 ax.plot(chi_plt, w1(chi_plt, a_21).real, "k--", alpha=0.5)
-ax.errorbar(chi,Re, Re_err, fmt="k.", capsize=4)
-if a_1==0.5**0.5 or lim:
+ax.errorbar(chi,Re_1, Re_1_err, fmt="k.", capsize=4)
+if lim:
     ax.plot(chi_plt, w1(chi_plt, a_21).real+3*(np.amax(w1(chi_plt, a_21).real)-0*np.amin(w1(chi_plt, a_21).real)), "r--", alpha=0.5)
-    ax.errorbar(chi,Re_1+3*(np.amax(w1(chi_plt, a_21).real)-0*np.amin(w1(chi_plt, a_21).real)), Re_1_err, fmt="r.", capsize=4)
+    ax.errorbar(chi,Re_2+3*(np.amax(w1(chi_plt, a_21).real)-0*np.amin(w1(chi_plt, a_21).real)), Re_2_err, fmt="r.", capsize=4)
     ax.plot(chi_plt, w1(chi_plt, a_21).real+6*(np.amax(w1(chi_plt, a_21).real)-0*np.amin(w1(chi_plt, a_21).real)), "g--", alpha=0.5)
-    ax.errorbar(chi,Re_2+6*(np.amax(w1(chi_plt, a_21).real)-0*np.amin(w1(chi_plt, a_21).real)), Re_2_err, fmt="g.", capsize=4)
-    ax.set_ylim([-1,5])
+    ax.errorbar(chi,Re_3+6*(np.amax(w1(chi_plt, a_21).real)-0*np.amin(w1(chi_plt, a_21).real)), Re_3_err, fmt="g.", capsize=4)
+    ax.set_ylim([-2,4])
 else:
     ax.plot(chi_plt, w1(chi_plt, a_21).real+0.5*(np.amax(w1(chi_plt, a_21).real)-np.amin(w1(chi_plt, a_21).real)), "r--", alpha=0.5)
-    ax.errorbar(chi,Re_1+0.5*(np.amax(w1(chi_plt, a_21).real)-np.amin(w1(chi_plt, a_21).real)), Re_1_err, fmt="r.", capsize=4)
+    ax.errorbar(chi,Re_2+0.5*(np.amax(w1(chi_plt, a_21).real)-np.amin(w1(chi_plt, a_21).real)), Re_2_err, fmt="r.", capsize=4)
     ax.plot(chi_plt, w1(chi_plt, a_21).real+1*(np.amax(w1(chi_plt, a_21).real)-np.amin(w1(chi_plt, a_21).real)), "g--", alpha=0.5)
-    ax.errorbar(chi,Re_2+1*(np.amax(w1(chi_plt, a_21).real)-1*np.amin(w1(chi_plt, a_21).real)), Re_2_err, fmt="g.", capsize=4)
-        
+    ax.errorbar(chi,Re_3+1*(np.amax(w1(chi_plt, a_21).real)-1*np.amin(w1(chi_plt, a_21).real)), Re_3_err, fmt="g.", capsize=4)
+    # ax.set_ylim([0,np.amax(w1(chi_plt, a_21).real+np.amax(w1(chi_plt, a_21).real))])
 
 plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Report/Images/Real"+inf_file_name[-9:]+".pdf", format="pdf",bbox_inches="tight")
 # plt.show()
