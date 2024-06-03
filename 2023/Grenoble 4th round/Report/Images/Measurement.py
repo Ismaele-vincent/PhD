@@ -185,29 +185,29 @@ for i in range(5,len(ps_pos)):
         # ax.set_xlim([-5,5])
         ax.set_xlabel("Time [$\mu$ s]")
         ax.set_ylabel("Arb.")
-    if i==0:
-        x_1=f_1#xf[xf>0][abs(yf_data[xf>0])==np.amax(abs(yf_data[xf>0]))]
-        print(x_1)
-    c_1_data=(yf_data[abs(xf-x_1)<1/S_F/2]).astype(complex)
-    c_0_data=abs(yf_data[abs(xf)<1/S_F/2]).astype(complex) - A #-3607.1413237746724#-3597.8672630959286
-    var=np.sum(func_data)**0.5/2
-    c_1_data_err=var
-    c_0_data_err=(var**2+14)**0.5
+    # if i==0:
+    #     x_1=f_1#xf[xf>0][abs(yf_data[xf>0])==np.amax(abs(yf_data[xf>0]))]
+    #     print(x_1)
+    # c_1_data=(yf_data[abs(xf-x_1)<1/S_F/2]).astype(complex)
+    # c_0_data=abs(yf_data[abs(xf)<1/S_F/2]).astype(complex) - A #-3607.1413237746724#-3597.8672630959286
+    # var=np.sum(func_data)**0.5/2
+    # c_1_data_err=var
+    # c_0_data_err=(var**2+14)**0.5
     
-    # print(chi[i], np.angle(c_1_data))
-    if (c_1_data).real>0:
-        # print(np.angle(c_1_data))
-        e_m1xi=np.exp(-1j*(np.angle(c_1_data)))
-    else:
-        e_m1xi=np.exp(-1j*(np.angle(c_1_data)+np.pi))
-    e_m2xi=e_m1xi**2
+    # # print(chi[i], np.angle(c_1_data))
+    # if (c_1_data).real>0:
+    #     # print(np.angle(c_1_data))
+    #     e_m1xi=np.exp(-1j*(np.angle(c_1_data)))
+    # else:
+    #     e_m1xi=np.exp(-1j*(np.angle(c_1_data)+np.pi))
+    # e_m2xi=e_m1xi**2
     
-    cos2[i]=abs(c_0_data)
-    cos2_err[i]=abs(c_0_data_err)
+    # cos2[i]=abs(c_0_data)
+    # cos2_err[i]=abs(c_0_data_err)
     
-    Im_data[i]=(c_1_data*e_m1xi).real/(cos2[i])/alpha_1
-    Im_data_err[i]=(abs(c_1_data_err/cos2[i])**2 + (abs((c_1_data*e_m1xi)/cos2[i]**2)*cos2_err[i])**2+abs((c_1_data*e_m1xi)/cos2[i]/alpha_1*alpha_1_err)**2)**0.5/abs(alpha_1)
-    Im_err_rel[i]=abs(Im_data_err[i]/Im_data[i])
+    # Im_data[i]=(c_1_data*e_m1xi).real/(cos2[i])/alpha_1
+    # Im_data_err[i]=(abs(c_1_data_err/cos2[i])**2 + (abs((c_1_data*e_m1xi)/cos2[i]**2)*cos2_err[i])**2+abs((c_1_data*e_m1xi)/cos2[i]/alpha_1*alpha_1_err)**2)**0.5/abs(alpha_1)
+    # Im_err_rel[i]=abs(Im_data_err[i]/Im_data[i])
     # data_txt=np.array([time, func_data,func_data_err ]) 
     # with open(niels_path+"/"+str("%i" %(i),) +".txt", 'w') as f:
     #         np.savetxt(f, np.transpose(data_txt), header= "time(microsec) data err")
@@ -215,7 +215,7 @@ for i in range(5,len(ps_pos)):
     # with open(niels_fourier_path+"/"+str("%i" %(i),) +".txt", 'w') as f:
             # np.savetxt(f, np.transpose(data_fourier_txt), header= "freq abs(c)")
 ax.legend(ncol=4, bbox_to_anchor=(0.5,1.1), loc="center")
-plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Report/Images/Measurement_example.pdf", format="pdf",bbox_inches="tight")
+# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Report/Images/Measurement_example.pdf", format="pdf",bbox_inches="tight")
 # B0=([0,1,-10],[100000,4,10])
 # p_cos_unb,cov_unb=fit(fit_cos_unb, ps_pos, cos2, p0=[10000,3,-0.5], bounds=B0)
 # chi=ps_pos*p_cos_unb[-2]-p_cos_unb[-1]

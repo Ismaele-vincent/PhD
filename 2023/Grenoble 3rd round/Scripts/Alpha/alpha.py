@@ -32,9 +32,11 @@ v0 = 2060.43  # m/s
 def fit_cos(x, A, B, C, D):
     return A+B*np.cos(C*x-D)
 
-
 def fit_lin(x, A, B):
     return A+B*x
+
+def fit_square(x, A, B):
+    return A+B*x**2
 
 
 inf_file_names = [
@@ -162,6 +164,7 @@ for inf_file_name in inf_file_names:
                 current = tot_data[::len(ps_pos), -1]
                 # print(current)
                 chi_0 = np.zeros(len(current))
+                C = np.zeros(len(current))
                 chi_0_err = np.zeros(len(current))
                 matrix = np.zeros((len(current), len(ps_pos)))
                 matrix_err = np.zeros((len(current), len(ps_pos)))
@@ -181,6 +184,7 @@ for inf_file_name in inf_file_names:
                     p, cov = fit(fit_cos, ps_pos, data_ifg, p0=P0,  bounds=B0)
                     P0 = p.copy()
                     chi_0[i] = p[-1]
+                    C[i] = p[1]/p[0]
                     err = np.diag(cov)**0.5
                     chi_0_err[i] = err[-1]
                     # print(p)
@@ -216,12 +220,17 @@ fig = plt.figure(figsize=(8, 6))
 # chi_temp-=chi_temp[current==0]
 chi_0 -= chi_0[current == 0]
 p, cov = fit(fit_lin, current,  chi_0-chi_temp, p0=[4, 1])
+pl, covl = fit(fit_lin, current,  C, p0=[4, 1])
+print(pl)
+ps, covs = fit(fit_square, current,  chi_temp, p0=[4, 1])
 ax = fig.add_subplot(111)
 ax.errorbar(current, chi_0, yerr=chi_0_err, fmt="k.", capsize=3)
+ax.errorbar(current, C, yerr=chi_0_err, fmt="g.", capsize=3)
 ax.errorbar(current, chi_temp, yerr=chi_temp_err, fmt="b.", capsize=3)
 ax.errorbar(current, chi_0-chi_temp, yerr=chi_0_err +
             chi_temp_err, fmt="r.", capsize=3)
 ax.plot(current, fit_lin(current, *p), "b-")
+ax.plot(current, fit_square(current, *ps), "b-")
 T=10e-6
 print(p[1]*hbar/(mu_N*4*T))
 m=p[1]*hbar/(mu_N*4*T)

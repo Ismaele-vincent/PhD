@@ -19,9 +19,11 @@ from scipy.optimize import curve_fit as fit
 from scipy.special import jv
 
 rad=np.pi/180
-a_21=1
-a_1=1/2**0.5
-a_2=1/2**0.5
+a_1= 0.751
+a_1_err= 0.003
+a_2= 0.660
+a_2_err=0.003
+a_21=a_2/a_1
 
 # inf_file_name="TOF_vs_chi_A+B_22pt_pi16_1200s_09Nov1808"
 inf_file_name="TOF_vs_chi_A+B_22pt_pi16_1200s_4P_11Nov1354"
@@ -37,7 +39,8 @@ def w2(chi):
     return (1-1/(1+a_21*np.exp(1j*chi)))
 
 def fit_cos(x, A, B, C, D):
-    return A/2*(1+B*jv(0,alpha_1)*jv(0,alpha_2)*np.cos(C*x-D))
+    return A*(1/2+a_1*a_2*B*jv(0,alpha_1)*jv(0,alpha_2)*np.cos(C*x-D))
+    # return A/2*(1+B*np.cos(C*x-D))
 A_aus=1
 def fit_Im(t, B, Im_1, Im_2, xi_1, xi_2):
     return A_aus*((1-Co)/2+Co*B*(1-2*Im_1*alpha_1*np.sin(2*np.pi*1e-3*f_1*t+xi_1)-2*Im_2*alpha_2*np.sin(2*np.pi*1e-3*f_2*t+xi_2)))
@@ -63,12 +66,12 @@ for root, dirs, files in os.walk(cleandata, topdown=False):
             time=tot_data[:,1]
             f_2=tot_data[0,-3]*1e-3
             f_1=tot_data[0,-6]*1e-3
-            a_2=tot_data[0,-4]
-            a_1=tot_data[0,-7]
+            am_2=tot_data[0,-4]
+            am_1=tot_data[0,-7]
             print("f1=", f_1)
             print("f2=", f_2)
-            print("a1=", a_1)
-            print("a2=", a_2)
+            print("a1=", am_1)
+            print("a2=", am_2)
             i=1
         else:
             data=np.loadtxt(os.path.join(root, name))[:,:]
@@ -88,7 +91,7 @@ P0=[(np.amax(ps_data)+np.amin(ps_data))/2, (np.amax(ps_data)-np.amin(ps_data))/2
 B0=([100,0,0.01,-10],[np.amax(ps_data)+10000,np.amax(ps_data)+10000,5, 10])
 p,cov=fit(fit_cos, ps_pos, ps_data, p0=P0,  bounds=B0)
 err=np.diag(cov)**0.5
-Co = p[1]
+Co = abs(p[1])
 A=p[0]*(1-Co)/2
 A_err= (((1-Co)/2*err[0])**2+(p[0]/2*err[1])**2)**0.5
 A_aus=p[0]/len(time)
@@ -234,7 +237,7 @@ axs[2].errorbar(chi, Im_data_2_fit, Im_data_err_2_fit, fmt="g.", capsize=3)
 # axs[0].errorbar([], [], fmt="g.", capsize=3, label="$\Im(w_{+,2})$ Data")
 # fig.legend(ncol=4, framealpha=1, loc=8)
 
-plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Report/Images/Results_pi16_no_In.pdf", format="pdf",bbox_inches="tight")
+# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Report/Images/Results_pi16_no_In.pdf", format="pdf",bbox_inches="tight")
 
 # fig = plt.figure(figsize=(8,6), dpi=200)
 # ax = fig.add_subplot(111)
@@ -261,4 +264,4 @@ plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Report/Images/
 # # # #     y_max=np.amax(p_tot[:,i])
 # # # #     axs[i].set_ylim([y_min*(1-np.sign(y_min)*0.1),y_max*(1+np.sign(y_min)*0.1)])
 
-# # # plt.show()
+plt.show()

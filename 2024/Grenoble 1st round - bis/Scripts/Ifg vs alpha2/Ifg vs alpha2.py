@@ -9,7 +9,7 @@ Created on Thu Sep  7 18:41:54 2023
 inf_file_names:
 "ifg_vs_alpha2_19pt_28Mar1138", 
 "ifg_vs_alpha2_19pt_28Mar1346", 
-"ifg_vs_alpha2_19pt_risingtemp_28Mar2200_no_rock", 
+"ifg_vs_alpha2_19pt_risingtemp_28Mar2200_no_rock",  
 "ifg_vs_alpha2_19pt_stabletemp_28Mar1834", 
 "ifg_vs_alpha2_19pt_stabletemp_29Mar0607", 
 "ifg_vs_alpha2_19pt_stabletemp_29Mar0839", 
@@ -78,7 +78,7 @@ def alpha(T,f,B):
 
 def contr(x, A, a_1, b):
     B=a_1*x
-    return b+A*(jv(0,B))
+    return abs(b+A*(jv(0,B)))
     # return A*(1/(1+c*x**2))*abs(jv(0,B))
 
 def B(T,f,alpha):
@@ -92,14 +92,14 @@ def fit_O_beam(t, A, B, a_1, xi_1):
     # xi_1=phi_1+(2*np.pi*f_1*1e-3*T+np.pi)/2#-2*np.pi*f_1*1e3/v0
     chi_fit=chi
     return A + B*np.cos(chi_fit-a_1*np.sin(2*np.pi*1e-3*f_1*t+xi_1))/2
-inf_file_name="ifg_vs_alpha2_12pt_2kHz_no_rock_05Apr2204"#"ifg_vs_alpha2_20pt_risingtemp_no_rock_30Mar1813"#"ifg_vs_alpha2_9pt_2kHz_no_rock_03Apr1211"#"ifg_vs_alpha2_20pt_risingtemp_no_rock_30Mar1813"#"ifg_vs_alpha2_19pt_risingtemp_28Mar2200_no_rock"
+inf_file_name="ifg_vs_alpha2_20pt_risingtemp_30Mar0544"#"ifg_vs_alpha2_19pt_risingtemp_28Mar2200_no_rock"#"ifg_vs_alpha2_12pt_2kHz_no_rock_05Apr2204"
 print(inf_file_name)
 sorted_fold_path="/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round - bis/exp_CRG-3126/Sorted data/Ifg vs alpha2/"+inf_file_name
 cleandata=sorted_fold_path+"/Cleantxt"
 i=0
 for root, dirs, files in os.walk(cleandata, topdown=False):
     files=np.sort(files)
-    for name in files[0:]:
+    for name in files[0:-1]:
         if i==0:
             tot_data=np.loadtxt(os.path.join(root, name))[1:,:]
             ps_pos=tot_data[:,0]
@@ -110,7 +110,7 @@ for root, dirs, files in os.walk(cleandata, topdown=False):
             tot_data = np.vstack((tot_data, data))
                
 amplitude=tot_data[::len(ps_pos),-1]
-# print(amplitude)
+print(amplitude)
 # print(tot_data)
 current=amplitude
 
@@ -126,11 +126,11 @@ chi_0=np.zeros(len(amplitude))
 chi_0_err=np.zeros(len(amplitude))
 C=np.zeros(len(amplitude))
 C_err=np.zeros(len(amplitude))
-
+B=3000#(np.amax(ps_data)-np.amin(ps_data))/2
 for i in range(len(amplitude)):
     ps_data=matrix[i]
-    P0=[(np.amax(ps_data)+np.amin(ps_data))/2, (np.amax(ps_data)-np.amin(ps_data))/2, 3, 0]
-    B0=([0,-10000,2.5,-10],[np.amax(ps_data)+100,10000,3.5, 10])
+    P0=[(np.amax(ps_data)+np.amin(ps_data))/2, B, 3, 0]
+    B0=([0,-5000,2.5,-10],[np.amax(ps_data)+100,5000,3.5, 10])
     p,cov=fit(fit_cos, ps_pos, ps_data, p0=P0,  bounds=B0, sigma=matrix_err[i])
     err=np.diag(cov)**0.5
     C[i] = p[1]/p[0]
@@ -143,11 +143,13 @@ for i in range(len(amplitude)):
     ax.errorbar(ps_pos, matrix[i], yerr= matrix_err[i], fmt="ko")
     ax.plot(ps_plt, fit_cos(ps_plt,*p))
     ax.set_title(str("%.2f"%amplitude[i],))
-    print(C[i], w_ps, chi_0[i])
+    # print(C[i], w_ps, chi_0[i])
+    B=p[1]
 # C[6]=0
+C=abs(C)
 curr_plt=np.linspace(current[0], current[-1], 10000)
 ampl_plt=np.linspace(0, amplitude[-1], 1000)
-p,cov=fit(contr, current, C, p0=[2500,0.5,0])
+p,cov=fit(contr, current, C, p0=[2500,1.1,0])
 err=np.diag(cov)**0.5
 print(p, np.diag(cov)**0.5)
 print(curr_plt[contr(curr_plt,*p)==np.amin(contr(curr_plt,*p))])
@@ -165,10 +167,10 @@ ax = fig.add_subplot(111)
 ax.errorbar(current, C, yerr= C_err, fmt="k.")
 ax.errorbar(curr_plt, contr(curr_plt,*p))
 ax.set_xlabel("$V_2$ [V]")
-ax.vlines(2.4048/p[1], 0, -0.2, color="k", ls="dashed")
-ax.hlines(0, 0, 2.4048/p[1], color="k", ls="dashed")
-ax.text(2.4048/p[1], -0.21, "$V_2$=" + str("%.3f"%(2.4048/p[1]),), va="top", ha="center")
+# ax.vlines(2.4048/p[1], 0, -0.2, color="k", ls="dashed")
+# ax.hlines(0, 0, 2.4048/p[1], color="k", ls="dashed")
+# ax.text(2.4048/p[1], -0.21, "$V_2$=" + str("%.3f"%(2.4048/p[1]),), va="top", ha="center")
 # ax.text(curr_0, 0.5, "$\\alpha\\approx$"+str("%.4f" %(alpha_0,)) ,va="bottom", ha="center")
 # ax.set_ylim([0,1])
-plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round - bis/Report/Images/alpha2_2kHz.pdf", format="pdf",bbox_inches="tight")
+# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round - bis/Report/Images/alpha2_2kHz.pdf", format="pdf",bbox_inches="tight")
 plt.show()

@@ -21,7 +21,7 @@ bad_apples=[]
 
 for root1, dirs1, files1 in os.walk(sc_fold_path, topdown=False):
     for name1 in files1:
-        if ("ifg_vs_alpha2" in name1) and ("alpha1" not in name1) and (".inf" in name1):
+        if ("ifg_vs_alpha2" in name1) and ("30Mar0544" in name1) and (".inf" in name1):
             if (name1[:-4] in bad_apples):
                 print('bad "'+name1[:-4]+'", ')
             else:
@@ -41,11 +41,11 @@ for root1, dirs1, files1 in os.walk(sc_fold_path, topdown=False):
                 if not os.path.exists(cleandata):
                     os.makedirs(cleandata)
                     
-                dat_files = np.genfromtxt(inf_file_path, dtype=str)[:,:]
+                dat_files = np.genfromtxt(inf_file_path, dtype=str)[::2,:]
                 rock_files=np.genfromtxt(inf_file_path, dtype=str)[1::2,:]
                 # print(dat_files)
                 Vpp=np.array([range(len(dat_files[:,0])), dat_files[:,-3].astype(float)])
-                # print(Vpp)
+                print(Vpp)
                 rock_peak=rock_files[:,3].astype(float)
                 # print(rock_peak)
                 # fig = plt.figure(figsize=(5,5))
@@ -64,7 +64,7 @@ for root1, dirs1, files1 in os.walk(sc_fold_path, topdown=False):
                             Vpp_aux=dat_files[:,-3][dat_files[:,0]==name].astype(float) #phashifter position
                             # print(curr)
                             cleantxt =np.hstack((txt,np.ones((len(txt[:,0]),1))*Vpp_aux))
-                            # print(Vpp_aux)
+                            print(Vpp_aux)
                             with open(cleandata+"/ifg_vs_Vpp2_"+str("%02d" % (Vpp[0][dat_files[:,0]==name],))+".txt", 'w') as f:
                                     np.savetxt(f, cleantxt, header= "BinNR ps_pos tot-time (s)  O-Beam H-Beam AUX Amplitude(func. gen.)", fmt='%f %.1f %i %i %i %i %i %i %f %f %f')
                         

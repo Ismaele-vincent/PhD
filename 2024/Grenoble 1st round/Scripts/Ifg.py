@@ -110,12 +110,12 @@ No Indium, 3-plates interferometer
 # a_21=a_2/a_1
 # lim=1
 # # sgn=-1
-# # inf_file_name="ifgPS1_35pt_In00_12Apr1851" #good-ish 3p
-# # inf_file_name="ifgPS1_35pt_In00_12Apr2026" #good 3p
-# # inf_file_name="ifgPS1_35pt_In00_13Apr0103" #good
-# # inf_file_name="ifgPS1_35pt_In00_13Apr0528"  #good
-# # inf_file_name="ifgPS1_35pt_In00_13Apr0703" #good
-# # inf_file_name="ifgPS1_35pt_In00_13Apr0838" #good
+# inf_file_name="ifgPS1_35pt_In00_12Apr1851" #good-ish 3p
+# inf_file_name="ifgPS1_35pt_In00_12Apr2026" #good 3p
+# inf_file_name="ifgPS1_35pt_In00_13Apr0103" #good
+# inf_file_name="ifgPS1_35pt_In00_13Apr0528"  #good
+# inf_file_name="ifgPS1_35pt_In00_13Apr0703" #good
+# inf_file_name="ifgPS1_35pt_In00_13Apr0838" #good
 # points=35
 
 """
@@ -130,53 +130,53 @@ Indium 1.5, 3-plates interferometer
 # lim=0
 # inf_file_name="ifgPS1_35pt_In15_13Apr2126" #very good
 # # inf_file_name="ifgPS1_35pt_In15_14Apr0146" #bad
-# inf_file_name="ifgPS1_35pt_In15_14Apr0322" #very good
-# inf_file_name="ifgPS1_35pt_In15_14Apr0742" #very good
+# # inf_file_name="ifgPS1_35pt_In15_14Apr0322" #very good
+# # inf_file_name="ifgPS1_35pt_In15_14Apr0742" #very good
 # points=35
 
 """
 Indium 0.5, 3-plates interferometer
 """
-# P1=57079/15
-# a_1= 0.770
-# a_1_err=0.004
-# a_2= 0.638
-# a_2_err=0.005
-# a_21=a_2/a_1
-# lim=0
-# # inf_file_name="ifgPS1_35pt_In05_14Apr0929" #good-ish (phase a bit bad)
-# # inf_file_name="ifgPS1_35pt_In05_14Apr1349" #bad (wrong ps pos)
-# # inf_file_name="ifgPS1_35pt_In05_14Apr1524" #bad (wrong ps pos)
-# # inf_file_name="ifgPS1_35pt_In05_15Apr1731" #good-ish (big error bars)
-# # inf_file_name="ifgPS1_35pt_In05_15Apr1907" #good-ish (phase a bit bad)
-# # inf_file_name="ifgPS1_35pt_In05_15Apr2042" #good-ish (phase a bit bad)
+P1=57079/15
+a_1= 0.770
+a_1_err=0.004
+a_2= 0.638
+a_2_err=0.005
+a_21=a_2/a_1
+lim=0
+# inf_file_name="ifgPS1_35pt_In05_14Apr0929" #good-ish (phase a bit bad)
+# inf_file_name="ifgPS1_35pt_In05_14Apr1349" #bad (wrong ps pos)
+# inf_file_name="ifgPS1_35pt_In05_14Apr1524" #bad (wrong ps pos)
+# inf_file_name="ifgPS1_35pt_In05_15Apr1731" #good-ish (big error bars)
+# inf_file_name="ifgPS1_35pt_In05_15Apr1907" #good-ish (phase a bit bad)
+# inf_file_name="ifgPS1_35pt_In05_15Apr2042" #good-ish (phase a bit bad)
 # inf_file_name="ifgPS1_35pt_In05_15Apr2218" #probably best
-# # inf_file_name="ifgPS1_35pt_In05_15Apr2354" #good-ish (1 bad point)
-# # inf_file_name="ifgPS1_35pt_In05_16Apr0130" #good
-# # inf_file_name="ifgPS1_35pt_In05_16Apr0305" #good-ish
-# # inf_file_name="ifgPS1_35pt_In05_16Apr0441" #good
-# # inf_file_name="ifgPS1_35pt_In05_16Apr0617" #good-ish (phase a bit bad)
-# # inf_file_name="ifgPS1_35pt_In05_16Apr0752" #bad, last measurement incomplete
-# points=35
+# inf_file_name="ifgPS1_35pt_In05_15Apr2354" #good-ish (1 bad point)
+# inf_file_name="ifgPS1_35pt_In05_16Apr0130" #good
+# inf_file_name="ifgPS1_35pt_In05_16Apr0305" #good-ish
+inf_file_name="ifgPS1_35pt_In05_16Apr0441" #good
+# inf_file_name="ifgPS1_35pt_In05_16Apr0617" #good-ish (phase a bit bad)
+# inf_file_name="ifgPS1_35pt_In05_16Apr0752" #bad, last measurement incomplete
+points=35
 
 """
 Indium 1.0, 3-plates interferometer
 """
-P1=57079/15
-a_1= 0.821
-a_1_err=0.004
-a_2= 0.570
-a_2_err=0.006
-a_21=a_2/a_1
-lim=0
-# inf_file_name="ifgPS1_35pt_In10_14Apr2054" #bad (wrong ps pos)
-# inf_file_name="ifgPS1_35pt_In10_15Apr0115" #bad (wrong ps pos)
-# inf_file_name="ifgPS1_35pt_In10_15Apr0250" #bad (wrong ps pos)
-# inf_file_name="ifgPS1_35pt_In10_15Apr0710" #bad (wrong ps pos)
-# inf_file_name="ifgPS1_35pt_In10_15Apr0845" #bad (wrong ps pos)
+# P1=57079/15
+# a_1= 0.821
+# a_1_err=0.004
+# a_2= 0.570
+# a_2_err=0.006
+# a_21=a_2/a_1
+# lim=0
+# # inf_file_name="ifgPS1_35pt_In10_14Apr2054" #bad (wrong ps pos)
+# # inf_file_name="ifgPS1_35pt_In10_15Apr0115" #bad (wrong ps pos)
+# # inf_file_name="ifgPS1_35pt_In10_15Apr0250" #bad (wrong ps pos)
+# # inf_file_name="ifgPS1_35pt_In10_15Apr0710" #bad (wrong ps pos)
+# # inf_file_name="ifgPS1_35pt_In10_15Apr0845" #bad (wrong ps pos)
 # inf_file_name="ifgPS1_35pt_In10_15Apr1050" #good
-inf_file_name="ifgPS1_35pt_In10_15Apr1225" #good
-points=35
+# # inf_file_name="ifgPS1_35pt_In10_15Apr1225" #good
+# points=35
 
 def w1(chi, a_21):
     return 1/(1+a_21*np.exp(1j*chi))
@@ -205,7 +205,7 @@ for root, dirs, files in os.walk(cleandata, topdown=False):
         ps_pos=tot_data[:,0]
         P0=[(np.amax(data_ifg)+np.amin(data_ifg))/2, (np.amax(data_ifg)-np.amin(data_ifg))/2, 3, -0.6+chi_0[i]]
         B0=([np.amin(data_ifg),0,0.01,-3.5],[np.amax(data_ifg)*2,np.amax(data_ifg)*2,5, 2*np.pi])
-        p,cov=fit(fit_cos, ps_pos, data_ifg, p0=P0,  bounds=B0)
+        p,cov=fit(fit_cos, ps_pos, data_ifg, sigma=data_ifg_err, p0=P0,  bounds=B0)
         # P0_unb=[100000, 3, -0.5, 0.7]
         # B0_unb=([0,1,-10, 0],[1e10,4,10,1])
         # p_unb,cov_unb=fit(fit_cos_unb, ps_pos, data_ifg, p0=P0_unb,  bounds=B0_unb)
@@ -289,4 +289,4 @@ else:
     # ax.set_ylim([0,np.amax(w1(chi_plt, a_21).real+np.amax(w1(chi_plt, a_21).real))])
 
 plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Report/Images/Real"+inf_file_name[-9:]+".pdf", format="pdf",bbox_inches="tight")
-# plt.show()
+plt.show()

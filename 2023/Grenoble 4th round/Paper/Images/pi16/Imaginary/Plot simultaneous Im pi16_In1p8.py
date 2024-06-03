@@ -23,7 +23,6 @@ a_21=2
 a_1=1/5**0.5
 a_2=2/5**0.5
 
-
 inf_file_name="TOF_vs_chi_A+B_In1_22pt_pi16_2000s_4P_16Nov1733"
 # inf_file_name="TOF_vs_chi_A+B_In1_22pt_pi16_1200s_4P_15Nov0927"
 
@@ -91,7 +90,7 @@ P0=[(np.amax(ps_data)+np.amin(ps_data))/2, 0.6, 3, 1.5]
 B0=([100,0,0.01,-10],[np.amax(ps_data)+10000,2,5, 10])
 p,cov=fit(fit_cos, ps_pos, ps_data, p0=P0,  bounds=B0)
 err=np.diag(cov)**0.5
-Co = 0.70456183532707045 
+Co = 0.731#0.70456183532707045 
 Co_err= 0.00646151528318766
 A=p[0]*(1-Co)/2
 A_err= (((1-Co)/2*err[0])**2+(p[0]/2*err[1])**2)**0.5
@@ -145,7 +144,6 @@ axs[0].set_frame_on(False)
 for ax in axs:
     ax.set_ylim([-1.2,1.2])  
 
-
 for i in range(len(ps_pos)):
     func_data=matrix[i]
     func_data_err=matrix_err[i]
@@ -170,11 +168,11 @@ for i in range(len(ps_pos)):
     xf = fftfreq(N, S_F)*1e3
     var=np.sum(func_data)**0.5
     
-    # fig = plt.figure(figsize=(8,6))
-    # ax = fig.add_subplot(111)
-    # ax.set_title(str("%.2f"%chi[i],))
-    # ax.errorbar(time, matrix[i], yerr= matrix_err[i], fmt="ko")
-    # ax.plot(time_plt, fit_Im(time_plt, *p_Im))
+    fig = plt.figure(figsize=(8,6))
+    ax = fig.add_subplot(111)
+    ax.set_title(str("%.2f"%chi[i],))
+    ax.errorbar(time, matrix[i], yerr= matrix_err[i], fmt="ko")
+    ax.plot(time_plt, fit_Im(time_plt, *p_Im))
     # ax.errorbar(xf, np.abs(yf_data), np.abs(yf_data_err), fmt="k.", capsize=5)
     # ax.set_xlim([-5,5])
     
@@ -240,7 +238,7 @@ axs[2].errorbar(chi, Im_data_2_fit, Im_data_err_2_fit, fmt="g.", capsize=3)
 # axs[0].errorbar([], [], fmt="g.", capsize=3, label="$\Im(w_{+,2})$ Data")
 # fig.legend(ncol=4, framealpha=1, loc=8)
 
-plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Report/Images/Results_pi16_In_1p8.pdf", format="pdf",bbox_inches="tight")
+# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Report/Images/Results_pi16_In_1p8.pdf", format="pdf",bbox_inches="tight")
 
 # fig = plt.figure(figsize=(8,6), dpi=200)
 # ax = fig.add_subplot(111)

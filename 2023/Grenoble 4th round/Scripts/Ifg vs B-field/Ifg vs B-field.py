@@ -81,8 +81,8 @@ def fit_O_beam(t, A, B, a_1, xi_1):
 # inf_file_name="ifg_vs_A_2kHzB_12p_14Nov0129"
 # inf_file_name="ifg_vs_A_2kHzB_12p_13Nov2313"
 # inf_file_name="ifg_vs_A_2kHzB_12p_13Nov2129"
-inf_file_name="ifg_vs_B_3kHzB_09Nov1137"
-# inf_file_name="ifg_vs_B_3kHzB_13p_30s_17Nov0603"
+# inf_file_name="ifg_vs_B_3kHzB_09Nov1137"
+inf_file_name="ifg_vs_B_3kHzB_13p_30s_17Nov0603"
 print(inf_file_name)
 sorted_fold_path="/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/exp_CRG-3061/Sorted data/Ifg vs B-field/"+inf_file_name
 cleandata=sorted_fold_path+"/Cleantxt"
@@ -157,13 +157,14 @@ alpha_0=alpha_plt[contr(curr_plt,*p)==np.amin(contr(curr_plt,*p))]
 curr_0=curr_plt[contr(curr_plt,*p)==np.amin(contr(curr_plt,*p))]
 print(alpha_0, curr_0)
 print("alpha/V_c=",p[1],"+-",err[1])
-print("alpha=",p[1]*2.01,"+-", err[1]*2.01)
+print("V=",np.pi/8/p[1])
+print("V=",alpha_0/p[1]*0.405)
 fig = plt.figure(figsize=(5,5))
 ax = fig.add_subplot(111)
 # ax.errorbar(amplitude, chi_0, yerr= chi_0_err, fmt="ko")
 ax.errorbar(current, C, yerr= C_err, fmt="k.")
 ax.errorbar(curr_plt, contr(curr_plt,*p))
-ax.set_xlabel("$V_p$ [V]")
+ax.set_xlabel("$V_{pp}$ [V]")
 # ax.vlines(curr_0, 0, 0.5, color="k", ls="dashed")
 # ax.text(curr_0, 0.5, "$\\alpha\\approx$"+str("%.4f" %(alpha_0,)) ,va="bottom", ha="center")
 # ax.set_ylim([0,1])

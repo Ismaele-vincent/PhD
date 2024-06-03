@@ -37,7 +37,7 @@ No indium, pencil detector in
 # inf_file_name_ifg="ifgPS1_2p_22pt_02Apr0615"
 # xi_0=0.4
 # chi_0=-0.4
-# sgn=1
+# sgn=-1
 """
 Indium 1mm path 1, pencil detector out (ifgs in between, wrong ps_pos 1 point)
 """
@@ -56,27 +56,27 @@ Indium 1mm path 1, pencil detector out (ifgs in between, wrong ps_pos 1 point)
 # # inf_file_name_ifg="ifgPS1_2p_22pt_TOF_box_out_04Apr1916"
 # inf_file_name_ifg="ifgPS1_2p_22pt_TOF_box_in_04Apr2056"
 # # inf_file_name_ifg="ifgPS1_2p_22pt_04Apr2237"
-# chi_0=-0.4
+# chi_0=-1.16
 # xi_0=0.9
 # sgn=1
 
 """
 Indium 1mm path2, pencil detector out
 """
-T_1= 0.733036893619524 +- 0.0027541752345118893
-T_2= 0.26696310638047605 +- 0.0027541752345118893
-a_1= 0.856
-a_1_err= 0.003
-a_2= 0.517
-a_2_err= 0.005
-a_21=a_2/a_1
-pencil_in=False
-inf_file_name_ifg="ifgPS1_2p_22pt_05Apr0045"
-inf_file_name="TOF_vs_chi_alpha2_22pt_Bessel_0_2kHz_900s_05Apr0055"
-# inf_file_name_ifg="ifgPS1_2p_22pt_05Apr0629"
-chi_0=-0.4
-xi_0=0.9
-sgn=-1
+# T_1= 0.733036893619524 +- 0.0027541752345118893
+# T_2= 0.26696310638047605 +- 0.0027541752345118893
+# a_1= 0.856
+# a_1_err= 0.003
+# a_2= 0.517
+# a_2_err= 0.005
+# a_21=a_2/a_1
+# pencil_in=False
+# inf_file_name_ifg="ifgPS1_2p_22pt_05Apr0045"
+# inf_file_name="TOF_vs_chi_alpha2_22pt_Bessel_0_2kHz_900s_05Apr0055"
+# # inf_file_name_ifg="ifgPS1_2p_22pt_05Apr0629"
+# chi_0=-0.4
+# xi_0=0.9
+# sgn=-1
 
 """
 Indium 1mm path2, pencil detector out
@@ -132,6 +132,7 @@ Indium 1.8mm path 1
 # chi_0=-1.
 # xi_0=-2.2
 # sgn=1
+
 """
 Indium 1.5mm path1, pencil detector out
 """
@@ -145,8 +146,8 @@ a_21=a_2/a_1
 pencil_in=False
 # inf_file_name_ifg="ifgPS1_2p_22pt_10Apr1903"
 inf_file_name="TOF_vs_chi_alpha2_22pt_Bessel_0_2kHz_900s_10Apr1913"
-# inf_file_name_ifg="ifgPS1_2p_22pt_11Apr0047"
-inf_file_name_ifg="ifgPS1_2p_22pt_11Apr0107"
+inf_file_name_ifg="ifgPS1_2p_22pt_11Apr0047"
+# inf_file_name_ifg="ifgPS1_2p_22pt_11Apr0107"
 chi_0=-0.4
 xi_0=-2.2
 sgn=1
@@ -177,21 +178,24 @@ def fit_wv(t, B, Im_2, Re_2, xi_2):
 for root, dirs, files in os.walk(cleandata_ifg, topdown=False):
     for name in files:
          tot_data=np.loadtxt(os.path.join(root, name))
-data_ifg=tot_data[:,2]
+if pencil_in:
+    data_ifg=tot_data[:,2]+tot_data[:,5]
+else:
+    data_ifg=tot_data[:,2]
 data_ifg_err=data_ifg**0.5
 ps_pos=tot_data[:,0]
 P0=[(np.amax(data_ifg)+np.amin(data_ifg))/2, (np.amax(data_ifg)-np.amin(data_ifg))/2, 3, chi_0]
-print("ps_pos",ps_pos[-1])
-B0=([np.amin(data_ifg),0,0.01,-2*np.pi],[np.amax(data_ifg)*2,np.amax(data_ifg)*2,5, 2*np.pi])
+print(P0)
+B0=([np.amin(data_ifg),0,1,-5],[np.amax(data_ifg)*2,np.amax(data_ifg)*2,4, 5])
 
-p_ifg,cov_ifg=fit(fit_cos, ps_pos, data_ifg, p0=P0,  bounds=B0)
+p_ifg,cov_ifg=fit(fit_cos, ps_pos, data_ifg, sigma=data_ifg_err, p0=P0,  bounds=B0)
 err_ifg=np.diag(cov_ifg)**0.5
 C_id = p_ifg[1]/(2*a_1*a_2)
 C_id_err = (err_ifg[1]**2+C_id**2/(a_1**2)*a_1_err**2+C_id**2/(a_2**2)*a_2_err**2)**0.5/(2*a_1*a_2)
 A=p_ifg[0]*(1-C_id)/2
 w_ps=p_ifg[-2]
 chi_0=p_ifg[-1]
-print(chi_0)
+print(p_ifg)
 chi_0_err=err_ifg[-1]
 # print("A(1-C)/2=", A, "+-", A_err)
 print("C=",C_id, "+-", err_ifg[1])
@@ -342,8 +346,8 @@ axs[1].errorbar(chi, Im, Im_err, fmt="k.", capsize=3)
 axs[2].plot(chi_plt, w2(chi_plt,a_21).real,"r--", alpha=0.5)
 axs[2].errorbar(chi, Re, abs(Re_err), fmt="r.", capsize=3)
 if lim:
-    axs[1].set_ylim([-8,8])
-    axs[2].set_ylim([-8,8])
+    axs[1].set_ylim([-4,4])
+    axs[2].set_ylim([-8,1])
 
 plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round - bis/Report/Images/Results path 2/Wv_"+inf_file_name[-9:]+".pdf", format="pdf",bbox_inches="tight")
 fig = plt.figure(figsize=(8,6), dpi=200)

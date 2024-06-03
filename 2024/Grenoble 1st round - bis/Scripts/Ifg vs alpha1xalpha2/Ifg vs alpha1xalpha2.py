@@ -41,53 +41,33 @@ chi=0
 chi_0=0
 C=0
 
-def j0_fit(x, a, b, c, d, e):
-    w=f_1*2*np.pi
-    a_1=mu_N/(hbar*w)*2*np.sin(w*T*1e-3/2)
-    return c +d*(1-e*x**2)*abs(a*jv(0,a_1*b*x))
-
-def j1_fit(x, a, b):
-    w=f_1*2*np.pi
-    a_1=mu_N/(hbar*w)*2*np.sin(w*T*1e-3/2)
-    return abs(a*jv(1,a_1*b*x))
-
-def j2_fit(x, a, b):
-    w=f_1*2*np.pi
-    a_1=mu_N/(hbar*w)*2*np.sin(w*T*1e-3/2)
-    return abs(a*jv(2,a_1*b*x))
-
-def j3_fit(x, a, b):
-    w=f_1*2*np.pi
-    a_1=mu_N/(hbar*w)*2*np.sin(w*T*1e-3/2)
-    return abs(a*jv(3,a_1*b*x))
 
 def fit_cos(x, A, B, C, D):
     return A+B*np.cos(C*x-D)
 
-def alpha(T,f,B):
-    w=f*2*np.pi
-    return mu_N*B/(hbar*w)*2*np.sin(w*T*1e-3/2)
-
-def contr(x, A, a_1, a_2, b,c):
+def j0j0(x, a_1, a_2, b):
     alpha1=a_1*x
     alpha2=a_2*x
-    return A*(abs(jv(0,alpha1)*jv(0,alpha2)+0*b*jv(3,alpha1)*jv(2,alpha2)+0*c*jv(6,alpha1)*jv(4,alpha2)))
-    # return A*(1/(1+c*x**2))*abs(jv(0,B))
+    return b*abs(jv(0,alpha1)*jv(0,alpha2))#+b*(jv(3,alpha1)*jv(2,alpha2)-jv(3,alpha1)*jv(2,alpha2)))
 
-def B(T,f,alpha):
-    w=f*2*np.pi
-    return alpha/(mu_N/(hbar*w)*2*np.sin(w*T*1e-3/2))
+def j3j2(x, a_1, a_2, b):
+    alpha1=a_1*x
+    alpha2=a_2*x
+    return b*abs(jv(3,alpha1)*jv(2,alpha2))#+b*(jv(3,alpha1)*jv(2,alpha2)-jv(3,alpha1)*jv(2,alpha2)))
 
+def j6j4(x, a_1, a_2, b):
+    alpha1=a_1*x
+    alpha2=a_2*x
+    return b*abs(jv(6,alpha1)*jv(4,alpha2))#+b*(jv(3,alpha1)*jv(2,alpha2)-jv(3,alpha1)*jv(2,alpha2)))
 
+def contr(x, a_1, a_2, A, B):
+    alpha1=a_1*x
+    alpha2=a_2*x
+    return ((A*jv(0,alpha1)*jv(0,alpha2))**2+(B*jv(3,alpha1)*jv(2,alpha2))**2)**0.5#A*jv(0,alpha1)*jv(0,alpha2)+B*jv(3,alpha1)*jv(2,alpha2)#
 
-def fit_O_beam(t, A, B, a_1, xi_1):
-    # a_1=alpha(T,f_1,c_1)
-    # xi_1=phi_1+(2*np.pi*f_1*1e-3*T+np.pi)/2#-2*np.pi*f_1*1e3/v0
-    chi_fit=chi
-    return A + B*np.cos(chi_fit-a_1*np.sin(2*np.pi*1e-3*f_1*t+xi_1))/2
 inf_file_name="ifg_vs_alpha1xalpha2_14pt_risingtemp_no_rock_01Apr1912"
 print(inf_file_name)
-sorted_fold_path="C:/Users/S18/Desktop/Grenoble-2024 Ismaele/2024/Grenoble 1st round - bis/exp_CRG-3126/Sorted data/Ifg vs alpha1xalpha2/"+inf_file_name
+sorted_fold_path="/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round - bis/exp_CRG-3126/Sorted data/Ifg vs alpha1xalpha2/"+inf_file_name
 cleandata=sorted_fold_path+"/Cleantxt"
 i=0
 for root, dirs, files in os.walk(cleandata, topdown=False):
@@ -122,7 +102,7 @@ C_err=np.zeros(len(amplitude))
 
 for i in range(len(amplitude)):
     ps_data=matrix[i]
-    P0=[(np.amax(ps_data)+np.amin(ps_data))/2, (np.amax(ps_data)-np.amin(ps_data))/2, 3, -3]
+    P0=[(np.amax(ps_data)+np.amin(ps_data))/2, (np.amax(ps_data)-np.amin(ps_data))/2, 3, -3.5]
     B0=([0,0,2.5,-10],[np.amax(ps_data)+100,np.amax(ps_data)+100,3.5, 10])
     p,cov=fit(fit_cos, ps_pos, ps_data, p0=P0,  bounds=B0, sigma=matrix_err[i])
     err=np.diag(cov)**0.5
@@ -136,11 +116,12 @@ for i in range(len(amplitude)):
     # ax.errorbar(ps_pos, matrix[i], yerr= matrix_err[i], fmt="ko")
     # ax.plot(ps_plt, fit_cos(ps_plt,*p))
     # ax.set_title(str("%.2f"%amplitude[i],))
-    print(C[i], w_ps, chi_0[i])
+    # print(C[i], w_ps, chi_0[i])
 # C[6]=0
 curr_plt=np.linspace(current[0], current[-1], 10000)
 ampl_plt=np.linspace(0, amplitude[-1], 1000)
-p,cov=fit(contr, current, C, p0=[2500,0.45,1.1,0,0])
+p,cov=fit(contr, current, C, p0=[0.45,1.1,1,1], bounds=([0,0,0,0],[5,5,5,5]))
+
 err=np.diag(cov)**0.5
 print(p, np.diag(cov)**0.5)
 print(curr_plt[contr(curr_plt,*p)==np.amin(contr(curr_plt,*p))])
@@ -151,13 +132,17 @@ print("alpha=",p[1]*8.36,"+-", err[1]*2.01)
 print("pi/16\t V_c=",np.pi/16/p[1],"+-", err[1]*(np.pi/16/p[1])**2)
 print("pi/8\t V_c=",np.pi/8/p[1],"+-", err[1]*(np.pi/8/p[1])**2)
 print("pi/4\t V_c=",np.pi/4/p[1],"+-", err[1]*(np.pi/4/p[1])**2)
-print("2.4048\t V_c=",2.4048/p[1],"+-", err[1]*(2.4048/p[1])**2)
+# print("2.4048\t V_c=",2.4048/p[1],"+-", err[1]*(2.4048/p[1])**2)
 fig = plt.figure(figsize=(5,5))
 title=fig.suptitle(inf_file_name)
 ax = fig.add_subplot(111)
 # ax.errorbar(amplitude, chi_0, yerr= chi_0_err, fmt="ko")
 ax.errorbar(current, C, yerr= C_err, fmt="k.")
 ax.plot(curr_plt, contr(curr_plt,*p))
+ax.plot(curr_plt, j0j0(curr_plt,*p[:3]))
+ax.plot(curr_plt, j3j2(curr_plt,*p[:3]))
+# ax.plot(curr_plt, j6j4(curr_plt,*p[:3]))
+
 ax.set_xlabel("$V_p$ [V]")
 ax.vlines(2.4048/p[1], 0, 0.5, color="k", ls="dashed")
 # ax.text(curr_0, 0.5, "$\\alpha\\approx$"+str("%.4f" %(alpha_0,)) ,va="bottom", ha="center")

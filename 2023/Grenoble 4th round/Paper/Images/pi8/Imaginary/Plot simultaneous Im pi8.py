@@ -40,7 +40,8 @@ def w2(chi):
     return (1-1/(1+a_21*np.exp(1j*chi)))
 
 def fit_cos(x, A, B, C, D):
-    return A/2*(1+B*jv(0,alpha_1)*jv(0,alpha_2)*np.cos(C*x-D))
+    # return A/2*(1+B*jv(0,alpha_1)*jv(0,alpha_2)*np.cos(C*x-D))
+    return A/2*(1+B*np.cos(C*x-D))
 A_aus=1
 def fit_Im(t, B, Im_1, Im_2, xi_1, xi_2):
     return A_aus*((1-Co)/2+Co*B*(1-2*Im_1*alpha_1*np.sin(2*np.pi*1e-3*f_1*t+xi_1)-2*Im_2*alpha_2*np.sin(2*np.pi*1e-3*f_2*t+xi_2)))
@@ -149,7 +150,7 @@ for i in range(len(ps_pos)):
     func_data=matrix[i]
     func_data_err=matrix_err[i]
     chi_aus=chi[i]
-    P0=[np.cos(chi[i]/2)**2, w1(chi[i]).imag, w2(chi[i]).imag, -0.9, 1.2]
+    P0=[np.cos(chi[i]/2)**2, w1(chi[i]).imag, w2(chi[i]).imag, -0.9, 1.3]
     # print(P0)
     B0=([0,w1(chi[i]).imag-1000, w2(chi[i]).imag-1000, -2*np.pi, -2*np.pi],[np.inf, w1(chi[i]).imag+1000, w2(chi[i]).imag+1000, 2*np.pi, 2*np.pi])
     p_Im,cov_Im = fit(fit_Im, time, func_data, p0=P0, bounds=B0)
@@ -169,10 +170,10 @@ for i in range(len(ps_pos)):
     xf = fftfreq(N, S_F)*1e3
     var=np.sum(func_data)**0.5
     
-    fig = plt.figure(figsize=(8,6))
-    ax = fig.add_subplot(111)
-    ax.errorbar(time, matrix[i], yerr= matrix_err[i], fmt="ko")
-    ax.plot(time_plt, fit_Im(time_plt, *p_Im))
+    # fig = plt.figure(figsize=(8,6))
+    # ax = fig.add_subplot(111)
+    # ax.errorbar(time, matrix[i], yerr= matrix_err[i], fmt="ko")
+    # ax.plot(time_plt, fit_Im(time_plt, *p_Im))
     # ax.set_title(str("%.2f"%chi[i],))
     # ax.errorbar(xf, np.abs(yf_data), np.abs(yf_data_err), fmt="k.", capsize=5)
     # ax.set_xlim([-5,5])
@@ -276,4 +277,4 @@ axs[2].errorbar(chi, Im_data_2_fit, Im_data_err_2_fit, fmt="g.", capsize=3)
 # # # #     y_max=np.amax(p_tot[:,i])
 # # # #     axs[i].set_ylim([y_min*(1-np.sign(y_min)*0.1),y_max*(1+np.sign(y_min)*0.1)])
 
-# # # plt.show()
+plt.show()
