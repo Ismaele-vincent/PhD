@@ -25,8 +25,8 @@ a_2= 0.660
 a_2_err=0.003
 a_21=a_2/a_1
 
-inf_file_name="TOF_vs_chi_A+B_22pt_pi16_1200s_09Nov1808"
-# inf_file_name="TOF_vs_chi_A+B_22pt_pi16_1200s_4P_11Nov1354"
+# inf_file_name="TOF_vs_chi_A+B_22pt_pi16_1200s_09Nov1808"
+inf_file_name="TOF_vs_chi_A+B_22pt_pi16_1200s_4P_11Nov1354"
 
 alpha_1=0.1923 #/2.354
 alpha_1_err=0.0009 
@@ -163,7 +163,7 @@ for i in range(len(ps_pos)):
     yf_data_err = np.ones(len(yf_data))*np.sum(matrix_err)**0.5
     # print(sum(abs(yf_data)))
     xf = fftfreq(N, S_F)*1e3
-    var=np.sum(func_data_err**2)**0.5/N**0.5
+    var=np.sum(func_data_err**2/N)**0.5
     
     # fig = plt.figure(figsize=(8,6))
     # ax = fig.add_subplot(111)
@@ -178,8 +178,8 @@ for i in range(len(ps_pos)):
     c_1_data_2=(yf_data[abs(xf-f_2)<1/S_F/2]).astype(complex)
     
     c_0_data_err=(var**2+A_err**2)**0.5
-    c_1_data_err_1=var
-    c_1_data_err_2=var
+    c_1_data_err_1=var/2**0.5
+    c_1_data_err_2=var/2**0.5
     # print(chi[i], np.angle(c_1_data))
     # if i==0:
     #     # print("here")

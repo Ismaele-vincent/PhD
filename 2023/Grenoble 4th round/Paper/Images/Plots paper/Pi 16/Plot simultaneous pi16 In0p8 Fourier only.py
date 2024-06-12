@@ -19,18 +19,19 @@ from scipy.optimize import curve_fit as fit
 from scipy.special import jv
 
 rad=np.pi/180
-a_1= 0.751
-a_1_err= 0.003
-a_2= 0.660
-a_2_err=0.003
+# T_1= 0.4103632617796827 +- 0.0018958686061004615
+# T_2= 0.5896367382203174 +- 0.0018958686061004615
+a_1= 0.641
+a_1_err=0.003
+a_2= 0.768
+a_2_err=0.002
 a_21=a_2/a_1
 
-inf_file_name="TOF_vs_chi_A+B_22pt_pi16_1200s_09Nov1808"
-# inf_file_name="TOF_vs_chi_A+B_22pt_pi16_1200s_4P_11Nov1354"
+inf_file_name="TOF_vs_chi_A+B_In1_08mm_22pt_pi16_1200s_4P_16Nov0206"
 
-alpha_1=0.1923 #/2.354
+alpha_1=-0.1923 #/2.354
 alpha_1_err=0.0009 
-alpha_2=-0.1971 #/2.354
+alpha_2=0.1971 #/2.354
 alpha_2_err=0.0004
 
 def w1(chi):
@@ -85,7 +86,7 @@ for i in range(len(ps_pos)):
     matrix_err[i]=matrix[i]**0.5
     
 ps_data=np.sum(matrix, axis=1)
-P0=[(np.amax(ps_data)+np.amin(ps_data))/2, (np.amax(ps_data)-np.amin(ps_data))/2, 3, -0.5]
+P0=[(np.amax(ps_data)+np.amin(ps_data))/2, (np.amax(ps_data)-np.amin(ps_data))/2, 3, 0]
 B0=([100,0,0.01,-10],[np.amax(ps_data)+10000,np.amax(ps_data)+10000,5, 10])
 p_int,cov_int=fit(fit_cos, ps_pos, ps_data, p0=P0,  bounds=B0)
 err_int=np.diag(cov_int)**0.5
@@ -145,7 +146,7 @@ for i in range(len(ps_pos)):
     func_data_fit=matrix_fit[i]
     func_data_fit_err=matrix_err_fit[i]
     chi_aus=chi[i]
-    P0=[np.cos(chi[i]/2)**2, w1(chi[i]).imag*alpha_1, w2(chi[i]).imag*alpha_2, -1, 1]
+    P0=[np.cos(chi[i]/2)**2, w1(chi[i]).imag*alpha_1, w2(chi[i]).imag*alpha_2, 2, -2]
     # print(P0)
     B0=([0,w1(chi[i]).imag*alpha_1-1000, w2(chi[i]).imag*alpha_2-1000, -2*np.pi, -2*np.pi],[np.inf, w1(chi[i]).imag*alpha_1+1000, w2(chi[i]).imag*alpha_2+1000, 2*np.pi, 2*np.pi])
     p_Im,cov_Im = fit(fit_Im, time, func_data_fit, sigma=func_data_fit_err, p0=P0, bounds=B0)
@@ -163,7 +164,7 @@ for i in range(len(ps_pos)):
     yf_data_err = np.ones(len(yf_data))*np.sum(matrix_err)**0.5
     # print(sum(abs(yf_data)))
     xf = fftfreq(N, S_F)*1e3
-    var=np.sum(func_data_err**2)**0.5/N**0.5
+    var=np.sum(func_data_err**2/N)**0.5
     
     # fig = plt.figure(figsize=(8,6))
     # ax = fig.add_subplot(111)
@@ -185,13 +186,13 @@ for i in range(len(ps_pos)):
     #     # print("here")
     #     e_mxi_1=np.exp(-1j*(np.angle(c_1_data_1)))
     #     e_mxi_2=np.exp(-1j*(np.angle(c_1_data_2)))
-    if (c_1_data_1).real>0:
+    if (c_1_data_1).real<0:
         # print("here")
         e_mxi_1=np.exp(-1j*(np.angle(c_1_data_1)))
         
     else:
         e_mxi_1=np.exp(-1j*(np.angle(c_1_data_1)+np.pi))
-    if (c_1_data_2).real<0:
+    if (c_1_data_2).real>0:
         # print("here")
         e_mxi_2=np.exp(-1j*(np.angle(c_1_data_2)))
         
@@ -205,71 +206,17 @@ for i in range(len(ps_pos)):
     Im_data_2[i]=(c_1_data_2*e_mxi_2).real/(cos2[i])/alpha_2
     Im_data_err_2[i]=(abs(c_1_data_err_2/cos2[i])**2 + (abs((c_1_data_2*e_mxi_2)/cos2[i]**2)*cos2_err[i])**2+abs((c_1_data_2*e_mxi_2)/cos2[i]/alpha_2*alpha_2_err)**2)**0.5/abs(alpha_2)
 
-fig = plt.figure(figsize=(10, 4), dpi=200)
-fig.suptitle("$\mathbf{a_2/a_1=1}$",bbox=dict(facecolor='none', edgecolor='k'))
-gs = GridSpec(1,2, figure=fig, wspace=0, hspace=0, top=0.85, bottom=0)
-axs=[fig.add_subplot(gs[:,:]), fig.add_subplot(gs[0,0]),fig.add_subplot(gs[0,1])]
-axs[2].tick_params(axis="y", labelleft=False, left = False)
-# axs[1].set_ylabel("Arb.", fontsize = plt.rcParams['axes.titlesize'])
-axs[1].set_title("Fourier Transform")
-axs[2].set_title("Fit")
-axs[0].set_xlabel("$\chi$ [rad]", labelpad=20)
-axs[0].tick_params(axis="both", labelleft=False, left = False, labelbottom=False, bottom = False)
-axs[0].set_frame_on(False)
-for ax in axs:
-    ax.set_ylim([-3,3])  
-axs[1].plot(chi_plt, w1(chi_plt).imag,"k--", alpha=0.5)
-axs[1].errorbar(chi, Im_data_1, Im_data_err_1, fmt="k.",capsize=3)
-axs[2].plot(chi_plt, w1(chi_plt).imag,"k--", alpha=0.5)
-axs[2].errorbar(chi, Im_data_1_fit, Im_data_err_1_fit, fmt="k.", capsize=3)
-# Re_chi_pi = -((1+2*a_1*a_2*np.cos(chi))*Im_data_1+(a_1**2-a_2**2)*w2(chi+np.pi).imag)/(2*a_1*a_2*np.sin(chi))
-# cot_err=abs(chi_0_err/np.sin(chi)**2)
-# Re_err=(Im_data_1**2*cot_err**2+1/np.tan(chi)**2*Im_data_err_1**2)**0.5
-# ax.plot(chi_plt+np.pi, w2(chi_plt+np.pi).real,"r-")
-# ax.errorbar(chi+np.pi, Re_chi_pi,yerr=Re_err, capsize=3,fmt="r.")
-
-axs[1].plot(chi_plt, w2(chi_plt).imag,"g--", alpha=0.5)
-axs[1].errorbar(chi, Im_data_2, Im_data_err_2, fmt="g.", capsize=3)
-axs[2].plot(chi_plt, w2(chi_plt).imag,"g--", alpha=0.5)
-axs[2].errorbar(chi, Im_data_2_fit, Im_data_err_2_fit, fmt="g.", capsize=3)
-# axs[2+2*j].errorbar(chi, Im_data_2_fit, Im_data_err_2_fit, fmt="r.", capsize=3)
-# Re_chi_pi_2 = ((1+2*a_1*a_2*np.cos(chi))*Im_data_2+(a_1**2-a_2**2)*w2(chi+np.pi).imag)/(2*a_1*a_2*np.sin(chi))
-# cot_err=abs(chi_0_err/np.sin(chi)**2)
-# Re_err_2=(Im_data_2**2*cot_err**2+1/np.tan(chi)**2*Im_data_err_2**2)**0.5
-# ax.plot(chi_plt+np.pi, w2(chi_plt+np.pi).real,"k--")
-# ax.errorbar(chi+np.pi, Re_chi_pi_2,yerr=Re_err_2, capsize=3,fmt="k.")
-
-# axs[0].plot([], "k--", alpha=0.5,label="$\Im(w_{+,1})$  Theory")    
-# axs[0].plot([], "g--", alpha=0.5,label="$\Im(w_{+,2})$  Theory")    
-# axs[0].errorbar([], [], fmt="k.", capsize=3, label="$\Im(w_{+,1})$ Data")
-# axs[0].errorbar([], [], fmt="g.", capsize=3, label="$\Im(w_{+,2})$ Data")
-# fig.legend(ncol=4, framealpha=1, loc=8)
-
-# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Images/Results_pi16_no_In.pdf", format="pdf",bbox_inches="tight")
-
-# fig = plt.figure(figsize=(8,6), dpi=200)
-# ax = fig.add_subplot(111)
-# ax.errorbar(ps_pos, cos2, yerr=cos2_err, fmt="k.", capsize=5, label="$c_0$")
-# ax.plot(ps_plt, A_aus*C_id*len(time)*np.cos(chi_plt/2)**2)
-# ax.errorbar(ps_pos, ps_data, yerr=cos2_err, fmt="g.", capsize=5, label="$c_0$")
-# # ax.plot(ps_plt, fit_cos_unb(ps_plt,*p_cos_unb), "b-", label="Fit")
+fig = plt.figure(figsize=(5, 4), dpi=200)
+ax = fig.add_subplot(111)
+ax.set_title("$a_2/a_1\\approx$"+str("%.3f" % (a_21),))
+colors=["k","#f10d0c","#00a933","#5983b0"]
+ax.errorbar(chi, Im_data_1, Im_data_err_1, fmt="k.", capsize=3, label="$\Im(w_{1,+})$ data")
+ax.plot(chi_plt, w1(chi_plt).imag, "k--", alpha=0.5, label="$\Im(w_{1,+})$ theory")
+ax.errorbar(chi, Im_data_2, Im_data_err_2, fmt=".", color=colors[2], capsize=3, label="$\Im(w_{2,+})$ data")
+ax.plot(chi_plt, w2(chi_plt).imag, "--",color=colors[2], alpha=0.5, label="$\Im(w_{2,+})$ theory")
+# ax.set_ylim([-2.1,2.1])
+ax.set_xlabel("$\\chi$ [rad]")
 # ax.legend()
-
-# fig = plt.figure(figsize=(8,6), dpi=200)
-# ax = fig.add_subplot(111)
-# ax.errorbar(chi, Im_data_1+Im_data_2, (Im_data_err_1**2+Im_data_err_2**2)**0.5, fmt="k.", capsize=3)
-# ax.plot(chi_plt, 0*chi_plt,"k--")
-# ax.set_ylim(-1,1)
-# # # # fig = plt.figure(figsize=(6,8))
-# # # # param_names=["A", "C", "$\\alpha_2$", "$\\xi_1$"]
-# # # # gs = GridSpec(len(param_names),1, figure=fig, hspace=0, wspace=0)
-# # # # axs=[]
-# # # # for i in range(len(param_names)):
-# # # #     axs.append(fig.add_subplot(gs[i,0]))
-# # # #     axs[i].set_ylabel(param_names[i])
-# # # #     axs[i].errorbar(ps_pos, p_tot[:,i], yerr=err_tot[:,i])
-# # # #     y_min=np.amin(p_tot[:,i])
-# # # #     y_max=np.amax(p_tot[:,i])
-# # # #     axs[i].set_ylim([y_min*(1-np.sign(y_min)*0.1),y_max*(1+np.sign(y_min)*0.1)])
+plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Images/Simoultaneous pi16 In 0p8.pdf", format="pdf",bbox_inches="tight")
 
 plt.show()
