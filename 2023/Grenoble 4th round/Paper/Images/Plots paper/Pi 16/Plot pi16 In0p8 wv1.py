@@ -19,18 +19,21 @@ from scipy.optimize import curve_fit as fit
 from scipy.special import jv
 
 rad=np.pi/180
-a_1= 0.496
-a_1_err= 0.003
-a_2= 0.868
-a_2_err= 0.002
+# T_1= 0.4103632617796827 +- 0.0018958686061004615
+# T_2= 0.5896367382203174 +- 0.0018958686061004615
+a_1= 0.641
+a_1_err=0.003
+a_2= 0.768
+a_2_err=0.002
 a_21=a_2/a_1
-inf_file_name="TOF_vs_chi_A+B_In1_22pt_pi16_2000s_4P_16Nov1733"
-# inf_file_name="TOF_vs_chi_A+B_In1_22pt_pi16_1200s_4P_15Nov0927"
+
+inf_file_name="TOF_vs_chi_A+B_In1_08mm_22pt_pi16_1200s_4P_16Nov0206"
 
 alpha_1=0.1923 #/2.354
 alpha_1_err=0.0009 
 alpha_2=-0.1971 #/2.354
 alpha_2_err=0.0004
+
 
 def w1(chi):
     return (1/(1+a_21*np.exp(1j*chi)))
@@ -84,7 +87,7 @@ for i in range(len(ps_pos)):
     matrix_err[i]=matrix[i]**0.5
     
 ps_data=np.sum(matrix, axis=1)
-P0=[(np.amax(ps_data)+np.amin(ps_data))/2, (np.amax(ps_data)-np.amin(ps_data))/2, 3, 0.5]
+P0=[(np.amax(ps_data)+np.amin(ps_data))/2, (np.amax(ps_data)-np.amin(ps_data))/2, 3, 0]
 B0=([100,0,0.01,-10],[np.amax(ps_data)+10000,np.amax(ps_data)+10000,5, 10])
 p_int,cov_int=fit(fit_cos, ps_pos, ps_data, p0=P0,  bounds=B0)
 err_int=np.diag(cov_int)**0.5
@@ -218,30 +221,44 @@ Re_err_1=((Im_data_err_1[pi_shift]/(M*np.sin(th)))**2+(Im_data_1[pi_shift]/(M**2
 Re_2=-Im_data_2/np.tan(th)-Im_data_2[pi_shift]/(M*np.sin(th))
 Re_err_2=((Im_data_err_2[pi_shift]/(M*np.sin(th)))**2+(Im_data_2[pi_shift]/(M**2*np.sin(th)))**2*M_err**2+(Im_data_err_2/np.tan(th))**2)**0.5
 
-# fig = plt.figure(figsize=(5, 4), dpi=200)
-# ax = fig.add_subplot(111)
-# ax.plot(chi, np.abs(psi_p/psi_m),"b")
-# ax.plot(chi, M, "r")
-# Re_1 = -((1+2*a_1*a_2*np.cos(chi))*Im_data_1+(a_1**2-a_2**2)*w2(chi+np.pi).imag)/(2*a_1*a_2*np.sin(chi))
-# cot_err=abs(chi_0_err/np.sin(chi)**2)
-# Re_err_1=(Im_data_1**2*cot_err**2+1/np.tan(chi)**2*Im_data_err_1**2)**0.5
+ylim1=-3
+ylim2=3
+y1=0.43
+y2=0.43
+xlim1=chi[0]-0.2
+xlim2=chi[-7]-0.2
+ws=0.2
+fig = plt.figure(figsize=(10,5))
+# fig, axs = plt.subplots(1, 2, figsize=(10, 4))
+gs = fig.add_gridspec(1, 2,  width_ratios=(1, 1), wspace=ws)
+axs = [fig.add_subplot(gs[0, 0]),fig.add_subplot(gs[0, 1])]
+# axs[0].spines["right"].set_visible(False)
+# axs[1].spines["left"].set_visible(False)
 
-# Re_2 = ((1+2*a_1*a_2*np.cos(chi))*Im_data_2+(a_1**2-a_2**2)*w2(chi+np.pi).imag)/(2*a_1*a_2*np.sin(chi))
-# cot_err=abs(chi_0_err/np.sin(chi)**2)
-# Re_err_2=(Im_data_2**2*cot_err**2+1/np.tan(chi)**2*Im_data_err_2**2)**0.5
-# chi+=np.pi
-# chi_plt+=np.pi
-fig = plt.figure(figsize=(5, 4), dpi=200)
-ax = fig.add_subplot(111)
-ax.set_title("$a_2/a_1\\approx$"+str("%.2f" % (a_21),))
+axs[1].tick_params(axis="y", left=False, labelleft=False, right=True,labelright=True)
+fig.suptitle("$w_{+,2}$")# $(a_2/a_1\\approx$"+str("%.2f" % (a_21),)+")")
 colors=["k","#f10d0c","#00a933","#5983b0"]
-ax.errorbar(chi[:15], Re_1[:15], Re_err_1[:15], fmt="k.", capsize=3, label="$\Im(w_{1,+})$ data")
-ax.plot(chi_plt, w1(chi_plt).real, "k--", alpha=0.5, label="$\Im(w_{1,+})$ theory")
-ax.errorbar(chi[:15], Re_2[:15], Re_err_2[:15], fmt=".", color=colors[2], capsize=3, label="$\Im(w_{2,+})$ data")
-ax.plot(chi_plt, w2(chi_plt).real, "--",color=colors[2], alpha=0.5, label="$\Im(w_{2,+})$ theory")
-ax.set_ylim([-1.5,2.5])
-ax.set_xlabel("$\\chi$ [rad]")
+for ax in axs:
+    ax.errorbar(chi[:-7], Re_1[:-7], Re_err_1[:-7], fmt=".", color=colors[2], capsize=3)
+    ax.plot(chi_plt[chi_plt<xlim2], w1(chi_plt).real[chi_plt<xlim2], "--", color=colors[2], alpha=0.5)
+    ax.errorbar(chi, Im_data_1, Im_data_err_1, fmt=".", color=colors[0], capsize=3)
+    ax.plot(chi_plt, w1(chi_plt).imag, "--",color=colors[0], alpha=0.5)
+    # ax.set_xlim([xlim1,xlim2])
+# axs[0].set_ylim([-2.5,5])
+axs[1].set_ylim([ylim1,ylim2])
+axs[0].set_xlabel("$\\chi$ [rad]")
+axs[1].set_xlabel("$\\chi$ [rad]")
+# axs[0].plot([xlim1,xlim2],[ylim1,ylim1], "r", lw=1, ls=(0,(5,3)))
+# axs[0].plot([xlim1,xlim2],[ylim2,ylim2], "r", lw=1, ls=(0,(5,3)))
+
+kwargs = dict(transform=axs[1].transAxes, color='k', lw=0.8, clip_on=False)
+axs[1].plot((-ws, 0), (y1, 1), **kwargs)
+axs[1].plot((-ws, 0), (y2, 0), **kwargs)
+kwargs = dict(transform=axs[0].transAxes, color='k',  lw=0.8, clip_on=False)
+axs[0].plot((0, 1), (y1, y1), **kwargs)
+axs[0].plot((0, 1), (y2, y2), **kwargs)
+axs[0].plot((0, 1), (y2, y2), **kwargs)
 # ax.legend()
-plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Images/Simoultaneous pi16 real.pdf", format="pdf",bbox_inches="tight")
+plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Images/Wv1 In 0p8"+inf_file_name[-10:]+".pdf", format="pdf",bbox_inches="tight")
 
 plt.show()

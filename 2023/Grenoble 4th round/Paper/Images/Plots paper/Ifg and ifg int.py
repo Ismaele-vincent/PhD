@@ -108,7 +108,7 @@ ax.errorbar(ps_int,data_int/p_int[0]*100, yerr=data_int**0.5/p_int[0]*100,fmt="o
 ax.errorbar(ps_plt_int,fit_cos(ps_plt_int, *p_int)/p_int[0]*100,fmt="-",color=colors[1], label="Fit time-averaged\nneutron counts")
 ax.errorbar(ps_ifg[3:-2],data_ifg[3:-2]/p_ifg[0]*100,yerr=data_ifg_err[3:-2]/p_ifg[0]*100,fmt="o",color=colors[3],capsize=5, ms=3, label="Interferogram")
 ax.errorbar(ps_plt_ifg,fit_cos(ps_plt_ifg, *p_ifg)/p_ifg[0]*100,fmt="--", color=colors[3], label="Fit interferogram")
-ax.set_xlabel("$\\chi$")
+ax.set_xlabel("Phase-shifter position")
 ax.legend(loc=1)
 # ax.tick_params(axis="y", left=False, labelleft=False)
 ax.set_ylabel("Arb.")
