@@ -255,7 +255,7 @@ ax.errorbar(chi,Im, Im_err, fmt="b.", capsize=3)
 ax.plot(chi_plt, w1(chi_plt, a_21).imag, "b--", alpha=0.5 )
 if a_1==0.5**0.5 or lim:
     ax.set_ylim([-6,6])
-plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Report/Images/Imaginary"+inf_file_name[-9:]+".pdf", format="pdf",bbox_inches="tight")
+# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Report/Images/Imaginary"+inf_file_name[-9:]+".pdf", format="pdf",bbox_inches="tight")
 
 sa=data_ifg_matrix[2]/data_ifg_matrix[0]-4*Im**2
 s=np.sign(sa)*abs(sa)**0.5
@@ -288,5 +288,5 @@ else:
     ax.errorbar(chi,Re_3+1*(np.amax(w1(chi_plt, a_21).real)-1*np.amin(w1(chi_plt, a_21).real)), Re_3_err, fmt="g.", capsize=4)
     # ax.set_ylim([0,np.amax(w1(chi_plt, a_21).real+np.amax(w1(chi_plt, a_21).real))])
 
-plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Report/Images/Real"+inf_file_name[-9:]+".pdf", format="pdf",bbox_inches="tight")
+# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Report/Images/Real"+inf_file_name[-9:]+".pdf", format="pdf",bbox_inches="tight")
 plt.show()

@@ -240,7 +240,7 @@ axs[2].errorbar(chi, Im_data_2_fit, Im_data_err_2_fit, fmt="g.", capsize=3)
 # axs[0].errorbar([], [], fmt="g.", capsize=3, label="$\Im(w_{+,2})$ Data")
 # fig.legend(ncol=4, framealpha=1, loc=8)
 
-plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Report/Images/Results_pi16_In_0p8.pdf", format="pdf",bbox_inches="tight")
+# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Report/Images/Results_pi16_In_0p8.pdf", format="pdf",bbox_inches="tight")
 
 # fig = plt.figure(figsize=(8,6), dpi=200)
 # ax = fig.add_subplot(111)

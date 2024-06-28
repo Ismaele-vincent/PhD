@@ -26,8 +26,8 @@ a_2_err=0.003
 a_21=a_2/a_1
 
 # inf_file_name="TOF_vs_chi_A+B_22pt_pi16_1200s_09Nov1808"
-inf_file_name="TOF_vs_chi_A+B_22pt_pi16_1200s_4P_11Nov1354"
-
+# inf_file_name="TOF_vs_chi_A+B_22pt_pi16_1200s_4P_11Nov1354"
+inf_file_name="TOF_vs_chi_A+B_22pt_pi16_1200s_4P_11Nov0502"
 alpha_1=0.1923 #/2.354
 alpha_1_err=0.0009 
 alpha_2=-0.1971 #/2.354
@@ -89,11 +89,11 @@ P0=[(np.amax(ps_data)+np.amin(ps_data))/2, (np.amax(ps_data)-np.amin(ps_data))/2
 B0=([100,0,0.01,-10],[np.amax(ps_data)+10000,np.amax(ps_data)+10000,5, 10])
 p_int,cov_int=fit(fit_cos, ps_pos, ps_data, p0=P0,  bounds=B0)
 err_int=np.diag(cov_int)**0.5
-j0_1=jv(0,alpha_1)
-j0_2=jv(0,alpha_2)
-j0_1_err=abs(djv0(alpha_1)*alpha_1_err)
-j0_2_err=abs(djv0(alpha_2)*alpha_2_err)
-C_D=(2*a_1*a_2*j0_1*j0_2)
+j0_1=jv(0,alpha_1*0)
+j0_2=jv(0,alpha_2*0)
+j0_1_err=abs(djv0(alpha_1)*alpha_1_err)*0
+j0_2_err=abs(djv0(alpha_2)*alpha_2_err)*0
+C_D=(2*a_1*a_2)
 C_id = p_int[1]/C_D
 C_id_err = ((C_D*err_int[1])**2+(C_D*a_1_err/a_1)**2+(C_D*a_2_err/a_2)**2+(C_D*j0_1_err/j0_1)**2+(C_D*j0_2_err/j0_2)**2)**0.5
 A=p_int[0]*(1-C_id)/2
@@ -205,26 +205,70 @@ for i in range(len(ps_pos)):
     Im_data_2[i]=(c_1_data_2*e_mxi_2).real/(cos2[i])/alpha_2
     Im_data_err_2[i]=(abs(c_1_data_err_2/cos2[i])**2 + (abs((c_1_data_2*e_mxi_2)/cos2[i]**2)*cos2_err[i])**2+abs((c_1_data_2*e_mxi_2)/cos2[i]/alpha_2*alpha_2_err)**2)**0.5/abs(alpha_2)
 
-Re_1 = -((1+2*a_1*a_2*np.cos(chi))*Im_data_1+(a_1**2-a_2**2)*w2(chi+np.pi).imag)/(2*a_1*a_2*np.sin(chi))
-cot_err=abs(chi_0_err/np.sin(chi)**2)
-Re_err_1=(Im_data_1**2*cot_err**2+1/np.tan(chi)**2*Im_data_err_1**2)**0.5
+psi_p=(a_1+np.exp(1j*chi)*a_2)/(2**0.5)
+psi_m=(a_1-np.exp(1j*chi)*a_2)/(2**0.5)
+M=np.abs(psi_p/psi_m)
+th= np.angle(psi_p/psi_m)
+pi_shift=[*np.arange(7,22),*np.arange(0,7)]
+cos2pi=-cos2+np.amax(cos2)
+M[:15]=(cos2[:15]/cos2[pi_shift[:15]])**0.5
+M_err=M**0.5*((cos2_err/cos2)**2+(cos2_err[pi_shift]/cos2[pi_shift])**2)**0.5
+# M=(cos2/cos2pi)**0.5
+Re_1=Im_data_1[pi_shift]/(M*np.sin(th))-Im_data_1/np.tan(th)
+Re_err_1=((Im_data_err_1[pi_shift]/(M*np.sin(th)))**2+(Im_data_1[pi_shift]/(M**2*np.sin(th)))**2*M_err**2+(Im_data_err_1/np.tan(th))**2)**0.5
+Re_2=-Im_data_2/np.tan(th)-Im_data_2[pi_shift]/(M*np.sin(th))
+Re_err_2=((Im_data_err_2[pi_shift]/(M*np.sin(th)))**2+(Im_data_2[pi_shift]/(M**2*np.sin(th)))**2*M_err**2+(Im_data_err_2/np.tan(th))**2)**0.5
+# fig = plt.figure(figsize=(5, 4), dpi=200)
+# ax = fig.add_subplot(111)
+# ax.errorbar(chi, M, M_err)
+# ax.plot(chi, cos2[*pi_shift[:15],*], "r")
+# Re_1 = -((1+2*a_1*a_2*np.cos(chi))*Im_data_1+(a_1**2-a_2**2)*w2(chi+np.pi).imag)/(2*a_1*a_2*np.sin(chi))
+# cot_err=abs(chi_0_err/np.sin(chi)**2)
+# Re_err_1=(Im_data_1**2*cot_err**2+1/np.tan(chi)**2*Im_data_err_1**2)**0.5
 
-Re_2 = ((1+2*a_1*a_2*np.cos(chi))*Im_data_2+(a_1**2-a_2**2)*w2(chi+np.pi).imag)/(2*a_1*a_2*np.sin(chi))
-cot_err=abs(chi_0_err/np.sin(chi)**2)
-Re_err_2=(Im_data_2**2*cot_err**2+1/np.tan(chi)**2*Im_data_err_2**2)**0.5
-chi+=np.pi
-chi_plt+=np.pi
-fig = plt.figure(figsize=(5, 4), dpi=200)
-ax = fig.add_subplot(111)
-ax.set_title("$a_2/a_1\\approx$"+str("%.2f" % (a_21),))
+# Re_2 = ((1+2*a_1*a_2*np.cos(chi))*Im_data_2+(a_1**2-a_2**2)*w2(chi+np.pi).imag)/(2*a_1*a_2*np.sin(chi))
+# cot_err=abs(chi_0_err/np.sin(chi)**2)
+# Re_err_2=(Im_data_2**2*cot_err**2+1/np.tan(chi)**2*Im_data_err_2**2)**0.5
+# chi+=np.pi
+# chi_plt+=np.pi
+fig = plt.figure(figsize=(5, 5), dpi=200)
+gs = fig.add_gridspec(2, 1,  height_ratios=(1, 1.5), hspace=0.1)
+axs = [fig.add_subplot(gs[0, 0]),fig.add_subplot(gs[1, 0])]
+axs[0].spines["bottom"].set_visible(False)
+axs[1].spines["top"].set_visible(False)
+axs[0].tick_params(axis="x", bottom=False, labelbottom=False)
+axs[0].set_title("$a_2/a_1\\approx$"+str("%.2f" % (a_21),))
 colors=["k","#f10d0c","#00a933","#5983b0"]
-ax.errorbar(chi, Re_1, Re_err_1, fmt="k.", capsize=3, label="$\Im(w_{1,+})$ data")
-ax.plot(chi_plt, w1(chi_plt).real, "k--", alpha=0.5, label="$\Im(w_{1,+})$ theory")
-ax.errorbar(chi, Re_2, Re_err_2, fmt=".", color=colors[2], capsize=3, label="$\Im(w_{2,+})$ data")
-ax.plot(chi_plt, w2(chi_plt).real, "--",color=colors[2], alpha=0.5, label="$\Im(w_{2,+})$ theory")
-ax.set_ylim([-2.1,2.1])
-ax.set_xlabel("$\\chi$ [rad]")
-# ax.legend()
+for ax in axs:
+    ax.errorbar(chi, Re_1, Re_err_1, fmt=".", color=colors[1], capsize=3, label="$\Im(w_{1,+})$ data")
+    ax.plot(chi_plt, w1(chi_plt).real, "--", color=colors[1], alpha=0.5, label="$\Im(w_{1,+})$ theory")
+    ax.errorbar(chi, Re_2, Re_err_2, fmt=".", color=colors[3], capsize=3, label="$\Im(w_{2,+})$ data")
+    ax.plot(chi_plt, w2(chi_plt).real, "--",color=colors[3], alpha=0.5, label="$\Im(w_{2,+})$ theory")
+    ax.set_xlim([chi[0]-0.2,chi[-7]-0.2])
+# axs[0].set_ylim([1.5,18])
+axs[1].set_ylim([-0.7,1.5])
+axs[1].set_xlabel("$\\chi$ [rad]")
+
+d = .015  # how big to make the diagonal lines in axes coordinates
+# arguments to pass plot, just so we don't keep repeating them
+# kwargs = dict(transform=axs[0].transAxes, color='k', clip_on=False)
+# axs[0].plot((1-d, 1+d), (-d, +d), **kwargs)
+# axs[0].plot((-d, +d), (-d, +d), **kwargs)
+h=0.06
+# kwargs = dict(transform=axs[1].transAxes, color='k', clip_on=False)
+# axs[1].plot((-d, +d), (1-d, 1+d), **kwargs)
+# axs[1].plot((1-d, 1+d), (1-d, 1+d), **kwargs)
+# axs[1].plot((-d, +d), (1+h-d, 1+h+d), **kwargs)
+# axs[1].plot((1-d, 1+d), (1+h-d, 1+h+d), **kwargs)
+
+kwargs = dict(transform=axs[1].transAxes, color='k', clip_on=False)
+axs[1].plot((-d, 1+d), (1+d, 1+d), **kwargs)
+axs[1].plot((-d, 1+d), (1+h+d, 1+h+d), **kwargs)
+# axs[1].plot((1-d, 1+d), (1-d, 1+d), **kwargs)
+# axs[1].plot((-d, +d), (1+h-d, 1+h+d), **kwargs)
+# axs[1].plot((1-d, 1+d), (1+h-d, 1+h+d), **kwargs)
+
+# axs[1].legend()
 # plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Images/Simoultaneous pi16 real.pdf", format="pdf",bbox_inches="tight")
 
 plt.show()

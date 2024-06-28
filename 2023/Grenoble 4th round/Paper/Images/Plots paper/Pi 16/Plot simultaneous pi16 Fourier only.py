@@ -26,7 +26,8 @@ a_2_err=0.003
 a_21=a_2/a_1
 
 # inf_file_name="TOF_vs_chi_A+B_22pt_pi16_1200s_09Nov1808"
-inf_file_name="TOF_vs_chi_A+B_22pt_pi16_1200s_4P_11Nov1354"
+# inf_file_name="TOF_vs_chi_A+B_22pt_pi16_1200s_4P_11Nov1354"
+inf_file_name="TOF_vs_chi_A+B_22pt_pi16_1200s_4P_11Nov0502"
 
 alpha_1=0.1923 #/2.354
 alpha_1_err=0.0009 
@@ -89,10 +90,10 @@ P0=[(np.amax(ps_data)+np.amin(ps_data))/2, (np.amax(ps_data)-np.amin(ps_data))/2
 B0=([100,0,0.01,-10],[np.amax(ps_data)+10000,np.amax(ps_data)+10000,5, 10])
 p_int,cov_int=fit(fit_cos, ps_pos, ps_data, p0=P0,  bounds=B0)
 err_int=np.diag(cov_int)**0.5
-j0_1=jv(0,alpha_1)
-j0_2=jv(0,alpha_2)
-j0_1_err=abs(djv0(alpha_1)*alpha_1_err)
-j0_2_err=abs(djv0(alpha_2)*alpha_2_err)
+j0_1=1#jv(0,alpha_1)
+j0_2=1#jv(0,alpha_2)
+j0_1_err=abs(djv0(alpha_1)*alpha_1_err)*0
+j0_2_err=abs(djv0(alpha_2)*alpha_2_err)*0
 C_D=(2*a_1*a_2*j0_1*j0_2)
 C_id = p_int[1]/C_D
 C_id_err = ((C_D*err_int[1])**2+(C_D*a_1_err/a_1)**2+(C_D*a_2_err/a_2)**2+(C_D*j0_1_err/j0_1)**2+(C_D*j0_2_err/j0_2)**2)**0.5
@@ -213,9 +214,9 @@ ax.errorbar(chi, Im_data_1, Im_data_err_1, fmt="k.", capsize=3, label="$\Im(w_{1
 ax.plot(chi_plt, w1(chi_plt).imag, "k--", alpha=0.5, label="$\Im(w_{1,+})$ theory")
 ax.errorbar(chi, Im_data_2, Im_data_err_2, fmt=".", color=colors[2], capsize=3, label="$\Im(w_{2,+})$ data")
 ax.plot(chi_plt, w2(chi_plt).imag, "--",color=colors[2], alpha=0.5, label="$\Im(w_{2,+})$ theory")
-ax.set_ylim([-2.3,2.3])
+ax.set_ylim([-4,5])
 ax.set_xlabel("$\\chi$ [rad]")
 # ax.legend()
-plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Images/Simoultaneous pi16 no In.pdf", format="pdf",bbox_inches="tight")
+# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Images/Simoultaneous pi16 no In.pdf", format="pdf",bbox_inches="tight")
 
 plt.show()

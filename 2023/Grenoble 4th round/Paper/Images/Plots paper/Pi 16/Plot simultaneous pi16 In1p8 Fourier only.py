@@ -88,10 +88,10 @@ P0=[(np.amax(ps_data)+np.amin(ps_data))/2, (np.amax(ps_data)-np.amin(ps_data))/2
 B0=([100,0,0.01,-10],[np.amax(ps_data)+10000,np.amax(ps_data)+10000,5, 10])
 p_int,cov_int=fit(fit_cos, ps_pos, ps_data, p0=P0,  bounds=B0)
 err_int=np.diag(cov_int)**0.5
-j0_1=jv(0,alpha_1)
-j0_2=jv(0,alpha_2)
-j0_1_err=abs(djv0(alpha_1)*alpha_1_err)
-j0_2_err=abs(djv0(alpha_2)*alpha_2_err)
+j0_1=1#jv(0,alpha_1)
+j0_2=1#jv(0,alpha_2)
+j0_1_err=abs(djv0(alpha_1)*alpha_1_err)*0
+j0_2_err=abs(djv0(alpha_2)*alpha_2_err)*0
 C_D=(2*a_1*a_2*j0_1*j0_2)
 C_id = p_int[1]/C_D
 C_id_err = ((C_D*err_int[1])**2+(C_D*a_1_err/a_1)**2+(C_D*a_2_err/a_2)**2+(C_D*j0_1_err/j0_1)**2+(C_D*j0_2_err/j0_2)**2)**0.5
@@ -215,6 +215,6 @@ ax.plot(chi_plt, w2(chi_plt).imag, "--",color=colors[2], alpha=0.5, label="$\Im(
 # ax.set_ylim([-2.1,2.1])
 ax.set_xlabel("$\\chi$ [rad]")
 # ax.legend()
-plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Images/Simoultaneous pi16 In 1p8.pdf", format="pdf",bbox_inches="tight")
+# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Images/Simoultaneous pi16 In 1p8.pdf", format="pdf",bbox_inches="tight")
 
 plt.show()

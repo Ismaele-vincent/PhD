@@ -55,13 +55,17 @@ def fit_cos(x, A, B, C, D):
     return A+B*np.cos(C*x-D)
 
 inf_file_names=[
-"ifg_-2to2_30s_14Nov1756", 
-"ifg_-2to2_30s_14Nov1814", 
-"ifg_-2to2_30s_14Nov1046",
-"ifg_-2to2_30s_14Nov1340",
+# "ifg_-2to2_30s_16Nov1655", 
+# "ifg_-2to2_60s_16Nov0106", 
+"ifg_-2to2_60s_16Nov0142", 
+"ifg_-2to2_30s_16Nov1720",
+# "ifg_-2to2_30s_14Nov1756", 
+# "ifg_-2to2_30s_14Nov1814", 
+# "ifg_-2to2_30s_14Nov1046",
+# "ifg_-2to2_30s_14Nov1340",
 
-"ifg_-2to2_30s_15Nov1710", 
-"ifg_-2to2_30s_15Nov0151",
+# "ifg_-2to2_30s_15Nov1710", 
+# "ifg_-2to2_30s_15Nov0151",
 
 # "ifg_-2to2_30s_13Nov0425", 
 # "ifg_-2to2_30s_12Nov0443", 
