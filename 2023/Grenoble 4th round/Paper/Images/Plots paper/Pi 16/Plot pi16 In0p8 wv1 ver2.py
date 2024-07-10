@@ -26,6 +26,7 @@ a_1_err=0.003
 a_2= 0.768
 a_2_err=0.002
 a_21=a_2/a_1
+a_21_err= a_21*((a_1_err/a_1)**2+(a_2_err/a_2)**2)**0.5
 
 inf_file_name="TOF_vs_chi_A+B_In1_08mm_22pt_pi16_1200s_4P_16Nov0206"
 
@@ -40,6 +41,12 @@ def w1(chi):
 
 def w2(chi):
     return (1-1/(1+a_21*np.exp(1j*chi)))
+
+def w2_Im(chi, a_21, chi_0):
+    return (1-1/(1+a_21*np.exp(1j*(chi-chi_0)))).imag
+
+def w1_Im(chi, a_21, chi_0):
+    return (1/(1+a_21*np.exp(1j*(chi-chi_0)))).imag
 
 def djv0(x):
     return (x*np.cos(x)-np.sin(x))/x**2
@@ -268,6 +275,13 @@ axs[2].plot((1-d, 1+d), (1.21-d, 1.21+d), **kwargs)
 axs[2].plot((-d, d), (1.21+h-d, 1.21+h+d), **kwargs)
 axs[2].plot((1-d, 1+d), (1.21+h-d, 1.21+h+d), **kwargs)
 # ax.legend()
-plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Images/Wv1 In 0p8"+inf_file_name[-10:]+"ver2.pdf", format="pdf",bbox_inches="tight")
+# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Images/Wv1 In 0p8"+inf_file_name[-10:]+"ver2.pdf", format="pdf",bbox_inches="tight")
+
+p_w_Im_1,cov_w_Im_1 = fit(w1_Im, chi, Im_data_1, sigma=Im_data_err_1, p0=[a_21,0], bounds=([0,-2*np.pi],[3,2*np.pi]))
+err_w_Im_1=np.diag(cov_w_Im_1)**0.5
+print(p_w_Im_1, err_w_Im_1,a_21,a_21_err)
+p_w_Im_2,cov_w_Im_2 = fit(w2_Im, chi, Im_data_2, sigma=Im_data_err_2, p0=[a_21,0], bounds=([0,-np.pi/2],[3,np.pi/2]))
+err_w_Im_2=np.diag(cov_w_Im_2)**0.5
+print(p_w_Im_2, err_w_Im_2,a_21,a_21_err)
 
 plt.show()

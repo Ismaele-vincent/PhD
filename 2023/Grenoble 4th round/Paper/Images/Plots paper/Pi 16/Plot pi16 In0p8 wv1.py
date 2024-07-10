@@ -41,6 +41,12 @@ def w1(chi):
 def w2(chi):
     return (1-1/(1+a_21*np.exp(1j*chi)))
 
+def w2_Im(chi, a_21, chi_0):
+    return (1-1/(1+a_21*np.exp(1j*(chi-chi_0)))).imag
+
+def w1_Im(chi, a_21, chi_0):
+    return (1/(1+a_21*np.exp(1j*(chi-chi_0)))).imag
+
 def djv0(x):
     return (x*np.cos(x)-np.sin(x))/x**2
 

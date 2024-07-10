@@ -46,13 +46,7 @@ def fit_Im(t, B, Im_1, xi_1):
 
 sorted_fold_path="/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/exp_CRG-3061/Sorted data/TOF A/"+inf_file_name
 cleandata=sorted_fold_path+"/Cleantxt"
-niels_path="/home/aaa/Desktop/Niels/Data/"+inf_file_name
-niels_fourier_path="/home/aaa/Desktop/Niels/Fourier/"+inf_file_name
 
-if not os.path.exists(niels_path):
-    os.makedirs(niels_path)
-if not os.path.exists(niels_fourier_path):
-    os.makedirs(niels_fourier_path)
 
 i=0
 for root, dirs, files in os.walk(cleandata, topdown=False):

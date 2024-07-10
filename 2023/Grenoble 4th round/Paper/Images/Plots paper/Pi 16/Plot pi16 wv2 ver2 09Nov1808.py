@@ -24,6 +24,7 @@ a_1_err= 0.003
 a_2= 0.660
 a_2_err=0.003
 a_21=a_2/a_1
+a_21_err= a_21*((a_1_err/a_1)**2+(a_2_err/a_2)**2)**0.5
 
 inf_file_name="TOF_vs_chi_A+B_22pt_pi16_1200s_09Nov1808"
 # inf_file_name="TOF_vs_chi_A+B_22pt_pi16_1200s_4P_11Nov1354"
@@ -39,6 +40,12 @@ def w1(chi):
 
 def w2(chi):
     return (1-1/(1+a_21*np.exp(1j*chi)))
+
+def w2_Im(chi, a_21, chi_0):
+    return (1-1/(1+a_21*np.exp(1j*(chi-chi_0)))).imag
+
+def w1_Im(chi, a_21, chi_0):
+    return (1/(1+a_21*np.exp(1j*(chi-chi_0)))).imag
 
 def djv0(x):
     return (x*np.cos(x)-np.sin(x))/x**2
@@ -233,7 +240,7 @@ fig = plt.figure(figsize=(5,6))
 # fig, axs = plt.subplots(1, 2, figsize=(10, 4))
 gs = fig.add_gridspec(2, 1,  height_ratios=(6, 1), hspace=0.1)
 ax = fig.add_subplot(gs[:, 0])
-ax.set_title("$w_{+,1}$")# $(a_2/a_1\\approx$"+str("%.2f" % (a_21),)+")")
+ax.set_title("$w_{+,2}$")# $(a_2/a_1\\approx$"+str("%.2f" % (a_21),)+")")
 colors=["k","#f10d0c","#00a933","#5983b0"]
 ax.errorbar(chi[:-7], Re_2[:-7], Re_err_2[:-7], fmt=".", color=colors[3], capsize=3)
 ax.plot(chi_plt[chi_plt<xlim2], w2(chi_plt).real[chi_plt<xlim2], "--", color=colors[3], alpha=0.5)
@@ -251,5 +258,12 @@ ax.set_xlabel("$\\chi$ [rad]")
 kwargs = dict(transform=ax.transAxes, color='w', lw=0.8, clip_on=False)
 ax.plot((1-d, 1+d), (-d, +d), **kwargs)
 plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Images/Wv2"+inf_file_name[-10:]+"ver2.pdf", format="pdf",bbox_inches="tight")
+
+p_w_Im_1,cov_w_Im_1 = fit(w1_Im, chi, Im_data_1, sigma=Im_data_err_1, p0=[a_21,0], bounds=([0,-2*np.pi],[3,2*np.pi]))
+err_w_Im_1=np.diag(cov_w_Im_1)**0.5
+print(p_w_Im_1, err_w_Im_1,a_21,a_21_err)
+p_w_Im_2,cov_w_Im_2 = fit(w2_Im, chi, Im_data_2, sigma=Im_data_err_2, p0=[a_21,0], bounds=([0,-np.pi/2],[3,np.pi/2]))
+err_w_Im_2=np.diag(cov_w_Im_2)**0.5
+print(p_w_Im_2, err_w_Im_2,a_21,a_21_err)
 
 plt.show()
