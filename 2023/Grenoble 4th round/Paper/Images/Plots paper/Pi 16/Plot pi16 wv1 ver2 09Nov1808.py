@@ -227,44 +227,50 @@ Re_err_1=((Im_data_err_1[pi_shift]/(M*np.sin(th)))**2+(Im_data_1[pi_shift]/(M**2
 Re_2=-Im_data_2/np.tan(th)-Im_data_2[pi_shift]/(M*np.sin(th))
 Re_err_2=((Im_data_err_2[pi_shift]/(M*np.sin(th)))**2+(Im_data_2[pi_shift]/(M**2*np.sin(th)))**2*M_err**2+(Im_data_err_2/np.tan(th))**2)**0.5
 
-ylim1=-4
-ylim2=2.6
-y1=0.512
-y2=0.135
-xlim1=chi[0]-0.2
-xlim2=chi[-7]-0.2
-ylabels=np.arange(ylim1+0.5,ylim2,1)
-d=0.02
-h=-0.05
 fig = plt.figure(figsize=(5,6))
-# fig, axs = plt.subplots(1, 2, figsize=(10, 4))
-gs = fig.add_gridspec(2, 1,  height_ratios=(6, 1), hspace=0.1)
-ax = fig.add_subplot(gs[:, 0])
-ax.set_title("$w_{+,1}$")# $(a_2/a_1\\approx$"+str("%.2f" % (a_21),)+")")
-colors=["k","#f10d0c","#00a933","#5983b0"]
-ax.errorbar(chi[:-7], Re_1[:-7], Re_err_1[:-7], fmt=".", color=colors[2], capsize=3)
-ax.plot(chi_plt[chi_plt<xlim2], w1(chi_plt).real[chi_plt<xlim2], "--", color=colors[2], alpha=0.5)
-ax.errorbar(chi, Im_data_1, Im_data_err_1, fmt=".", color=colors[0], capsize=3)
-ax.plot(chi_plt, w1(chi_plt).imag, "--",color=colors[0], alpha=0.5)
-ax.grid(True, ls="dotted")
-# ax.set_xlim([xlim1,xlim2])
-# axs[0].set_ylim([-2.5,5])
-ax.set_ylim([ylim1,ylim2])
-# axs[1].set_yticks(ticks=ylabels)
-ax.set_xlabel("$\\chi$ [rad]")
-# axs[0].plot([xlim1,xlim2],[ylim1,ylim1], "r", lw=1, ls=(0,(5,3)))
-# axs[0].plot([xlim1,xlim2],[ylim2,ylim2], "r", lw=1, ls=(0,(5,3)))
+ax = fig.add_subplot(111)
+ax.plot(M)
+ax.plot(np.sin(th))
+ax.plot(1/np.tan(th))
 
-kwargs = dict(transform=ax.transAxes, color='w', lw=0.8, clip_on=False)
-ax.plot((1-d, 1+d), (-d, +d), **kwargs)
-# ax.legend()
-plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Images/Wv1"+inf_file_name[-10:]+"ver2.pdf", format="pdf",bbox_inches="tight")
+# ylim1=-4
+# ylim2=2.6
+# y1=0.512
+# y2=0.135
+# xlim1=chi[0]-0.2
+# xlim2=chi[-7]-0.2
+# ylabels=np.arange(ylim1+0.5,ylim2,1)
+# d=0.02
+# h=-0.05
+# fig = plt.figure(figsize=(5,6))
+# # fig, axs = plt.subplots(1, 2, figsize=(10, 4))
+# gs = fig.add_gridspec(2, 1,  height_ratios=(6, 1), hspace=0.1)
+# ax = fig.add_subplot(gs[:, 0])
+# ax.set_title("$w_{+,1}$")# $(a_2/a_1\\approx$"+str("%.2f" % (a_21),)+")")
+# colors=["k","#f10d0c","#00a933","#5983b0"]
+# ax.errorbar(chi[:-7], Re_1[:-7], Re_err_1[:-7], fmt=".", color=colors[2], capsize=3)
+# ax.plot(chi_plt[chi_plt<xlim2], w1(chi_plt).real[chi_plt<xlim2], "--", color=colors[2], alpha=0.5)
+# ax.errorbar(chi, Im_data_1, Im_data_err_1, fmt=".", color=colors[0], capsize=3)
+# ax.plot(chi_plt, w1(chi_plt).imag, "--",color=colors[0], alpha=0.5)
+# ax.grid(True, ls="dotted")
+# # ax.set_xlim([xlim1,xlim2])
+# # axs[0].set_ylim([-2.5,5])
+# ax.set_ylim([ylim1,ylim2])
+# # axs[1].set_yticks(ticks=ylabels)
+# ax.set_xlabel("$\\chi$ [rad]")
+# # axs[0].plot([xlim1,xlim2],[ylim1,ylim1], "r", lw=1, ls=(0,(5,3)))
+# # axs[0].plot([xlim1,xlim2],[ylim2,ylim2], "r", lw=1, ls=(0,(5,3)))
 
-p_w_Im_1,cov_w_Im_1 = fit(w1_Im, chi, Im_data_1, sigma=Im_data_err_1, p0=[a_21,0], bounds=([0,-2*np.pi],[3,2*np.pi]))
-err_w_Im_1=np.diag(cov_w_Im_1)**0.5
-print(p_w_Im_1, err_w_Im_1,a_21,a_21_err)
-p_w_Im_2,cov_w_Im_2 = fit(w2_Im, chi, Im_data_2, sigma=Im_data_err_2, p0=[a_21,0], bounds=([0,-np.pi/2],[3,np.pi/2]))
-err_w_Im_2=np.diag(cov_w_Im_2)**0.5
-print(p_w_Im_2, err_w_Im_2,a_21,a_21_err)
+# kwargs = dict(transform=ax.transAxes, color='w', lw=0.8, clip_on=False)
+# ax.plot((1-d, 1+d), (-d, +d), **kwargs)
+# # ax.legend()
+# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Images/Wv1"+inf_file_name[-10:]+"ver2.pdf", format="pdf",bbox_inches="tight")
+
+# p_w_Im_1,cov_w_Im_1 = fit(w1_Im, chi, Im_data_1, sigma=Im_data_err_1, p0=[a_21,0], bounds=([0,-2*np.pi],[3,2*np.pi]))
+# err_w_Im_1=np.diag(cov_w_Im_1)**0.5
+# print(p_w_Im_1, err_w_Im_1,a_21,a_21_err)
+# p_w_Im_2,cov_w_Im_2 = fit(w2_Im, chi, Im_data_2, sigma=Im_data_err_2, p0=[a_21,0], bounds=([0,-np.pi/2],[3,np.pi/2]))
+# err_w_Im_2=np.diag(cov_w_Im_2)**0.5
+# print(p_w_Im_2, err_w_Im_2,a_21,a_21_err)
 
 plt.show()

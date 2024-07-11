@@ -187,7 +187,7 @@ ax.plot(ps_plt,fit_cos(ps_plt, *p_ifg), "b")
 ax.set_ylabel("Arb.")
 ax.set_xlabel("Phase shifter")
 ax.set_title("Interferogram\n"+inf_file_name_ifg)
-plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round - bis/Report/Images/Ifg_example.pdf", format="pdf",bbox_inches="tight")
+# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round - bis/Paper/Images/Ifg_example.pdf", format="pdf",bbox_inches="tight")
         
 
 i=0
@@ -274,7 +274,7 @@ cos2_err=np.zeros((len(ps_pos)))
 cos2_fit=np.zeros((len(ps_pos)))
 cos2_err_fit=np.zeros((len(ps_pos)))
 
-fig = plt.figure(figsize=(8,5))
+fig = plt.figure(figsize=(5,4))
 ax = fig.add_subplot(111)
 colors=["r", "g", "b"]
 k=0
@@ -304,38 +304,38 @@ for i in range(len(ps_pos)):
     if not i%5 and k<3 and i>7:
         ax.errorbar(time, matrix[i], yerr= matrix_err[i], fmt=colors[k]+".", capsize=3, label="$\chi$="+str("%.2f"%chi[i],))
         ax.plot(time_plt, fit_wv(time_plt, *p_wv), colors[k]+"-", alpha=0.5)
-        ax.set_title(str("%.2f'"%ps_pos[i],))
+        # ax.set_title(str("%.2f'"%ps_pos[i],))
         k+=1
-ax.legend(framealpha=1)
+ax.legend(framealpha=1, ncol=3 )
 ax.set_xlabel("time [$\mu s$]")
 ax.set_ylabel("Int.")
-ax.set_title("Time resolved measurement\n"+inf_file_name)
-# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round - bis/Report/Images/Time_meas_example.pdf", format="pdf",bbox_inches="tight")
+# ax.set_title("Time resolved measurement\n"+inf_file_name)
+# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round - bis/Paper/Images/Time_meas_example.pdf", format="pdf",bbox_inches="tight")
 
-fig = plt.figure(figsize=(8, 5), dpi=200)
-fig.suptitle("$\mathbf{J_0(\\alpha)=0}$",bbox=dict(facecolor='none', edgecolor='k'))
-gs = GridSpec(1,2, figure=fig, wspace=0, hspace=0, top=0.85, bottom=0)
-axs=[fig.add_subplot(gs[:,:]), fig.add_subplot(gs[0,0]),fig.add_subplot(gs[0,1])]
-axs[2].tick_params(axis="y", labelleft=False, left = False, labelright=True, right=True)
-# axs[1].set_ylabel("Arb.", fontsize = plt.rcParams['axes.titlesize'])
-axs[1].set_title("$\Im(w_{1,+})$")
-axs[2].set_title("$\Re(w_{1,+})$")
-axs[0].set_xlabel("$\chi$ [rad]", labelpad=20)
-axs[0].tick_params(axis="both", labelleft=False, left = False, labelbottom=False, bottom = False)
-axs[0].set_frame_on(False)
+# fig = plt.figure(figsize=(5, 3), dpi=200)
+# fig.suptitle("$\mathbf{J_0(\\alpha)=0}$",bbox=dict(facecolor='none', edgecolor='k'))
+# gs = GridSpec(1,2, figure=fig, wspace=0, hspace=0, top=0.85, bottom=0)
+# axs=[fig.add_subplot(gs[:,:]), fig.add_subplot(gs[0,0]),fig.add_subplot(gs[0,1])]
+# axs[2].tick_params(axis="y", labelleft=False, left = False, labelright=True, right=True)
+# # axs[1].set_ylabel("Arb.", fontsize = plt.rcParams['axes.titlesize'])
+# axs[1].set_title("$\Im(w_{1,+})$")
+# axs[2].set_title("$\Re(w_{1,+})$")
+# axs[0].set_xlabel("$\chi$ [rad]", labelpad=20)
+# axs[0].tick_params(axis="both", labelleft=False, left = False, labelbottom=False, bottom = False)
+# axs[0].set_frame_on(False)
 
-axs[1].plot(chi_plt, w1(chi_plt).imag,"k--", alpha=0.5)
-axs[1].errorbar(chi, Im, Im_err, fmt="k.", capsize=3)
-axs[2].plot(chi_plt, w1(chi_plt).real,"r--", alpha=0.5)
-axs[2].errorbar(chi, Re, abs(Re_err), fmt="r.", capsize=3)
-# axs[1].set_ylim([-2,2])
-# axs[2].set_ylim([0,3])
+# axs[1].plot(chi_plt, w1(chi_plt).imag,"k--", alpha=0.5)
+# axs[1].errorbar(chi, Im, Im_err, fmt="k.", capsize=3)
+# axs[2].plot(chi_plt, w1(chi_plt).real,"r--", alpha=0.5)
+# axs[2].errorbar(chi, Re, abs(Re_err), fmt="r.", capsize=3)
+# # axs[1].set_ylim([-2,2])
+# # axs[2].set_ylim([0,3])
 
-# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round - bis/Report/Images/Time_meas_example.pdf", format="pdf",bbox_inches="tight")
+# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round - bis/Paper/Images/Time_meas_example.pdf", format="pdf",bbox_inches="tight")
 
-fig = plt.figure(figsize=(8,6), dpi=200)
-ax = fig.add_subplot(111)
-ax.errorbar(ps_pos, cos2_fit, yerr=cos2_err_fit, fmt="k.", capsize=5, label="$c_0$")
-ax.plot(ps_plt, 1/2+a_1*a_2*np.cos(chi_plt))
+# fig = plt.figure(figsize=(8,6), dpi=200)
+# ax = fig.add_subplot(111)
+# ax.errorbar(ps_pos, cos2_fit, yerr=cos2_err_fit, fmt="k.", capsize=5, label="$c_0$")
+# ax.plot(ps_plt, 1/2+a_1*a_2*np.cos(chi_plt))
 
 plt.show()
