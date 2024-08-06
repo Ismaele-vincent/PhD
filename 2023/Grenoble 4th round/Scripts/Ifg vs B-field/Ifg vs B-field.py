@@ -148,7 +148,7 @@ for i in range(len(amplitude)):
 # C[6]=0
 curr_plt=np.linspace(current[0], current[-1], 10000)
 ampl_plt=np.linspace(0, amplitude[-1], 1000)
-p,cov=fit(contr, current, C, p0=[2500,0.5])
+p,cov=fit(contr, current, C, p0=[2500,0.5], sigma=C_err)
 err=np.diag(cov)**0.5
 print(p, np.diag(cov)**0.5)
 print(curr_plt[contr(curr_plt,*p)==np.amin(contr(curr_plt,*p))])
@@ -157,8 +157,8 @@ alpha_0=alpha_plt[contr(curr_plt,*p)==np.amin(contr(curr_plt,*p))]
 curr_0=curr_plt[contr(curr_plt,*p)==np.amin(contr(curr_plt,*p))]
 print(alpha_0, curr_0)
 print("alpha/V_c=",p[1],"+-",err[1])
-print("V=",np.pi/8/p[1])
-print("V=",alpha_0/p[1]*0.405)
+print("V=",np.pi/16/p[1])
+# print("V=",alpha_0/p[1]*0.405)
 fig = plt.figure(figsize=(5,5))
 ax = fig.add_subplot(111)
 # ax.errorbar(amplitude, chi_0, yerr= chi_0_err, fmt="ko")

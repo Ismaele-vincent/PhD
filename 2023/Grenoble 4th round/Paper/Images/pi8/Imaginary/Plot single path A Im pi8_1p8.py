@@ -26,7 +26,7 @@ a_2=2/5**0.5
 inf_file_name="TOF_vs_chi_A_In1_22pt_pi8_1200s_14Nov0321"
 
 
-alpha_1=-0.3847 #/2.354
+alpha_1=0.3847 #/2.354
 alpha_1_err=0.0017
 
 def w1(chi):
@@ -40,6 +40,9 @@ def fit_cos(x, A, B, C, D):
 A_aus=1
 def fit_Im(t, B, Im_1, xi_1):
     return A_aus*((1-Co)/2+Co*B*(1-2*Im_1*alpha_1*np.sin(2*np.pi*1e-3*f_1*t+xi_1)))
+chi_aus=0
+def fit_xi(t, A, B, xi_1):
+    return A +B*np.cos(chi_aus+alpha_1*np.sin(2*np.pi*1e-3*f_1*t+xi_1))
 
 sorted_fold_path="/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/exp_CRG-3061/Sorted data/TOF A/"+inf_file_name
 cleandata=sorted_fold_path+"/Cleantxt"
@@ -136,7 +139,14 @@ for i in range(len(ps_pos)):
     func_data=matrix[i]
     func_data_err=matrix_err[i]
     chi_aus=chi[i]
-    P0=[np.cos(chi[i]/2)**2, w1(chi[i]).imag, 2]
+    P0=[(np.amax(func_data)+np.amin(func_data))/2, (np.amax(func_data)-np.amin(func_data))/2, -0.75]
+    # print(P0)
+    # B0=([0,w1(chi[i]).imag-1000, -2*np.pi],[np.inf, w1(chi[i]).imag+1000, 2*np.pi])
+    p_xi,cov_xi = fit(fit_xi, time, func_data, p0=P0)
+    err_xi=np.diag(cov_xi)**0.5
+    print(p_xi[-1],err_xi[-1])
+    
+    P0=[np.cos(chi[i]/2)**2, w1(chi[i]).imag, -1]
     # print(P0)
     B0=([0,w1(chi[i]).imag-1000, -2*np.pi],[np.inf, w1(chi[i]).imag+1000, 2*np.pi])
     p_Im,cov_Im = fit(fit_Im, time, func_data, p0=P0, bounds=B0)

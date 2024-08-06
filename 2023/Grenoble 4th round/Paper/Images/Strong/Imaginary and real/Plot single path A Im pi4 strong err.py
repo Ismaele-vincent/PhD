@@ -42,17 +42,14 @@ def fit_Im(t, B, Im_1, Re_1, xi_1):
     return A_aus*((1-Co)/2+Co*B*(1+2*Re_1*(1-np.cos(alpha_1*np.sin(2*np.pi*1e-3*f_1*t+xi_1)))-2*Im_1*np.sin(alpha_1*np.sin(2*np.pi*1e-3*f_1*t+xi_1))))
     # return A_aus*((1-Co)/2+Co*B*(1-2*Im_1*alpha_1*np.sin(2*np.pi*1e-3*f_1*t+xi_1)))
 
-
+def fit_xi(t, A, B, xi_1):
+    return A +B*np.cos(chi_aus-alpha_1*np.sin(2*np.pi*1e-3*f_1*t+xi_1))
 
 sorted_fold_path="/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/exp_CRG-3061/Sorted data/TOF A/"+inf_file_name
 cleandata=sorted_fold_path+"/Cleantxt"
 niels_path="/home/aaa/Desktop/Niels/Data/"+inf_file_name
 niels_fourier_path="/home/aaa/Desktop/Niels/Fourier/"+inf_file_name
 
-if not os.path.exists(niels_path):
-    os.makedirs(niels_path)
-if not os.path.exists(niels_fourier_path):
-    os.makedirs(niels_fourier_path)
 
 i=0
 for root, dirs, files in os.walk(cleandata, topdown=False):
@@ -82,7 +79,7 @@ for i in range(len(ps_pos)):
     matrix_err[i]=matrix[i]**0.5
 
 ps_data=np.sum(matrix, axis=1)
-P0=[(np.amax(ps_data)+np.amin(ps_data))/2, (np.amax(ps_data)-np.amin(ps_data))/2, 3, -0.5]
+P0=[(np.amax(ps_data)+np.amin(ps_data))/2, (np.amax(ps_data)-np.amin(ps_data))/2, 3, 0.7]
 B0=([100,0,0.01,-10],[np.amax(ps_data)+10000,np.amax(ps_data)+10000,5, 10])
 p,cov=fit(fit_cos, ps_pos, ps_data, p0=P0,  bounds=B0)
 err=np.diag(cov)**0.5
@@ -137,11 +134,22 @@ axs[2].set_title("$\Re(w_{1,+})$")
 axs[0].set_xlabel("$\chi$ [rad]", labelpad=20)
 axs[0].tick_params(axis="both", labelleft=False, left = False, labelbottom=False, bottom = False)
 axs[0].set_frame_on(False)
-
+xi_avg=np.array([])
+xi_avg_err=np.array([])
 for i in range(len(ps_pos)):
     func_data=matrix[i]
     func_data_err=matrix_err[i]
     chi_aus=chi[i]
+    
+    P0=[(np.amax(func_data)+np.amin(func_data))/2, (np.amax(func_data)-np.amin(func_data))/2, 3.8]
+    # print(P0)
+    B0=([0,0, -2*np.pi],[np.inf, 1000, 2*np.pi])
+    p_xi,cov_xi = fit(fit_xi, time, func_data, p0=P0, bounds=B0)
+    err_xi=np.diag(cov_xi)**0.5
+    print(p_xi[-1],err_xi[-1])
+    # print(p_xi[1])
+    xi_avg=np.append(xi_avg, p_xi[-1])
+    xi_avg_err=np.append(xi_avg_err, err_xi[-1])
     P0=[np.cos(chi[i]/2)**2, w1(chi[i]).imag, abs(w1(chi[i]))-w1(chi[i]).real-1000, 2]
     # print(P0)
     B0=([0,w1(chi[i]).imag-1000,abs(w1(chi[i]))-w1(chi[i]).real-1000, -2*np.pi],[np.inf, w1(chi[i]).imag+1000, abs(w1(chi[i]))-w1(chi[i]).real+1000, 2*np.pi])
@@ -208,7 +216,7 @@ for i in range(len(ps_pos)):
 # axs[1].errorbar(chi, Im_data_1, Im_data_err_1, fmt="k.",capsize=3)
 # axs[1].plot(chi_plt, w1(chi_plt).real,"r--", alpha=0.5)
 # axs[1].errorbar(chi, Re_data_1, Re_data_err_1_fit, fmt="r.", capsize=3)
-
+print(np.average(xi_avg),"+-",np.sum(xi_avg_err**2)**0.5/len(xi_avg))
 axs[1].plot(chi_plt, w1(chi_plt).imag,"k--", alpha=0.5)
 axs[1].errorbar(chi, Im_data_1_fit, Im_data_err_1_fit, fmt="k.", capsize=3)
 axs[2].plot(chi_plt, w1(chi_plt).real,"r--", alpha=0.5)

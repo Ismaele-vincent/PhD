@@ -78,15 +78,15 @@ def fit_O_beam(t, A, B, a_1, xi_1):
 # inf_file_name="ifg_vs_A_2kHzB_12p_13Nov2313"
 # inf_file_name="ifg_vs_A_2kHzB_12p_13Nov2129"
 # inf_file_name="ifg_vs_B_3kHzB_09Nov1137"
-inf_file_names=["ifg_vs_A_2kHzB_12p_14Nov0129"]#, "ifg_vs_B_3kHzB_13p_30s_17Nov0603"]
+inf_file_names=[ "ifg_vs_B_3kHzB_13p_30s_17Nov0603"]#["ifg_vs_A_2kHzB_12p_14Nov0129"]#, "ifg_vs_B_3kHzB_13p_30s_17Nov0603"]
 
-fig = plt.figure(figsize=(5,4))
+fig = plt.figure(figsize=(5,3))
 # ax = fig.add_subplot(111)
 gs = GridSpec(1,1, figure=fig, wspace=0, hspace=0, top=1, bottom=0)
 axs=[fig.add_subplot(gs[0,0])]#,fig.add_subplot(gs[0,1])]
 # axs[1].tick_params(axis="y", labelleft=False, left = False)
 # axs[1].set_xlabel("$V_2$ [V]")
-axs[0].set_xlabel("$V_1$ [V]")
+axs[0].set_xlabel("Input voltage $V_2$ [Volt]")
 axs[0].set_ylabel("Contrast")
 k=0
 for inf_file_name in inf_file_names:
@@ -167,9 +167,10 @@ for inf_file_name in inf_file_names:
     print("V=",alpha_0/p[1]*0.405)
     colors=["k","#f10d0c","#00a933","#5983b0"]
     # ax.errorbar(amplitude, chi_0, yerr= chi_0_err, fmt="ko")
-    axs[k].errorbar(current, C, yerr= C_err, fmt="k.", capsize=2, label="Contrast from\ninterferograms")
-    axs[k].errorbar(curr_plt, contr(curr_plt,*p), color=colors[2], label="fit $f(V_"+str(k+1)+")$")
+    axs[k].errorbar(current, C, yerr= C_err, fmt="k.", capsize=2, label="Measured contrast")
+    axs[k].errorbar(curr_plt, contr(curr_plt,*p), color=colors[2], label="fit")
     k+=1
+axs[0].set_ylim([0,axs[0].get_ylim()[1]])
 axs[0].legend()
-# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Images/Alpha_calibration_example.pdf", format="pdf",bbox_inches="tight")
+plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Images/Alpha_calibration_example.pdf", format="pdf",bbox_inches="tight")
 plt.show()

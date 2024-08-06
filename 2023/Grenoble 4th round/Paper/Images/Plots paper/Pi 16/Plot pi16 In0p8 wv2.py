@@ -264,3 +264,8 @@ axs[0].plot((0, 1), (y1, y1), **kwargs)
 axs[0].plot((0, 1), (y2, y2), **kwargs)
 axs[0].plot((0, 1), (y2, y2), **kwargs)
 plt.show()
+
+with open("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Results txt/In 0p8/Wv12_Im In 0p8"+inf_file_name[-10:]+".txt","w") as f:
+    np.savetxt(f,np.transpose([chi,Im_data_1,Im_data_err_1,Im_data_2,Im_data_err_2]), header="chi w_im1 w_im1_err w_im2 w_im2_err")
+with open("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Results txt/In 1p8/Wv12_Re In 0p8"+inf_file_name[-10:]+".txt","w") as f:
+    np.savetxt(f,np.transpose([chi,Re_1,Re_err_1,Re_2,Re_err_2]), header="chi w_re1 w_re1_err w_re2 w_re2_err")

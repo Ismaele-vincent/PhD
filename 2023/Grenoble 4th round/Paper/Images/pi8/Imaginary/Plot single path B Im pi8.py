@@ -25,11 +25,11 @@ a_2=1/2**0.5
 
 # inf_file_name="TOF_vs_chi_B_19pt_pi8_1200s_04Nov2355" #-5352.875869164308
 # inf_file_name="TOF_vs_chi_B_19pt_pi8_1200s_05Nov1240" #-5521.759836867085
-inf_file_name="TOF_vs_chi_B_22pt_pi8_1200s_07Nov0219" #-3781.9412544666925
-# inf_file_name="TOF_vs_chi_B_22pt_pi4_1200s_08Nov0856"
+# inf_file_name="TOF_vs_chi_B_22pt_pi8_1200s_07Nov0219" #-3781.9412544666925
+inf_file_name="TOF_vs_chi_B_22pt_pi4_1200s_08Nov0856"
 
 
-alpha_2=-0.3942 #/2.354
+alpha_2=0.3942 #/2.354
 alpha_2_err=0.0008
 
 
@@ -44,16 +44,14 @@ def fit_cos(x, A, B, C, D):
 A_aus=1
 def fit_Im(t, B, Im_2, xi_2):
     return A_aus*((1-Co)/2+Co*B*(1-2*Im_2*alpha_2*np.sin(2*np.pi*1e-3*f_2*t+xi_2)))
+chi_aus=0
+def fit_xi(t, A, B, xi_2):
+    return A +B*np.cos(chi_aus+alpha_2*np.sin(2*np.pi*1e-3*f_2*t+xi_2))
 
 sorted_fold_path="/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/exp_CRG-3061/Sorted data/TOF B/"+inf_file_name
 cleandata=sorted_fold_path+"/Cleantxt"
-niels_path="/home/aaa/Desktop/Niels/Data/"+inf_file_name
-niels_fourier_path="/home/aaa/Desktop/Niels/Fourier/"+inf_file_name
 
-if not os.path.exists(niels_path):
-    os.makedirs(niels_path)
-if not os.path.exists(niels_fourier_path):
-    os.makedirs(niels_fourier_path)
+
 
 i=0
 for root, dirs, files in os.walk(cleandata, topdown=False):
@@ -65,9 +63,9 @@ for root, dirs, files in os.walk(cleandata, topdown=False):
             tot_data=np.loadtxt(os.path.join(root, name))[:,:]
             time=tot_data[:,1]
             f_2=tot_data[0,-3]*1e-3
-            a_2=tot_data[0,-4]
+            am_2=tot_data[0,-4]
             print("f1=", f_2)
-            print("a1=", a_2)
+            print("a1=", am_2)
             i=1
         else:
             data=np.loadtxt(os.path.join(root, name))[:,:]
@@ -134,17 +132,29 @@ axs[0].set_frame_on(False)
 for ax in axs:
     ax.set_ylim([-3,3])  
 
-
+xi_avg=np.array([])
+xi_avg_err=np.array([])
 for i in range(len(ps_pos)):
     func_data=matrix[i]
     func_data_err=matrix_err[i]
     chi_aus=chi[i]
-    P0=[np.cos(chi[i]/2)**2, w1(chi[i]).imag, 2]
+    P0=[(np.amax(func_data)+np.amin(func_data))/2, (np.amax(func_data)-np.amin(func_data))/2,-0.5+np.pi/2]
+    # print(P0)
+    B0=([10,10, -2],[np.inf, 1000, 2])
+    p_xi,cov_xi = fit(fit_xi, time, func_data, p0=P0, bounds=B0)
+    err_xi=np.diag(cov_xi)**0.5
+    print(p_xi[-1],err_xi[-1])
+    # print(p_xi[1])    e_mxi_2=np.exp(-1j*xi_2)    e_mxi_2=np.exp(-1j*xi_2)
+
+
+    xi_avg=np.append(xi_avg, p_xi[-1])
+    xi_avg_err=np.append(xi_avg_err, err_xi[-1])
+    P0=[np.cos(chi[i]/2)**2, w1(chi[i]).imag, -1]
     # print(P0)
     B0=([0,w1(chi[i]).imag-1000, -2*np.pi],[np.inf, w1(chi[i]).imag+1000, 2*np.pi])
     p_Im,cov_Im = fit(fit_Im, time, func_data, p0=P0, bounds=B0)
     err_Im=np.diag(cov_Im)**0.5
-    # print(p_Im[-1],p_Im[-2])
+    # print(p_Im[-1])
     # print(p_Im,err_Im)
     Im_data_2_fit[i]=p_Im[1]
     Im_data_err_2_fit[i]=(err_Im[1]**2+np.sin(chi[i])**2*chi_0_err**2)**0.5
@@ -157,10 +167,10 @@ for i in range(len(ps_pos)):
     xf = fftfreq(N, S_F)*1e3
     var=np.sum(func_data)**0.5
     
-    # fig = plt.figure(figsize=(8,6))
-    # ax = fig.add_subplot(111)
-    # ax.errorbar(time, matrix[i], yerr= matrix_err[i], fmt="ko")
-    # ax.plot(time_plt, fit_Im(time_plt, *p_Im))
+    fig = plt.figure(figsize=(8,6))
+    ax = fig.add_subplot(111)
+    ax.errorbar(time, matrix[i], yerr= matrix_err[i], fmt="ko")
+    ax.plot(time_plt, fit_xi(time_plt, *p_xi))
     # ax.set_title(str("%.2f"%chi[i],))
     # ax.errorbar(xf, np.abs(yf_data), np.abs(yf_data_err), fmt="k.", capsize=5)
     # ax.set_xlim([-5,5])
@@ -186,7 +196,7 @@ for i in range(len(ps_pos)):
     Im_data_err_2[i]=(abs(c_1_data_err_2/cos2[i])**2 + (abs((c_1_data_2*e_mxi_2)/cos2[i]**2)*cos2_err[i])**2+abs((c_1_data_2*e_mxi_2)/cos2[i]/alpha_2*alpha_2_err)**2)**0.5/abs(alpha_2)
 
     
-
+print(np.average(xi_avg),"+-",np.sum(xi_avg_err**2)**0.5/len(xi_avg))
 axs[1].plot(chi_plt, w2(chi_plt).imag,"g--", alpha=0.5)
 axs[1].errorbar(chi, Im_data_2, Im_data_err_2, fmt="g.",capsize=3)
 axs[2].plot(chi_plt, w2(chi_plt).imag,"g--", alpha=0.5)
@@ -210,7 +220,7 @@ axs[2].errorbar(chi, Im_data_2_fit, Im_data_err_2_fit, fmt="g.", capsize=3)
 # axs[0].errorbar([], [], fmt="g.", capsize=3, label="$\Im(w_{+,2})$ Data")
 # fig.legend(ncol=4, framealpha=1, loc=8)
 
-plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Report/Images/Results_B_pi8_no_In.pdf", format="pdf",bbox_inches="tight")
+# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Report/Images/Results_B_pi8_no_In.pdf", format="pdf",bbox_inches="tight")
 
 # fig = plt.figure(figsize=(8,6), dpi=200)
 # ax = fig.add_subplot(111)

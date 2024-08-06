@@ -22,15 +22,25 @@ warnings.filterwarnings("ignore", category=np.VisibleDeprecationWarning)
 a_1 = 1/2**0.5
 a_2 = 1/2**0.5
 f_1 = 2
-xi_0=0.1
-alpha=-np.pi/4
+xi_0=2.54
 
+a_1= 0.751
+a_1_err= 0.003
+a_2= 0.660
+a_2_err=0.003
+a_21=a_2/a_1
+a_21_err= a_21*((a_1_err/a_1)**2+(a_2_err/a_2)**2)**0.5
+
+# alpha_1=0.1923 #/2.354
+# alpha_1_err=0.0009 
+# alpha_2=-0.1971 #/2.354
+# alpha_2_err=0.0004
 
 def fit_cos(x, A, B, C, D):
-    return A+jv(0,alpha)*B*np.cos(C*x-D)
+    return A+jv(0,alpha_1)*B*np.cos(C*x-D)
 
-def I_px_co(beta, chi, C, alpha):
-    I_co=(1+2*a_1*a_2*np.cos(chi-alpha*np.sin(beta)))/2
+def I_px_co(beta, chi, C, alpha_1):
+    I_co=(1+2*a_1*a_2*np.cos(chi+alpha_1*np.sin(beta)))/2
     return C*I_co
 
 def I_px_in(beta, chi, eta):
@@ -39,17 +49,13 @@ def I_px_in(beta, chi, eta):
 
 # inf_file_name=inf_file_name="TOF_vs_chi_A_22pt_pi8_1200s_06Nov1855"
 # inf_file_name="TOF_vs_chi_A_19pt_pi16_1500s_03Nov1230"
-# inf_file_name="TOF_vs_chi_A_19pt_pi4_1200s_03Nov2326"
-# inf_file_name="TOF_vs_chi_A_19pt_pi4_600s_03Nov1625"
-# inf_file_name="TOF_vs_chi_A_19pt_pi8_100s_06Nov1154"
-# inf_file_name="TOF_vs_chi_A_19pt_pi8_1200s_04Nov1722"
-# inf_file_name="TOF_vs_chi_A_22pt_pi8_1200s_06Nov1855"
-# inf_file_name="TOF_vs_chi_A_22pt_pi16_1200s_07Nov1808"
-# inf_file_name="TOF_vs_chi_A_22pt_pi4_1200s_08Nov0132"
-# inf_file_name="TOF_vs_chi_A_22pt_pi2_1200s_12Nov0455"
-# inf_file_name="TOF_vs_chi_A_22pt_pi4_SD_1200s_12Nov2101"
-# inf_file_name="TOF_vs_chi_A_22pt_pi2_1200s_13Nov0438"
 
+inf_file_name="TOF_vs_chi_A+B_22pt_pi16_1200s_09Nov1808"
+inf_file_name="TOF_vs_chi_A_22pt_pi8_1200s_06Nov1855" #-3932.178382693772
+
+
+alpha_1=0.3847 #/2.354
+alpha_1_err=0.0017 
 sorted_fold_path="/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/exp_CRG-3061/Sorted data/TOF A/"+inf_file_name
 cleandata=sorted_fold_path+"/Cleantxt"
 
@@ -103,18 +109,18 @@ eta = 1-C
 beta = 2*np.pi*1e-3*f_1*time+xi_0
 
 
-def fit_I_px(x, xi_0, A, alpha):
+def fit_I_px(x, xi_0, A, alpha_1):
     beta = 2*np.pi*1e-3*f_1*time+xi_0
     # eta = 1-C
     chi = w_ps*ps_pos-chi_0
     I_px_inc=I_px_in(beta, chi, eta)
     beta, chi = np.meshgrid(beta, chi)
-    fit_I_px = A*(I_px_co(beta, chi, C, alpha) + I_px_inc)
+    fit_I_px = A*(I_px_co(beta, chi, C, alpha_1) + I_px_inc)
     # print(fit_I_px)
     return fit_I_px.ravel()
 
-P0 = (xi_0, 1, alpha)
-B0 = ([-10, 0, -10], [10, 10,  10])
+P0 = (xi_0, 1, alpha_1)
+B0 = ([0, 0, 0], [10, 10,  4])
 p, cov = fit(fit_I_px, range(len(matrix.ravel())), matrix.ravel()/np.amax(matrix.ravel()), bounds=B0)
 err= np.diag(cov)**0.5
 print(p, err)
@@ -125,9 +131,12 @@ ax = fig.add_subplot(111)
 ax.errorbar(np.arange(len(matrix.ravel())),matrix.ravel(), yerr=matrix_err.ravel(), fmt="r.", alpha=0.5, ms=0.5, label="data")
 # ax.plot(matrix.ravel(), "r--")
 ax.plot(fit_I_px(0, *p)*np.amax(matrix.ravel()), "b", lw=1, label="Fit")
-ax.set_xlim([150,250])
+ax.set_xlim([100,250])
 f_obs=matrix.ravel()
 f_exp=fit_I_px(0,*p)*np.amax(matrix.ravel())
+
+
+
 # import glob
 # from PIL import Image
 #def make_gif(frame_folder):

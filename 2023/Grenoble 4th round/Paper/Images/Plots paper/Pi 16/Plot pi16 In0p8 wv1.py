@@ -29,9 +29,9 @@ a_21=a_2/a_1
 
 inf_file_name="TOF_vs_chi_A+B_In1_08mm_22pt_pi16_1200s_4P_16Nov0206"
 
-alpha_1=0.1923 #/2.354
-alpha_1_err=0.0009 
-alpha_2=-0.1971 #/2.354
+alpha_1=0.1932 #/2.354
+alpha_1_err=0.0005
+alpha_2=0.1969 #/2.354
 alpha_2_err=0.0004
 
 
@@ -265,6 +265,15 @@ axs[0].plot((0, 1), (y1, y1), **kwargs)
 axs[0].plot((0, 1), (y2, y2), **kwargs)
 axs[0].plot((0, 1), (y2, y2), **kwargs)
 # ax.legend()
-plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Images/Wv1 In 0p8"+inf_file_name[-10:]+".pdf", format="pdf",bbox_inches="tight")
+# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Images/Wv1 In 0p8"+inf_file_name[-10:]+".pdf", format="pdf",bbox_inches="tight")
+
+with open("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Results txt/In 0p8/Wv12_Im In 0p8"+inf_file_name[-10:]+".txt","w") as f:
+    np.savetxt(f,np.transpose([chi,Im_data_1,Im_data_err_1,Im_data_2,Im_data_err_2]), header="chi w_im1 w_im1_err w_im2 w_im2_err")
+with open("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Results txt/In 0p8/Wv12_Re In 0p8"+inf_file_name[-10:]+".txt","w") as f:
+    np.savetxt(f,np.transpose([chi,Re_1,Re_err_1,Re_2,Re_err_2]), header="chi w_re1 w_re1_err w_re2 w_re2_err")
+
+with open("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Results txt/In 0p8/cos2 In 0p8"+inf_file_name[-10:]+".txt","w") as f:
+    np.savetxt(f,np.transpose([ps_pos,cos2,cos2_err]), header="chi cos2 cos2err")
+
 
 plt.show()

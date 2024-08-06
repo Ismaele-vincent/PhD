@@ -22,7 +22,7 @@ from scipy.optimize import curve_fit as fit
 colors=["k","#f10d0c","#00a933","#5983b0"]
 
 int_file_name="TOF_vs_chi_A+B_In1_08mm_22pt_pi16_1200s_4P_16Nov0206"
-
+int_file_name="TOF_vs_chi_A+B_In1_22pt_pi16_2000s_4P_16Nov1733"
 
 
 def fit_cos(x, A, B, C, D):
@@ -61,6 +61,7 @@ for i in range(len(ps_int)):
 data_int=np.sum(matrix, axis=1)
 
 inf_file_name_ifg="ifg_-2to2_60s_16Nov0142"
+inf_file_name_ifg="ifg_-2to2_30s_17Nov0550"
 sorted_fold_path_ifg="/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/exp_CRG-3061/Sorted data/Ifg off/"+inf_file_name_ifg
 cleandata_ifg=sorted_fold_path_ifg+"/Cleantxt"
 for root, dirs, files in os.walk(cleandata_ifg, topdown=False):
@@ -99,6 +100,8 @@ chi_ifg=w_ps_ifg*ps_ifg-chi_0_ifg
 chi_plt_ifg = np.linspace(chi_ifg[3], chi_ifg[-3],100)
 print("C=",C_ifg, "+-", C_ifg_err)
 # print(p_int[0]/1200)
+print("C_ifg-C_int", C_ifg-C_int,"+-", (C_ifg_err**2+C_int_err**2)**0.5)
+
 
 fig = plt.figure(figsize=(5,4))
 ax = fig.add_subplot(111)
@@ -108,8 +111,8 @@ ax.errorbar(ps_int,data_int/p_int[0]*100, yerr=data_int**0.5/p_int[0]*100,fmt="o
 ax.errorbar(ps_plt_int,fit_cos(ps_plt_int, *p_int)/p_int[0]*100,fmt="-",color=colors[1], label="Fit")
 ax.errorbar(ps_ifg[3:-2],data_ifg[3:-2]/p_ifg[0]*100,yerr=data_ifg_err[3:-2]/p_ifg[0]*100,fmt="o",color=colors[3],capsize=5, ms=3, label="$\mathcal{N}_+ (\\alpha_{1,2}=0$)")
 ax.errorbar(ps_plt_ifg,fit_cos(ps_plt_ifg, *p_ifg)/p_ifg[0]*100,fmt="--", color=colors[3], label="Fit")
-ax.set_xlabel("Phase-shifter position")
+ax.set_xlabel("Phase-shifter position [arb.]")
 ax.legend(loc=1)
 # ax.tick_params(axis="y", left=False, labelleft=False)
 ax.set_ylabel("Arb.")
-plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Images/Ifg and time average.pdf", format="pdf",bbox_inches="tight")
+# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Images/Ifg and time average.pdf", format="pdf",bbox_inches="tight")

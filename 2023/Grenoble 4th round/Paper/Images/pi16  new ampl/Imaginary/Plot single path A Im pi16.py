@@ -28,7 +28,7 @@ a_21=a_2/a_1
 # inf_file_name="TOF_vs_chi_A_19pt_pi16_1200s_05Nov1903" #-4932.994206753456
 inf_file_name="TOF_vs_chi_A_22pt_pi16_1200s_07Nov1808" #-3597.8672630959286
 
-alpha_1=-0.1923 #/2.354
+alpha_1=0.1923 #/2.354
 alpha_1_err=0.0009 
 alpha_2=0 #/2.354
 alpha_2_err=0 
@@ -122,17 +122,18 @@ cos2=np.zeros((len(ps_pos)))
 cos2_err=np.zeros((len(ps_pos)))
 cos2_fit=np.zeros((len(ps_pos)))
 cos2_err_fit=np.zeros((len(ps_pos)))
-
+xi_1_vec=np.array([])
 for i in range(len(ps_pos)):
     func_data=matrix[i]
     func_data_err=matrix_err[i]
     chi_aus=chi[i]
-    P0=[np.cos(chi[i]/2)**2, w1(chi[i]).imag, 2]
+    P0=[np.cos(chi[i]/2)**2, w1(chi[i]).imag, -1.5]
     # print(P0)
     B0=([0,w1(chi[i]).imag-1000, -2*np.pi],[np.inf, w1(chi[i]).imag+1000, 2*np.pi])
     p_Im,cov_Im = fit(fit_Im, time, func_data, p0=P0, bounds=B0)
     err_Im=np.diag(cov_Im)**0.5
-    # print(p_Im[-1],p_Im[-2])
+    print(p_Im[-1])
+    xi_1_vec=np.append(xi_1_vec,p_Im[-1])
     # print(p_Im,err_Im)
     Im_data_1_fit[i]=p_Im[1]
     Im_data_err_1_fit[i]=(err_Im[1]**2+np.sin(chi[i])**2*chi_0_err**2)**0.5
@@ -184,7 +185,7 @@ for i in range(len(ps_pos)):
     
     Im_data_1[i]=(c_1_data_1*e_mxi_1).real/(cos2[i])/alpha_1
     Im_data_err_1[i]=(abs(c_1_data_err_1/cos2[i])**2 + (abs((c_1_data_1*e_mxi_1)/cos2[i]**2)*cos2_err[i])**2+abs((c_1_data_1*e_mxi_1)/cos2[i]/alpha_1*alpha_1_err)**2)**0.5/abs(alpha_1)
-
+# print("xi=", np.average(xi_1_vec[0,1,2,3,4,5,7,8,9,10,11,12,14,15,16,1]))
 fig = plt.figure(figsize=(10, 4), dpi=200)
 fig.suptitle("$\mathbf{a_2/a_1=1}$",bbox=dict(facecolor='none', edgecolor='k'))
 gs = GridSpec(1,2, figure=fig, wspace=0, hspace=0, top=0.85, bottom=0)

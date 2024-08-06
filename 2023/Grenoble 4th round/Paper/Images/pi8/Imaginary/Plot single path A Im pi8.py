@@ -29,7 +29,7 @@ a_2=1/2**0.5
 inf_file_name="TOF_vs_chi_A_22pt_pi8_1200s_06Nov1855" #-3932.178382693772
 
 
-alpha_1=-0.3847 #/2.354
+alpha_1=0.3847 #/2.354
 alpha_1_err=0.0017 
 
 def w1(chi):
@@ -65,7 +65,7 @@ for root, dirs, files in os.walk(cleandata, topdown=False):
             time=tot_data[:,1]
             f_1=tot_data[0,-3]*1e-3
             a_1=tot_data[0,-4]
-            print("f1=", f_1)
+            print("f1=", f_1*)
             print("a1=", a_1)
             i=1
         else:
