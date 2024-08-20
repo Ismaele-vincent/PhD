@@ -1,0 +1,13 @@
+http://www.tlhiv.org/ltxpreview/
+\begin{align*}
+    \ket{\psi}&= a_1 \ket{1} + \mathrm{e}^{\mathrm{i} \chi}a_2 \ket{2} \\
+    \ket{\psi^\prime}&= \mathrm{e}^{\mathrm{i} \chi_0} a_1 \ket{1} + \mathrm{e}^{\mathrm{i} \chi}a_2 \ket{2} \\
+\ket{+}\bra{+}&\\
+\ket{-}\bra{-}&\\
+\ket{\pm}&=\frac{\ket{1}\pm\ket{2}}{\sqrt{2}}\\
+I_{\pm,1}(\chi, \chi_0)&=\left|\braket{\pm|\psi^\prime} \right|^2 = \frac{1}{2}\pm a_1 a_2 \cos(\chi+\chi_0)\\
+\braket{\pm|\psi^\prime}\ket{\pm}&\\
+\ket{\psi^\prime}&=\mathrm{e}^{\mathrm{i} \chi_0 \hat{\Pi}_1}\ket{\psi}\\
+\braket{\pm|\mathrm{e}^{\mathrm{i} \chi_0 \hat{\Pi}_1}|\psi}\ket{\pm}& \\
+I_{\pm}(\chi, \chi_0)&=\left|\braket{\pm|\mathrm{e}^{-\mathrm{i} \chi_0\hat{\Pi}_1} | \psi} \right|^2 \\&= \left|\braket{\pm| \psi} \right|^2\left[1 + 2\left( \lvert w_{\pm,1} \rvert^2 - w^\Re_{\pm,1}\right)\left(1- \cos \chi_0 \right) + 2w^\Im_{\pm,1} \sin \chi_0 \right]
+\end{align*}
