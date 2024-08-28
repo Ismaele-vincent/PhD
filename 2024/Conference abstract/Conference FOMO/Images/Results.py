@@ -268,8 +268,8 @@ Im_1_err=(data_ifg_matrix_err[1]**2+data_ifg_matrix_err[3]**2+(4*Im_1)**2*data_i
 Im_2=-(data_ifg_matrix[3]-data_ifg_matrix[1])/data_ifg_matrix[0]/4
 Im_2_err=(data_ifg_matrix_err[1]**2+data_ifg_matrix_err[3]**2+(4*Im_2)**2*data_ifg_matrix_err[0]**2)**0.5/(4*abs(data_ifg_matrix[0]))
 
-fig = plt.figure(figsize=(7,4))
-gs = fig.add_gridspec(1,2, hspace=0.0,wspace=0.0)
+fig = plt.figure(figsize=(7,3.5))
+gs = fig.add_gridspec(1,2, wspace=0.4)
 axs = [fig.add_subplot(gs[0,0]),fig.add_subplot(gs[0,1])]
 # ax.set_title(inf_file_name+"\n$\Re(w_{1,+})$")
 # axs[0].set_title("Experimental results for path weak value")
@@ -279,9 +279,9 @@ axs[1].plot(chi_plt, w1(chi_plt, a_21).imag, "r--", alpha=0.5, label="Theory" )
 axs[0].set_xlabel("$\\chi$ [rad]")
 axs[1].set_xlabel("$\\chi$ [rad]")
 axs[0].set_ylabel("Real part")
-axs[1].yaxis.set_label_position("right")
-axs[1].tick_params(axis="y", left=False, labelleft=False,right=True, labelright=True)
-axs[1].set_ylabel("Imaginary part", va="bottom", rotation=270)
+# axs[1].yaxis.set_label_position("right")
+# axs[1].tick_params(axis="y", left=False, labelleft=False,right=True, labelright=True)
+axs[1].set_ylabel("Imaginary part")
 axs[1].legend(loc=9)
 # axs[0].tick_params(axis="x", bottom=False, labelbottom=False)
 
