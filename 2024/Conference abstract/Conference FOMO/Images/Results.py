@@ -37,17 +37,17 @@ Indium 0.8mm path2
 """
 Indium 1.8mm path2
 """
-# folder_name="Skew In 1p8 path2"
-# P1=(121375+124156)/2/10
-# P2=0.252*P1
-# a_1=0.915
-# a_1_err=0.003
-# a_2=0.404
-# a_2_err=0.008
-# a_21=a_2/a_1
-# lim=0
-# inf_file_name="ifgPS1_PS2_3p_45pt_In18_18Mar1055"
-# points=45
+folder_name="Skew In 1p8 path2"
+P1=(121375+124156)/2/10
+P2=0.252*P1
+a_1=0.915
+a_1_err=0.003
+a_2=0.404
+a_2_err=0.008
+a_21=a_2/a_1
+lim=0
+inf_file_name="ifgPS1_PS2_3p_45pt_In18_18Mar1055"
+points=45
 
 # """
 # Indium 0.8mm path2 (Bad, intensity going down)
@@ -274,8 +274,8 @@ axs = [fig.add_subplot(gs[0,0]),fig.add_subplot(gs[0,1])]
 # ax.set_title(inf_file_name+"\n$\Re(w_{1,+})$")
 # axs[0].set_title("Experimental results for path weak value")
 fig.suptitle("Experimentally measured path weak value", y=0.97)
-axs[1].errorbar(chi,Im_1, Im_1_err, fmt="r.", capsize=3, label="Data")
-axs[1].plot(chi_plt, w1(chi_plt, a_21).imag, "r--", alpha=0.5, label="Theory" )
+axs[1].errorbar(chi,Im_2, Im_2_err, fmt="r.", capsize=3, label="Data")
+axs[1].plot(chi_plt, w2(chi_plt, a_21).imag, "r--", alpha=0.5, label="Theory" )
 axs[0].set_xlabel("$\\chi$ [rad]")
 axs[1].set_xlabel("$\\chi$ [rad]")
 axs[0].set_ylabel("Real part")
@@ -299,15 +299,19 @@ Re_1_1_err=((data_ifg_matrix_err[2]/data_ifg_matrix[0])**2+(data_ifg_matrix[2]*d
 Re_1_2=P1_corr/data_ifg_matrix[0] + 1/4 - data_ifg_matrix[2]/(data_ifg_matrix[0]*4)
 Re_1_2_err=(P1_corr_err**2+(data_ifg_matrix_err[2]/4)**2+(Re_1_2-1/4)**2*data_ifg_matrix_err[0]**2)**0.5/abs(data_ifg_matrix[0])
 
-s_1=P1_corr/data_ifg_matrix[0]-Im_1**2
-Re_1_3=np.sign(s_1)*np.abs(s_1)**0.5
-Re_1_3_err=((P1_corr_err/data_ifg_matrix[0])**2+(P1_corr/data_ifg_matrix[0]**2)**2*data_ifg_matrix_err[0]**2+4*Im_1**2*Im_1_err**2)**0.5/Re_1_3/2
+# s_1=P1_corr/data_ifg_matrix[0]-Im_1**2
+# Re_1_3=np.sign(s_1)*np.abs(s_1)**0.5
+# Re_1_3_err=((P1_corr_err/data_ifg_matrix[0])**2+(P1_corr/data_ifg_matrix[0]**2)**2*data_ifg_matrix_err[0]**2+4*Im_1**2*Im_1_err**2)**0.5/Re_1_3/2
+sa=data_ifg_matrix[2]/data_ifg_matrix[0]-4*Im_2**2
+s=np.sign(sa)*abs(sa)**0.5
+Re_2_2=P2_corr/data_ifg_matrix[0] +1/4 - data_ifg_matrix[2]/(data_ifg_matrix[0]*4) 
+Re_2_2_err=(P1_corr_err**2+(data_ifg_matrix_err[2]/4)**2+(Re_2_2-1/4)**2*data_ifg_matrix_err[0]**2)**0.5/abs(data_ifg_matrix[0])
 
 # fig = plt.figure(figsize=(8,6))
 # ax = fig.add_subplot(111)
 # axs[0].set_title(inf_file_name+"\n$\Re(w_{1,+})$")
-axs[0].plot(chi_plt, w1(chi_plt, a_21).real, "k--", alpha=0.5, label="Theory")
-axs[0].errorbar(chi,Re_1_3, Re_1_3_err, fmt="k.", capsize=4, label="Data")
+axs[0].plot(chi_plt, w2(chi_plt, a_21).real, "k--", alpha=0.5, label="Theory")
+axs[0].errorbar(chi,Re_2_2, Re_2_2_err, fmt="k.", capsize=4, label="Data")
 axs[0].legend()
 # if lim:
 #     axs[0].plot(chi_plt, w1(chi_plt, a_21).real+3*(np.amax(w1(chi_plt, a_21).real)-0*np.amin(w1(chi_plt, a_21).real)), "r--", alpha=0.5)
@@ -365,6 +369,6 @@ axs[0].legend()
 # with open("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Results txt/No In/cos2 No In"+inf_file_name[-10:]+".txt","w") as f:
 #     np.savetxt(f,np.transpose([ps_pos,cos2,cos2_err]), header="chi cos2 cos2err")
 
-plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Conference abstract/Conference FOMO/Images/Results.pdf", format="pdf",bbox_inches="tight")
+plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Conference abstract/Conference FOMO/Images/Results w2.pdf", format="pdf",bbox_inches="tight")
 
 plt.show()
