@@ -268,14 +268,14 @@ Im_1_err=(data_ifg_matrix_err[1]**2+data_ifg_matrix_err[3]**2+(4*Im_1)**2*data_i
 Im_2=-(data_ifg_matrix[3]-data_ifg_matrix[1])/data_ifg_matrix[0]/4
 Im_2_err=(data_ifg_matrix_err[1]**2+data_ifg_matrix_err[3]**2+(4*Im_2)**2*data_ifg_matrix_err[0]**2)**0.5/(4*abs(data_ifg_matrix[0]))
 
-fig = plt.figure(figsize=(7,3.5))
+fig = plt.figure(figsize=(7,3.5), dpi=300)
 gs = fig.add_gridspec(1,2, wspace=0.4)
 axs = [fig.add_subplot(gs[0,0]),fig.add_subplot(gs[0,1])]
 # ax.set_title(inf_file_name+"\n$\Re(w_{1,+})$")
 # axs[0].set_title("Experimental results for path weak value")
 fig.suptitle("Experimentally measured path weak value", y=0.97)
-axs[1].errorbar(chi,Im_2, Im_2_err, fmt="r.", capsize=3, label="Data")
-axs[1].plot(chi_plt, w2(chi_plt, a_21).imag, "r--", alpha=0.5, label="Theory" )
+axs[1].errorbar(chi,Im_1, Im_1_err, fmt="r.", capsize=3, label="Data")
+axs[1].plot(chi_plt, w1(chi_plt, a_21).imag, "r--", alpha=0.5, label="Theory" )
 axs[0].set_xlabel("$\\chi$ [rad]")
 axs[1].set_xlabel("$\\chi$ [rad]")
 axs[0].set_ylabel("Real part")
@@ -310,8 +310,8 @@ Re_2_2_err=(P1_corr_err**2+(data_ifg_matrix_err[2]/4)**2+(Re_2_2-1/4)**2*data_if
 # fig = plt.figure(figsize=(8,6))
 # ax = fig.add_subplot(111)
 # axs[0].set_title(inf_file_name+"\n$\Re(w_{1,+})$")
-axs[0].plot(chi_plt, w2(chi_plt, a_21).real, "k--", alpha=0.5, label="Theory")
-axs[0].errorbar(chi,Re_2_2, Re_2_2_err, fmt="k.", capsize=4, label="Data")
+axs[0].plot(chi_plt, w1(chi_plt, a_21).real, "k--", alpha=0.5, label="Theory")
+axs[0].errorbar(chi,Re_1_2, Re_1_2_err, fmt="k.", capsize=4, label="Data")
 axs[0].legend()
 # if lim:
 #     axs[0].plot(chi_plt, w1(chi_plt, a_21).real+3*(np.amax(w1(chi_plt, a_21).real)-0*np.amin(w1(chi_plt, a_21).real)), "r--", alpha=0.5)
@@ -370,5 +370,6 @@ axs[0].legend()
 #     np.savetxt(f,np.transpose([ps_pos,cos2,cos2_err]), header="chi cos2 cos2err")
 
 plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Conference abstract/Conference FOMO/Images/Results w2.pdf", format="pdf",bbox_inches="tight")
+plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Conference abstract/Conference FOMO/Images/Results w2.png",bbox_inches="tight")
 
 plt.show()
