@@ -245,5 +245,5 @@ ax.legend(handles=handles[-2:], framealpha=1, loc=2)
 ax.set_xlabel("$\chi$ [rad]")
 ax.set_ylabel("Neutron rate (count / s)")
 
-plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images/Measurement example.pdf", format="pdf",bbox_inches="tight")
+# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images/Measurement example.pdf", format="pdf",bbox_inches="tight")
 plt.show()
