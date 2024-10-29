@@ -195,7 +195,7 @@ A_avg=0
 Dchi=np.zeros(4)
 C_avg=0
 C_err=0
-fig = plt.figure(figsize=(5,4))
+fig = plt.figure(figsize=(5,4), dpi=300)
 ax = fig.add_subplot(111)
 for root, dirs, files in os.walk(cleandata, topdown=False):
     files=np.sort(files)
@@ -227,6 +227,8 @@ for root, dirs, files in os.walk(cleandata, topdown=False):
             ax.errorbar(chi,data_ifg/time,yerr=data_ifg_err/time,fmt="o",color=colors[i],capsize=5, ms=3)
             ax.fill_between([], [],color=colors[i],label=labels[i])
             ax.errorbar(chi_plt,fit_cos(x_plt, *p)/time, fmt="--", color=colors[i])
+            # ax.errorbar(np.pi/2,fit_cos(np.pi/2/p[2], *p)/time, fmt="o", color="r")
+            
             # # ax.set_ylim([0,1500])
             print("C=", p[1]/p[0], "+-", ((err[1]/p[0])**2+(err[1]*p[1]/p[0]**2)**2)**0.5)
             # print("C_unb=", p_unb[-1])

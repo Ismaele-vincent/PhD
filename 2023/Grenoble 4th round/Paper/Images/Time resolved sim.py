@@ -44,7 +44,6 @@ f_1=2
 f_2=3
 time_plt=np.linspace(0,2000,1000)
 
-
 def O_beam(t, chi):
     return 1/2 + a_1*a_2*np.cos(chi+alpha_1*np.sin(2*np.pi*1e-3*f_1*t+xi_1)-alpha_2*np.sin(2*np.pi*1e-3*f_2*t+xi_2))
 print(np.pi/3)

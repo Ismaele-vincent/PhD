@@ -171,7 +171,7 @@ for i in range(len(ps_pos)):
     # print(p_Im[-1],p_Im[-2])
     # print(p_Im,err_Im)
     err_Im[0]=(err_Im[0]**2+(A_err/len(time))**2)**0.5
-    p_Im[0]-=A/len(time)
+    # p_Im[0]-=A/len(time)
     Im_data_1_fit[i]=p_Im[1]/(alpha_1*p_Im[0])
     Im_data_err_1_fit[i]=abs(Im_data_1_fit[i])*((err_Im[1]/p_Im[1])**2+(alpha_1_err/alpha_1)**2+(err_Im[0]/p_Im[0])**2)**0.5
     Im_data_2_fit[i]=p_Im[2]/(alpha_2*p_Im[0])
@@ -185,10 +185,10 @@ for i in range(len(ps_pos)):
     xf = fftfreq(N, S_F)*1e3
     var=np.sum(func_data_err**2/N)**0.5
     
-    # fig = plt.figure(figsize=(8,6))
-    # ax = fig.add_subplot(111)
-    # ax.errorbar(time, matrix_fit[i], yerr= matrix_err_fit[i], fmt="ko")
-    # ax.plot(time_plt, fit_Im(time_plt, *p_Im))
+    fig = plt.figure(figsize=(8,6))
+    ax = fig.add_subplot(111)
+    ax.errorbar(time, matrix_fit[i], yerr= matrix_err_fit[i], fmt="ko")
+    ax.plot(time_plt, fit_Im(time_plt, *p_Im))
     # ax.set_title(str("%.2f"%chi[i],))
     # ax.errorbar(xf, np.abs(yf_data), np.abs(yf_data_err), fmt="k.", capsize=5)
     # ax.set_xlim([-5,5])
@@ -237,7 +237,7 @@ psi_p=(a_1+np.exp(1j*chi)*a_2)/(2**0.5)
 psi_m=(a_1-np.exp(1j*chi)*a_2)/(2**0.5)
 M=np.abs(psi_p/psi_m)
 th= np.angle(psi_p/psi_m)
-pi_shift=[*np.arange(7,22),*np.arange(0,7)]
+pi_shift=[*np.arange(7,22),*np.arange(8,15)]
 cos2pi=-cos2+np.amax(cos2)
 M[:15]=(cos2[:15]/cos2[pi_shift[:15]])**0.5
 # M=(cos2/cos2pi)**0.5
@@ -335,12 +335,12 @@ axsr[1].set_ylim([ylim_re_1,ylim_re_2])
 # axsr[1].set_yticks(ticks=ylabels)
 axsr[1].set_xlabel("$\\chi$ [rad]")
 
-# with open("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Results txt/No In/Wv12_Im No In"+inf_file_name[-10:]+".txt","w") as f:
-#     np.savetxt(f,np.transpose([chi,Im_data_1,Im_data_err_1,Im_data_2,Im_data_err_2]), header="chi w_im1 w_im1_err w_im2 w_im2_err")
-# with open("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Results txt/No In/Wv12_Re No In"+inf_file_name[-10:]+".txt","w") as f:
-#     np.savetxt(f,np.transpose([chi,Re_1,Re_err_1,Re_2,Re_err_2]), header="chi w_re1 w_re1_err w_re2 w_re2_err")
+with open("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Results txt/No In/Wv12_Im No In"+inf_file_name[-10:]+".txt","w") as f:
+    np.savetxt(f,np.transpose([chi,Im_data_1,Im_data_err_1,Im_data_2,Im_data_err_2]), header="chi w_im1 w_im1_err w_im2 w_im2_err")
+with open("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Results txt/No In/Wv12_Re No In"+inf_file_name[-10:]+".txt","w") as f:
+    np.savetxt(f,np.transpose([chi,Re_1,Re_err_1,Re_2,Re_err_2]), header="chi w_re1 w_re1_err w_re2 w_re2_err")
     
-# with open("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Results txt/No In/cos2 No In"+inf_file_name[-10:]+".txt","w") as f:
-#     np.savetxt(f,np.transpose([ps_pos,cos2,cos2_err]), header="chi cos2 cos2err")
+with open("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Results txt/No In/cos2 No In"+inf_file_name[-10:]+".txt","w") as f:
+    np.savetxt(f,np.transpose([ps_pos,cos2,cos2_err]), header="chi cos2 cos2err")
     
 plt.show()

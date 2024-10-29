@@ -70,13 +70,15 @@ sorted_fold_path="/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/exp_CRG-3
 cleandata=sorted_fold_path+"/Cleantxt"
 
 i=0
+ini=0#6
+fin=120#66
 for root, dirs, files in os.walk(cleandata, topdown=False):
     files=np.sort(files)
     # print(files)
     for name in files:
         # print(name)
         if i==0:
-            tot_data=np.loadtxt(os.path.join(root, name))[:,:]
+            tot_data=np.loadtxt(os.path.join(root, name))[ini:fin,:]
             time=tot_data[:,1]
             f_2=tot_data[0,-3]*1e-3
             f_1=tot_data[0,-6]*1e-3
@@ -88,12 +90,14 @@ for root, dirs, files in os.walk(cleandata, topdown=False):
             print("a2=", am_2)
             i=1
         else:
-            data=np.loadtxt(os.path.join(root, name))[:,:]
+            data=np.loadtxt(os.path.join(root, name))[ini:fin,:]
             tot_data = np.vstack((tot_data, data))
 time_plt=np.linspace(time[0], time[-1], 1000)
 ps_pos=tot_data[::len(time),-1]
+print(time[-1])
 N = len(time)
 S_F=16.6667
+print(time[-1], N, S_F)
 matrix=np.zeros((len(ps_pos),len(time)))
 matrix_err=np.zeros((len(ps_pos),len(time)))
 for i in range(len(ps_pos)):
@@ -181,13 +185,13 @@ for i in range(len(ps_pos)):
     xf = fftfreq(N, S_F)*1e3
     var=np.sum(func_data_err**2/N)**0.5
     
-    # fig = plt.figure(figsize=(8,6))
-    # ax = fig.add_subplot(111)
-    # ax.errorbar(time, matrix_fit[i], yerr= matrix_err_fit[i], fmt="ko")
-    # ax.plot(time_plt, fit_Im(time_plt, *p_Im))
+    fig = plt.figure(figsize=(8,6))
+    ax = fig.add_subplot(111)
+    ax.errorbar(time, matrix_fit[i], yerr= matrix_err_fit[i], fmt="ko")
+    ax.plot(time_plt, fit_Im(time_plt, *p_Im))
     # ax.set_title(str("%.2f"%chi[i],))
     # ax.errorbar(xf, np.abs(yf_data), np.abs(yf_data_err), fmt="k.", capsize=5)
-    # ax.set_xlim([-5,5])
+    # ax.set_xlim([-10,10])
     
     c_0_data=abs(yf_data[abs(xf)<1/S_F/2]).astype(complex)-A
     c_1_data_1=(yf_data[abs(xf-f_1)<1/S_F/2]).astype(complex)
@@ -224,14 +228,20 @@ for i in range(len(ps_pos)):
     # Im_data_1[i]=(c_1_data_1*e_mxi_1).real/(cos2[i])/alpha_1
     Im_data_1[i]=c_1_data_1.real/abs(e_mxi_1.real)/(cos2[i])/alpha_1
     Im_data_err_1[i]=(abs(c_1_data_err_1/cos2[i])**2 + ((abs(c_1_data_1*e_mxi_1)/cos2[i]**2)*cos2_err[i])**2+(abs(c_1_data_1*e_mxi_1)/cos2[i]/alpha_1*alpha_1_err)**2)**0.5/abs(alpha_1)
+    # Im_data_err_1[i]=Im_data_err_1_fit[i]
     Im_data_2[i]=c_1_data_2.real/abs(e_mxi_2.real)/(cos2[i])/alpha_2
     Im_data_err_2[i]=(abs(c_1_data_err_2/cos2[i])**2 + (abs((c_1_data_2*e_mxi_2)/cos2[i]**2)*cos2_err[i])**2+abs((c_1_data_2*e_mxi_2)/cos2[i]/alpha_2*alpha_2_err)**2)**0.5/abs(alpha_2)
+
+fig = plt.figure(figsize=(5,7))
+ax=fig.add_subplot(111)
+ax.plot(cos2)
+ax.plot(ps_data-A)
 
 psi_p=(a_1+np.exp(1j*chi)*a_2)/(2**0.5)
 psi_m=(a_1-np.exp(1j*chi)*a_2)/(2**0.5)
 M=np.abs(psi_p/psi_m)
 th= np.angle(psi_p/psi_m)
-pi_shift=[*np.arange(7,22),*np.arange(0,7)]
+pi_shift=[*np.arange(7,22),*np.arange(8,15)]
 cos2pi=-cos2+np.amax(cos2)
 M[:15]=(cos2[:15]/cos2[pi_shift[:15]])**0.5
 # M=(cos2/cos2pi)**0.5

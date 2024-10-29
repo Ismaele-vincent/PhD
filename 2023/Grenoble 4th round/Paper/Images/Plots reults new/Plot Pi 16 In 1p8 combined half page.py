@@ -17,6 +17,7 @@ plt.rcParams.update({'figure.max_open_warning': 0})
 from PIL import Image as im
 from scipy.optimize import curve_fit as fit
 from scipy.special import jv
+# plt.rcParams["mathtext.fontset"]="cm"
 colors=["k","#f10d0c","#00a933","#5983b0"]
 rad=np.pi/180
 a_1= 0.496
@@ -109,7 +110,7 @@ psi_p=(a_1+np.exp(1j*chi)*a_2)/(2**0.5)
 psi_m=(a_1-np.exp(1j*chi)*a_2)/(2**0.5)
 M=np.abs(psi_p/psi_m)
 th= np.angle(psi_p/psi_m)
-pi_shift=[*np.arange(7,22),*np.arange(0,7)]
+pi_shift=[*np.arange(7,22),*np.arange(8,15)]
 
 cos2pi=-cos2_avg+np.amax(cos2_avg)
 M[:15]=(cos2_avg[:15]/cos2_avg[pi_shift[:15]])**0.5
@@ -125,7 +126,7 @@ xlim2=chi[-7]-0.2
 d=0.02
 h=0.05
 
-fig = plt.figure(figsize=(5,6), dpi=150)
+fig = plt.figure(figsize=(5,7), dpi=150)
 gs = fig.add_gridspec(3,2, height_ratios=(1,1, 1), hspace=0.0,wspace=0.0)
 # ax_aus=fig.add_subplot(gs[1:, 0])
 # ax_aus.tick_params(axis="both", bottom=False, labelbottom=False,left=False, labelleft=False,)
@@ -139,8 +140,8 @@ y_im_labels=np.arange(ylim_im_1+0.2,ylim_im_2,1)
 axsl[0].tick_params(axis="x", bottom=False, labelbottom=False)
 axsl[0].set_title("Imaginary part", fontsize=11)#"a_2/a_1\\approx$"+str("%.2f" % (a_21),)+")")
 
-axsl[0].errorbar(chi, Im_1_avg, Im_1_avg_err, fmt=".", color=colors[1], capsize=3, label="$\Im(w_{1,+})$ data")
-axsl[0].plot(chi_plt, w1(chi_plt).imag, "--",color=colors[1], alpha=0.5, label="$\Im(w_{1,+})$ theory")
+axsl[0].errorbar(chi, Im_1_avg, Im_1_avg_err, fmt=".", color=colors[0], capsize=3, label="$\Im(w_{1,+})$ data")
+axsl[0].plot(chi_plt, w1(chi_plt).imag, "-",color=colors[3], alpha=0.8, label="$\Im(w_{1,+})$ theory")
 axsl[0].set_ylim([ylim_im_1,ylim_im_2])
 axsl[0].set_yticks(ticks=y_im_labels)
 axsl[0].grid(True, ls="dotted")
@@ -150,8 +151,8 @@ ylim_im_2=1.2
 y_im_labels=np.arange(ylim_im_1+0.2,ylim_im_2,1)
 
 axsl[1].tick_params(axis="x", bottom=False, labelbottom=False)
-axsl[1].errorbar(chi, Im_2_avg, Im_2_avg_err, fmt=".", color=colors[2], capsize=3, label="$\Im(w_{2,+})$ data")
-axsl[1].plot(chi_plt, w2(chi_plt).imag, "--",color=colors[2], alpha=0.5, label="$\Im(w_{2,+})$ theory")
+axsl[1].errorbar(chi, Im_2_avg, Im_2_avg_err, fmt=".", color=colors[0], capsize=3, label="$\Im(w_{2,+})$ data")
+axsl[1].plot(chi_plt, w2(chi_plt).imag, "-",color=colors[3], alpha=0.8, label="$\Im(w_{2,+})$ theory")
 axsl[1].set_ylim([ylim_im_1,ylim_im_2])
 axsl[1].set_yticks(ticks=y_im_labels)
 axsl[1].grid(True, ls="dotted")
@@ -160,8 +161,8 @@ ylim_im_1=-1.2
 ylim_im_2=1.2
 y_im_labels=np.arange(ylim_im_1+0.2,ylim_im_2,1)
 
-axsl[2].errorbar(chi, Im_1_avg+Im_2_avg, (Im_1_avg_err**2+Im_2_avg_err**2)**0.5, fmt=".", color=colors[3], capsize=3, label="$\Im(w_{2,+})$ data")
-axsl[2].plot(chi_plt, w1(chi_plt).imag+w2(chi_plt).imag, "--",color=colors[3], alpha=0.5, label="$\Im(w_{2,+})$ theory")
+axsl[2].errorbar(chi, Im_1_avg+Im_2_avg, (Im_1_avg_err**2+Im_2_avg_err**2)**0.5, fmt=".", color=colors[0], capsize=3, label="$\Im(w_{2,+})$ data")
+axsl[2].plot(chi_plt, w1(chi_plt).imag+w2(chi_plt).imag, "-",color=colors[3], alpha=0.8, label="$\Im(w_{2,+})$ theory")
 axsl[2].grid(True, ls="dotted")
 axsl[2].set_ylim([ylim_im_1,ylim_im_2])
 axsl[2].set_yticks(ticks=y_im_labels)
@@ -189,21 +190,25 @@ y_re_labels=np.arange(ylim_re_1+0.5,ylim_re_2,1)
 
 axsr[0].tick_params(axis="x", bottom=False, labelbottom=False)
 axsr[0].set_title("Real part", fontsize=11)#"a_2/a_1\\approx$"+str("%.2f" % (a_21),)+")")
-axsr[0].errorbar(chi[:-7], Re_1_avg[:-7], Re_1_avg_err[:-7], fmt=".", color=colors[1], capsize=3, label="$\Im(w_{1,+})$ data")
-axsr[0].plot(chi_plt, w1(chi_plt).real, "--", color=colors[1], alpha=0.5, label="$\Im(w_{1,+})$ theory")
+# axsr[0].errorbar(chi[:-7], Re_1_avg[:-7], Re_1_avg_err[:-7], fmt=".", color=colors[1], capsize=3, label="$\Im(w_{1,+})$ data")
+axsr[0].errorbar(chi, Re_1_avg, Re_1_avg_err, fmt=".", color=colors[0], capsize=3)
+axsr[0].plot(chi_plt, w1(chi_plt).real, "-", color=colors[3], alpha=0.8)
 axsr[0].grid(True, ls="dotted")
 # axsr[0].yaxis.set_label_coords(-0.2,0.5)
 axsr[0].set_ylim([ylim_re_1,ylim_re_2])
 # axsr[0].set_yticks(ticks=axsr[0].get_yticks()[1:-1])
 axsr[0].set_yticks(ticks=y_re_labels)
-
+# axsr[0].plot([],[], "-",color="k", label="Theory")
+# axsr[0].errorbar([],[], [], fmt=".", color="k", capsize=3, label="Data")
+# axsr[0].legend(loc=10, ncol=2, bbox_to_anchor=(0,1.3))
 ylim_re_1=-0.5
 ylim_re_2=2.5
 y_re_labels=np.arange(ylim_re_1+0.5,ylim_re_2,1)
 
 axsr[1].tick_params(axis="x", bottom=False, labelbottom=False)
-axsr[1].errorbar(chi[:-7], Re_2_avg[:-7], Re_2_avg_err[:-7], fmt=".", color=colors[2], capsize=3, label="$\Im(w_{1,+})$ data")
-axsr[1].plot(chi_plt, w2(chi_plt).real, "--", color=colors[2], alpha=0.5, label="$\Im(w_{1,+})$ theory")
+# axsr[1].errorbar(chi[:-7], Re_2_avg[:-7], Re_2_avg_err[:-7], fmt=".", color=colors[2], capsize=3, label="$\Im(w_{1,+})$ data")
+axsr[1].errorbar(chi, Re_2_avg, Re_2_avg_err, fmt=".", color=colors[0], capsize=3, label="$\Im(w_{1,+})$ data")
+axsr[1].plot(chi_plt, w2(chi_plt).real, "-", color=colors[3], alpha=0.8, label="$\Im(w_{1,+})$ theory")
 axsr[1].grid(True, ls="dotted")
 # axsr[1].set_yticks(ticks=axsr[1].get_yticks()[1:-1])
 axsr[1].set_ylim([ylim_re_1,ylim_re_2])
@@ -216,12 +221,15 @@ ylim_re_1=-1
 ylim_re_2=3
 y_re_labels=np.arange(ylim_re_1+1,ylim_re_2,1)
 
-axsr[2].errorbar(chi[:-7], Re_2_avg[:-7]+Re_1_avg[:-7], (Re_2_avg_err[:-7]**2+Re_2_avg_err[:-7]**2)**0.5, fmt=".", color=colors[3], capsize=3, label="$\Im(w_{1,+})$ data")
-axsr[2].plot(chi_plt, w2(chi_plt).real+w1(chi_plt).real, "--", color=colors[3], alpha=0.5, label="$\Im(w_{1,+})$ theory")
+# axsr[2].errorbar(chi[:-7], Re_2_avg[:-7]+Re_1_avg[:-7], (Re_2_avg_err[:-7]**2+Re_2_avg_err[:-7]**2)**0.5, fmt=".", color=colors[3], capsize=3, label="$\Im(w_{1,+})$ data")
+axsr[2].errorbar(chi, Re_2_avg+Re_1_avg, (Re_2_avg_err**2+Re_2_avg_err**2)**0.5, fmt=".", color=colors[0], capsize=3)#, label="$\Im(w_{1,+})$ data")
+axsr[2].plot(chi_plt, w2(chi_plt).real+w1(chi_plt).real, "-", color=colors[3], alpha=0.8)#, label="$\Im(w_{1,+})$ theory")
 axsr[2].grid(True, ls="dotted")
 axsr[2].set_ylim([ylim_re_1,ylim_re_2])
 axsr[2].set_yticks(ticks=y_re_labels)
-
+axsr[2].plot([],[], "-",color="k", label="Theory")
+axsr[2].errorbar([],[], [], fmt=".", color="k", capsize=3, label="Data")
+axsr[2].legend(loc=10, ncol=2, bbox_to_anchor=(-0.75,-0.24), edgecolor="k", facecolor="#fffff2", framealpha=1, fontsize=10)
 # axsr[2].set_xlabel("$\\chi$ [rad]")
 for ax in axsr:
     ax.set_xticks([0,np.pi,2*np.pi])

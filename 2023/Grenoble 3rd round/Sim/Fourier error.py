@@ -34,7 +34,7 @@ xf = fftfreq(N, S_F)
 yf = fft(func)
 # fig = plt.figure(figsize=(8,8))
 # ax = fig.add_subplot(111)
-N_sim=50000
+N_sim=1
 sim_data = np.zeros((N_sim,len(data)), dtype=complex)
 var_data = np.zeros(N_sim)
 yf_err=np.zeros((len(data)), dtype=complex)

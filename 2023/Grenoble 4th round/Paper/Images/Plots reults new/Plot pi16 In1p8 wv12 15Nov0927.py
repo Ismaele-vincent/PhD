@@ -115,9 +115,9 @@ print("chi_err=",err_int[-1])
 fig = plt.figure(figsize=(8,6))
 ax = fig.add_subplot(111)
 ps_plt = np.linspace(ps_pos[0], ps_pos[-1],100)
-ax.errorbar(ps_pos,ps_data, yerr=ps_data**0.5,fmt="ko",capsize=5, ms=3)
-ax.plot(ps_plt,fit_cos(ps_plt, *p_int), "b")
-ax.vlines(p_int[-1]/p_int[-2],fit_cos(p_int[-1]/p_int[-2]+np.pi,*p_int),fit_cos(p_int[-1]/p_int[-2],*p_int), color="k")
+ax.errorbar(ps_pos,ps_data/1200, yerr=ps_data**0.5/1200,fmt="ko",capsize=5, ms=3)
+ax.plot(ps_plt,fit_cos(ps_plt, *p_int)/1200, "b")
+# ax.vlines(p_int[-1]/p_int[-2],fit_cos(p_int[-1]/p_int[-2]+np.pi,*p_int),fit_cos(p_int[-1]/p_int[-2],*p_int), color="k")
 
 matrix_err_fit=(matrix_err**2/(C_id*A_aus)**2+matrix**2*A_aus_err**2/(A_aus**2*C_id)**2+((matrix/A_aus-0.5)/C_id**2)**2*C_id_err**2)**0.5
 matrix_fit=(matrix-A_aus/2)/(A_aus*C_id)+1/2
@@ -221,7 +221,7 @@ psi_p=(a_1+np.exp(1j*chi)*a_2)/(2**0.5)
 psi_m=(a_1-np.exp(1j*chi)*a_2)/(2**0.5)
 M=np.abs(psi_p/psi_m)
 th= np.angle(psi_p/psi_m)
-pi_shift=[*np.arange(7,22),*np.arange(0,7)]
+pi_shift=[*np.arange(7,22),*np.arange(8,15)]
 cos2pi=-cos2+np.amax(cos2)
 M[:15]=(cos2[:15]/cos2[pi_shift[:15]])**0.5
 # M=(cos2/cos2pi)**0.5
@@ -345,6 +345,6 @@ with open("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Results tx
     np.savetxt(f,np.transpose([chi,Re_1,Re_err_1,Re_2,Re_err_2]), header="chi w_re1 w_re1_err w_re2 w_re2_err")
 
 with open("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Results txt/In 1p8/cos2 In 1p8"+inf_file_name[-10:]+".txt","w") as f:
-    np.savetxt(f,np.transpose([ps_pos,cos2,cos2_err]), header="chi cos2 cos2err")
+    np.savetxt(f,np.transpose([ps_pos,cos2/12,cos2_err/12]), header="chi cos2 cos2err")
     
 plt.show()

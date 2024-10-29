@@ -49,7 +49,7 @@ def O_beam_weak(t, chi, xi_1):
 
 
 
-chi=np.linspace(-2*np.pi,2*np.pi,100)
+chi=np.linspace(-2*np.pi,2*np.pi,22)
 Re=np.zeros((len(chi)))
 Re_weak=np.zeros((len(chi)))
 Im=np.zeros((len(chi)))
@@ -62,13 +62,13 @@ for i in range(len(chi)):
     yf_weak = fft(func_weak)
     xf = fftfreq(N, T)*100
     print(len(xf), len(yf))
-    # fig = plt.figure(figsize=(8,6))
-    # ax = fig.add_subplot(111)
-    # ax.set_title(str("%.2f"%chi[i],))
-    # ax.plot(xf, np.abs(yf)/(3*N*T), "k")
-    # ax.plot(xf, np.abs(yf_weak)/(N*3*T), "r--")
-    # ax.plot(x,func, "k-")
-    # ax.plot(x,func_weak, "r--")
+    fig = plt.figure(figsize=(8,6))
+    ax = fig.add_subplot(111)
+    ax.set_title(str("%.2f"%chi[i],))
+    ax.plot(xf, np.abs(yf)/(3*N*T), "k")
+    ax.plot(xf, np.abs(yf_weak)/(N*3*T), "r--")
+    ax.plot(x,func, "k-")
+    ax.plot(x,func_weak, "r--")
     
     # ax.set_xlim([0,40])
     # ax.set_ylim([0,0.005])

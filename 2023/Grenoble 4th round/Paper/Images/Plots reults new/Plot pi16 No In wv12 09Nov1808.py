@@ -181,13 +181,13 @@ for i in range(len(ps_pos)):
     xf = fftfreq(N, S_F)*1e3
     var=np.sum(func_data_err**2/N)**0.5
     
-    # fig = plt.figure(figsize=(8,6))
-    # ax = fig.add_subplot(111)
-    # ax.errorbar(time, matrix_fit[i], yerr= matrix_err_fit[i], fmt="ko")
-    # ax.plot(time_plt, fit_Im(time_plt, *p_Im))
+    fig = plt.figure(figsize=(8,6))
+    ax = fig.add_subplot(111)
+    ax.errorbar(time, matrix_fit[i], yerr= matrix_err_fit[i], fmt="ko")
+    ax.plot(time_plt, fit_Im(time_plt, *p_Im))
     # ax.set_title(str("%.2f"%chi[i],))
     # ax.errorbar(xf, np.abs(yf_data), np.abs(yf_data_err), fmt="k.", capsize=5)
-    # ax.set_xlim([-5,5])
+    # ax.set_xlim([-10,10])
     
     c_0_data=abs(yf_data[abs(xf)<1/S_F/2]).astype(complex)-A
     c_1_data_1=(yf_data[abs(xf-f_1)<1/S_F/2]).astype(complex)
@@ -232,7 +232,7 @@ psi_p=(a_1+np.exp(1j*chi)*a_2)/(2**0.5)
 psi_m=(a_1-np.exp(1j*chi)*a_2)/(2**0.5)
 M=np.abs(psi_p/psi_m)
 th= np.angle(psi_p/psi_m)
-pi_shift=[*np.arange(7,22),*np.arange(0,7)]
+pi_shift=[*np.arange(7,22),*np.arange(8,15)]
 cos2pi=-cos2+np.amax(cos2)
 M[:15]=(cos2[:15]/cos2[pi_shift[:15]])**0.5
 # M=(cos2/cos2pi)**0.5
@@ -264,7 +264,6 @@ axsl = [fig.add_subplot(gs[0, 0]),fig.add_subplot(gs[1:, 0])]
 axsl[0].tick_params(axis="x", bottom=False, labelbottom=False)
 axsl[0].set_title("$w_{+,1}$")#"a_2/a_1\\approx$"+str("%.2f" % (a_21),)+")")
 colors=["k","#f10d0c","#00a933","#5983b0"]
-
 
 axsl[0].errorbar(chi, Im_data_1, Im_data_err_1, fmt=".", color=colors[0], capsize=3, label="$\Im(w_{1,+})$ data")
 axsl[0].plot(chi_plt, w1(chi_plt).imag, "--",color=colors[0], alpha=0.5, label="$\Im(w_{1,+})$ theory")
