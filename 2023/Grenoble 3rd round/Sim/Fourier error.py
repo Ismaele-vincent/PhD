@@ -19,10 +19,10 @@ from scipy.stats import rayleigh
 pi=np.pi
 np.random.seed(12345)
 
-N=133
-S_F=3
+N=120
+S_F=16.6667
 t= np.linspace(0,N*S_F, N, endpoint=False)
-func= 150 + 20*np.sin(2*pi*10e-3*t)# + 30*np.sin(15*2*np.pi*t) 
+func= 150 +30*np.sin(3*2*np.pi*1e3*t) # + 30*np.sin(15*2*np.pi*t) 
 noise= np.random.normal(0, func**0.5)
 data= func+noise
 fig = plt.figure(figsize=(10,6))
@@ -34,7 +34,7 @@ xf = fftfreq(N, S_F)
 yf = fft(func)
 # fig = plt.figure(figsize=(8,8))
 # ax = fig.add_subplot(111)
-N_sim=1
+N_sim=1000
 sim_data = np.zeros((N_sim,len(data)), dtype=complex)
 var_data = np.zeros(N_sim)
 yf_err=np.zeros((len(data)), dtype=complex)

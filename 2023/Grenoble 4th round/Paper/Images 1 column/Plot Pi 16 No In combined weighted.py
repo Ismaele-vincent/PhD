@@ -18,6 +18,7 @@ from PIL import Image as im
 from scipy.optimize import curve_fit as fit
 from scipy.special import jv
 plt.rcParams["mathtext.fontset"]="cm"
+plt.rcParams["mathtext.fontset"]="cm"
 colors=["k","#f10d0c","#00a933","#5983b0"]
 rad=np.pi/180
 a_1= 0.751
@@ -143,9 +144,11 @@ gs = fig.add_gridspec(2,3, height_ratios=(1,1),width_ratios=(1,1,1), hspace=0.0,
 
 axsl = [fig.add_subplot(gs[0, 0]),fig.add_subplot(gs[1, 0])]
 
-ylim_im_1=-2.5
-ylim_im_2=2.5
-y_im_labels=np.arange(ylim_im_1+0.5,ylim_im_2,1)
+# ylim_im_1=-2.5
+# ylim_im_2=2.5
+ylim_im_1=-4
+ylim_im_2=4
+y_im_labels=np.arange(ylim_im_1+1,ylim_im_2,2)
 
 axsl[0].tick_params(axis="x", bottom=False, labelbottom=False)
 axsl[0].set_title("$w_{+,1}$", fontsize=13)#"a_2/a_1\\approx$"+str("%.2f" % (a_21),)+")")
@@ -156,8 +159,10 @@ axsl[0].set_ylim([ylim_im_1,ylim_im_2])
 axsl[0].set_yticks(ticks=y_im_labels)
 axsl[0].grid(True, ls="dotted")
 
-ylim_re_1=-6
-ylim_re_2=2
+# ylim_re_1=-6
+# ylim_re_2=2.5
+ylim_re_1=-1
+ylim_re_2=9
 y_re_labels=np.arange(ylim_re_1+1,ylim_re_2,2)
 
 # axsl[1].tick_params(axis="x", bottom=False, labelbottom=False)
@@ -181,9 +186,12 @@ axsl[1].set_ylabel("Real part", fontsize=11)
 axsc = [fig.add_subplot(gs[0, 1]),fig.add_subplot(gs[1, 1])]
 axsc[0].set_title("$w_{+,2}$", fontsize=13)#"a_2/a_1\\approx$"+str("%.2f" % (a_21),)+")")
 
-ylim_im_1=-2.5
-ylim_im_2=2.5
-y_im_labels=np.arange(ylim_im_1+0.5,ylim_im_2,1)
+# ylim_im_1=-2.5
+# ylim_im_2=2.5
+ylim_im_1=-4
+ylim_im_2=4
+y_im_labels=np.arange(ylim_im_1+1,ylim_im_2,2)
+
 
 axsc[0].tick_params(axis="x", bottom=False, labelbottom=False)
 axsc[0].errorbar(chi, Im_2_avg, Im_2_avg_err, fmt=".", color=colors[0], capsize=3, label="$\Im(w_{2,+})$ data")
@@ -192,9 +200,9 @@ axsc[0].set_ylim([ylim_im_1,ylim_im_2])
 axsc[0].set_yticks(ticks=y_im_labels)
 axsc[0].grid(True, ls="dotted")
 
-ylim_re_1=-2
-ylim_re_2=4
-y_re_labels=np.arange(ylim_re_1+1,ylim_re_2,3)
+ylim_re_1=-9
+ylim_re_2=1
+y_re_labels=np.arange(ylim_re_1+1,ylim_re_2,2)
 
 # axsc[1].tick_params(axis="x", bottom=False, labelbottom=False)
 # axsc[1].errorbar(chi[:-7], Re_2_avg[:-7], Re_2_avg_err[:-7], fmt=".", color=colors[2], capsize=3, label="$\Im(w_{1,+})$ data")
@@ -233,9 +241,9 @@ axsr[0].grid(True, ls="dotted")
 axsr[0].set_ylim([ylim_im_1,ylim_im_2])
 axsr[0].set_yticks(ticks=y_im_labels)
 
-ylim_re_1=-3
+ylim_re_1=-2
 ylim_re_2=2
-y_re_labels=np.arange(ylim_re_1+0,ylim_re_2,2)
+y_re_labels=np.arange(ylim_re_1+1,ylim_re_2,1)
 
 # axsr[2].errorbar(chi[:-7], Re_2_avg[:-7]+Re_1_avg[:-7], (Re_2_avg_err[:-7]**2+Re_2_avg_err[:-7]**2)**0.5, fmt=".", color=colors[3], capsize=3, label="$\Im(w_{1,+})$ data")
 axsr[1].errorbar(chi, Re_2_avg+Re_1_avg, (Re_2_avg_err**2+Re_2_avg_err**2)**0.5, fmt=".", color=colors[0], capsize=3)#, label="Data")
@@ -245,13 +253,17 @@ axsr[1].set_ylim([ylim_re_1,ylim_re_2])
 axsr[1].set_yticks(ticks=y_re_labels)
 # axsr[2].legend(loc=1)
 # axsr[2].set_xlabel("$\\chi$ [rad]")
-axsl[1].plot([],[], "-",color=colors[3], alpha=0.8, label="Theory")
-axsl[1].errorbar([],[], [], fmt=".", color=colors[0], capsize=3, label="Data")
-axsl[1].legend(loc=10, ncol=2, bbox_to_anchor=(0.5,-0.21), edgecolor="k", facecolor="#fffff2", framealpha=1, fontsize=10)
+# axsl[1].plot([],[], "-",color=colors[3], alpha=0.8, label="Theory")
+# axsl[1].errorbar([],[], [], fmt=".", color=colors[0], capsize=3, label="Data")
+# axsl[1].legend(loc=10, ncol=2, bbox_to_anchor=(0.5,-0.21), edgecolor="k", facecolor="#fffff2", framealpha=1, fontsize=10)
+
+for ax in [axsl[0],axsc[0],axsr[0]]:
+    ax.set_xticks([0,np.pi,2*np.pi])
 
 for ax in [axsl[1],axsc[1],axsr[1]]:
     ax.set_xticks([0,np.pi,2*np.pi])
-    ax.set_xticklabels(["0","$\pi$","$2\pi$"])
+    ax.set_xticklabels(["$\mathdefault{0}$","$\mathdefault{\pi}$","$\mathdefault{2\pi}$"])
+    ax.set_xlabel("$\mathdefault{\\chi}$ [rad]")
     # ax.set_xlim([ax.get_xlim()[0],xlim2])
     # ax.set_xticks([-np.pi,-np.pi/2,0,np.pi/2])
     # ax.set_xticklabels(["$-\pi$","$-\\dfrac{\pi}{2}$","0","$\\dfrac{\pi}{2}$"])

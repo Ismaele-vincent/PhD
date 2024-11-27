@@ -51,17 +51,18 @@ print(np.pi/3)
 chi_aus=[0,np.pi/3, np.pi, 4/3*np.pi]
 print(chi_aus)
 chi_l=["$\\chi=0$","$\\chi=\\dfrac{\pi}{3}$", "$\\chi=\pi$", "$\\chi=\\dfrac{4}{3}\pi$"]
+colors=["k","#f10d0c","#00a933","#5983b0"]
+lines=["-","-.","-","--"]
 fig = plt.figure(figsize=(5,2))
 ax = fig.add_subplot(111)   
 for i in range(len(chi_aus)):
-    colors=["k","#f10d0c","#00a933","#5983b0"]
     # ax.errorbar(time, matrix[i], yerr= matrix_err[i], fmt="."+colors[i%5], capsize=3, label="$\chi=$"+str("%.2f"%chi[i],))
-    ax.plot(time_plt, O_beam(time_plt, chi_aus[i]),"-", color=colors[i], label=chi_l[i])
+    ax.plot(time_plt, O_beam(time_plt, chi_aus[i]),"-", ls=lines[i], color=colors[i], label=chi_l[i])
     # ax.set_title(str("%.2f"%chi[i],))
     ax.set_xlim([0,2000])
     ax.set_ylim([0,1.05])
     ax.set_xlabel("Time [$\mu$ s]")
-    ax.set_ylabel("Intesity $I_+$ (arb.)")
+    ax.set_ylabel("Intesity $I_+$ [a.u.]")
 # fig.suptitle("$\\alpha_1=\\alpha_2=\pi/8$\t$\omega_1 = 4\pi 10^{3}$ rad\t$\omega_2 = 6\pi 10^{3}$ rad", fontsize=11)
 # ax.legend(ncol=2, bbox_to_anchor=(0.5,1.1), loc="center")
 ax.legend(framealpha=1, loc=10, bbox_to_anchor=(1.15,0.5))

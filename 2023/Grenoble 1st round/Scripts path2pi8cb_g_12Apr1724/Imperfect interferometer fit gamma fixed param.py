@@ -114,7 +114,7 @@ gamma=w_c*coil-c_0
 chi=w_ps*ps_pos-ps_0
 # gamma=coil
 # chi=ps_pos
-C=0.67
+C=0.65
 
 eta=1-C
 

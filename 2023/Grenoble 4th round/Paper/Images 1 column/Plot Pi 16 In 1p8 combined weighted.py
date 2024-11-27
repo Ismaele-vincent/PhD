@@ -155,9 +155,9 @@ axsl[0].set_ylim([ylim_im_1,ylim_im_2])
 axsl[0].set_yticks(ticks=y_im_labels)
 axsl[0].grid(True, ls="dotted")
 
-ylim_re_1=-1
-ylim_re_2=3
-y_re_labels=np.arange(ylim_re_1+1,ylim_re_2,1)
+ylim_re_1=-2.6
+ylim_re_2=0.6
+y_re_labels=np.arange(ylim_re_1+0.6,ylim_re_2,1)
 
 # axsl[1].tick_params(axis="x", bottom=False, labelbottom=False)
 # axsl[1].set_title("$w_{+,2}$", fontsize=13)#"a_2/a_1\\approx$"+str("%.2f" % (a_21),)+")")
@@ -191,9 +191,9 @@ axsc[0].set_ylim([ylim_im_1,ylim_im_2])
 axsc[0].set_yticks(ticks=y_im_labels)
 axsc[0].grid(True, ls="dotted")
 
-ylim_re_1=-2.5
-ylim_re_2=3
-y_re_labels=np.arange(ylim_re_1+1,ylim_re_2,1)
+ylim_re_1=-0.6
+ylim_re_2=2.6
+y_re_labels=np.arange(ylim_re_1+0.6,ylim_re_2,1)
 
 # axsc[1].tick_params(axis="x", bottom=False, labelbottom=False)
 # axsc[1].errorbar(chi[:-7], Re_2_avg[:-7], Re_2_avg_err[:-7], fmt=".", color=colors[2], capsize=3, label="$\Im(w_{1,+})$ data")
@@ -216,7 +216,7 @@ axsc[1].grid(True, ls="dotted")
 
 # axsc[1].set_ylabel("$w_{+,1}+w_{+,2}$", fontsize=11)    
 # axsc[1].xaxis.set_label_coords(1,-0.2)
-axsc[1].set_xlabel("$\\chi$ [rad]")
+
 
 axsr = [fig.add_subplot(gs[0, 2]),fig.add_subplot(gs[1, 2])]
 axsr[0].set_title("$w_{+,1}+w_{+,2}$", fontsize=13)#"a_2/a_1\\approx$"+str("%.2f" % (a_21),)+")")
@@ -234,7 +234,7 @@ axsr[0].set_ylim([ylim_im_1,ylim_im_2])
 axsr[0].set_yticks(ticks=y_im_labels)
 
 ylim_re_1=0
-ylim_re_2=2.5
+ylim_re_2=2
 y_re_labels=np.arange(ylim_re_1+0.5,ylim_re_2, 0.5)
 
 # axsr[2].errorbar(chi[:-7], Re_2_avg[:-7]+Re_1_avg[:-7], (Re_2_avg_err[:-7]**2+Re_2_avg_err[:-7]**2)**0.5, fmt=".", color=colors[3], capsize=3, label="$\Im(w_{1,+})$ data")
@@ -245,13 +245,17 @@ axsr[1].set_ylim([ylim_re_1,ylim_re_2])
 axsr[1].set_yticks(ticks=y_re_labels)
 # axsr[2].legend(loc=1)
 # axsr[2].set_xlabel("$\\chi$ [rad]")
-axsl[1].plot([],[], "-",color=colors[3], alpha=0.8, label="Theory")
-axsl[1].errorbar([],[], [], fmt=".", color=colors[0], capsize=3, label="Data")
-axsl[1].legend(loc=10, ncol=2, bbox_to_anchor=(0.5,-0.21), edgecolor="k", facecolor="#fffff2", framealpha=1, fontsize=10)
+# axsl[1].plot([],[], "-",color=colors[3], alpha=0.8, label="Theory")
+# axsl[1].errorbar([],[], [], fmt=".", color=colors[0], capsize=3, label="Data")
+# axsl[1].legend(loc=10, ncol=2, bbox_to_anchor=(0.5,-0.21), edgecolor="k", facecolor="#fffff2", framealpha=1, fontsize=10)
+
+for ax in [axsl[0],axsc[0],axsr[0]]:
+    ax.set_xticks([0,np.pi,2*np.pi])
 
 for ax in [axsl[1],axsc[1],axsr[1]]:
     ax.set_xticks([0,np.pi,2*np.pi])
-    ax.set_xticklabels(["0","$\pi$","$2\pi$"])
+    ax.set_xticklabels(["$\mathdefault{0}$","$\mathdefault{\pi}$","$\mathdefault{2\pi}$"])
+    ax.set_xlabel("$\mathdefault{\\chi}$ [rad]")
     # ax.set_xlim([ax.get_xlim()[0],xlim2])
     # ax.set_xticks([-np.pi,-np.pi/2,0,np.pi/2])
     # ax.set_xticklabels(["$-\pi$","$-\\dfrac{\pi}{2}$","0","$\\dfrac{\pi}{2}$"])
@@ -259,7 +263,7 @@ for ax in [axsl[1],axsc[1],axsr[1]]:
     # ax.set_xticklabels(["$-\pi$","$-\\dfrac{\pi}{2}$","0","$\\dfrac{\pi}{2}$","$\pi$","$\\dfrac{3\pi}{2}$"])
     # ax.tick_params(axis="y", left=False, labelleft=False,right=True, labelright=True)
     # ax.yaxis.set_label_position("right")    
-plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Images 1 column/Wv In 1p8 combined.pdf", format="pdf",bbox_inches="tight")
+# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Images 1 column/Wv In 1p8 combined.pdf", format="pdf",bbox_inches="tight")
 
 
 # with open("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Results txt/No In/Wv12_Im No In"+inf_file_name[-10:]+".txt","w") as f:

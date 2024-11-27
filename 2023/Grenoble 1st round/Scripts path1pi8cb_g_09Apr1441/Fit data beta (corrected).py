@@ -54,7 +54,8 @@ b=np.zeros(len(ps_pos))
 beta=np.zeros(len(ps_pos))
 w=np.zeros(len(ps_pos))
 err_b=np.zeros(len(ps_pos))
-fit_res0=[1.32214076e+03, 1.17144255e+03, 1.31186510e-01, 1.85086273e+00]
+# fit_res0=[1.32214076e+03, 1.17144255e+03, 1.31186510e-01, 1.8086273e+00]
+fit_res0=[1.32214076e+03, 1.17144255e+03, 1.31186510e-01, 1.876]
 err_res0=[8.10516385e+00, 1.16683697e+01, 3.20540294e-04, 1.75421950e-02]
 b0=fit_res0[-1]
 for i in range(len(ps_pos)):

@@ -226,27 +226,27 @@ def I_px_anim(time, chi, xi_0, A, alpha):
 
 chi=ps_pos*w_ps-chi_0
 
-# for i in range(len(ps_pos)):
-#     fig = plt.figure(figsize=(10, 3), dpi=200)
-#     gs=GridSpec(1,4, figure=fig)
-#     axs = [fig.add_subplot(gs[0,:-1]), fig.add_subplot(gs[0,-1],projection='polar')]
-#     axs[-1].tick_params(axis="y", labelbottom=False, bottom = False,labelleft=False, left = False)
-#     axs[-1].tick_params(axis="x", pad=-4)
-#     axs[-1].set_xticks([0,np.pi/2,np.pi,np.pi*3/2])
-#     axs[-1].set_xticklabels(['0','$\pi/2$','$\pi$','$3\pi/2$'])
-#     axs[-1].grid(False)
-#     axs[-1].set_ylim([0,1])
-#     axs[-1].set_title("$\chi$", y=1.1, bbox=dict(facecolor='none', edgecolor='k'))
-#     axs[0].errorbar(time, matrix[i], yerr= matrix_err[i], fmt="k.")
-#     axs[0].plot(time, I_px_anim(time, chi[i], *p)*np.amax(matrix), "b")    
-#     axs[0].set_title("$\chi=$"+str("%.2f"%(chi[i]/np.pi,))+ " $\pi$")
-#     axs[0].set_ylim([100, 800])
-#     axs[-1].plot([0,chi[i]],[0,1], "-k.")
-#     plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 3rd round/Animation/chi"+str(i)+".png", format='png',bbox_inches='tight')
-#     plt.close(fig)
+for i in range(len(ps_pos)):
+    fig = plt.figure(figsize=(10, 3), dpi=200)
+    gs=GridSpec(1,4, figure=fig)
+    axs = [fig.add_subplot(gs[0,:-1]), fig.add_subplot(gs[0,-1],projection='polar')]
+    axs[-1].tick_params(axis="y", labelbottom=False, bottom = False,labelleft=False, left = False)
+    axs[-1].tick_params(axis="x", pad=-4)
+    axs[-1].set_xticks([0,np.pi/2,np.pi,np.pi*3/2])
+    axs[-1].set_xticklabels(['0','$\pi/2$','$\pi$','$3\pi/2$'])
+    axs[-1].grid(False)
+    axs[-1].set_ylim([0,1])
+    axs[-1].set_title("$\chi$", y=1.1, bbox=dict(facecolor='none', edgecolor='k'))
+    axs[0].errorbar(time, matrix[i], yerr= matrix_err[i], fmt="k.")
+    axs[0].plot(time, I_px_anim(time, chi[i], *p)*np.amax(matrix), "b")    
+    axs[0].set_title("$\chi=$"+str("%.2f"%(chi[i]/np.pi,))+ " $\pi$")
+    axs[0].set_ylim([100, 800])
+    axs[-1].plot([0,chi[i]],[0,1], "-k.")
+    # plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 3rd round/Animation/chi"+str(i)+".png", format='png',bbox_inches='tight')
+    # plt.close(fig)
 
 
-
+plt.show()
 # import glob
 # from PIL import Image
 # def make_gif(frame_folder):

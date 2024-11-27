@@ -9,9 +9,9 @@ Created on Fri Oct  6 10:41:40 2023
 import numpy as np
 import matplotlib.pyplot as plt
 
-a_1= 0.2**0.5
-a_2= 0.8**0.5
-a_21=a_2/a_1
+a_1= 1/5**0.5
+a_2= 2*a_1
+a_21=2
 def w1(chi, a_21):
     return 1/(1+a_21*np.exp(1j*chi))
 
@@ -28,8 +28,8 @@ chi=np.linspace(-2*np.pi,2*np.pi, 1000)
 fig = plt.figure(figsize=(8,6))
 ax = fig.add_subplot(111)
 
-ax.plot(chi, abs(w1(chi,a_21))**2-w1(chi, a_21).real, "k-")
-ax.plot(chi, abs(w2(chi,a_21))**2-w2(chi, a_21).real, "r--")
+ax.plot(chi, w1(chi, a_21).real, "k-")
+ax.plot(chi, w2(chi, a_21).real, "r--")
 
 # ax.plot(chi, - a_1*a_2*np.sin(chi)/(1+2*a_1*a_2*np.cos(chi)), "g--")
 

@@ -58,46 +58,24 @@ for root, dirs, files in os.walk(data_fold_path, topdown=False):
         if "cos2" in name:
             ps_pos=np.loadtxt(os.path.join(root, name))[:,0]
             cos2_avg=np.loadtxt(os.path.join(root, name))[:,1]
-            cos2_avg_err=np.loadtxt(os.path.join(root, name))[:,2]**2
+            cos2_avg_err=np.loadtxt(os.path.join(root, name))[:,2]
         if "Wv12_Im" in name:
             # print(name)
             if i==0:
                 chi_im=np.loadtxt(os.path.join(root, name))[:,0]
                 Im_1_avg=np.loadtxt(os.path.join(root, name))[:,1]
-                Im_1_avg_err=np.loadtxt(os.path.join(root, name))[:,2]**2
+                Im_1_avg_err=np.loadtxt(os.path.join(root, name))[:,2]
                 Im_2_avg=np.loadtxt(os.path.join(root, name))[:,3]
-                Im_2_avg_err=np.loadtxt(os.path.join(root, name))[:,4]**2
-                i+=1
-            else:
-                Im_1_avg+=np.loadtxt(os.path.join(root, name))[:,1]
-                Im_1_avg_err+=np.loadtxt(os.path.join(root, name))[:,2]**2
-                Im_2_avg+=np.loadtxt(os.path.join(root, name))[:,3]
-                Im_2_avg_err+=np.loadtxt(os.path.join(root, name))[:,4]**2
+                Im_2_avg_err=np.loadtxt(os.path.join(root, name))[:,4]
+                
         if "Wv12_Re" in name:
             # print(name)
             if k==0:
                 chi_Re=np.loadtxt(os.path.join(root, name))[:,0]
                 Re_1_avg=np.loadtxt(os.path.join(root, name))[:,1]
-                Re_1_avg_err=np.loadtxt(os.path.join(root, name))[:,2]**2
+                Re_1_avg_err=np.loadtxt(os.path.join(root, name))[:,2]
                 Re_2_avg=np.loadtxt(os.path.join(root, name))[:,3]
-                Re_2_avg_err=np.loadtxt(os.path.join(root, name))[:,4]**2
-                k+=1
-                
-            else:
-                Re_1_avg+=np.loadtxt(os.path.join(root, name))[:,1]
-                Re_1_avg_err+=np.loadtxt(os.path.join(root, name))[:,2]**2
-                Re_2_avg+=np.loadtxt(os.path.join(root, name))[:,3]
-                Re_2_avg_err+=np.loadtxt(os.path.join(root, name))[:,4]**2
-Im_1_avg/=n_data_set
-Im_2_avg/=n_data_set
-Re_1_avg/=n_data_set
-Re_1_avg/=n_data_set
-cos2_avg/=n_data_set
-Im_1_avg_err=Im_1_avg_err**0.5/n_data_set
-Im_2_avg_err=Im_2_avg_err**0.5/n_data_set
-Re_1_avg_err=Re_1_avg_err**0.5/n_data_set
-Re_1_avg_err=Re_1_avg_err**0.5/n_data_set
-cos2_avg_err=cos2_avg_err**0.5/n_data_set
+                Re_2_avg_err=np.loadtxt(os.path.join(root, name))[:,4]
 
 P0=[(np.amax(cos2_avg)+np.amin(cos2_avg))/2, (np.amax(cos2_avg)-np.amin(cos2_avg))/2, 3,0]
 B0=([100,0,0.01,-10],[np.amax(cos2_avg)+10000,np.amax(cos2_avg)+10000,5, 10])
@@ -148,9 +126,11 @@ axsl[0].set_ylim([ylim_im_1,ylim_im_2])
 axsl[0].set_yticks(ticks=y_im_labels)
 axsl[0].grid(True, ls="dotted")
 
-ylim_re_1=-17
+# ylim_re_1=-13
+# ylim_re_2=4
+ylim_re_1=-6
 ylim_re_2=4
-y_re_labels=np.arange(ylim_re_1+2,ylim_re_2,4)
+y_re_labels=np.arange(ylim_re_1+1,ylim_re_2,2)
 
 # axsl[1].tick_params(axis="x", bottom=False, labelbottom=False)
 # axsl[1].set_title("$w_{+,2}$", fontsize=11)#"a_2/a_1\\approx$"+str("%.2f" % (a_21),)+")")
@@ -184,14 +164,16 @@ axsc[0].set_ylim([ylim_im_1,ylim_im_2])
 axsc[0].set_yticks(ticks=y_im_labels)
 axsc[0].grid(True, ls="dotted")
 
-ylim_re_1=0
-ylim_re_2=12
+# ylim_re_1=0
+# ylim_re_2=17
+ylim_re_1=-1
+ylim_re_2=9
 y_re_labels=np.arange(ylim_re_1+1,ylim_re_2,2)
 
 # axsc[1].tick_params(axis="x", bottom=False, labelbottom=False)
 # axsc[1].errorbar(chi[:-7], Re_2_avg[:-7], Re_2_avg_err[:-7], fmt=".", color=colors[2], capsize=3, label="$\Im(w_{1,+})$ data")
-axsc[1].errorbar(chi, Re_2_avg, Re_2_avg_err, fmt=".", color=colors[0], capsize=3, label="Data")
-axsc[1].plot(chi_plt, w2(chi_plt).real, "-", color=colors[3], alpha=0.8, label="Theory")
+axsc[1].errorbar(chi, Re_2_avg, Re_2_avg_err, fmt=".", color=colors[0], capsize=3)
+axsc[1].plot(chi_plt, w2(chi_plt).real, "-", color=colors[3], alpha=0.8)
 axsc[1].grid(True, ls="dotted")
 # axsr[1].set_yticks(ticks=axsr[1].get_yticks()[1:-1])
 axsc[1].set_ylim([ylim_re_1,ylim_re_2])
@@ -209,13 +191,16 @@ axsc[1].grid(True, ls="dotted")
 
 # axsc[1].set_ylabel("$w_{+,1}+w_{+,2}$", fontsize=11)    
 # axsc[1].xaxis.set_label_coords(1,-0.2)
-axsc[1].set_xlabel("$\\chi$ [rad]")
+# axsc[1].set_xlabel("$\\chi$ [rad]")
+# # axsl[1].plot([],[], "-",color=colors[3], alpha=0.8, label="Theory")
+# axsc[1].errorbar([],[], [], fmt=".", color=colors[0], capsize=3, label="Data")
+# axsc[1].legend(loc=10, ncol=1, bbox_to_anchor=(1.1,-0.21), edgecolor="k", facecolor="#fffff2", framealpha=1, fontsize=10)
 
 axsr = [fig.add_subplot(gs[0, 2]),fig.add_subplot(gs[1, 2])]
 axsr[0].set_title("$w_{+,1}+w_{+,2}$", fontsize=13)#"a_2/a_1\\approx$"+str("%.2f" % (a_21),)+")")
 axsr[0].tick_params(axis="x", bottom=False, labelbottom=False)
 ylim_im_1=-1
-ylim_im_2=3.5
+ylim_im_2=3
 y_im_labels=np.arange(ylim_im_1+1,ylim_im_2,1)
 
 axsr[0].errorbar(chi, Im_1_avg+Im_2_avg, (Im_1_avg_err**2+Im_2_avg_err**2)**0.5, fmt=".", color=colors[0], capsize=3, label="$\Im(w_{2,+})$ data")
@@ -236,13 +221,17 @@ axsr[1].set_ylim([ylim_re_1,ylim_re_2])
 axsr[1].set_yticks(ticks=y_re_labels)
 # axsr[2].legend(loc=1)
 # axsr[2].set_xlabel("$\\chi$ [rad]")
-axsl[1].plot([],[], "-",color=colors[3], alpha=0.8, label="Theory")
-axsl[1].errorbar([],[], [], fmt=".", color=colors[0], capsize=3, label="Data")
-axsl[1].legend(loc=10, ncol=2, bbox_to_anchor=(0.5,-0.21), edgecolor="k", facecolor="#fffff2", framealpha=1, fontsize=10)
+# axsl[1].plot([],[], "-",color=colors[3], alpha=0.8, label="Theory")
+# # axsl[1].errorbar([],[], [], fmt=".", color=colors[0], capsize=3, label="Data")
+# axsl[1].legend(loc=10, ncol=1, bbox_to_anchor=(1.1,-0.21), edgecolor="k", facecolor="#fffff2", framealpha=1, fontsize=10)
+
+for ax in [axsl[0],axsc[0],axsr[0]]:
+    ax.set_xticks([0,np.pi,2*np.pi])
 
 for ax in [axsl[1],axsc[1],axsr[1]]:
-    ax.set_xticks([-np.pi,0,np.pi])
-    ax.set_xticklabels(["$-\pi$","0","$\pi$"])
+    ax.set_xticks([-np.pi,0,np.pi,])
+    ax.set_xticklabels(["\N{MINUS SIGN}$\mathdefault{\pi}$","$\mathdefault{0}$","$\mathdefault{\pi}$"])
+    ax.set_xlabel("$\mathdefault{\\chi}$ [rad]")
     # ax.set_xlim([ax.get_xlim()[0],xlim2])
     # ax.set_xticks([-np.pi,-np.pi/2,0,np.pi/2])
     # ax.set_xticklabels(["$-\pi$","$-\\dfrac{\pi}{2}$","0","$\\dfrac{\pi}{2}$"])
@@ -252,11 +241,9 @@ for ax in [axsl[1],axsc[1],axsr[1]]:
     # ax.yaxis.set_label_position("right")    
 plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Images 1 column/Wv In 0p8 combined.pdf", format="pdf",bbox_inches="tight")
 
-
 # with open("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Results txt/No In/Wv12_Im No In"+inf_file_name[-10:]+".txt","w") as f:
 #     np.savetxt(f,np.transpose([chi,Im_1_avg,Im_1_avg_err,Im_2_avg,Im_2_avg_err]), header="chi w_im1 w_im1_err w_im2 w_im2_err")
 # with open("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Results txt/No In/Wv12_Re No In"+inf_file_name[-10:]+".txt","w") as f:
 #     np.savetxt(f,np.transpose([chi,Re_1,Re_err_1,Re_2,Re_err_2]), header="chi w_re1 w_re1_err w_re2 w_re2_err")
-    
 
 plt.show()

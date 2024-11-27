@@ -16,6 +16,7 @@ plt.rcParams.update({'figure.max_open_warning': 0})
 from PIL import Image as im
 from scipy.optimize import curve_fit as fit
 plt.rcParams.update(plt.rcParamsDefault)
+plt.rcParams.update({'figure.max_open_warning': 0})
 alpha=22.5
 w_ps=8.002
 a21=2 #1.375
@@ -55,7 +56,8 @@ b=np.zeros(len(ps_pos))
 beta=np.zeros(len(ps_pos))
 w=np.zeros(len(ps_pos))
 err_b=np.zeros(len(ps_pos))
-fit_res0=[1.32214076e+03, 1.17144255e+03, 1.31186510e-01, 1.8086273e+00]
+# fit_res0=[1.32214076e+03, 1.17144255e+03, 1.31186510e-01, 1.8086273e+00]
+fit_res0=[1.32214076e+03, 1.17144255e+03, 1.31186510e-01, 1.8171]
 err_res0=[8.10516385e+00, 1.16683697e+01, 3.20540294e-04, 1.75421950e-02]
 b0=fit_res0[-1]
 for i in range(len(ps_pos)):
@@ -66,7 +68,9 @@ for i in range(len(ps_pos)):
     B0=([0,0,0,-10],[np.inf,np.inf,np.inf,np.inf])
     p,cov=fit(fit_cos,coil,matrix[i], p0=P0, bounds=B0, sigma=matrix_err[i])
     err=np.diag(cov)**0.5
-    # print(p[3], err[3])
+    if i==0:
+        print(p)
+    # print(coil[i])
     x_plt = np.linspace(coil[0], coil[-1],100)
     w[i]=p[2]
     #x_plt1[fit_cos(x_plt1, *p)==np.amax(fit_cos(x_plt1, *p))]
@@ -82,7 +86,7 @@ for i in range(len(ps_pos)):
     # # ax.vlines(g0[i]/w0[i],0,fit_cos(g0[i]/w0[i], p[0],p[1],*p0[2:]),ls="dashed",color="r",label="$\\beta_0$="+str("%.3f" % (g0[i]/w0[i]),))
     # ax.plot(x_plt,fit_cos(x_plt, *p), "b")
     # ax.set_ylim([0, P0[1]+P0[1]/10])
-    # # ax.plot(x_plt,fit_cos(x_plt, p[0],p[1],*p0[2:]), "r")
+    # ax.plot(x_plt,fit_cos(x_plt, p[0],p[1],*p0[2:]), "r")
     # ax.legend(loc=4)
 
 ps_data=np.sum(matrix,axis=1)
@@ -105,16 +109,15 @@ ps_0=p[-1]
 # ax = fig.add_subplot(111)
 # ax.plot(ps_pos,b)
 
-
 chi=(ps_pos*w_ps-ps_0)
-x_plt = np.linspace(chi[0], chi[-1],100)
+x_plt = np.linspace(chi[0], chi[-1],1000)
 fig = plt.figure(figsize=(5,5))
 gs_t = GridSpec(4,1, figure=fig,hspace=0, bottom=0.1,top=0.98)
 gs_b =GridSpec(4,1, figure=fig, wspace=0, top=0.5)
 ax = fig.add_subplot(111)
 ax.set_title(inf_file_name)
 ax.set_xlabel("$\chi$ ($\pi$)")
-# ax.set_ylim([-1,1])
+# ax.set_ylim([0,45])
 ax.errorbar(chi/np.pi, beta, yerr=err_b,fmt="ko",capsize=5)
 ax.plot(x_plt/np.pi,exp_w1p(x_plt, 0),"g", label="Exp Re{"+"$\omega_{1+}$}")
 ax.legend()
@@ -122,7 +125,7 @@ plt.show()
 
 datatxt= np.array([ps_pos,beta,err_b])
 
-with open(correct_fold_path+"/"+inf_file_name[:]+"_Beta_corrected.txt","w") as f:
+with open(correct_fold_path+"/"+inf_file_name[:]+"_new"+"_Beta_corrected.txt","w") as f:
     np.savetxt(f,np.transpose(datatxt), header="ps_pos w+ err", fmt='%.7f %.7f %.7f')
 
 # data=np.loadtxt("/home/aaa/Desktop/path1pi8cb_g_09Apr1441.txt")

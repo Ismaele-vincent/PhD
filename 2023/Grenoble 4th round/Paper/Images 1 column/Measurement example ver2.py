@@ -100,12 +100,12 @@ chi_0_err=err[-1]
 print("A(1-C)/2=", A, "+-", A_err)
 print("C=",p[1], "+-", err[1])
 print("chi_err=",err[-1])
-fig = plt.figure(figsize=(8,6))
-ax = fig.add_subplot(111)
-ps_plt = np.linspace(ps_pos[0], ps_pos[-1],100)
-ax.errorbar(ps_pos,ps_data, yerr=ps_data**0.5,fmt="ko",capsize=5, ms=3)
-ax.plot(ps_plt,fit_cos(ps_plt, *p), "b")
-ax.vlines(p[-1]/p[-2],fit_cos(p[-1]/p[-2]+np.pi,*p),fit_cos(p[-1]/p[-2],*p), color="k")
+# fig = plt.figure(figsize=(8,6))
+# ax = fig.add_subplot(111)
+# ps_plt = np.linspace(ps_pos[0], ps_pos[-1],100)
+# ax.errorbar(ps_pos,ps_data, yerr=ps_data**0.5,fmt="ko",capsize=5, ms=3)
+# ax.plot(ps_plt,fit_cos(ps_plt, *p), "b")
+# ax.vlines(p[-1]/p[-2],fit_cos(p[-1]/p[-2]+np.pi,*p),fit_cos(p[-1]/p[-2],*p), color="k")
 P0=[300,300, -0.8, 1]
 p_tot=np.zeros((len(ps_pos),len(P0)))
 err_tot=np.zeros((len(ps_pos),len(P0)))
@@ -133,10 +133,13 @@ cos2_err_fit=np.zeros((len(ps_pos)))
 fig = plt.figure(figsize=(6,3), dpi=150)
 gs = fig.add_gridspec(4,1, hspace=0.0, wspace=0)
 colors=["k","#f10d0c","#00a933","#5983b0"]
+colors_point=[(0.8,0.8,0.8),(0.9,0.8,0.8),(0.8,0.9,0.8),(0.85,0.85,1)]
+colors_point_2=[(0.6,0.6,0.6),(0.9,0.6,0.6),(0.6,0.8,0.6),(0.7,0.7,1)]
 # axs = [fig.add_subplot(gs[0, 0]),fig.add_subplot(gs[0, 1]),fig.add_subplot(gs[1, 0]),fig.add_subplot(gs[1, 1])]
 axs = [fig.add_subplot(gs[0, 0]),fig.add_subplot(gs[1, 0]),fig.add_subplot(gs[3, 0]),fig.add_subplot(gs[2, 0])]
 for ax in axs:
     ax.tick_params(axis="x", bottom=False, labelbottom=False)
+    ax.set_rasterized(True)
     # ax.yaxis.set_label_position("right")
 # for ax in axs[1::2]:
 #     ax.tick_params(axis="y", left=False, labelleft=False)
@@ -165,7 +168,9 @@ for i in [6,8,13,16]:
     xf = fftfreq(N, S_F)*1e3
     
     axs[k].grid(True, ls="dotted")
-    axs[k].errorbar(time, matrix[i], yerr= matrix_err[i], fmt=".", color=colors[k], alpha=0.2, ms=3, capsize=2, label="Data $\chi\\approx$"+str("%.2f"%chi[i],))
+    axs[k].errorbar(time, matrix[i], yerr= matrix_err[i], fmt=".", color=colors_point[k], lw=1, ms=3, capsize=2, label="Data $\chi\\approx$"+str("%.2f"%(chi[i]/np.pi),)+"$\pi$")
+    axs[k].errorbar(time, matrix[i], fmt=".", color=colors_point_2[k], lw=1, ms=3, capsize=2)
+    # axs[k].errorbar(time, matrix[i], yerr= matrix_err[i], fmt=".", color=colors[k], alpha=0.2, ms=3, capsize=2, label="Data $\chi\\approx$"+str("%.2f"%(chi[i]/np.pi),)+"$\pi$")
     axs[k].errorbar(time_plt, fit_Im(time_plt, *p_fit),fmt="-", color=colors[k], lw=2, label="Fit theory")
     # axs[k].fill_between(time,  matrix[i]/sec-matrix_err[i]/sec,matrix[i]/sec+matrix_err[i]/sec,color=colors[k], alpha=0.2)
     # axs[k].plot(time, matrix[i]/sec,".", color=colors[k], alpha=0.4)
@@ -177,19 +182,25 @@ for i in [6,8,13,16]:
     # axs[k].set_ylim([avg-0.04*1200/sec,avg+0.04*1200/sec])
     # axs[k].set_yticks(ticks=[avg-0.01*1200/sec,avg+0.01*1200/sec,avg+0.03*1200/sec])
     if k==2:
-        axs[k].set_yticks(ticks=[avg-10,avg+10])
+        axs[k].set_yticks(ticks=[25,45])
+    elif k==0:
+        axs[k].set_yticks(ticks=[200,260])
+    elif k==1:
+        axs[k].set_yticks(ticks=[160,220])
     else:
         axs[k].set_yticks(ticks=[avg-30,avg+30])
     # axs[k].set_yticklabels([str("%.2f"%abs(avg-0.03*1200/sec),),str("%.2f"%avg,),str("%.2f"%(avg+0.03*1200/sec),)])
     # axs[k].set_yticklabels([str("%.0f"%abs(avg-0.03*1200/sec),),str("%.0f"%avg,),str("%.0f"%(avg+0.03*1200/sec),)])
-    axs[k].legend(framealpha=1,ncol=1,loc=10, bbox_to_anchor=(1.165,0.5))
+    axs[k].legend(framealpha=1,ncol=1,loc=10, bbox_to_anchor=(1.18,0.5))
+    # axs[k].set_xlim([0,2000])
     k+=1
 
-axs[1].yaxis.set_label_coords(-0.12,0)
+axs[1].yaxis.set_label_coords(-0.09,0)
 axs[1].set_ylabel("Intensity (counts/1200sec)")
 axs[-2].tick_params(axis="x", bottom=True, labelbottom=True)
 axs[-2].set_xlabel("Time [$\mu\,$s]")
+
+
 # ax.legend(ncol=4, bbox_to_anchor=(0.5,1.1), loc="center")
-# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Images/Measurement_example_fit.pdf", format="pdf",bbox_inches="tight")
 plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Images 1 column/Measurement_example_fit.pdf", format="pdf",bbox_inches="tight")
 plt.show()

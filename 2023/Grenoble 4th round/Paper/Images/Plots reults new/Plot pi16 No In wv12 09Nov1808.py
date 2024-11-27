@@ -179,38 +179,23 @@ for i in range(len(ps_pos)):
     yf_data_err = np.ones(len(yf_data))*np.sum(matrix_err)**0.5
     # print(sum(abs(yf_data)))
     xf = fftfreq(N, S_F)*1e3
-    var=np.sum(func_data_err**2/N)**0.5
+    var=np.sum(np.average(func_data)/2)**0.5
     
-    fig = plt.figure(figsize=(8,6))
-    ax = fig.add_subplot(111)
-    ax.errorbar(time, matrix_fit[i], yerr= matrix_err_fit[i], fmt="ko")
-    ax.plot(time_plt, fit_Im(time_plt, *p_Im))
+    # fig = plt.figure(figsize=(8,6))
+    # ax = fig.add_subplot(111)
+    # ax.errorbar(time, matrix_fit[i], yerr= matrix_err_fit[i], fmt="ko")
+    # ax.plot(time_plt, fit_Im(time_plt, *p_Im))
     # ax.set_title(str("%.2f"%chi[i],))
     # ax.errorbar(xf, np.abs(yf_data), np.abs(yf_data_err), fmt="k.", capsize=5)
-    # ax.set_xlim([-10,10])
+    # ax.set_xlim([-5,5])
     
     c_0_data=abs(yf_data[abs(xf)<1/S_F/2]).astype(complex)-A
     c_1_data_1=(yf_data[abs(xf-f_1)<1/S_F/2]).astype(complex)
     c_1_data_2=(yf_data[abs(xf-f_2)<1/S_F/2]).astype(complex)
     
-    c_0_data_err=(var**2+A_err**2)**0.5
+    c_0_data_err=(2*var**2+A_err**2)**0.5
     c_1_data_err_1=var
     c_1_data_err_2=var
-    # print(chi[i], np.angle(c_1_data))
-    # if i==0:
-    #     # print("here")
-    #     e_mxi_1=np.exp(-1j*(np.angle(c_1_data_1)))
-    #     e_mxi_2=np.exp(-1j*(np.angle(c_1_data_2)))
-    # if (c_1_data_1).real>0:
-    #     # print("here")
-    #     e_mxi_1=np.exp(-1j*(np.angle(c_1_data_1)))
-    # else:
-    #     e_mxi_1=np.exp(-1j*(np.angle(c_1_data_1)+np.pi))
-    # if (c_1_data_2).real<0:
-    #     # print("here")
-    #     e_mxi_2=np.exp(-1j*(np.angle(c_1_data_2)))
-    # else:
-    #     e_mxi_2=np.exp(-1j*(np.angle(c_1_data_2)+np.pi))
     e_mxi_1=np.exp(-1j*(np.angle(c_1_data_1)))
     e_mxi_2=np.exp(-1j*(np.angle(c_1_data_2)))
     # xi_1=2.404544909127107
@@ -221,11 +206,10 @@ for i in range(len(ps_pos)):
     cos2[i]=abs(c_0_data)
     cos2_err[i]=abs(c_0_data_err)
     
-    # Im_data_1[i]=(c_1_data_1*e_mxi_1).real/(cos2[i])/alpha_1
-    Im_data_1[i]=c_1_data_1.real/abs(e_mxi_1.real)/(cos2[i])/alpha_1
-    Im_data_err_1[i]=(abs(c_1_data_err_1/cos2[i])**2 + ((abs(c_1_data_1*e_mxi_1)/cos2[i]**2)*cos2_err[i])**2+(abs(c_1_data_1*e_mxi_1)/cos2[i]/alpha_1*alpha_1_err)**2)**0.5/abs(alpha_1)
-    # Im_data_err_1[i]=Im_data_err_1_fit[i]
-    Im_data_2[i]=c_1_data_2.real/abs(e_mxi_2.real)/(cos2[i])/alpha_2
+    # Im_data_1[i]=np.sign(c_1_data_1.real)*abs(c_1_data_1)/(cos2[i])/alpha_1
+    Im_data_1[i]=np.sign(e_mxi_1.real)*abs(c_1_data_1)/(cos2[i])/alpha_1
+    Im_data_err_1[i]=(abs(c_1_data_err_1/cos2[i])**2 + ((abs(c_1_data_1)/cos2[i]**2)*cos2_err[i])**2+(abs(c_1_data_1)/cos2[i]/alpha_1*alpha_1_err)**2)**0.5/abs(alpha_1)
+    Im_data_2[i]=np.sign(e_mxi_2.real)*abs(c_1_data_2)/(cos2[i])/alpha_2
     Im_data_err_2[i]=(abs(c_1_data_err_2/cos2[i])**2 + (abs((c_1_data_2*e_mxi_2)/cos2[i]**2)*cos2_err[i])**2+abs((c_1_data_2*e_mxi_2)/cos2[i]/alpha_2*alpha_2_err)**2)**0.5/abs(alpha_2)
 
 psi_p=(a_1+np.exp(1j*chi)*a_2)/(2**0.5)
@@ -286,7 +270,7 @@ axsl[1].yaxis.set_label_coords(-0.2,0.5)
 axsl[1].set_ylabel("Real part", fontsize=12)
 axsl[1].set_ylim([ylim_re_1,ylim_re_2])
 axsl[1].set_yticks(ticks=y_re_labels)
-axsl[1].set_xlabel("$\\chi$ [rad]")
+axsl[1].set_xlabel("$\mathrm{\\chi$ [rad]")
 
 ylim_re_1=-7.5
 ylim_re_2=2.5

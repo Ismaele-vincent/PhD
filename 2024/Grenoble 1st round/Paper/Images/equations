@@ -1,0 +1,8 @@
+\begin{align*}
+    \ket{\psi_\mathrm{in}(\chi_0)}&= a_1 
+    \ket{1} +
+    \mathrm{e}^{\mathrm{i} \chi_0} a_2 \ket{2}\\
+    \ket{\psi(\chi_0,\chi)}&= \mathrm{e}^{\mathrm{i} \chi} a_1 
+    \ket{1} +
+    \mathrm{e}^{-\mathrm{i} \chi_0} a_2 \ket{2} \\
+\end{align*}
