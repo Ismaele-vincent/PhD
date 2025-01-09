@@ -89,43 +89,43 @@ Indium 1.8mm path2
 Indium 1.8mm path2 (overall good, last two very good)
 """
 
-folder_name="Skew In 1p8 path2"
-P1=(121375+124156)/2/30
-P2=0.252*P1
-a_1=0.915
-a_1_err=0.003
-a_2=0.404
-a_2_err=0.008
-a_21=a_2/a_1
-lim=0
-# inf_file_name="ifgPS1_42pt_In18_20Mar0121" #weird amplitude
-# inf_file_name="ifgPS1_42pt_In18_20Mar0235" #weird amplitude
-# inf_file_name="ifgPS1_42pt_In18_20Mar0349" 
-# inf_file_name="ifgPS1_42pt_In18_20Mar0503" #wrong phase
-# inf_file_name="ifgPS1_42pt_In18_20Mar0617" 
-# inf_file_name="ifgPS1_42pt_In18_20Mar0731"
-points=42
+# folder_name="Skew In 1p8 path2"
+# P1=(121375+124156)/2/30
+# P2=0.252*P1
+# a_1=0.915
+# a_1_err=0.003
+# a_2=0.404
+# a_2_err=0.008
+# a_21=a_2/a_1
+# lim=0
+# # inf_file_name="ifgPS1_42pt_In18_20Mar0121" #weird amplitude
+# # inf_file_name="ifgPS1_42pt_In18_20Mar0235" #weird amplitude
+# # inf_file_name="ifgPS1_42pt_In18_20Mar0349" 
+# # inf_file_name="ifgPS1_42pt_In18_20Mar0503" #wrong phase
+# # inf_file_name="ifgPS1_42pt_In18_20Mar0617" 
+# # inf_file_name="ifgPS1_42pt_In18_20Mar0731"
+# points=42
 
 """
 No Indium, 3-plates interferometer
 """
-# folder_name="Symm No In"
-# P1=57079/15
-# P2=63441/15
-# a_1= 0.688
-# a_1_err=0.003
-# a_2= 0.725
-# a_2_err=0.003
-# a_21=a_2/a_1
-# lim=1
-# # sgn=-1
-# # inf_file_name="ifgPS1_35pt_In00_12Apr1851" #good-ish 3p
-# # inf_file_name="ifgPS1_35pt_In00_12Apr2026" #good 3p
-# # inf_file_name="ifgPS1_35pt_In00_13Apr0103" #good
-# # inf_file_name="ifgPS1_35pt_In00_13Apr0528"  #good
-# # inf_file_name="ifgPS1_35pt_In00_13Apr0703" #good
-# inf_file_name="ifgPS1_35pt_In00_13Apr0838" #good
-# points=35
+folder_name="Symm No In"
+P1=57079/15
+P2=63441/15
+a_1= 0.5**0.5
+a_1_err=0.003
+a_2= 0.5**0.5
+a_2_err=0.003
+a_21=a_2/a_1
+lim=1
+# sgn=-1
+# inf_file_name="ifgPS1_35pt_In00_12Apr1851" #good-ish 3p
+# inf_file_name="ifgPS1_35pt_In00_12Apr2026" #good 3p
+# inf_file_name="ifgPS1_35pt_In00_13Apr0103" #good
+# inf_file_name="ifgPS1_35pt_In00_13Apr0528"  #good
+# inf_file_name="ifgPS1_35pt_In00_13Apr0703" #good
+inf_file_name="ifgPS1_35pt_In00_13Apr0838" #good
+points=35
 
 """
 Indium 1.5, 3-plates interferometer
@@ -139,10 +139,10 @@ Indium 1.5, 3-plates interferometer
 # a_2_err=0.008
 # a_21=a_2/a_1
 # lim=0
-# # inf_file_name="ifgPS1_35pt_In15_13Apr2126" #very good
+# inf_file_name="ifgPS1_35pt_In15_13Apr2126" #very good
 # # inf_file_name="ifgPS1_35pt_In15_14Apr0146" #bad
 # # inf_file_name="ifgPS1_35pt_In15_14Apr0322" #very good
-# inf_file_name="ifgPS1_35pt_In15_14Apr0742" #very good
+# # inf_file_name="ifgPS1_35pt_In15_14Apr0742" #very good
 # points=35
 
 """
@@ -156,14 +156,15 @@ Indium 0.5, 3-plates interferometer
 # a_2= 0.638
 # a_2_err=0.005
 # a_21=a_2/a_1
+# print((a_2/a_1)**2)
 # lim=0
-# inf_file_name="ifgPS1_35pt_In05_14Apr0929" #good-ish (phase a bit bad)
+# # inf_file_name="ifgPS1_35pt_In05_14Apr0929" #good-ish (phase a bit bad)
 # # inf_file_name="ifgPS1_35pt_In05_14Apr1349" #bad (wrong ps pos)
 # # inf_file_name="ifgPS1_35pt_In05_14Apr1524" #bad (wrong ps pos)
 # # inf_file_name="ifgPS1_35pt_In05_15Apr1731" #good-ish (big error bars)
 # # inf_file_name="ifgPS1_35pt_In05_15Apr1907" #good-ish (phase a bit bad)
 # # inf_file_name="ifgPS1_35pt_In05_15Apr2042" #good-ish (phase a bit bad)
-# # inf_file_name="ifgPS1_35pt_In05_15Apr2218" #probably best
+# inf_file_name="ifgPS1_35pt_In05_15Apr2218" #probably best
 # # inf_file_name="ifgPS1_35pt_In05_15Apr2354" #good-ish (1 bad point)
 # # inf_file_name="ifgPS1_35pt_In05_16Apr0130" #good
 # # inf_file_name="ifgPS1_35pt_In05_16Apr0305" #good-ish
@@ -256,12 +257,15 @@ C_id=C_avg/(2*a_1*a_2)
 C_id_err=(C_err**2+C_avg**2/(a_1**2)*a_1_err**2+C_avg**2/(a_2**2)*a_2_err**2)**0.5/(2*a_1*a_2)
 print("C_avg=",C_avg, "+-",C_err, "C_ideal=", C_id, "+-", C_id_err)
 
-data_ifg_matrix_err=(data_ifg_matrix+((1-C_id)/2)**2*A_err**2+(A_avg/2)**2*C_err**2)**0.5
+data_ifg_matrix_err=(data_ifg_matrix+((1-C_id)/2)**2*A_err**2+(A_avg/2)**2*C_id_err**2)**0.5
+# data_ifg_matrix_err=(data_ifg_matrix/C_id**2+((1/C_id+1)/2)**2*A_err**2+(A_avg/2-data_ifg_matrix)**2*(C_id_err/C_id**2)**2)**0.5
 data_ifg_matrix-=A_avg*(1-C_id)
 P1_corr=C_id*P1
-P1_corr_err=(P1+C_err**2)**0.5
+P1_corr_err=(P1+C_id_err**2)**0.5
 P2_corr=C_id*P2
-P2_corr_err=(P2+C_err**2)**0.5
+P2_corr_err=(P2+C_id_err**2)**0.5
+
+
 
 chi_plt=np.linspace(chi[0], chi[-1], 1000)
 Im_1=(data_ifg_matrix[3]-data_ifg_matrix[1])/data_ifg_matrix[0]/4
@@ -344,13 +348,14 @@ else:
     # ax.set_ylim([0,np.amax(w2(chi_plt, a_21).real+np.amax(w2(chi_plt, a_21).real))])
 
 
+
 res_folder="/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Results txt/"+folder_name
 
-if not os.path.exists(res_folder):
-    os.makedirs(res_folder)
+# if not os.path.exists(res_folder):
+#     os.makedirs(res_folder)
 
-with open(res_folder+"/"+folder_name+inf_file_name[-10:]+".txt","w") as f:
-    np.savetxt(f,np.transpose([chi,Re_1_1,Re_1_1_err,Im_1,Im_1_err,Re_2_1,Re_2_1_err,Im_2,Im_2_err]), header="chi w_im1 w_im1_err w_im2 w_im2_err")
+# with open(res_folder+"/"+folder_name+inf_file_name[-10:]+".txt","w") as f:
+#     np.savetxt(f,np.transpose([chi,Re_1_1,Re_1_1_err,Im_1,Im_1_err,Re_2_1,Re_2_1_err,Im_2,Im_2_err]), header="chi w_im1 w_im1_err w_im2 w_im2_err")
 
 # with open("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Results txt/No In/cos2 No In"+inf_file_name[-10:]+".txt","w") as f:
 #     np.savetxt(f,np.transpose([ps_pos,cos2,cos2_err]), header="chi cos2 cos2err")

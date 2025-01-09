@@ -167,7 +167,7 @@ for inf_file_name in inf_file_names:
     print("V=",alpha_0/p[1]*0.405)
     colors=["k","#f10d0c","#00a933","#5983b0"]
     # ax.errorbar(amplitude, chi_0, yerr= chi_0_err, fmt="ko")
-    axs[k].plot(curr_plt, contr(curr_plt,*p), color=colors[2], alpha=0.5, label="Fit")
+    axs[k].plot(curr_plt, contr(curr_plt,*p), color=colors[2], label="Fit")
     axs[k].errorbar(current, C, yerr= C_err, fmt="k.", capsize=3, label="Measured\ncontrast")
     k+=1
 axs[0].set_ylim([0,axs[0].get_ylim()[1]])

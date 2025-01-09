@@ -62,8 +62,8 @@ for i in range(len(ps_pos)):
     matrix[i]=tot_data[:,1][tot_data[:,-1]==ps_pos[i]]
     matrix_err[i]=tot_data[:,2][tot_data[:,-1]==ps_pos[i]]
 for i in range(len(ps_pos)):
-    P0=[5, np.amax(matrix[i]), 0.1,0]
-    B0=([0,0,0,-10],[np.inf,np.inf,np.inf,np.inf])
+    P0=[5, np.amax(matrix[i]), 0.1,1]
+    B0=([0,0,0,0],[np.inf,np.inf,np.inf,20])
     # print(P0)
     p,cov=fit(fit_cos,coil,matrix[i], p0=P0, bounds=B0)#, sigma=matrix_err[i])
     err=np.diag(cov)**0.5
@@ -73,7 +73,13 @@ for i in range(len(ps_pos)):
     #x_plt1[fit_cos(x_plt1, *p)==np.amax(fit_cos(x_plt1, *p))]
     b[i]=p[3]
     err_b[i]=(err[3]**2+err_res0[3]**2)**0.5/rad
-    # err_b[i]=((w[i]*err_eps)**2 +(eps*err_res0[2])**2)**0.5/rad
+    # err_b[i]=((w[i]*err_eps)**2 +(eps*err_res0[2])**2)* # fig = plt.figure(figsize=(5,5))
+    # ax = fig.add_subplot(111)
+    # fig.suptitle("ps_pos="+str(ps_pos[i]))
+    # ax.errorbar(coil,matrix[i],yerr=matrix_err[i],fmt="ko",capsize=5)
+    # ax.vlines(b[i]/w[i],0,fit_cos(b[i]/w[i], *p),ls="dashed",color="b",label="$\\beta$="+str("%.3f" % (b[i]/w[i]),))
+    # # ax.vlines(g0[i]/w0[i],0,fit_cos(g0[i]/w0[i], p[0],p[1],*p0[2:]),ls="dashed",color="r",label="$\\beta_0$="+str("%.3f" % (g0[i]/w0[i]),))
+    # ax.plot(x_plt,fit_cos(x_plt, *p), "b"*0.5/rad
     beta[i]=(b0-b[i])/rad
     # fig = plt.figure(figsize=(5,5))
     # ax = fig.add_subplot(111)
@@ -115,7 +121,7 @@ gs_b =GridSpec(4,1, figure=fig, wspace=0, top=0.5)
 ax = fig.add_subplot(111)
 ax.set_title(inf_file_name)
 ax.set_xlabel("$\chi$ ($\pi$)")
-# ax.set_ylim([-1,1])
+ax.set_ylim([0,100])
 ax.errorbar(chi/np.pi, beta, yerr=err_b,fmt="ko",capsize=5)
 ax.plot(x_plt/np.pi,exp_w1p(x_plt, 0),"g", label="Exp Re{"+"$\omega_{1+}$}")
 ax.legend()

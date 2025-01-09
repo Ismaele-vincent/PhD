@@ -68,28 +68,42 @@ err_b = np.zeros(len(ps_pos))
 for i in range(len(ps_pos)):
     matrix[i] = tot_data[:, 2][tot_data[:, -1] == ps_pos[i]]
     matrix_err[i] = tot_data[:, 2][tot_data[:, -1] == ps_pos[i]]**0.5
-ps_pos=ps_pos-109
-w_pss=np.zeros(len(coil))
-ps_0s=np.zeros(len(coil))
-for i in range(len(coil)):
-    ps_data=matrix[:,i]
-    ps_err=matrix_err[:,i]
-    P0=[(np.amax(ps_data)+np.amin(ps_data))/2, np.amax(ps_data)-np.amin(ps_data), 8,0]
-    B0=([0,10,0,-np.pi],[np.inf,np.inf,10,np.pi])
-    p,cov=fit(fit_cos,ps_pos,ps_data, p0=P0, bounds=B0, sigma=ps_err)
-    x_plt = np.linspace(ps_pos[0], ps_pos[-1],100)
-    # fig = plt.figure(figsize=(5,5))
-    # ax = fig.add_subplot(111)
-    # ax.errorbar(ps_pos,ps_data,yerr=np.sqrt(ps_data),fmt="ko",capsize=5)  
-    # ax.plot(x_plt,fit_cos(x_plt, *p), "b")
-    # ax.vlines(p[-1]/p[-2],0,fit_cos(p[-1]/p[-2], *p),ls="dashed")
-    # ax.vlines((p[-1]+276*np.pi-np.pi/2)/p[-2],0,fit_cos(p[-1]/p[-2], *p),ls="dashed", color="r")
-    # ax.vlines(ps_pos[9],0,fit_cos(p[-1]/p[-2], *p),ls="dashed", color="b")
-    w_pss[i]=p[-2]
-    ps_0s[i]=p[-1]
-    # print("A=",p[0], ps_pos[9])
-w_ps=np.average(w_pss)
-ps_0=np.average(ps_0s)
+# ps_pos=ps_pos-109
+# w_pss=np.zeros(len(coil))
+# ps_0s=np.zeros(len(coil))
+# for i in range(len(coil)):
+#     ps_data=matrix[:,i]
+#     ps_err=matrix_err[:,i]
+#     P0=[(np.amax(ps_data)+np.amin(ps_data))/2, np.amax(ps_data)-np.amin(ps_data), 8,0]
+#     B0=([0,10,0,-np.pi],[np.inf,np.inf,10,np.pi])
+#     p,cov=fit(fit_cos,ps_pos,ps_data, p0=P0, bounds=B0, sigma=ps_err)
+#     x_plt = np.linspace(ps_pos[0], ps_pos[-1],100)
+#     # fig = plt.figure(figsize=(5,5))
+#     # ax = fig.add_subplot(111)
+#     # ax.errorbar(ps_pos,ps_data,yerr=np.sqrt(ps_data),fmt="ko",capsize=5)  
+#     # ax.plot(x_plt,fit_cos(x_plt, *p), "b")
+#     # ax.vlines(p[-1]/p[-2],0,fit_cos(p[-1]/p[-2], *p),ls="dashed")
+#     # ax.vlines((p[-1]+276*np.pi-np.pi/2)/p[-2],0,fit_cos(p[-1]/p[-2], *p),ls="dashed", color="r")
+#     # ax.vlines(ps_pos[9],0,fit_cos(p[-1]/p[-2], *p),ls="dashed", color="b")
+#     w_pss[i]=p[-2]
+#     ps_0s[i]=p[-1]
+#     # print("A=",p[0], ps_pos[9])
+ps_data=np.average(matrix, axis=1)
+ps_err=np.sum(matrix, axis=1)**0.5/len(coil)
+P0_chi=[(np.amax(ps_data)+np.amin(ps_data))/2, np.amax(ps_data)-np.amin(ps_data), 8, 0.09]
+B0_chi=([0,10,0,-2*np.pi],[3000,3000,10, 2*np.pi])
+p_chi,cov=fit(fit_cos,ps_pos,ps_data, p0=P0_chi, bounds=B0_chi, sigma=ps_err)
+x_plt = np.linspace(ps_pos[0], ps_pos[-1],100)
+fig = plt.figure(figsize=(5,5))
+ax = fig.add_subplot(111)
+ax.errorbar(ps_pos,ps_data,yerr=ps_err,fmt="ko",capsize=5)  
+ax.plot(x_plt,fit_cos(x_plt, *p_chi), "b")
+ax.vlines((p_chi[-1]+276*np.pi)/p_chi[-2],0,fit_cos(p_chi[-1]/p_chi[-2], *p_chi),ls="dashed")
+# ax.vlines((p[-1]+276*np.pi-np.pi/2)/p[-2],0,fit_cos(p[-1]/p[-2], *p),ls="dashed", color="r")
+ax.set_title(p_chi[-1])
+w_ps=p_chi[-2]
+ps_0=p_chi[-1]
+print("chi_0=",ps_0)
 print(w_ps,ps_0)
 
 c_data = np.sum(matrix, axis=0)
@@ -113,29 +127,29 @@ beta_0 = w_c*coil-c_0
 chi_0 = w_ps*ps_pos-ps_0
 alpha = np.pi/8
 gamma = 0
-C = 0.687
+C = 0.625
 eta = 1-C
 print(ps_0)
 
-def fit_I_px(x, A, ps_0, c_0):
+def fit_I_px(x, A, ps_0, c_0, C, B):
     beta = w_c*coil-c_0
     chi = w_ps*ps_pos-ps_0
     beta, chi = np.meshgrid(beta, chi)
-    fit_I_px = A*I_px(beta, chi, C, alpha)
+    fit_I_px = A*I_px(beta, chi, C, alpha)+B
     # print(fit_I_px)
     return fit_I_px.ravel()
 
-P0 = (2500, ps_0, c_0)
-B0 = ([0,-np.pi,0], [5000,np.pi,2*np.pi])
+P0 = (2500, ps_0, c_0, C, 0)
+B0 = ([0,-2*np.pi,0,0, 0], [5000,np.pi,2*np.pi,1, 10000])
 p, cov = fit(fit_I_px, range(len(matrix.ravel())), matrix.ravel(), sigma=matrix_err.ravel(), bounds=B0)
 print("p=",p)
 print("p0=",P0)
 fig = plt.figure(figsize=(10, 5))
 ax = fig.add_subplot(111)
-ax.plot(fit_I_px(0, *p), "-")
+ax.plot(fit_I_px(0, *p), ".")
 ax.plot(matrix.ravel(), "r--")
 # ax.errorbar(np.arange(len(matrix.ravel())),matrix.ravel(), yerr=matrix_err.ravel(), fmt="ko", capsize=3, lw=1)
-ax.set_xlim([0,100])
+ax.set_xlim([0,200])
 f_obs=matrix.ravel()
 f_exp=fit_I_px(0,*p)
 
@@ -145,19 +159,23 @@ f_exp=fit_I_px(0,*p)
 # print((np.sum(f_obs)-np.sum(f_exp))/np.sum(f_obs))
 # print(chisquare(f_obs=f_obs, f_exp=f_exp, ddof=7))
 
-def fit_plt(x, A, ps_0, c_0):
+def fit_plt(x, A, ps_0, c_0, C, B):
     beta = w_c*coil-c_0
     chi = w_ps*ps_pos-ps_0
     beta, chi = np.meshgrid(beta, chi)
-    fit_I_px = A*I_px(beta, chi, C, alpha)
+    fit_I_px = A*I_px(beta, chi, C, alpha)+B
     # print(fit_I_px)
     return fit_I_px
 
-c_0=p[-1]
-ps_0=p[-2]
-A=p[0]
-fig = plt.figure(figsize=(10, 10))
-ax = plt.axes(projection='3d')
+# c_0=p[2]
+# ps_0=p[1]
+# A=p[0]
+# C=p[3]
+B=p[4]
+A=2452.5
+C=0.687
+print("A=",A)
+
 beta = w_c*coil-c_0
 chi = w_ps*ps_pos-ps_0
 beta, chi = np.meshgrid(beta, chi)
@@ -166,6 +184,8 @@ Z = matrix
 Z1 = fit_plt(0, *p)
 # Z2 = I_px_corr_co(0, *p)
 # Z3 = Z-I_px_corr_in(0, *p)
+fig = plt.figure(figsize=(10, 10))
+ax = plt.axes(projection='3d')
 ax.contour3D(beta, chi, Z, 40, cmap='binary')
 ax.contour3D(beta, chi, Z1, 40, cmap='plasma')  # cmap='Blues')
 ax.set_xlabel('$\\beta$')
@@ -173,11 +193,14 @@ ax.set_ylabel('$\chi$')
 ax.set_zlabel('z')
 ax.view_init(40, 45)
 plt.show()
-# A=2452.5
+# A=2669
 
-corrected_matrix=Z+((1-C)*a1*a2*np.cos((alpha+beta)/2)*np.cos(beta/2)*np.cos(chi))*A
-corrected_matrix_err=matrix_err
+corrected_matrix=Z+A*(1-C)*a1*a2*np.cos((alpha+beta)/2)*np.cos(beta/2)*np.cos(chi)
+print(corrected_matrix[corrected_matrix<0])
+corrected_matrix_err=abs(corrected_matrix)**0.5
 for i in range(len(ps_pos)):
     data_txt=np.array([coil, corrected_matrix[i], corrected_matrix_err[i], np.ones(len(coil))*ps_pos[i]])
     with open(correct_fold_path+"/beta_ps_"+str("%02d" % (i,))+".txt", 'w') as f:
+        np.savetxt(f, np.transpose(data_txt),  header= "Coil_pos O-Beam err ps_pos", fmt='%.7f %.7f %.7f %.7f')
+    with open("/home/aaa/Desktop/Offset correction/beta_ps_"+str("%02d" % (i,))+".txt", 'w') as f:
         np.savetxt(f, np.transpose(data_txt),  header= "Coil_pos O-Beam err ps_pos", fmt='%.7f %.7f %.7f %.7f')

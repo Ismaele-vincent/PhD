@@ -11,26 +11,26 @@ import shutil
 
 
 fold_path="/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 1st round/exp_3-16-13/rawdata/sc/"
-inf_file_name="moveDC2_08Apr1342ff"#"path1pi8_noIn_cb_g_17Apr1557"
+inf_file_name="ifg_10s_3p_06Apr1321"#"path1pi8_noIn_cb_g_17Apr1557"
 inf_path = fold_path+inf_file_name+".inf"
 # beta0_files=["moveDC2_08Apr1342.dat","moveDC2_08Apr1424.dat","moveDC2_08Apr1514.dat","moveDC2_08Apr1551.dat","moveDC2_08Apr1627.dat","moveDC2_08Apr1703.dat"]
 # inf_files_alpha0=[inf_file_name,"S2Zneg_10Apr1709"]
 # inf_path_alpha0 = [fold_path+inf_files_alpha0[0]+".inf",fold_path+inf_files_alpha0[1]+".inf"]
-sorted_fold_path="/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 1st round/exp_3-16-13/Sorted data/"+inf_file_name
-if not os.path.exists(sorted_fold_path):
-    os.makedirs(sorted_fold_path)
+# sorted_fold_path="/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 1st round/exp_3-16-13/Sorted data/"+inf_file_name
+# if not os.path.exists(sorted_fold_path):
+#     os.makedirs(sorted_fold_path)
 
-rawdata=sorted_fold_path+"/Rawdata" 
-if not os.path.exists(rawdata):
-    os.makedirs(rawdata)
+# rawdata=sorted_fold_path+"/Rawdata" 
+# if not os.path.exists(rawdata):
+#     os.makedirs(rawdata)
 
-cleandata=sorted_fold_path+"/Cleantxt" 
-if not os.path.exists(cleandata):
-    os.makedirs(cleandata)
+# cleandata=sorted_fold_path+"/Cleantxt" 
+# if not os.path.exists(cleandata):
+#     os.makedirs(cleandata)
     
-plots=sorted_fold_path+"/Plots" 
-if not os.path.exists(plots):
-    os.makedirs(plots)
+# plots=sorted_fold_path+"/Plots" 
+# if not os.path.exists(plots):
+#     os.makedirs(plots)
 
 # beta_fold_raw=rawdata+"/Beta"
 # beta_fold_clean=cleandata+"/Beta"
@@ -44,11 +44,11 @@ if not os.path.exists(plots):
 #     os.makedirs(gamma_fold_raw)
 #     os.makedirs(gamma_fold_clean)
 
-beta0_fold_raw=rawdata+"/Beta0"
-beta0_fold_clean=cleandata+"/Beta0"
-if (not os.path.exists(beta0_fold_raw)) or (not os.path.exists(beta0_fold_clean)):
-    os.makedirs(beta0_fold_raw)
-    os.makedirs(beta0_fold_clean)
+# beta0_fold_raw=rawdata+"/Beta0"
+# beta0_fold_clean=cleandata+"/Beta0"
+# if (not os.path.exists(beta0_fold_raw)) or (not os.path.exists(beta0_fold_clean)):
+#     os.makedirs(beta0_fold_raw)
+#     os.makedirs(beta0_fold_clean)
 
 # alpha0_fold_raw=rawdata+"/Alpha0"
 # alpha0_fold_clean=cleandata+"/Alpha0"
@@ -73,11 +73,11 @@ if (not os.path.exists(beta0_fold_raw)) or (not os.path.exists(beta0_fold_clean)
 # coil_amp= np.genfromtxt(inf_path, dtype=str,usecols=(0,4), skip_header=1)
 # ps_num=np.array([range(len(inf_files[::2,0])),np.sort(inf_files[::2,1].astype(float))])
 
-inf_files_beta0 = np.genfromtxt(inf_path, dtype=str,usecols=(0,1))
+# inf_files_beta0 = np.genfromtxt(inf_path, dtype=str,usecols=(0,1))
 # inf_files_alpha0 = np.genfromtxt(inf_path_alpha0[0], dtype=str,usecols=(0))
 # inf_files_alpha0 = np.append(inf_files_alpha0,np.genfromtxt(inf_path_alpha0[1], dtype=str,usecols=(0)))
 
-# inf_files_ifg = np.genfromtxt(inf_path, dtype=str,usecols=(0))
+inf_files_ifg = np.genfromtxt(inf_path, dtype=str,usecols=(0))
 
 for root, dirs, files in os.walk(fold_path, topdown=False):
 
@@ -107,13 +107,13 @@ for root, dirs, files in os.walk(fold_path, topdown=False):
         """
         \beta0 sorting
         """  
-        if (name in inf_files_beta0[:,0]):
-            # print(name)
-            shutil.copy(os.path.join(root, name), beta0_fold_raw+"/"+name)
-            # print(np.loadtxt(os.path.join(root, name), skiprows=22, comments="*", delimiter="\t")[0])
-            cleantxt=np.loadtxt(os.path.join(root, name), skiprows=22, comments="*", delimiter="\t")[:,1:]
-            with open(beta0_fold_clean+"/"+name, 'w') as f:
-                np.savetxt(f, cleantxt,  header= "Position(mm) exposure_time(s) O-Beam H-Beam Monitor H2-Beam time(s) O+H encod1 encod2 phaseshif_pos", fmt='%.7f %.1f %i %i %i %i %i %i %.7f %.7f' )
+        # if (name in inf_files_beta0[:,0]):
+        #     # print(name)
+        #     shutil.copy(os.path.join(root, name), beta0_fold_raw+"/"+name)
+        #     # print(np.loadtxt(os.path.join(root, name), skiprows=22, comments="*", delimiter="\t")[0])
+        #     cleantxt=np.loadtxt(os.path.join(root, name), skiprows=22, comments="*", delimiter="\t")[:,1:]
+        #     with open(beta0_fold_clean+"/"+name, 'w') as f:
+        #         np.savetxt(f, cleantxt,  header= "Position(mm) exposure_time(s) O-Beam H-Beam Monitor H2-Beam time(s) O+H encod1 encod2 phaseshif_pos", fmt='%.7f %.1f %i %i %i %i %i %i %.7f %.7f' )
         """
         \alpha0 scan sorting
         """  
@@ -135,7 +135,8 @@ for root, dirs, files in os.walk(fold_path, topdown=False):
         \ifg scan sorting
         """  
         if name in inf_files_ifg:
-            shutil.copy(os.path.join(root, name), ifg_fold_raw+"/"+name)
-            cleantxt=np.loadtxt(os.path.join(root, name), skiprows=20, comments="*", delimiter="\t")[:,1:]
-            with open(ifg_fold_clean+"/"+name, 'w') as f:
-                np.savetxt(f, cleantxt,  header= "ps_pos exposure_time(s) O-Beam H-Beam Monitor H2-Beam time(s) O+H encod1 encod2 phaseshif_pos", fmt='%.7f %.1f %i %i %i %i %i %i %.7f %.7f' )
+            print(name)
+            # shutil.copy(os.path.join(root, name), ifg_fold_raw+"/"+name)
+            # cleantxt=np.loadtxt(os.path.join(root, name), skiprows=20, comments="*", delimiter="\t")[:,1:]
+            # with open(ifg_fold_clean+"/"+name, 'w') as f:
+            #     np.savetxt(f, cleantxt,  header= "ps_pos exposure_time(s) O-Beam H-Beam Monitor H2-Beam time(s) O+H encod1 encod2 phaseshif_pos", fmt='%.7f %.1f %i %i %i %i %i %i %.7f %.7f' )

@@ -15,7 +15,7 @@ from scipy.optimize import curve_fit as fit
 from scipy.stats import norm
 from scipy.stats import rayleigh
 
-np.random.seed(12345)
+np.random.seed()
 
 def I(t):
     return 150 +30*np.sin(2*2*np.pi*1e-3*t-0.5)+ 30*np.sin(3*2*np.pi*1e-3*t+1) 

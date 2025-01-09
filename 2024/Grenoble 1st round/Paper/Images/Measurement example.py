@@ -19,8 +19,9 @@ from scipy.optimize import curve_fit as fit
 a_1=1/2**0.5
 a_2=1/2**0.5
 sgn=1
+plt.rcParams["mathtext.fontset"]="cm"
 colors=["k","#f10d0c","#00a933","#5983b0"]
-labels=["$\chi_0=0$", "$\chi_0=\\dfrac{\pi}{2}$", "$\chi_0=\pi$", "$\chi_0=\\dfrac{3\pi}{2}$"]
+labels=["$\chi=0$", "$\chi=\\dfrac{\pi}{2}$", "$\chi=\pi$", "$\chi=\\dfrac{3\pi}{2}$"]
 def fit_cos(x, A, B, C, D):
     return A+B*np.cos(C*x-D)
 
@@ -195,7 +196,7 @@ A_avg=0
 Dchi=np.zeros(4)
 C_avg=0
 C_err=0
-fig = plt.figure(figsize=(5,4))
+fig = plt.figure(figsize=(4,4), dpi=200)
 ax = fig.add_subplot(111)
 for root, dirs, files in os.walk(cleandata, topdown=False):
     files=np.sort(files)
@@ -224,9 +225,9 @@ for root, dirs, files in os.walk(cleandata, topdown=False):
         C_err+=p[1]**2/p[0]**4*err[0]**2+err[1]**2/p[0]**2
         A_err=err[0]**2
         x_plt = np.linspace(ps_pos[0], ps_pos[-1],200)
-        ax.errorbar(chi,data_ifg/time,yerr=data_ifg_err/time,fmt="o",color=colors[i],capsize=5, ms=3)
+        ax.errorbar(chi,data_ifg/time,yerr=data_ifg_err/time,fmt="o",color=colors[i],capsize=3, ms=2)
         ax.fill_between([], [],color=colors[i],label=labels[i])
-        ax.errorbar(chi_plt,fit_cos(x_plt, *p)/time, fmt="--", color=colors[i])
+        ax.errorbar(chi_plt,fit_cos(x_plt, *p)/time, fmt="-", color=colors[i], lw=1)
         # # ax.set_ylim([0,1500])
         # print("C=", p[1]/p[0], "+-", ((err[1]/p[0])**2+(err[1]*p[1]/p[0]**2)**2)**0.5)
         # print("C_unb=", p_unb[-1])
@@ -236,14 +237,15 @@ for root, dirs, files in os.walk(cleandata, topdown=False):
         Dchi[i]=p[3]
         # print(p[3])
         i+=1
-fig.legend(loc=9,framealpha=1, ncol=4)
+fig.legend(loc=10,framealpha=1, ncol=4,bbox_to_anchor=(0.505,0.96))
 ax.legend("none")
 ax.errorbar([],[],[],fmt="o",color=(0.5, 0.5, 0.5), capsize=5, ms=3, label="Data")
-ax.errorbar([],[],fmt="--",color=(0.5, 0.5, 0.5), label="Fit")
+ax.errorbar([],[],fmt="-",color=(0.5, 0.5, 0.5), label="Fit")
 handles, labels = ax.get_legend_handles_labels()
-ax.legend(handles=handles[-2:], framealpha=1, loc=2)
-ax.set_xlabel("$\chi$ [rad]")
+ax.legend(handles=handles[-2:], framealpha=1, loc=3, ncol=2)
+ax.set_xlabel("$\mathdefault{\chi_0}$ [rad]")
 ax.set_ylabel("Neutron rate (count / s)")
+ax.set_ylim([0,430])
 
-# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images/Measurement example.pdf", format="pdf",bbox_inches="tight")
+plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images/Measurement example.pdf", format="pdf",bbox_inches="tight")
 plt.show()

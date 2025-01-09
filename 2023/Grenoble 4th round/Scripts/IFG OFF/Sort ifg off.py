@@ -17,7 +17,7 @@ sc_fold_path="/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/exp_CRG-3061/
 bad_apples=[]
 for root, dirs, files in os.walk(sc_fold_path, topdown=False):
     for name in files:
-        if ("ifg_-2to2_" in name) and ("17Nov" in name) and (".inf" in name):
+        if ("ifg_-2to2_" in name) and ("15Nov" in name) and (".inf" in name):
             if (name[:-4] in bad_apples):
                 print('bad "'+name[:-4]+'", ')
             else:

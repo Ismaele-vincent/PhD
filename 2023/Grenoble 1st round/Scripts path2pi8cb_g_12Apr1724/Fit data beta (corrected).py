@@ -22,11 +22,10 @@ w_ps=8.002
 a21=2 #1.375
 
 def exp_w1p(x,x0):
-    return alpha*(1-1/(1+a21*np.exp(-1j*(x-x0)))).real
+    return alpha*(1-1/(1+a21*np.exp(-1j*(x+x0)))).real
 
 def fit_cos(x,A,B,C,D):
     return A+B*np.cos(C*x-D)
-
 
 rad=np.pi/180
 inf_file_name="path2pi8cb_g_12Apr1724"
@@ -56,15 +55,17 @@ b=np.zeros(len(ps_pos))
 beta=np.zeros(len(ps_pos))
 w=np.zeros(len(ps_pos))
 err_b=np.zeros(len(ps_pos))
-# fit_res0=[1.32214076e+03, 1.17144255e+03, 1.31186510e-01, 1.8086273e+00]
-fit_res0=[1.32214076e+03, 1.17144255e+03, 1.31186510e-01, 1.8171]
+fit_res0=[1.32214076e+03, 1.17144255e+03, 1.31186510e-01, 1.8086273e+00]
+# fit_res0=[1.32214076e+03, 1.17144255e+03, 1.31186510e-01, 1.8171]
 err_res0=[8.10516385e+00, 1.16683697e+01, 3.20540294e-04, 1.75421950e-02]
 b0=fit_res0[-1]
 for i in range(len(ps_pos)):
     matrix[i]=tot_data[:,1][tot_data[:,-1]==ps_pos[i]]
     matrix_err[i]=tot_data[:,2][tot_data[:,-1]==ps_pos[i]]
+    
+
 for i in range(len(ps_pos)):
-    P0=[5, np.amax(matrix[i]), 0.1,0]
+    P0=[100, np.amax(matrix[i]), 0.1,1]
     B0=([0,0,0,-10],[np.inf,np.inf,np.inf,np.inf])
     p,cov=fit(fit_cos,coil,matrix[i], p0=P0, bounds=B0, sigma=matrix_err[i])
     err=np.diag(cov)**0.5
@@ -83,11 +84,11 @@ for i in range(len(ps_pos)):
     # fig.suptitle("ps_pos="+str(ps_pos[i]))
     # ax.errorbar(coil,matrix[i],yerr=matrix_err[i],fmt="ko",capsize=5)
     # ax.vlines(b[i]/w[i],0,fit_cos(b[i]/w[i], *p),ls="dashed",color="b",label="$\\beta$="+str("%.3f" % (b[i]/w[i]),))
-    # # ax.vlines(g0[i]/w0[i],0,fit_cos(g0[i]/w0[i], p[0],p[1],*p0[2:]),ls="dashed",color="r",label="$\\beta_0$="+str("%.3f" % (g0[i]/w0[i]),))
+    # # # # ax.vlines(g0[i]/w0[i],0,fit_cos(g0[i]/w0[i], p[0],p[1],*p0[2:]),ls="dashed",color="r",label="$\\beta_0$="+str("%.3f" % (g0[i]/w0[i]),))
     # ax.plot(x_plt,fit_cos(x_plt, *p), "b")
-    # ax.set_ylim([0, P0[1]+P0[1]/10])
-    # ax.plot(x_plt,fit_cos(x_plt, p[0],p[1],*p0[2:]), "r")
-    # ax.legend(loc=4)
+    # # ax.set_ylim([0, P0[1]+P0[1]/10])
+    # # ax.plot(x_plt,fit_cos(x_plt, p[0],p[1],*p0[2:]), "r")
+    # # ax.legend(loc=4)
 
 ps_data=np.sum(matrix,axis=1)
 P0=[(np.amax(ps_data)+np.amin(ps_data))/2, np.amax(ps_data)-np.amin(ps_data), 8,ps_pos[0]*8]
@@ -96,7 +97,7 @@ p,cov=fit(fit_cos,ps_pos,ps_data, p0=P0,bounds=B0)
 x_plt = np.linspace(ps_pos[0], ps_pos[-1],100)
 # fig = plt.figure(figsize=(5,5))
 # ax = fig.add_subplot(111)
-# ax.errorbar(ps_pos,ps_data,yerr=np.sqrt(ps_data),fmt="ko",capsize=5)  
+# ax.errorbar(ps_pos,ps_data,yerr=np.sqrt(ps_data),fmt="ko",capsize=5)
 # ax.plot(x_plt,fit_cos(x_plt, *p), "b")
 # ax.vlines(p[-1],0,fit_cos(p[-1], *p),ls="dashed")
 print(p)
@@ -117,15 +118,15 @@ gs_b =GridSpec(4,1, figure=fig, wspace=0, top=0.5)
 ax = fig.add_subplot(111)
 ax.set_title(inf_file_name)
 ax.set_xlabel("$\chi$ ($\pi$)")
-# ax.set_ylim([0,45])
-ax.errorbar(chi/np.pi, beta, yerr=err_b,fmt="ko",capsize=5)
-ax.plot(x_plt/np.pi,exp_w1p(x_plt, 0),"g", label="Exp Re{"+"$\omega_{1+}$}")
+ax.set_ylim([0,3])
+ax.errorbar(chi/np.pi, beta/alpha, yerr=err_b/alpha,fmt="ko",capsize=5)
+ax.plot(x_plt/np.pi,exp_w1p(x_plt, 0)/alpha,"g", label="Exp Re{"+"$\omega_{1+}$}")
 ax.legend()
 plt.show()
 
 datatxt= np.array([ps_pos,beta,err_b])
 
-with open(correct_fold_path+"/"+inf_file_name[:]+"_new"+"_Beta_corrected.txt","w") as f:
+with open("/home/aaa/Desktop/"+inf_file_name[:]+"_new_2024"+"_Beta_corrected.txt","w") as f:
     np.savetxt(f,np.transpose(datatxt), header="ps_pos w+ err", fmt='%.7f %.7f %.7f')
 
 # data=np.loadtxt("/home/aaa/Desktop/path1pi8cb_g_09Apr1441.txt")

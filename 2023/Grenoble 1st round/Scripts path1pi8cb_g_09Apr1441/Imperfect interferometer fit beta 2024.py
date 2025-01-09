@@ -78,11 +78,11 @@ for i in range(len(coil)):
     B0=([0,10,0,-np.pi],[np.inf,np.inf,10,np.pi])
     p,cov=fit(fit_cos,ps_pos,ps_data, p0=P0, bounds=B0, sigma=ps_err)
     x_plt = np.linspace(ps_pos[0], ps_pos[-1],100)
-    fig = plt.figure(figsize=(5,5))
-    ax = fig.add_subplot(111)
-    ax.errorbar(ps_pos,ps_data,yerr=np.sqrt(ps_data),fmt="ko",capsize=5)  
-    ax.plot(x_plt,fit_cos(x_plt, *p), "b")
-    ax.vlines(p[-1]/p[-2],0,fit_cos(p[-1]/p[-2], *p),ls="dashed")
+    # fig = plt.figure(figsize=(5,5))
+    # ax = fig.add_subplot(111)
+    # ax.errorbar(ps_pos,ps_data,yerr=np.sqrt(ps_data),fmt="ko",capsize=5)  
+    # ax.plot(x_plt,fit_cos(x_plt, *p), "b")
+    # ax.vlines(p[-1]/p[-2],0,fit_cos(p[-1]/p[-2], *p),ls="dashed")
     # ax.vlines((p[-1]+276*np.pi-np.pi/2)/p[-2],0,fit_cos(p[-1]/p[-2], *p),ls="dashed", color="r")
     # ax.vlines(ps_pos[9],0,fit_cos(p[-1]/p[-2], *p),ls="dashed", color="b")
     w_pss[i]=p[-2]
@@ -173,7 +173,7 @@ ax.set_ylabel('$\chi$')
 ax.set_zlabel('z')
 ax.view_init(40, 45)
 plt.show()
-# A=2452.5
+A=2452.5
 
 corrected_matrix=Z+((1-C)*a1*a2*np.cos((alpha+beta)/2)*np.cos(beta/2)*np.cos(chi))*A
 corrected_matrix_err=matrix_err

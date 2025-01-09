@@ -196,7 +196,7 @@ for i in [6,8,13,16]:
     k+=1
 
 axs[1].yaxis.set_label_coords(-0.09,0)
-axs[1].set_ylabel("Intensity (counts/1200sec)")
+axs[1].set_ylabel("Intensity [counts/1200sec]")
 axs[-2].tick_params(axis="x", bottom=True, labelbottom=True)
 axs[-2].set_xlabel("Time [$\mu\,$s]")
 

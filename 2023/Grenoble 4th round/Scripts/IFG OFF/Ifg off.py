@@ -108,7 +108,7 @@ for inf_file_name in inf_file_names:
                 C=np.append(C, p[1]/p[0])
                 C_err=np.append(C_err,  ((err[1]/p[0])**2+(err[1]*p[1]/p[0]**2)**2)**0.5)
 print("C=", np.average(C), "+-", np.average(C_err))
-plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Report/Images/C_ifg_07Nov.pdf", format="pdf",bbox_inches="tight")
+# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Report/Images/C_ifg_07Nov.pdf", format="pdf",bbox_inches="tight")
 # print("w_ps=", p[-2])
 # print("chi_0=", p[-1])
 # print(0.6094600070882551/0.7164077689326444)
