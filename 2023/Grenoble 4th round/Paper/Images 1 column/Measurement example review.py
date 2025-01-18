@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Fri May 17 16:52:56 2024
+Created on Thu Aug  1 19:01:51 2024
 
 @author: aaa
 """
@@ -23,14 +23,16 @@ a_21=1
 a_1=1/2**0.5
 a_2=1/2**0.5
 
-inf_file_name="TOF_vs_chi_A+B_22pt_pi16_1200s_09Nov1808"
+# inf_file_name="TOF_vs_chi_A+B_22pt_pi16_1200s_09Nov1808"
 inf_file_name="TOF_vs_chi_A+B_22pt_pi16_1200s_4P_11Nov1354"
-# inf_file_name="TOF_vs_chi_A+B_22pt_pi8_1200s_4P_11Nov2118" 
-# inf_file_name="TOF_vs_chi_A+B_22pt_pi8_1200s_10Nov0133"
+# inf_file_name="TOF_vs_chi_A+B_22pt_pi16_1200s_4P_11Nov0502"
+# inf_file_name="TOF_vs_chi_A+B_In1_22pt_pi16_2000s_4P_16Nov1733"
+# inf_file_name="TOF_vs_chi_A+B_In1_22pt_pi16_1200s_4P_15Nov0927"
 alpha_1=0.1923 #/2.354
 alpha_1_err=0.0009 
 alpha_2=0.1971 #/2.354
 alpha_2_err=0.0004
+
 
 def w1(chi):
     return (1/(1+a_21*np.exp(1j*chi)))
@@ -49,6 +51,7 @@ sorted_fold_path="/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/exp_CRG-3
 cleandata=sorted_fold_path+"/Cleantxt"
 niels_path="/home/aaa/Desktop/Niels/Data/"+inf_file_name
 niels_fourier_path="/home/aaa/Desktop/Niels/Fourier/"+inf_file_name
+
 
 i=0
 for root, dirs, files in os.walk(cleandata, topdown=False):
@@ -82,7 +85,7 @@ for i in range(len(ps_pos)):
     matrix_err[i]=matrix[i]**0.5
     
 ps_data=np.sum(matrix, axis=1)
-P0=[(np.amax(ps_data)+np.amin(ps_data))/2, 0.6, 3, -1.]
+P0=[(np.amax(ps_data)+np.amin(ps_data))/2, 0.6, 3, 0.]
 B0=([100,0,0.01,-10],[np.amax(ps_data)+10000,2,5, 10])
 p,cov=fit(fit_cos, ps_pos, ps_data, p0=P0,  bounds=B0)
 err=np.diag(cov)**0.5
@@ -102,7 +105,7 @@ ax = fig.add_subplot(111)
 ps_plt = np.linspace(ps_pos[0], ps_pos[-1],100)
 ax.errorbar(ps_pos,ps_data, yerr=ps_data**0.5,fmt="ko",capsize=5, ms=3)
 ax.plot(ps_plt,fit_cos(ps_plt, *p), "b")
-ax.vlines(p[-1]/p[-2],fit_cos(p[-1]/p[-2]+np.pi,*p),fit_cos(p[-1]/p[-2],*p), color="k")
+# ax.vlines(p[-1]/p[-2],fit_cos(p[-1]/p[-2]+np.pi,*p),fit_cos(p[-1]/p[-2],*p), color="k")
 P0=[300,300, -0.8, 1]
 p_tot=np.zeros((len(ps_pos),len(P0)))
 err_tot=np.zeros((len(ps_pos),len(P0)))
@@ -125,20 +128,33 @@ cos2=np.zeros((len(ps_pos)))
 cos2_err=np.zeros((len(ps_pos)))
 cos2_fit=np.zeros((len(ps_pos)))
 cos2_err_fit=np.zeros((len(ps_pos)))
+
+# fig = plt.figure(figsize=(5,7), dpi=150)
+fig = plt.figure(figsize=(6,3), dpi=150)
+gs = fig.add_gridspec(4,1, hspace=0.0, wspace=0)
 colors=["k","#f10d0c","#00a933","#5983b0"]
-fig = plt.figure(figsize=(5,4), dpi=150)
-ax = fig.add_subplot(111)
+colors_point=[(0.8,0.8,0.8),(0.9,0.8,0.8),(0.8,0.9,0.8),(0.85,0.85,1)]
+colors_point_2=[(0.6,0.6,0.6),(0.9,0.6,0.6),(0.6,0.8,0.6),(0.7,0.7,1)]
+# axs = [fig.add_subplot(gs[0, 0]),fig.add_subplot(gs[0, 1]),fig.add_subplot(gs[1, 0]),fig.add_subplot(gs[1, 1])]
+axs = [fig.add_subplot(gs[0, 0]),fig.add_subplot(gs[1, 0]),fig.add_subplot(gs[3, 0]),fig.add_subplot(gs[2, 0])]
+for ax in axs:
+    ax.tick_params(axis="x", bottom=False, labelbottom=False)
+    ax.set_rasterized(True)
+    # ax.yaxis.set_label_position("right")
+# for ax in axs[1::2]:
+#     ax.tick_params(axis="y", left=False, labelleft=False)
 k=0
 [6,8,13,16]
-p_fit=[128.99298884/1200,  97.63956079/1200,   2.2038275,    1.2313203]
-for i in [6,9,13,16]:
+sec=1
+p_fit=[128.99298884/sec,  97.63956079/sec,   2.2038275,    1.2313203]
+for i in [6,10,13,17]:
     func_data=matrix[i]
     func_data_err=matrix_err[i]
     chi_aus=chi[i]
-    # P0=[0.1,0.05, 2.3, 2]
-    # # print(P0)
-    # B0=([0,0, 0, 0],[1,1, np.pi, np.pi])
-    # p_Im,cov_Im = fit(fit_Im, time, func_data/1200, p0=P0, bounds=B0)
+    P0=[0.1,0.05,chi_aus, 2.2, 1]
+    # print(P0)
+    B0=([0,0, chi[0]-1, 0, 0],[1,1, chi[-1]+1, np.pi, np.pi])
+    # p_Im,cov_Im = fit(fit_Im, time, func_data/sec, p0=P0, bounds=B0)
     # err_Im=np.diag(cov_Im)**0.5
     # print(p_Im[-2],p_Im[-1])
     # print(p_Im,err_Im)
@@ -151,24 +167,40 @@ for i in [6,9,13,16]:
     # print(sum(abs(yf_data)))
     xf = fftfreq(N, S_F)*1e3
     
-    ax.grid(True, ls="dotted")
-    ax.errorbar(time, matrix[i]/1200, yerr= matrix_err[i]/1200, fmt=".", color=colors[k], alpha=0.2, capsize=2, label="$\chi=$"+str("%.2f"%chi[i],))
-    # ax.fill_between(time,  matrix[i]/1200-matrix_err[i]/1200,matrix[i]/1200+matrix_err[i]/1200,color=colors[k], alpha=0.2, label="$\chi=$"+str("%.2f"%chi[i],))
-    ax.plot(time_plt, fit_Im(time_plt, *p_fit),"-", color=colors[k])
-    # ax.plot(time, matrix[i]/1200,".", color=colors[k], alpha=0.2, label="$\chi=$"+str("%.2f"%chi[i],))
-    # ax.set_title(str("%.2f"%chi[i],))
-    # ax.errorbar(xf, np.abs(yf_data), np.abs(yf_data_err), fmt="k.", capsize=5)
-    ax.set_ylim([0,0.23])
-    # avg=np.average(matrix[i]/1200)
-    # ax.set_ylim([0,ax.get_ylim()[1]])
-    # ax.set_ylim([avg-0.06,avg+0.06])
-    # ax.set_yticks(ticks=[avg-0.03,avg,avg+0.03])
-    # ax.set_yticklabels([str("%.2f"%abs(avg-0.03),),str("%.2f"%avg,),str("%.2f"%(avg+0.03),)])
-    ax.set_xlabel("Time [$\mu\,$s]")
-    ax.set_ylabel("Neutron rate (count / s)")
+    axs[k].grid(True, ls="dotted")
+    axs[k].errorbar(time, matrix[i], yerr= matrix_err[i], fmt=".", color=colors_point[k], lw=1, ms=3, capsize=2, label="Data $\chi\\approx$"+str("%.2f"%(chi[i]/np.pi),)+"$\pi$")
+    axs[k].errorbar(time, matrix[i], fmt=".", color=colors_point_2[k], lw=1, ms=3, capsize=2)
+    # axs[k].errorbar(time, matrix[i], yerr= matrix_err[i], fmt=".", color=colors[k], alpha=0.2, ms=3, capsize=2, label="Data $\chi\\approx$"+str("%.2f"%(chi[i]/np.pi),)+"$\pi$")
+    axs[k].errorbar(time_plt, fit_Im(time_plt, *p_fit),fmt="-", color=colors[k], lw=2, label="Fit theory")
+    # axs[k].fill_between(time,  matrix[i]/sec-matrix_err[i]/sec,matrix[i]/sec+matrix_err[i]/sec,color=colors[k], alpha=0.2)
+    # axs[k].plot(time, matrix[i]/sec,".", color=colors[k], alpha=0.4)
+    # axs[k].set_title(str("%.2f"%chi[i],))
+    # axs[k].errorbar(xf, np.abs(yf_data), np.abs(yf_data_err), fmt="k.", capsize=5)
+    # axs[k].set_xlim([0,2000])
+    avg=int(np.average(matrix[i]/sec))
+    # axs[k].set_ylim([0,axs[k].get_ylim()[1]])
+    # axs[k].set_ylim([avg-0.04*1200/sec,avg+0.04*1200/sec])
+    # axs[k].set_yticks(ticks=[avg-0.01*1200/sec,avg+0.01*1200/sec,avg+0.03*1200/sec])
+    if k==0:
+        axs[k].set_yticks(ticks=[200,260])
+    elif k==1:
+        axs[k].set_yticks(ticks=[90,160])
+    elif k==2:
+        axs[k].set_yticks(ticks=[25,45])
+    else:
+        axs[k].set_yticks(ticks=[120,180])
+    # axs[k].set_yticklabels([str("%.2f"%abs(avg-0.03*1200/sec),),str("%.2f"%avg,),str("%.2f"%(avg+0.03*1200/sec),)])
+    # axs[k].set_yticklabels([str("%.0f"%abs(avg-0.03*1200/sec),),str("%.0f"%avg,),str("%.0f"%(avg+0.03*1200/sec),)])
+    axs[k].legend(framealpha=1,ncol=1,loc=10, bbox_to_anchor=(1.18,0.5))
+    # axs[k].set_xlim([0,2000])
     k+=1
-ax.set_yticks(ax.get_yticks()[::2])
-ax.legend(framealpha=1, ncol=3, loc=9, bbox_to_anchor=(0.5, 1.22))
+
+axs[1].yaxis.set_label_coords(-0.09,0)
+axs[1].set_ylabel("Intensity [counts/1200sec]")
+axs[-2].tick_params(axis="x", bottom=True, labelbottom=True)
+axs[-2].set_xlabel("Time [$\mu\,$s]")
+
+
 # ax.legend(ncol=4, bbox_to_anchor=(0.5,1.1), loc="center")
-# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Images/Measurement_example.pdf", format="pdf",bbox_inches="tight")
+# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Images 1 column/Measurement_example_review.pdf", format="pdf",bbox_inches="tight")
 plt.show()

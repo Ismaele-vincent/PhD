@@ -179,7 +179,7 @@ for i in range(len(ps_pos)):
     yf_data_err = np.ones(len(yf_data))*np.sum(matrix_err)**0.5
     # print(sum(abs(yf_data)))
     xf = fftfreq(N, S_F)*1e3
-    var=np.sum(np.average(func_data)/2)**0.5
+    var=np.sum(func_data/2)**0.5
     
     # fig = plt.figure(figsize=(8,6))
     # ax = fig.add_subplot(111)
@@ -270,7 +270,7 @@ axsl[1].yaxis.set_label_coords(-0.2,0.5)
 axsl[1].set_ylabel("Real part", fontsize=12)
 axsl[1].set_ylim([ylim_re_1,ylim_re_2])
 axsl[1].set_yticks(ticks=y_re_labels)
-axsl[1].set_xlabel("$\mathrm{\\chi$ [rad]")
+axsl[1].set_xlabel("$\mathrm{\\chi}$ [rad]")
 
 ylim_re_1=-7.5
 ylim_re_2=2.5

@@ -151,6 +151,7 @@ print(1/40760**2*259.796*1e6)
 # fig = plt.figure(figsize=(8,8))
 # ax = fig.add_subplot(111)
 # ax.plot(freq, A, "k.")
-# # ax.plot(freq_plt, contr(freq_plt,*p), "b")
+# ax.plot(freq_plt, contr(freq_plt,*p), "b")
 # plt.show()
+print(1/40.6*1e3)
 i=0

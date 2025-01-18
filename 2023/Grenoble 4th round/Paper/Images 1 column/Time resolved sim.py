@@ -48,7 +48,7 @@ time_plt=np.linspace(0,2000,1000)
 def O_beam(t, chi):
     return 1/2 + a_1*a_2*np.cos(chi+alpha_1*np.sin(2*np.pi*1e-3*f_1*t+xi_1)-alpha_2*np.sin(2*np.pi*1e-3*f_2*t+xi_2))
 print(np.pi/3)
-chi_aus=[0,np.pi/3, np.pi, 4/3*np.pi]
+chi_aus=[0,np.pi/2, np.pi, 3/2*np.pi]
 print(chi_aus)
 chi_l=["$\\chi=0$","$\\chi=\\dfrac{\pi}{3}$", "$\\chi=\pi$", "$\\chi=\\dfrac{4}{3}\pi$"]
 colors=["k","#f10d0c","#00a933","#5983b0"]
@@ -66,6 +66,6 @@ for i in range(len(chi_aus)):
 # fig.suptitle("$\\alpha_1=\\alpha_2=\pi/8$\t$\omega_1 = 4\pi 10^{3}$ rad\t$\omega_2 = 6\pi 10^{3}$ rad", fontsize=11)
 # ax.legend(ncol=2, bbox_to_anchor=(0.5,1.1), loc="center")
 ax.legend(framealpha=1, loc=10, bbox_to_anchor=(1.15,0.5))
-plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Images 1 column/time resolved sim.pdf", format="pdf",bbox_inches="tight")
+plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Images 1 column/time resolved sim review.pdf", format="pdf",bbox_inches="tight")
 
 # plt.show()

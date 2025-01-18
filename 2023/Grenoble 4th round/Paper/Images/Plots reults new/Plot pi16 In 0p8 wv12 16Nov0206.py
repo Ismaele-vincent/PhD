@@ -171,11 +171,11 @@ for i in range(len(ps_pos)):
     yf_data_err = np.ones(len(yf_data))*np.sum(matrix_err)**0.5
     # print(sum(abs(yf_data)))
     xf = fftfreq(N, S_F)*1e3
-    var=np.sum(np.average(func_data)/2)**0.5
+    var=np.sum(func_data/2)**0.5
     
-    fig = plt.figure(figsize=(8,6))
-    ax = fig.add_subplot(111)
-    ax.errorbar(time, matrix[i], yerr= matrix_err[i], fmt="ko")
+    # fig = plt.figure(figsize=(8,6))
+    # ax = fig.add_subplot(111)
+    # ax.errorbar(time, matrix[i], yerr= matrix_err[i], fmt="ko")
     # ax.plot(time_plt, fit_Im(time_plt, *p_Im))
     # ax.set_title(str("%.2f"%chi[i],))
     # ax.errorbar(xf, np.abs(yf_data), np.abs(yf_data_err), fmt="k.", capsize=5)

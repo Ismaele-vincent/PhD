@@ -53,20 +53,20 @@ from scipy.optimize import curve_fit as fit
 
 def fit_cos(x, A, B, C, D):
     return A+B*np.cos(C*x-D)
-
+rad=np.pi/180
 inf_file_names=[
 "ifg_-2to2_30s_12Nov0443", 
 # "ifg_-2to2_30s_12Nov2048",  
 "ifg_-2to2_30s_12Nov1219", 
 "ifg_-2to2_30s_12Nov1956", 
-"ifg_-2to2_30s_12Nov2024",
+# "ifg_-2to2_30s_12Nov2024",
 ]
 
 colors=["k","#f10d0c","#00a933","#5983b0"]
 C=np.array([])
 chi_0=np.array([])
 C_err=np.array([])
-fig = plt.figure(figsize=(3,4), dpi=200)
+fig = plt.figure(figsize=(8,4), dpi=200)
 ax = fig.add_subplot(111)
 k=0
 for inf_file_name in inf_file_names:
@@ -91,7 +91,7 @@ for inf_file_name in inf_file_names:
                 x_plt = np.linspace(ps_pos[0], ps_pos[-1],100)
                 # fig.suptitle(name[:-4])
                 # ax.set_ylabel("Arb.")
-                ax.errorbar(ps_pos,data_ifg/30,yerr=data_ifg_err/30,fmt="o", color=colors[k], capsize=3, ms=3, label="12/01 "+inf_file_name[-4:-2]+":"+inf_file_name[-2:])
+                ax.errorbar(ps_pos,data_ifg/30,yerr=data_ifg_err/30,fmt="o", color=colors[k], capsize=3, ms=3, label="12/11 "+inf_file_name[-4:-2]+":"+inf_file_name[-2:])
                 ax.plot(x_plt,fit_cos(x_plt, *p)/30, color=colors[k], lw=1)
                 # ax.set_ylim([0,1500])
                 C=np.append(C, p[1]/p[0])
@@ -107,7 +107,7 @@ ax.legend(ncol=2,framealpha=1,loc=10, bbox_to_anchor=(0.4,1.12))
 # ax = fig.add_subplot(111)
 # # ax.plot(C)
 # ax.plot(chi_0)
-
+print(chi_0/rad)
 print("C=", np.average(C), "+-", np.average(C_err))
 # plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Images 1 column/Phase_stability.pdf", format="pdf",bbox_inches="tight")
 # print("w_ps=", p[-2])

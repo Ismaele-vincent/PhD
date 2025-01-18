@@ -132,7 +132,7 @@ ax.plot(ps_plt,fit_cos(ps_plt, *p_int), "b")
 ax.vlines(p_int[-1]/p_int[-2],fit_cos(p_int[-1]/p_int[-2]+np.pi,*p_int),fit_cos(p_int[-1]/p_int[-2],*p_int), color="k")
 
 matrix_err_fit=(matrix_err**2+0*(A_err/len(time))**2)**0.5
-matrix_fit=(matrix-0*A/len(time))
+matrix_fit=(matrix-A/len(time))
 
 P0=[300,300, -0.8, 1]
 p_tot=np.zeros((len(ps_pos),len(P0)))
@@ -183,7 +183,7 @@ for i in range(len(ps_pos)):
     yf_data_err = np.ones(len(yf_data))*np.sum(matrix_err)**0.5
     # print(sum(abs(yf_data)))
     xf = fftfreq(N, S_F)*1e3
-    var=np.sum(np.average(func_data)/2)**0.5
+    var=np.sum(func_data/2)**0.5
     
     # fig = plt.figure(figsize=(8,6))
     # ax = fig.add_subplot(111)
@@ -280,8 +280,8 @@ axsl[1].set_xlabel("$\\chi$ [rad]")
 ylim_re_1=-7.5
 ylim_re_2=2.5
 y_re_labels=np.arange(ylim_re_1,ylim_re_2,2.5)
-ylim_im_1=-4
-ylim_im_2=5
+ylim_im_1=-0.1
+ylim_im_2=0.1
 y_im_labels=np.arange(ylim_im_1+1,ylim_im_2,1.5)
 
 ax_aus=fig.add_subplot(gs[1:, 1])
@@ -304,6 +304,7 @@ for ax in axsr[:-1]:
     ax.tick_params(axis="y", left=False, labelleft=False, right=True, labelright=True)
 axsr[2].tick_params(axis="y", left=False, labelleft=False, right=True, labelright=True)
 axsr[2].errorbar(chi, Im_data_1, Im_data_err_1, fmt=".", color=colors[1], capsize=3, label="$\Im(w_{2,+})$ data")
+axsr[2].errorbar(chi, Im_data_1_fit, Im_data_err_1_fit, fmt=".", color=colors[2], capsize=3, label="$\Im(w_{2,+})$ data")
 axsr[2].plot(chi_plt, w1(chi_plt).imag, "--",color=colors[1], alpha=0.5, label="$\Im(w_{2,+})$ theory")
 axsr[2].set_ylim([ylim_im_1,ylim_im_2])
 axsr[2].set_yticks(ticks=y_im_labels)

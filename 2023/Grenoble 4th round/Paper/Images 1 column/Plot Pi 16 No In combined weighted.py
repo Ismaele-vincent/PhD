@@ -271,7 +271,7 @@ for ax in [axsl[1],axsc[1],axsr[1]]:
     # ax.set_xticklabels(["$-\pi$","$-\\dfrac{\pi}{2}$","0","$\\dfrac{\pi}{2}$","$\pi$","$\\dfrac{3\pi}{2}$"])
     # ax.tick_params(axis="y", left=False, labelleft=False,right=True, labelright=True)
     # ax.yaxis.set_label_position("right")    
-# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Images 1 column/Wv No In combined.pdf", format="pdf",bbox_inches="tight")
+plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Images 1 column/Wv No In combined.pdf", format="pdf",bbox_inches="tight")
 
 # with open("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Results txt/No In/Wv12_Im No In"+inf_file_name[-10:]+".txt","w") as f:
 #     np.savetxt(f,np.transpose([chi,Im_1_avg,Im_1_avg_err,Im_2_avg,Im_2_avg_err]), header="chi w_im1 w_im1_err w_im2 w_im2_err")

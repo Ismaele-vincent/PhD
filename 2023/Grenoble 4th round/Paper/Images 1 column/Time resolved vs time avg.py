@@ -99,31 +99,37 @@ A_aus=p[0]/len(time)
 w_ps=p[-2]
 chi_0=p[-1]
 chi_0_err=err[-1]
-chi=ps_pos*w_ps-chi_0
+chi=ps_pos#*w_ps-chi_0
 chi_plt=np.linspace(chi[0], chi[-1], 200)
 print("A(1-C)/2=", A, "+-", A_err)
 print("C=",p[1], "+-", err[1])
 print("chi_err=",err[-1])
 
-n_r=6
-fig = plt.figure(figsize=(8,3), dpi=150)
-gs = fig.add_gridspec(n_r,2, width_ratios=(1.5,1), hspace=0.0,wspace=0)
+n_r=7
+fig = plt.figure(figsize=(8,2.5), dpi=150)
+gs = fig.add_gridspec(n_r,2, width_ratios=(1.5,1), hspace=0,wspace=0)#,wspace=-0.056)
 axs = [fig.add_subplot(gs[:, 0]),fig.add_subplot(gs[1:-1, 1])]
 ps_plt = np.linspace(ps_pos[0], ps_pos[-1],200)
 axs[0].set_title("Time-averaged intensity", fontsize=10)
 axs[0].errorbar(chi,ps_data, yerr=ps_data_err,fmt="ko",capsize=3, ms=3, label="Data")
-axs[0].errorbar(chi[-6],ps_data[-6], ps_data_err[-6], fmt="o",color=colors[1],capsize=3, ms=3)
+axs[0].errorbar(chi[-6],ps_data[-6], fmt="o",color=colors[1],capsize=3, ms=10, mfc="none")
 # axs[0].errorbar(chi[-6:],ps_data[-6]+0*chi[-6:],fmt="k--", lw=1)
 axs[0].plot(chi_plt,fit_cos(ps_plt, *p), color=colors[2], label="Fit")
 oldlim=axs[0].get_xlim()
-axs[0].hlines(ps_data[-6],chi[-6],chi[-1]+1, color=colors[1], ls=(5, (7, 3)), lw=1)
-axs[0].set_xlabel("$\\chi$ [rad]")
-axs[0].set_ylabel("Neutron rate [counts/1200sec]")
+axs[0].hlines(ps_data[-6],chi[-6]+0.07,chi[-1]+1, color=colors[1], ls=(2, (8, 3)), lw=1)
+# axs[0].set_xlabel("$\\chi$ [rad]")
+axs[0].set_xlabel("Phase shifter rotation [deg]")
+axs[0].set_ylabel("Average intensity")
+axs[1].set_ylabel("Neutron rate\n[counts/1200sec]", rotation=270, labelpad=22.5)
+axs[1].yaxis.set_label_position("right")
 axs[0].set_ylim([0,240])
 axs[0].set_xlim(oldlim)
 axs[0].grid(True, ls="dotted")
-axs[0].plot([chi[-6], oldlim[1]],[ps_data[-6], 240/n_r*(n_r-1)], "k-", lw=0.8)
-axs[0].plot([chi[-6], oldlim[1]],[ps_data[-6], 240/n_r], "k-", lw=0.8)
+axs[0].plot([chi[-6], oldlim[1]],[ps_data[-6], 240/n_r*(n_r-1)], "-", color=colors[0],lw=0.8)
+axs[0].plot([chi[-6], oldlim[1]],[ps_data[-6], 240/n_r], "-",color=colors[0], lw=0.8)
+# axs[0].plot([chi[-6], 1.5],[ps_data[-6], 240/n_r*(n_r-1)], "k-", lw=0.8)
+# axs[0].plot([chi[-6], 1.5],[ps_data[-6], 240/n_r], "k-", lw=0.8)
+
 
 # axs[0].set_xticks([*axs[0].get_xticks()[1:-1],4.51])
 # axs[0].vlines(4.51,0,ps_data[-6], color="k", ls="dashed", lw=1)
@@ -163,7 +169,7 @@ for i in [-6]:
     # axs[1].errorbar(time_plt, fit_Im(time_plt, *p_fit),fmt="-", color=colors[1])
     # ax.plot(time, matrix[i],".", color=colors[k], alpha=0.2, label="$\chi=$"+str("%.2f"%chi[i],))
     # ax.set_title(str("%.2f"%chi[i],))
-    axs[1].errorbar(time,np.average(matrix[i]), fmt="-",  color=colors[1], label="Average")
+    axs[1].errorbar([-40,*time],np.average(matrix[i]), fmt="-",  color=colors[1], label="Average")
     axs[1].set_ylim([240/n_r,240/n_r*(n_r-1)])
     # avg=np.average(matrix[i])
     # ax.set_ylim([avg-0.06,avg+0.06])
@@ -173,7 +179,7 @@ for i in [-6]:
     # axs[1].set_ylabel("Neutron rate (count / s)")
     k+=1
 oldlim1=axs[1].get_xlim()
-axs[1].tick_params(axis="both", left=False, labelleft=False)
+axs[1].tick_params(axis="both", left=False, labelleft=False, right=True, labelright=True)
 axs[1].set_title("Time-resolved intensity", fontsize=10)
 axs[1].spines["left"].set_visible(False)
 axs[0].spines["right"].set_visible(False)
@@ -181,19 +187,19 @@ axs[0].spines["top"].set_visible(False)
 axs[0].spines["bottom"].set_visible(False)
 
 # axs[1].hlines(ps_data[-6], oldlim1[0],0, color="k")
-axs[1].set_xlim([0,2000])
+axs[1].set_xlim([-70,2070])
 
 h=1
 kwargs = dict(transform=axs[0].transAxes, color='k', lw=0.8, clip_on=False)
-axs[0].plot((h, h), (0, 0.3/n_r), **kwargs)
+axs[0].plot((h, h), (0, 0.76/n_r), **kwargs)
 axs[0].plot((h, h), (1.04/n_r*(n_r-1), 1), **kwargs)
 axs[0].plot((0, h), (1, 1), **kwargs)
 axs[0].plot((0, h), (0, 0), **kwargs)
 # axs[0].plot((1, 1), (1/n_r, 1/n_r*(n_r-1)), **kwargs, ls="--")
 # axs[0].plot((-1, 0), (0, 0), **kwargs)
 
-axs[1].set_xticks(axs[1].get_xticks()[:])
-axs[0].set_yticks(axs[0].get_yticks()[::2])
+# axs[1].set_xticks(axs[1].get_xticks()[:])
+# axs[0].set_yticks(axs[0].get_yticks()[::2])
 axs[1].set_yticks(axs[0].get_yticks()[1:-1])
 for ax in axs:
     ax.legend(ncol=2)

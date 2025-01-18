@@ -34,7 +34,6 @@ alpha_1_err=0.0005
 alpha_2=0.1969 #/2.354
 alpha_2_err=0.0004
 
-
 def w1(chi):
     return (1/(1+a_21*np.exp(1j*chi)))
 
@@ -263,7 +262,7 @@ for ax in [axsl[1],axsc[1],axsr[1]]:
     # ax.set_xticklabels(["$-\pi$","$-\\dfrac{\pi}{2}$","0","$\\dfrac{\pi}{2}$","$\pi$","$\\dfrac{3\pi}{2}$"])
     # ax.tick_params(axis="y", left=False, labelleft=False,right=True, labelright=True)
     # ax.yaxis.set_label_position("right")    
-# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Images 1 column/Wv In 1p8 combined.pdf", format="pdf",bbox_inches="tight")
+plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Images 1 column/Wv In 1p8 combined.pdf", format="pdf",bbox_inches="tight")
 
 
 # with open("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Results txt/No In/Wv12_Im No In"+inf_file_name[-10:]+".txt","w") as f:
