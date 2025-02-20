@@ -369,7 +369,7 @@ axs[0].legend()
 # with open("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Results txt/No In/cos2 No In"+inf_file_name[-10:]+".txt","w") as f:
 #     np.savetxt(f,np.transpose([ps_pos,cos2,cos2_err]), header="chi cos2 cos2err")
 
-plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Conference abstract/Conference FOMO/Images/Results w2.pdf", format="pdf",bbox_inches="tight")
-plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Conference abstract/Conference FOMO/Images/Results w2.png",bbox_inches="tight")
+# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Conference abstract/Conference FOMO/Images/Results w2.pdf", format="pdf",bbox_inches="tight")
+# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Conference abstract/Conference FOMO/Images/Results w2.png",bbox_inches="tight")
 
 plt.show()

@@ -109,23 +109,23 @@ Indium 1.8mm path2 (overall good, last two very good)
 """
 No Indium, 3-plates interferometer
 """
-folder_name="Symm No In"
-P1=57079/15
-P2=63441/15
-a_1= 0.5**0.5
-a_1_err=0.003
-a_2= 0.5**0.5
-a_2_err=0.003
-a_21=a_2/a_1
-lim=1
-# sgn=-1
-# inf_file_name="ifgPS1_35pt_In00_12Apr1851" #good-ish 3p
-# inf_file_name="ifgPS1_35pt_In00_12Apr2026" #good 3p
-# inf_file_name="ifgPS1_35pt_In00_13Apr0103" #good
-# inf_file_name="ifgPS1_35pt_In00_13Apr0528"  #good
-# inf_file_name="ifgPS1_35pt_In00_13Apr0703" #good
-inf_file_name="ifgPS1_35pt_In00_13Apr0838" #good
-points=35
+# folder_name="Symm No In"
+# P1=57079/15
+# P2=63441/15
+# a_1= 0.5**0.5
+# a_1_err=0.003
+# a_2= 0.5**0.5
+# a_2_err=0.003
+# a_21=a_2/a_1
+# lim=1
+# # sgn=-1
+# # inf_file_name="ifgPS1_35pt_In00_12Apr1851" #good-ish 3p
+# # inf_file_name="ifgPS1_35pt_In00_12Apr2026" #good 3p
+# # inf_file_name="ifgPS1_35pt_In00_13Apr0103" #good
+# # inf_file_name="ifgPS1_35pt_In00_13Apr0528"  #good
+# # inf_file_name="ifgPS1_35pt_In00_13Apr0703" #good
+# inf_file_name="ifgPS1_35pt_In00_13Apr0838" #good
+# points=35
 
 """
 Indium 1.5, 3-plates interferometer
@@ -349,7 +349,7 @@ else:
 
 
 
-res_folder="/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Results txt/"+folder_name
+# res_folder="/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Results txt/"+folder_name
 
 # if not os.path.exists(res_folder):
 #     os.makedirs(res_folder)

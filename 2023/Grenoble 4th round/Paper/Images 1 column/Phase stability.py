@@ -65,10 +65,13 @@ inf_file_names=[
 colors=["k","#f10d0c","#00a933","#5983b0"]
 C=np.array([])
 chi_0=np.array([])
+w=np.array([])
 C_err=np.array([])
-fig = plt.figure(figsize=(8,4), dpi=200)
+fig = plt.figure(figsize=(4.5,2), dpi=200)
 ax = fig.add_subplot(111)
 k=0
+# ax.errorbar([],[],[],fmt="o", color="w", capsize=3, ms=3, label="$\mathrm{\mathbf{Date\ and\ time}}$")
+time_labels=["5 a.m.", "12 p.m.", "8 p.m."]
 for inf_file_name in inf_file_names:
     # if "20s" in inf_file_name:
         print(inf_file_name)
@@ -91,25 +94,31 @@ for inf_file_name in inf_file_names:
                 x_plt = np.linspace(ps_pos[0], ps_pos[-1],100)
                 # fig.suptitle(name[:-4])
                 # ax.set_ylabel("Arb.")
-                ax.errorbar(ps_pos,data_ifg/30,yerr=data_ifg_err/30,fmt="o", color=colors[k], capsize=3, ms=3, label="12/11 "+inf_file_name[-4:-2]+":"+inf_file_name[-2:])
+                ax.errorbar(ps_pos,data_ifg/30,yerr=data_ifg_err/30,fmt="o", color=colors[k], capsize=3, ms=3, label="Circa "+time_labels[k])
                 ax.plot(x_plt,fit_cos(x_plt, *p)/30, color=colors[k], lw=1)
                 # ax.set_ylim([0,1500])
                 C=np.append(C, p[1]/p[0])
+                w=np.append(w, p[-2])
                 chi_0=np.append(chi_0, p[-1])
                 C_err=np.append(C_err,  ((err[1]/p[0])**2+(err[1]*p[1]/p[0]**2)**2)**0.5)
                 k+=1
-                
-ax.set_ylabel("Intensity [counts/30sec]")
+
+ax.grid(True, ls="dotted")
+ax.set_ylabel("Intensity\n[counts/30sec]")
 ax.set_xlabel("Phase shifter rotation [deg]")
-ax.legend(ncol=2,framealpha=1,loc=10, bbox_to_anchor=(0.4,1.12))
+ax.legend(ncol=1,framealpha=1,loc=10, bbox_to_anchor=(1.25,0.5))
+# ax.legend(ncol=3,framealpha=1,loc=10, bbox_to_anchor=(0.4,1.12))
 # ax.set_ylim([48,350])
 # fig = plt.figure(figsize=(8,6))
 # ax = fig.add_subplot(111)
 # # ax.plot(C)
 # ax.plot(chi_0)
-print(chi_0/rad)
+print(abs(np.amax(chi_0)-np.amin(chi_0))/rad)
+print(abs(chi_0[0]-chi_0[1])/rad)
+print(abs(chi_0[1]-chi_0[2])/rad)
+print(w)
 print("C=", np.average(C), "+-", np.average(C_err))
-# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Images 1 column/Phase_stability.pdf", format="pdf",bbox_inches="tight")
+plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Images 1 column/Phase_stability.pdf", format="pdf",bbox_inches="tight")
 # print("w_ps=", p[-2])
 # print("chi_0=", p[-1])
 # print(0.6094600070882551/0.7164077689326444)

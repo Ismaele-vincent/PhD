@@ -109,7 +109,7 @@ w_ps=p_int[-2]
 chi_0=p_int[-1]
 chi=ps_pos*w_ps-chi_0
 
-fig = plt.figure(figsize=(8.5,5), dpi=150)
+fig = plt.figure(figsize=(8.5,4.5), dpi=150)
 ax=fig.add_subplot(111)
 ax.errorbar(ps_pos, cos2_avg,cos2_avg_err, capsize=3, fmt="k.")
 ax.plot(ps_pos, fit_cos(ps_pos, *p_int))
@@ -177,14 +177,14 @@ cos2_avg_fit_err=1/cos2_avg_fit_err**0.5
 ylim_im_1=-4
 ylim_im_2=4
 
-fig = plt.figure(figsize=(9,2.5), dpi=200)
-gs = fig.add_gridspec(1,3, wspace=0.25)
+fig = plt.figure(figsize=(8,2.5), dpi=200)
+gs = fig.add_gridspec(1,3)
 axs=[fig.add_subplot(gs[0, 0]), fig.add_subplot(gs[0, 1]), fig.add_subplot(gs[0, 2])]
 axs[0].set_ylabel("$w^\Im_{+,1}$", fontsize=13)
 axs[0].errorbar(chi, Im_1_avg, Im_1_avg_err, fmt=".", color=colors[0], capsize=3, label="Data")
 axs[1].errorbar(chi, Im_1_avg_fit, Im_1_avg_fit_err, fmt=".", color=colors[0], capsize=3, label="Data")
 axs[2].errorbar(chi, Im_1_avg-Im_1_avg_fit, fmt="-", color=colors[0], capsize=3, label="Data difference")
-axs[2].errorbar(chi, Im_1_avg_err-Im_1_avg_fit_err, fmt="--", color=colors[1], capsize=3, label="Error-bars difference")
+axs[2].errorbar(chi, Im_1_avg_err-Im_1_avg_fit_err, fmt="--", color=colors[1], capsize=3, label="Error-bars\ndifference")
 # axs[0].set_ylim([ylim_im_1,ylim_im_2])
 # axs[0].text("Fourier method")
 # axs[0].text("Fit method")

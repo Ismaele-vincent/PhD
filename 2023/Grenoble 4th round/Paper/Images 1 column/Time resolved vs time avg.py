@@ -97,16 +97,17 @@ A=p[0]*(1-Co)/2
 A_err= (((1-Co)/2*err[0])**2+(p[0]/2*err[1])**2)**0.5
 A_aus=p[0]/len(time)
 w_ps=p[-2]
+print(w_ps)
 chi_0=p[-1]
 chi_0_err=err[-1]
-chi=ps_pos#*w_ps-chi_0
+chi=ps_pos*w_ps-chi_0
 chi_plt=np.linspace(chi[0], chi[-1], 200)
 print("A(1-C)/2=", A, "+-", A_err)
 print("C=",p[1], "+-", err[1])
 print("chi_err=",err[-1])
 
 n_r=7
-fig = plt.figure(figsize=(8,2.5), dpi=150)
+fig = plt.figure(figsize=(7,2), dpi=150)
 gs = fig.add_gridspec(n_r,2, width_ratios=(1.5,1), hspace=0,wspace=0)#,wspace=-0.056)
 axs = [fig.add_subplot(gs[:, 0]),fig.add_subplot(gs[1:-1, 1])]
 ps_plt = np.linspace(ps_pos[0], ps_pos[-1],200)
@@ -117,8 +118,8 @@ axs[0].errorbar(chi[-6],ps_data[-6], fmt="o",color=colors[1],capsize=3, ms=10, m
 axs[0].plot(chi_plt,fit_cos(ps_plt, *p), color=colors[2], label="Fit")
 oldlim=axs[0].get_xlim()
 axs[0].hlines(ps_data[-6],chi[-6]+0.07,chi[-1]+1, color=colors[1], ls=(2, (8, 3)), lw=1)
-# axs[0].set_xlabel("$\\chi$ [rad]")
-axs[0].set_xlabel("Phase shifter rotation [deg]")
+axs[0].set_xlabel("$\\chi$ [rad]")
+# axs[0].set_xlabel("Phase shifter rotation [deg]")
 axs[0].set_ylabel("Average intensity")
 axs[1].set_ylabel("Neutron rate\n[counts/1200sec]", rotation=270, labelpad=22.5)
 axs[1].yaxis.set_label_position("right")
@@ -175,7 +176,7 @@ for i in [-6]:
     # ax.set_ylim([avg-0.06,avg+0.06])
     # ax.set_yticks(ticks=[avg-0.03,avg,avg+0.03])
     # ax.set_yticklabels([str("%.2f"%abs(avg-0.03),),str("%.2f"%avg,),str("%.2f"%(avg+0.03),)])
-    axs[1].set_xlabel("Time [$\mu\,$s]")
+    axs[1].set_xlabel("Time [$\mu$s]")
     # axs[1].set_ylabel("Neutron rate (count / s)")
     k+=1
 oldlim1=axs[1].get_xlim()
@@ -204,5 +205,5 @@ axs[1].set_yticks(axs[0].get_yticks()[1:-1])
 for ax in axs:
     ax.legend(ncol=2)
 # ax.legend(ncol=4, bbox_to_anchor=(0.5,1.1), loc="center")
-plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Images 1 column/Time-average vs time-resolved.pdf", format="pdf",bbox_inches="tight")
+# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Images 1 column/Time-average vs time-resolved.pdf", format="pdf",bbox_inches="tight")
 plt.show()
