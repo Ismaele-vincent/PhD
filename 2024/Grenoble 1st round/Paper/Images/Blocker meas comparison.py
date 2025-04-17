@@ -219,7 +219,7 @@ for ax in axs:
     ax.set_xticklabels(["$\mathdefault{-\pi}$", "$\mathdefault{0}$","$\mathdefault{\pi}$"])
     ax.grid(True, ls="dotted")
 for ax in axs[2:]:
-    ax.set_xlabel("$\mathdefault{\\chi}$ [rad]")
+    ax.set_xlabel("$\mathdefault{\\chi_0}$ [rad]")
 axs[0].tick_params(axis="x", bottom=False, labelbottom=False)
 axs[1].tick_params(axis="x", bottom=False, labelbottom=False)
 axs[1].tick_params(axis="y", left=False, labelleft=False)
@@ -372,7 +372,7 @@ for ax in axs:
     ax.set_xticks([-np.pi,0,np.pi])
     ax.grid(True, ls="dotted")
 axs[2].set_xticklabels(["$\mathdefault{-\pi}$", "$\mathdefault{0}$","$\mathdefault{\pi}$"])
-axs[2].set_xlabel("$\mathdefault{\chi}$ [rad]")
+axs[2].set_xlabel("$\mathdefault{\chi_0}$ [rad]")
 axs[1].legend(ncol=2, framealpha=1)
 plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images/Blocker measurement comparison 2.pdf", format="pdf",bbox_inches="tight")
 plt.show()

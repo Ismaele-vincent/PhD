@@ -319,7 +319,7 @@ for ax in axs:
     ax.set_xticklabels(["$\mathdefault{-\pi}$", "$\mathdefault{0}$","$\mathdefault{\pi}$"])
     ax.grid(True, ls="dotted")
 for ax in axs[2:]:
-    ax.set_xlabel("$\mathdefault{\\chi}$ [rad]")
+    ax.set_xlabel("$\mathdefault{\\chi_0}$ [rad]")
 axs[0].tick_params(axis="x", bottom=False, labelbottom=False)
 axs[1].tick_params(axis="x", bottom=False, labelbottom=False)
 # axs[1].tick_params(axis="y", left=False, labelleft=False)

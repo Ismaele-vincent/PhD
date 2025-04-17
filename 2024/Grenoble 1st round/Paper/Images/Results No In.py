@@ -318,12 +318,12 @@ for ax in axs:
     ax.set_xticklabels(["$\mathdefault{-\pi}$", "$\mathdefault{0}$","$\mathdefault{\pi}$"])
     ax.grid(True, ls="dotted")
 for ax in axs[2:]:
-    ax.set_xlabel("$\mathdefault{\\chi}$ [rad]")
+    ax.set_xlabel("$\mathdefault{\\chi_0}$ [rad]")
 axs[0].tick_params(axis="x", bottom=False, labelbottom=False)
 axs[1].tick_params(axis="x", bottom=False, labelbottom=False)
 # axs[1].tick_params(axis="y", left=False, labelleft=False)
 # axs[3].tick_params(axis="y", left=False, labelleft=False)
-    
+
 axs[2].errorbar(chi,Im_1, Im_1_err, fmt="k.", capsize=3)
 axs[2].plot(chi_plt, w1(chi_plt, a_21).imag, color=colors[3], alpha=0.8 )
 axs[3].errorbar(chi,Im_2, Im_2_err, fmt="k.", capsize=3)
