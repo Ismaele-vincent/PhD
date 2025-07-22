@@ -374,5 +374,5 @@ for ax in axs:
 axs[2].set_xticklabels(["$\mathdefault{-\pi}$", "$\mathdefault{0}$","$\mathdefault{\pi}$"])
 axs[2].set_xlabel("$\mathdefault{\chi_0}$ [rad]")
 axs[1].legend(ncol=2, framealpha=1)
-plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images/Blocker measurement comparison 2.pdf", format="pdf",bbox_inches="tight")
+# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images/Blocker measurement comparison 2.pdf", format="pdf",bbox_inches="tight")
 plt.show()

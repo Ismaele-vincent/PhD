@@ -191,6 +191,7 @@ a_1_err=0.004
 a_2= 0.570
 a_2_err=0.006
 a_21=a_2/a_1
+print(a_21)
 lim=0
 # inf_file_name="ifgPS1_35pt_In10_14Apr2054" #bad (wrong ps pos)
 # inf_file_name="ifgPS1_35pt_In10_15Apr0115" #bad (wrong ps pos)

@@ -354,6 +354,6 @@ axs[1].errorbar(chi,Re_2_1, Re_2_1_err, fmt="k.", capsize=3)
 axs[0].errorbar(chi_plt, w1(chi_plt, a_21).real, color=colors[3], alpha=0.8)
 axs[1].errorbar(chi_plt, w2(chi_plt, a_21).real, color=colors[3], alpha=0.8)
 
-plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images/Results"+folder_name[5:]+".pdf", format="pdf",bbox_inches="tight")
+# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images/Results"+folder_name[5:]+".pdf", format="pdf",bbox_inches="tight")
 
 plt.show()
