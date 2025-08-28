@@ -1,0 +1,8 @@
+By imposing positivity and using the relations $\mathrm{Tr}\left(\hat{\Pi}_{+v} \hat{\rho}\right)=(1+\vec{v}\cdot\vec{r})/2$ and $\mathrm{Tr}\left(\hat{\Pi}_{+v} \hat{\Pi}_{+w}\right)=(1+\vec{v}\cdot\vec{w})/2$ the following inequalities are derived:
+\begin{align}
+    \mathrm{Tr}\left(\hat{\Pi}_{+v} \hat{\rho}\right) +\mathrm{Tr}\left(\hat{\Pi}_{+w} \hat{\rho}\right) + \mathrm{Tr}\left(\hat{\Pi}_{+w} \hat{\Pi}_{+v}\right)&\geq 1\, , \label{eq:in_+v+w}\\
+    \mathrm{Tr}\left(\hat{\Pi}_{+v} \hat{\rho}\right) -\mathrm{Tr}\left(\hat{\Pi}_{+w} \hat{\rho}\right) + \mathrm{Tr}\left(\hat{\Pi}_{+w} \hat{\Pi}_{+v}\right)&\leq 1\, ,\label{eq:in_-v+w}\\
+    \mathrm{Tr}\left(\hat{\Pi}_{+v} \hat{\rho}\right) - \mathrm{Tr}\left(\hat{\Pi}_{+v} \hat{\rho}\right) - \mathrm{Tr}\left(\hat{\Pi}_{+w} \hat{\Pi}_{+v}\right) &\geq 1\, ,\label{eq:in_+v-w}\\
+     \mathrm{Tr}\left(\hat{\Pi}_{+v} \hat{\rho}\right) + \mathrm{Tr}\left(\hat{\Pi}_{+v} \hat{\rho}\right) - \mathrm{Tr}\left(\hat{\Pi}_{+w} \hat{\Pi}_{+v}\right) &\leq 1 \, .
+    \label{eq:in_-v-w}
+\end{align}
