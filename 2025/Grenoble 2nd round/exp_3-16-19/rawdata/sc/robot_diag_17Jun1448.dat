@@ -1,0 +1,25 @@
+* begin:	17/06/2025 14:48:07
+* script file:	D:\data\Cycle 197\exp_3-16-19\rawdata\sc\robot_diag.cfg
+*
+[STANDARD]
+		
+[robot_diag]
+	created 17/06/2025   14:46
+[SCAN]
+	file path	.
+	name		*
+	category	standard
+	# repeats	1
+	notes		room to enter remarks
+[SUBSCAN]
+	S18.auxiliary.Robot Diagonal	81	um	-40000.000000	40000.000000	1000.000000	0.100000	FALSE	time	2.000000			
+[ENDSCAN]
+[END]
+
+* remarks:	room to enter remarks
+*
+1	-40001.8520379	2.0	0	1	107	0	3833009297	1	0.0000000	0.0000000
+2	-39007.0701906	2.0	0	0	122	0	3833009307	0	0.0000000	0.0000000
+3	-38006.3601402	2.0	0	0	111	0	3833009317	0	0.0000000	0.0000000
+4	-37008.1141913	2.0	0	0	101	0	3833009327	0	0.0000000	0.0000000
+* stopped by user: 17/06/2025 14:48:55

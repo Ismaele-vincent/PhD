@@ -1,0 +1,24 @@
+* begin:	26/06/2025 19:46:14
+* script file:	D:\data\Cycle 197\exp_3-16-19\rawdata\sc\robot_diag_Indium.cfg
+*
+[STANDARD]
+		
+[robot_diag_Indium]
+	created 26/06/2025   19:36
+[SCAN]
+	file path	.
+	name		*
+	category	standard
+	# repeats	1
+	notes		room to enter remarks
+[SUBSCAN]
+	S18.auxiliary.Robot Diagonal	42	um	-60000.000000	20935.064934	1974.025974	0.100000	FALSE	time	2.000000			
+[ENDSCAN]
+[END]
+
+* remarks:	room to enter remarks
+*
+1	-59998.1799806	2.0	0	0	0	0	3833804785	0	0.0000000	0.0000000
+2	-58028.4726926	2.0	0	0	0	0	3833804795	0	0.0000000	0.0000000
+3	-56051.1410489	2.0	0	0	0	3	3833804806	0	0.0000000	0.0000000
+* stopped by user: 26/06/2025 19:46:53

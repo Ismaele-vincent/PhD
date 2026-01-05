@@ -1,0 +1,19 @@
+* begin:	21/10/2025 15:59:58
+* script file:	D:\data\Cycle 198\exp_3-16-19\rawdata\sc\ifg_wv1_psi_+exp(-i60)+1+exp(i120)_no_fit.cfg
+*
+[STANDARD]
+		
+[ifg_wv1_psi_+exp(-i60)+1+exp(i120)_no_fit]
+	created 21/10/2025   14:51
+[CALL]
+	ifg2r_newPS_2p30s_no_fit.sc
+[CALL]
+	int_meas_path213.sc
+[END]
+
+* remarks:	room to enter remarks
+*
+1	25998.9279916	60.0	1644	1791	146149	6037	3843900066	3435	0.0000000	0.0000000
+2	47993.4798829	60.0	1736	3346	146588	37	3843900143	5082	0.0000000	0.0000000
+3	69996.0939520	60.0	1742	1738	145596	11625	3843900219	3480	0.0000000	0.0000000
+* end: 21/10/2025 16:03:40

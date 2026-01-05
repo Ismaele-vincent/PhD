@@ -1,0 +1,21 @@
+* begin:	24/09/2025 15:50:35
+* script file:	D:\data\Cycle 198\exp_3-16-19\rawdata\sc\ifg2_test.cfg
+*
+[STANDARD]
+		
+[ifg2_test]
+	created 24/09/2025   15:50
+[SCAN]
+	file path	.
+	name		*
+	category	standard
+	# repeats	1
+	notes		room to enter remarks
+[SUBSCAN]
+	S18.axis2.phaseshifter 2	21	deg	-1.750000	1.750000	0.175000	0.100000	FALSE	time	5.000000			
+[ENDSCAN]
+[END]
+
+* remarks:	room to enter remarks
+*
+1	-1.7468262	5.0	393	6979	11187	7373	3841566645	7372	0.0000000	0.0000000

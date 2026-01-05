@@ -1,0 +1,5 @@
+START	standard		
+CALL	robot_Zout_doubleCd.sc
+MS	S18.auxiliary.Robot Diagonal	1	um	absolute	26000.00000
+CALL	robot_Zin_doubleCd.sc
+END

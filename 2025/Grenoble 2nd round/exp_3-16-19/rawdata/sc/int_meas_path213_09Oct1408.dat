@@ -1,0 +1,31 @@
+* begin:	09/10/2025 14:08:24
+* script file:	D:\data\Cycle 198\exp_3-16-19\rawdata\sc\ifg_wv1_psi_+1-1-i.cfg
+*
+[STANDARD]
+		
+[ifg_wv1_psi_+1-1-i]
+	created 09/10/2025   11:25
+[CALL]
+	ifg1MR_newPS_2p30s_0.sc
+[MOTOR]
+	S18.axis2.phaseshifter 1	1	deg	FIT	O	COS-90			
+[CALL]
+	ifg1MR_newPS_2p30s_m90.sc
+[MOTOR]
+	S18.axis2.phaseshifter 1	1	deg	FIT	O	COS90			
+[CALL]
+	ifg1MR_newPS_2p30s_p90.sc
+[MOTOR]
+	S18.axis2.phaseshifter 1	1	deg	FIT	O	COS-180			
+[CALL]
+	ifg1MR_newPS_2p30s_p180.sc
+[CALL]
+	int_meas_path213.sc
+[END]
+
+* remarks:	room to enter remarks
+*
+1	25998.9279916	60.0	1486	1584	184736	6331	3842856573	3070	0.0000000	0.0000000
+2	47993.4798829	60.0	1677	3494	185219	39	3842856649	5171	0.0000000	0.0000000
+3	69996.9599774	60.0	1774	1271	185109	9171	3842856726	3045	0.0000000	0.0000000
+* end: 09/10/2025 14:12:06

@@ -1,0 +1,27 @@
+* begin:	09/10/2025 10:43:56
+* script file:	D:\data\Cycle 198\exp_3-16-19\rawdata\sc\Prep_psi_+1_+1_+1.cfg
+*
+[STANDARD]
+		
+[Prep_psi_+1_+1_+1]
+	created 08/10/2025   18:14
+[CALL]
+	robot_Zout_doubleCd.sc
+[CALL]
+	Move_PS12_parallel.sc
+[CALL]
+	ifg1_newPS_2p10s_AP.sc
+[MOTOR]
+	S18.axis2.phaseshifter 1	1	deg	FIT	AUX	COS-180			
+[CALL]
+	ifg2_newPS_2p10s_AP.sc
+[MOTOR]
+	S18.axis2.phaseshifter 2	1	deg	FIT	O	COS-360			
+[END]
+
+* remarks:	room to enter remarks
+*
+1	-1.0107422	10.0	2115	753	30815	1490	3842844250	2868	0.0000000	0.0000000
+2	-0.8898926	10.0	2195	694	30894	1547	3842844263	2889	0.0000000	0.0000000
+3	-0.8020020	10.0	1943	872	30704	1475	3842844277	2815	0.0000000	0.0000000
+* stopped by user: 09/10/2025 10:44:39

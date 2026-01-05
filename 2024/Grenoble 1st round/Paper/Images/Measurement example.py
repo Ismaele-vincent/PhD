@@ -247,5 +247,5 @@ ax.set_xlabel("$\mathdefault{\chi_0}$ [rad]")
 ax.set_ylabel("Neutron rate (count / s)")
 ax.set_ylim([0,430])
 
-plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images/Measurement example.pdf", format="pdf",bbox_inches="tight")
+# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images/Measurement example.pdf", format="pdf",bbox_inches="tight")
 plt.show()

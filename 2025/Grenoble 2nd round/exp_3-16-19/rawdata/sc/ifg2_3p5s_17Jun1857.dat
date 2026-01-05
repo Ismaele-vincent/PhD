@@ -1,0 +1,25 @@
+* begin:	17/06/2025 18:57:38
+* script file:	D:\data\Cycle 197\exp_3-16-19\rawdata\sc\ifg2_3p5s.cfg
+*
+[STANDARD]
+		
+[ifg2_3p5s]
+	created 16/06/2025   16:18
+[SCAN]
+	file path	.
+	name		*
+	category	standard
+	# repeats	1
+	notes		room to enter remarks
+[SUBSCAN]
+	S18.axis2.phaseshifter 2	31	deg	-2.625000	2.625000	0.175000	0.100000	FALSE	time	5.000000			
+[ENDSCAN]
+[END]
+
+* remarks:	room to enter remarks
+*
+1	-2.6257324	5.0	509	1936	10552	1803	3833024266	2445	0.0000000	0.0000000
+2	-2.4499512	5.0	498	1997	10588	1781	3833024275	2495	0.0000000	0.0000000
+3	-2.2741699	5.0	618	1889	10807	1759	3833024283	2507	0.0000000	0.0000000
+4	-2.1093750	5.0	761	1675	10533	1736	3833024291	2436	0.0000000	0.0000000
+* stopped by user: 17/06/2025 18:58:13

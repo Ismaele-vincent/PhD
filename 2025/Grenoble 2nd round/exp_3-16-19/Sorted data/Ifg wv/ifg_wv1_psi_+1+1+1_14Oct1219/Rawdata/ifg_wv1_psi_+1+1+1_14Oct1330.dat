@@ -1,0 +1,25 @@
+* begin:	14/10/2025 13:30:56
+* script file:	D:\data\Cycle 198\exp_3-16-19\rawdata\sc\ifg_wv1_psi_+1+1+1.cfg
+*
+[STANDARD]
+		
+[ifg_wv1_psi_+1+1+1]
+	created 14/10/2025   10:45
+[CALL]
+	ifg2R_newPS_2p30s_0_+1+1+1_w1.sc
+[CALL]
+	ifg2R_newPS_2p30s_m90_+1+1+1_wv1.sc
+[CALL]
+	ifg2R_newPS_2p30s_p90_+1+1+1_wv1.sc
+[CALL]
+	ifg2R_newPS_2p30s_p180.sc
+[CALL]
+	int_meas_path213.sc
+[END]
+
+* remarks:	room to enter remarks
+*
+1	25995.4638900	60.0	1618	1731	145117	6194	3843286324	3349	0.0000000	0.0000000
+2	47993.4798829	60.0	1683	3363	144832	36	3843286401	5046	0.0000000	0.0000000
+3	69996.9599774	60.0	1815	1719	145417	11389	3843286477	3534	0.0000000	0.0000000
+* end: 14/10/2025 13:34:38

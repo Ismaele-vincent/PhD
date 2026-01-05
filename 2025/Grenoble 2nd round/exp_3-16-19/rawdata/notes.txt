@@ -1,0 +1,22 @@
+-15
+33
+
+
+robot Z:
+IN = 258000
+
+robot diagonal:
+
+-82000 no path blocked            MIN position
+-58000 path 3 blocked
+-34000 path 2+3 blocked
+-10000 path 1+2 blocked
++14000 path 1+3 blocked
++38000  path 2 blocked
++62000 path 1 blocked             MAX position
+
+
+18.6.2025
+
+-80000   MIN pos
++80000   MAX pos

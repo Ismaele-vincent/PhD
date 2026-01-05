@@ -1,0 +1,33 @@
+* begin:	07/10/2025 09:26:36
+* script file:	D:\data\Cycle 198\exp_3-16-19\rawdata\sc\robot_diag_double_Cd_90deg_test.cfg
+*
+[STANDARD]
+		
+[robot_diag_double_Cd_90deg_test]
+	created 06/10/2025   16:35
+[CALL]
+	robot_Zout_doubleCd.sc
+[MOTOR]
+	S18.auxiliary.Robot rot big	1	deg	absolute	90.00000				
+[MOTOR]
+	S18.auxiliary.Robot Diagonal	1	um	absolute	-35000.00000				
+[CALL]
+	robot_Zin_doubleCd.sc
+[SCAN]
+	file path	.
+	name		*
+	category	standard
+	# repeats	1
+	notes		room to enter remarks
+[SUBSCAN]
+	S18.auxiliary.Robot Diagonal	60	um	-35000.000000	105000.000000	2372.881356	0.100000	FALSE	time	15.000000			
+[ENDSCAN]
+[END]
+
+* remarks:	room to enter remarks
+*
+1	-34993.1678109	15.0	0	0	11	1	3842666819	0	0.0000000	0.0000000
+2	-32632.1458601	15.0	0	1	14	2	3842666843	1	0.0000000	0.0000000
+3	-30258.9636554	15.0	84	94	8367	133	3842666866	178	0.0000000	0.0000000
+4	-27885.1474760	7.2	262	262	21627	312	3842666882	524	0.0000000	0.0000000
+* stopped by user: 07/10/2025 09:28:03

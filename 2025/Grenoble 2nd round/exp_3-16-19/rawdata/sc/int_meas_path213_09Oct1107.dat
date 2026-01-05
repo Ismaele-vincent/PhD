@@ -1,0 +1,28 @@
+* begin:	09/10/2025 11:07:03
+* script file:	D:\data\Cycle 198\exp_3-16-19\rawdata\sc\int_meas_path213.cfg
+*
+[STANDARD]
+		
+[int_meas_path213]
+	created 08/10/2025   18:59
+[CALL]
+	Block_path13_doubleCd.sc
+[SCAN]
+	file path	.
+	name		*
+	category	standard
+	# repeats	1
+	notes		room to enter remarks
+[SUBSCAN]
+	S18.auxiliary.Robot Diagonal	3	um	26000.000000	70000.000000	22000.000000	0.100000	FALSE	time	60.000000			
+[ENDSCAN]
+[CALL]
+	robot_Zout_doubleCd.sc
+[END]
+
+* remarks:	room to enter remarks
+*
+1	25998.9279916	60.0	1941	2029	185816	5648	3842845692	3970	0.0000000	0.0000000
+2	47993.4798829	60.0	2112	3177	185123	43	3842845768	5289	0.0000000	0.0000000
+3	69996.9599774	60.0	1841	1851	185157	10615	3842845845	3692	0.0000000	0.0000000
+* end: 09/10/2025 11:10:45

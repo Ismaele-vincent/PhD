@@ -345,11 +345,11 @@ for inf_file_name in inf_file_names:
     Re_3=np.sign(s_1)*np.abs(s_1)**0.5
     Re_3_err=((P1_corr_err/data_ifg_matrix[0])**2+(P1_corr/data_ifg_matrix[0]**2)**2*data_ifg_matrix_err[0]**2+4*Im_1**2*Im_1_err**2)**0.5/Re_3/2
     
-    
-    axs[0+k].errorbar(chi,Re_2, Re_2_err, fmt=".", color=colors[0], capsize=3)
-    axs[1+k].errorbar(chi,Re_1, Re_1_err, fmt=".", color=colors[0], capsize=3, label="Data")
     axs[0+k].errorbar(chi_plt, w1(chi_plt, a_21).real+0*(np.amax(w1(chi_plt, a_21).real)-np.amin(w1(chi_plt, a_21).real)), fmt="-",color=colors[2], alpha=1)
     axs[1+k].errorbar(chi_plt, w1(chi_plt, a_21).real, fmt="-", color=colors[2], alpha=1, label="Theory")
+    axs[0+k].errorbar(chi,Re_2, Re_2_err, fmt=".", color=colors[0], capsize=3)
+    axs[1+k].errorbar(chi,Re_1, Re_1_err, fmt=".", color=colors[0], capsize=3, label="Data")
+
     k=2
     P1=57079/15
     P2=P1#63441/15
@@ -374,5 +374,5 @@ for ax in axs:
 axs[2].set_xticklabels(["$\mathdefault{-\pi}$", "$\mathdefault{0}$","$\mathdefault{\pi}$"])
 axs[2].set_xlabel("$\mathdefault{\chi_0}$ [rad]")
 axs[1].legend(ncol=2, framealpha=1)
-# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images/Blocker measurement comparison 2.pdf", format="pdf",bbox_inches="tight")
+plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images/Blocker measurement comparison 2.pdf", format="pdf",bbox_inches="tight")
 plt.show()

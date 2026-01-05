@@ -1,0 +1,19 @@
+* begin:	04/10/2025 18:35:53
+* script file:	D:\data\Cycle 198\exp_3-16-19\rawdata\sc\Move_PS2_0deg_B2.cfg
+*
+[STANDARD]
+		
+[Move_PS2_0deg_B2]
+	created 04/10/2025   18:23
+[CALL]
+	Block_path2_doubleCd.sc
+[CALL]
+	ifg2_newPS_2p30s_B2.sc
+[MOTOR]
+	S18.axis2.phaseshifter 2	1	deg	FIT	O	COS0			
+[END]
+
+* remarks:	room to enter remarks
+*
+1	-3.0102539	2.5	0	0	2	0	3842440560	0	0.0000000	0.0000000
+* stopped by user: 04/10/2025 18:36:01

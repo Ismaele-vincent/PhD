@@ -1,0 +1,22 @@
+* begin:	18/06/2025 14:45:21
+* script file:	D:\data\Cycle 197\exp_3-16-19\rawdata\sc\singleimage1800s.cfg
+*
+[STANDARD]
+		
+[singleimage1800s]
+	created 18/06/2025   12:57
+[SCAN]
+	file path	.
+	name		*
+	category	standard
+	# repeats	1
+	notes		room to enter remarks
+[SUBSCAN]
+	S18.auxiliary.LinearBlue	1	mm	0.000000	0.000000	0.100000	0.100000	FALSE	time	30.000000			
+[ENDSCAN]
+[END]
+
+* remarks:	room to enter remarks
+*
+0	5.2514648	1800.0	52360	1419803	2469418	2176	3833097325	1472163	0.0000000	0.0000000
+* end: 18/06/2025 15:15:26

@@ -1,0 +1,32 @@
+* begin:	24/09/2025 23:07:36
+* script file:	D:\data\Cycle 198\exp_3-16-19\rawdata\sc\robot_diag_single_Cd.cfg
+*
+[STANDARD]
+		
+[robot_diag_single_Cd]
+	created 24/09/2025   23:06
+[CALL]
+	robot_Zout_singleCd.sc
+[MOTOR]
+	S18.auxiliary.Robot rot big	1	deg	absolute	0.00000				
+[MOTOR]
+	S18.auxiliary.Robot Diagonal	1	um	absolute	-55000.00000				
+[CALL]
+	robot_Zin_singleCd.sc
+[SCAN]
+	file path	.
+	name		*
+	category	standard
+	# repeats	1
+	notes		room to enter remarks
+[SUBSCAN]
+	S18.auxiliary.Robot Diagonal	3	um	-55000.000000	55000.000000	55000.000000	0.100000	FALSE	time	2.000000			
+[ENDSCAN]
+[END]
+
+* remarks:	room to enter remarks
+*
+1	-54999.6560077	2.0	1	0	41	0	3841592866	1	0.0000000	0.0000000
+2	-1.3660254	2.0	0	0	37	0	3841592899	0	0.0000000	0.0000000
+3	54991.4598552	2.0	0	0	37	1	3841592931	0	0.0000000	0.0000000
+* end: 24/09/2025 23:08:52

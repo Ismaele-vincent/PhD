@@ -1,0 +1,27 @@
+* begin:	23/09/2025 16:56:08
+* script file:	D:\data\Cycle 198\exp_3-16-19\rawdata\sc\ifg2_3p120s_B1.cfg
+*
+[STANDARD]
+		
+[ifg2_3p120s_B1]
+	created 23/09/2025   16:55
+[ENCODER]
+	S18.auxiliary.Robot Diagonal
+[SCAN]
+	file path	.
+	name		*
+	category	standard
+	# repeats	1
+	notes		room to enter remarks
+[SUBSCAN]
+	S18.axis2.phaseshifter 2	31	deg	-2.625000	2.625000	0.175000	0.100000	FALSE	time	120.000000			
+[ENDSCAN]
+[END]
+
+* remarks:	room to enter remarks
+*
+1	-2.6367187	120.0	7179	68421	264835	270151	3841484294	75600	0.0000000	0.0000000
+2	-2.4609375	120.0	7288	69031	265046	269203	3841484417	76319	0.0000000	0.0000000
+3	-2.2741699	120.0	5321	51015	196559	198228	3841484541	56336	0.0000000	0.0000000
+4	-2.0983887	35.4	38	4230	39939	6128	3841484582	4268	0.0000000	0.0000000
+* stopped by user: 23/09/2025 17:03:03

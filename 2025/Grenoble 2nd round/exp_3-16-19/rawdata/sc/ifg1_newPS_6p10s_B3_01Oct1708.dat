@@ -1,0 +1,27 @@
+* begin:	01/10/2025 17:08:35
+* script file:	D:\data\Cycle 198\exp_3-16-19\rawdata\sc\ifg1_newPS_6p10s_B3.cfg
+*
+[STANDARD]
+		
+[ifg1_newPS_6p10s_B3]
+	created 01/10/2025   16:35
+[SCAN]
+	file path	.
+	name		*
+	category	standard
+	# repeats	1
+	notes		room to enter remarks
+[SUBSCAN]
+	S18.axis2.phaseshifter 1	60	deg	0.000000	6.000014	0.101695	0.100000	FALSE	time	10.000000			
+[ENDSCAN]
+[END]
+
+* remarks:	room to enter remarks
+*
+1	-0.0219727	10.0	7	5	22537	109	3842176128	12	0.0000000	0.0000000
+2	0.0878906	10.0	3	5	22683	107	3842176142	8	0.0000000	0.0000000
+3	0.2087402	10.0	5	1	22808	82	3842176155	6	0.0000000	0.0000000
+4	0.2966309	10.0	8	1	22607	100	3842176168	9	0.0000000	0.0000000
+5	0.4064941	10.0	1	3	22841	93	3842176182	4	0.0000000	0.0000000
+6	0.5053711	3.3	1	3	7412	24	3842176188	4	0.0000000	0.0000000
+* stopped by user: 01/10/2025 17:09:49

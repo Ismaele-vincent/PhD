@@ -1,0 +1,16 @@
+* begin:	22/10/2025 23:45:27
+* script file:	D:\data\Cycle 198\exp_3-16-19\rawdata\sc\ifg_wv3_psi_+exp(-i60)+1+exp(i120)_no_fit.cfg
+*
+[STANDARD]
+		
+[ifg_wv3_psi_+exp(-i60)+1+exp(i120)_no_fit]
+	created 21/10/2025   15:29
+[CALL]
+	ifg1r_newPS_2p30s_no_fit.sc
+[CALL]
+	int_meas_path213.sc
+[END]
+
+* remarks:	room to enter remarks
+*
+* end: 22/10/2025 23:45:28

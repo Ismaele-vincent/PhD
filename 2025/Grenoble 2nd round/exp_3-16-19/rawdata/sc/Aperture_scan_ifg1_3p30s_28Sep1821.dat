@@ -1,0 +1,71 @@
+* begin:	28/09/2025 18:21:56
+* script file:	D:\data\Cycle 198\exp_3-16-19\rawdata\sc\Aperture_scan_ifg1_3p30s.cfg
+*
+[STANDARD]
+		
+[Aperture_scan_ifg1_3p30s]
+	created 28/09/2025   18:16
+[CALL]
+	Move_aparture_Z10.sc
+[CALL]
+	Move_aparture_Y15.sc
+[CALL]
+	ifg2_3p30s_B1_ap.sc
+[CALL]
+	Move_aparture_Y18.sc
+[CALL]
+	ifg2_3p30s_B1_ap.sc
+[CALL]
+	Move_aparture_Y20.sc
+[CALL]
+	ifg2_3p30s_B1_ap.sc
+[CALL]
+	Move_aparture_Y22.sc
+[CALL]
+	ifg2_3p30s_B1_ap.sc
+[CALL]
+	Move_aparture_Z13p5.sc
+[CALL]
+	Move_aparture_Y15.sc
+[CALL]
+	ifg2_3p30s_B1_ap.sc
+[CALL]
+	Move_aparture_Y18.sc
+[CALL]
+	ifg2_3p30s_B1_ap.sc
+[CALL]
+	Move_aparture_Y20.sc
+[CALL]
+	ifg2_3p30s_B1_ap.sc
+[CALL]
+	Move_aparture_Y22.sc
+[CALL]
+	ifg2_3p30s_B1_ap.sc
+[CALL]
+	Move_aparture_Z17.sc
+[CALL]
+	Move_aparture_Y15.sc
+[CALL]
+	ifg2_3p30s_B1_ap.sc
+[CALL]
+	Move_aparture_Y18.sc
+[CALL]
+	ifg2_3p30s_B1_ap.sc
+[CALL]
+	Move_aparture_Y20.sc
+[CALL]
+	ifg2_3p30s_B1_ap.sc
+[CALL]
+	Move_aparture_Y22.sc
+[CALL]
+	ifg2_3p30s_B1_ap.sc
+[END]
+
+* remarks:	room to enter remarks
+*
+1	-2.9992676	10.0	505	249	22843	467	3841921331	754	0.0000000	0.0000000
+2	-2.7905273	10.0	431	339	22831	453	3841921345	770	0.0000000	0.0000000
+3	-2.6147461	10.0	322	405	22982	492	3841921358	727	0.0000000	0.0000000
+4	-2.3950195	10.0	182	524	22901	441	3841921372	706	0.0000000	0.0000000
+5	-2.2082520	10.0	126	624	23122	443	3841921385	750	0.0000000	0.0000000
+* stopped by user: 28/09/2025 18:23:07

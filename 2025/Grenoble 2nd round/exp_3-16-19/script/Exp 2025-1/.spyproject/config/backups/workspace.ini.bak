@@ -1,0 +1,12 @@
+[workspace]
+restore_data_on_startup = True
+save_data_on_exit = True
+save_history = True
+save_non_project_files = False
+project_type = 'empty-project-type'
+recent_files = ['../No fit/ifg B123 all.py', '../No fit/Indium +1-i-1.py', '../No fit/Indium +1+1+1.py', '../No fit/Indium +exp(-i60)+1+exp(i120).py', '../No fit/wv1 psi +1-1-1 no fit.py', '../No fit/wv1 psi +1-1-i no fit.py', '../No fit/wv1 psi +1-i-1 no fit.py', '../No fit/wv1 psi +1+1+1 no fit.py', '../No fit/wv1 psi +1+epi3+e2pi3 no fit.py', '../No fit/wv1 psi +epi3+1+e2pi3 no fit.py', '../No fit/wv2 psi +1-1-1 no fit.py', '../No fit/wv2 psi +1-1-i no fit.py', '../No fit/wv2 psi +1-i-1 no fit.py', '../No fit/wv2 psi +1+1+1 no fit.py', '../No fit/wv2 psi +1+epi3+e2pi3 no fit.py', '../No fit/wv2 psi +epi3+1+e2pi3 no fit.py', '../No fit/wv3 psi +1-1-1 no fit.py', '../No fit/wv3 psi +1-1-i no fit.py', '../No fit/wv3 psi +1-i-1 no fit.py', '../No fit/wv3 psi +1+1+1 no fit.py', '../No fit/wv3 psi +1+epi3+e2pi3 no fit.py', '../No fit/wv3 psi +epi3+1+e2pi3 no fit.py']
+
+[main]
+version = 0.2.0
+recent_files = []
+

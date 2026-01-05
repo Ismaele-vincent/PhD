@@ -1,0 +1,20 @@
+* begin:	23/10/2025 23:35:11
+* script file:	D:\data\Cycle 198\exp_3-16-19\rawdata\sc\ifg_wv1_psi_+1+1+1_no_fit_B123.cfg
+*
+[STANDARD]
+		
+[ifg_wv1_psi_+1+1+1_no_fit_B123]
+	created 22/10/2025   17:09
+[CALL]
+	robot_Zin_doubleCd.sc
+[CALL]
+	ifg2r_B123.sc
+[CALL]
+	robot_Zout_doubleCd.sc
+[END]
+
+* remarks:	room to enter remarks
+*
+1	-0.2526855	2.0	0	0	113	0	3844100210	0	0.0000000	0.0000000
+2	-0.1977539	2.0	0	0	83	0	3844100220	0	0.0000000	0.0000000
+* end: 23/10/2025 23:38:04
