@@ -138,18 +138,18 @@ No Indium, 3-plates interferometer
 """
 Indium 1.5, 3-plates interferometer
 """
-P1=57079/15
-a_1= 0.862
-a_1_err=0.005
-a_2= 0.507
-a_2_err=0.008
-a_21=a_2/a_1
-lim=0
-# inf_file_name="ifgPS1_35pt_In15_13Apr2126" #very good
-# inf_file_name="ifgPS1_35pt_In15_14Apr0146" #bad
-inf_file_name="ifgPS1_35pt_In15_14Apr0322" #very good
-# inf_file_name="ifgPS1_35pt_In15_14Apr0742" #very good
-points=35
+# P1=57079/15
+# a_1= 0.862
+# a_1_err=0.005
+# a_2= 0.507
+# a_2_err=0.008
+# a_21=a_2/a_1
+# lim=0
+# # inf_file_name="ifgPS1_35pt_In15_13Apr2126" #very good
+# # inf_file_name="ifgPS1_35pt_In15_14Apr0146" #bad
+# inf_file_name="ifgPS1_35pt_In15_14Apr0322" #very good
+# # inf_file_name="ifgPS1_35pt_In15_14Apr0742" #very good
+# points=35
 
 """
 Indium 0.5, 3-plates interferometer
@@ -179,21 +179,21 @@ Indium 0.5, 3-plates interferometer
 """
 Indium 1.0, 3-plates interferometer
 """
-# P1=57079/15
-# a_1= 0.821
-# a_1_err=0.004
-# a_2= 0.570
-# a_2_err=0.006
-# a_21=a_2/a_1
-# lim=0
-# # inf_file_name="ifgPS1_35pt_In10_14Apr2054" #bad (wrong ps pos)
-# # inf_file_name="ifgPS1_35pt_In10_15Apr0115" #bad (wrong ps pos)
-# # inf_file_name="ifgPS1_35pt_In10_15Apr0250" #bad (wrong ps pos)
-# # inf_file_name="ifgPS1_35pt_In10_15Apr0710" #bad (wrong ps pos)
-# # inf_file_name="ifgPS1_35pt_In10_15Apr0845" #bad (wrong ps pos)
-# inf_file_name="ifgPS1_35pt_In10_15Apr1050" #good
-# # inf_file_name="ifgPS1_35pt_In10_15Apr1225" #good
-# points=35
+P1=57079/15
+a_1= 0.821
+a_1_err=0.004
+a_2= 0.570
+a_2_err=0.006
+a_21=a_2/a_1
+lim=0
+# inf_file_name="ifgPS1_35pt_In10_14Apr2054" #bad (wrong ps pos)
+# inf_file_name="ifgPS1_35pt_In10_15Apr0115" #bad (wrong ps pos)
+# inf_file_name="ifgPS1_35pt_In10_15Apr0250" #bad (wrong ps pos)
+# inf_file_name="ifgPS1_35pt_In10_15Apr0710" #bad (wrong ps pos)
+# inf_file_name="ifgPS1_35pt_In10_15Apr0845" #bad (wrong ps pos)
+inf_file_name="ifgPS1_35pt_In10_15Apr1050" #good
+# inf_file_name="ifgPS1_35pt_In10_15Apr1225" #good
+points=35
 
 def w1(chi, a_21):
     return 1/(1+a_21*np.exp(1j*chi))
@@ -210,9 +210,9 @@ A_avg=0
 Dchi=np.zeros(4)
 C_avg=0
 C_err=0
-fig = plt.figure(figsize=(5,8), dpi=150)
-gs = fig.add_gridspec(4,1, hspace=0.0, wspace=0)
-axs = [fig.add_subplot(gs[0, 0]),fig.add_subplot(gs[1, 0]),fig.add_subplot(gs[2, 0]),fig.add_subplot(gs[3, 0])]
+fig = plt.figure(figsize=(10,6), dpi=150)
+gs = fig.add_gridspec(2,2, hspace=0.0, wspace=0.2)
+axs = [fig.add_subplot(gs[0, 1]),fig.add_subplot(gs[0, 0]),fig.add_subplot(gs[1, 1]),fig.add_subplot(gs[1, 0])]
 # fig = plt.figure(figsize=(5,6), dpi=150)
 # gs = fig.add_gridspec(2,2, hspace=0.0, wspace=0)
 # axs = [fig.add_subplot(gs[0, 0]),fig.add_subplot(gs[0, 1]),fig.add_subplot(gs[1, 0]),fig.add_subplot(gs[1, 1])]
@@ -220,7 +220,7 @@ for root, dirs, files in os.walk(cleandata, topdown=False):
     files=np.sort(files)
     # data_ifg_matrix=np.zeros((4,points))
     # data_ifg_matrix=np.zeros((4,points))
-    print(files[::-1])
+    # print(files[::-1])
     for name in (files[::-1]):
         # print(name)
         tot_data=np.loadtxt(os.path.join(root, name))
@@ -246,8 +246,8 @@ for root, dirs, files in os.walk(cleandata, topdown=False):
         x_plt = np.linspace(ps_pos[0], ps_pos[-1],200)
         axs[(i+2)%4].errorbar(chi,data_ifg/time,yerr=data_ifg_err/time,fmt="o", color=colors[0],capsize=3, ms=3, label="Data")
         axs[(i+2)%4].errorbar(chi_plt,fit_cos(x_plt, *p)/time, fmt="-", color=colors[3], lw=1, label="Theory")
-        axs[(i+2)%4].text(1.03,0.5,labels[i], rotation=-90, ha="center", va="center", transform=axs[i].transAxes)
-        print((i+2)%4)
+        axs[(i+2)%4].text(1.05,0.5,labels[i], rotation=-90, ha="center", va="center", transform=axs[i].transAxes)
+        # print((i+2)%4)
         # print("C=", p[1]/p[0], "+-", ((err[1]/p[0])**2+(err[1]*p[1]/p[0]**2)**2)**0.5)
         # print("C_unb=", p_unb[-1])
         # print(p_unb)
@@ -257,8 +257,9 @@ for root, dirs, files in os.walk(cleandata, topdown=False):
         # print(p[3])
         i+=1
         
-axs[0].legend(framealpha=1, loc=1, ncol=1)
-axs[-1].set_xlabel("${\chi_0}$ [rad]")
+axs[1].legend(framealpha=1, loc=1, ncol=1)
+axs[2].set_xlabel("${\chi_0}$ [rad]")
+axs[3].set_xlabel("${\chi_0}$ [rad]")
 axs[1].text(-0.13,0,"Intensity (count/s)",rotation=90, ha="center", va="center", transform=axs[1].transAxes)
 for ax in axs:
     ax.set_xticks([-3*np.pi/2,-np.pi,-np.pi/2,0,np.pi/2,np.pi,3*np.pi/2])
@@ -268,13 +269,13 @@ for ax in axs:
     ax.grid(True, ls="dotted")  
     # ax.yaxis.set_label_position("right")
     
-for ax in axs[:-1]:
-    ax.tick_params(axis="x", bottom=False, labelbottom=False)
-    ax.tick_params(axis="x", bottom=False, labelbottom=False)
+axs[0].tick_params(axis="x", bottom=False, labelbottom=False)
+axs[1].tick_params(axis="x", bottom=False, labelbottom=False)
+
 
 
 # axs[i].set_ylabel("Neutron rate (count / s)")
 # axs[i].set_ylim([0,430])
 
-plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images/Measurement example ver2.pdf", format="pdf",bbox_inches="tight")
+# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Measurement example ver2.pdf", format="pdf",bbox_inches="tight")
 plt.show()

@@ -124,49 +124,49 @@ Indium 1.8mm path2 (overall good, last two very good)
 """
 No Indium, 3-plates interferometer
 """
-# folder_name="Symm No In"
-# P1=57079/15
-# P2=63441/15
-# a_1= 0.688
-# a_1_err=0.003
-# a_2= 0.725
-# a_2_err=0.003
+folder_name="Symm No In"
+P1=57079/15
+P2=63441/15
+a_1= 0.688
+a_1_err=0.003
+a_2= 0.725
+a_2_err=0.003
 
-# P1=57079/15
-# P2=P1#63441/15
-# a_1= 0.5**0.5
-# a_1_err=0.003
-# a_2= 0.5**0.5
-# a_2_err=0.003
+P1=57079/15
+P2=P1*39190/39031 #63441/15
+a_1= (P1/(P1+P2))**0.5
+a_1_err=0.003
+a_2= (P2/(P1+P2))**0.5
+a_2_err=0.003
 
-# a_21=a_2/a_1
-# lim=1
-# # sgn=-1
-# # inf_file_name="ifgPS1_35pt_In00_12Apr1851" #good-ish 3p
-# # inf_file_name="ifgPS1_35pt_In00_12Apr2026" #good 3p
-# # inf_file_name="ifgPS1_35pt_In00_13Apr0103" #good
-# # inf_file_name="ifgPS1_35pt_In00_13Apr0528"  #good
-# # inf_file_name="ifgPS1_35pt_In00_13Apr0703" #good
-# inf_file_name="ifgPS1_35pt_In00_13Apr0838" #good
-# points=35
+a_21=1
+lim=1
+# sgn=-1
+# inf_file_name="ifgPS1_35pt_In00_12Apr1851" #good-ish 3p
+# inf_file_name="ifgPS1_35pt_In00_12Apr2026" #good 3p
+# inf_file_name="ifgPS1_35pt_In00_13Apr0103" #good
+# inf_file_name="ifgPS1_35pt_In00_13Apr0528"  #good
+# inf_file_name="ifgPS1_35pt_In00_13Apr0703" #good
+inf_file_name="ifgPS1_35pt_In00_13Apr0838" #good
+points=35
 
 """
 Indium 1.5, 3-plates interferometer
 """
-folder_name="Symm In 1p5 path2"
-P1=57079/15
-P2=19747/15
-a_1= 0.862
-a_1_err=0.005
-a_2= 0.507
-a_2_err=0.008
-a_21=a_2/a_1
-lim=0
-inf_file_name="ifgPS1_35pt_In15_13Apr2126" #best
-# inf_file_name="ifgPS1_35pt_In15_14Apr0146" #bad
-# inf_file_name="ifgPS1_35pt_In15_14Apr0322" #very good
-# inf_file_name="ifgPS1_35pt_In15_14Apr0742" #very good
-points=35
+# folder_name="Symm In 1p5 path2"
+# P1=57079/15
+# P2=19747/15
+# a_1= 0.862
+# a_1_err=0.005
+# a_2= 0.507
+# a_2_err=0.008
+# a_21=a_2/a_1
+# lim=0
+# inf_file_name="ifgPS1_35pt_In15_13Apr2126" #best
+# # inf_file_name="ifgPS1_35pt_In15_14Apr0146" #bad
+# # inf_file_name="ifgPS1_35pt_In15_14Apr0322" #very good
+# # inf_file_name="ifgPS1_35pt_In15_14Apr0742" #very good
+# points=35
 
 """
 Indium 0.5, 3-plates interferometer
@@ -287,7 +287,6 @@ P1_corr_err=(C_id**2*P1+P1**2*C_id_err**2)**0.5
 P2_corr=C_id*P2
 P2_corr_err=(C_id**2*P2+P2**2*C_id_err**2)**0.5
 
-
 chi_plt=np.linspace(chi[0], chi[-1], 1000)
 Im_1=(data_ifg_matrix[3]-data_ifg_matrix[1])/data_ifg_matrix[0]/4
 Im_1_err=(data_ifg_matrix_err[1]**2+data_ifg_matrix_err[3]**2+(4*Im_1)**2*data_ifg_matrix_err[0]**2)**0.5/(4*abs(data_ifg_matrix[0]))
@@ -312,7 +311,7 @@ s=np.sign(sa)*abs(sa)**0.5
 Re_2_1=(1-s)/2
 Re_2_1_err=((data_ifg_matrix_err[2]/data_ifg_matrix[0])**2+(data_ifg_matrix[2]*data_ifg_matrix_err[0]/data_ifg_matrix[0]**2)**2+64*Im_1**2*Im_1_err**2)**0.5/abs(s)/4
 
-Re_2_2=P2_corr/data_ifg_matrix[0] +1/4 - data_ifg_matrix[2]/(data_ifg_matrix[0]*4) 
+Re_2_2=P2_corr/data_ifg_matrix[0] + 1/4 - data_ifg_matrix[2]/(data_ifg_matrix[0]*4) 
 Re_2_2_err=(P1_corr_err**2+(data_ifg_matrix_err[2]/4)**2+(Re_2_2-1/4)**2*data_ifg_matrix_err[0]**2)**0.5/abs(data_ifg_matrix[0])
 
 s_2=P2_corr/data_ifg_matrix[0]-Im_2**2
@@ -320,7 +319,7 @@ Re_2_3=np.sign(s_2)*np.abs(s_2)**0.5
 Re_2_3_err=((P2_corr_err/data_ifg_matrix[0])**2+(P2_corr/data_ifg_matrix[0]**2)**2*data_ifg_matrix_err[0]**2+4*Im_1**2*Im_1_err**2)**0.5/Re_2_3/2
 
 fig = plt.figure(figsize=(5,6), dpi=150)
-gs = fig.add_gridspec(2,2 , height_ratios=(1,1), hspace=0.0, wspace=0.3)
+gs = fig.add_gridspec(2,2 , height_ratios=(1,2), hspace=0.0, wspace=0.18)
 axs = [fig.add_subplot(gs[0, 0]),fig.add_subplot(gs[0, 1]),fig.add_subplot(gs[1, 0]),fig.add_subplot(gs[1, 1])]
 axs[0].set_title("$w_{1,+}$", fontsize=13)
 axs[1].set_title("$w_{2,+}$", fontsize=13)
@@ -334,41 +333,34 @@ for ax in axs:
     ax.set_xticklabels(["${-\pi}$", "${0}$","${\pi}$"])
     ax.grid(True, ls="dotted")
 for ax in axs[2:]:
-    ax.set_xlabel("${\\chi_0}$ [rad]")
+    ax.set_xlabel("${\phi}$ [rad]")
 axs[0].tick_params(axis="x", bottom=False, labelbottom=False)
 axs[1].tick_params(axis="x", bottom=False, labelbottom=False)
 # axs[1].tick_params(axis="y", left=False, labelleft=False)
 # axs[3].tick_params(axis="y", left=False, labelleft=False)
-    
+
 axs[2].errorbar(chi,Im_1, Im_1_err, fmt="k.", capsize=3)
 axs[2].plot(chi_plt, w1(chi_plt, a_21).imag, color=colors[3], alpha=0.8 )
 axs[3].errorbar(chi,Im_2, Im_2_err, fmt="k.", capsize=3)
 axs[3].plot(chi_plt, w2(chi_plt, a_21).imag, color=colors[3], alpha=0.8 )
 
-axs[0].set_ylim([0.5,2.5])
-axs[1].set_ylim([-1.5,0.5])
-axs[0].set_yticks([1,2])
-axs[1].set_yticks([-1,-0])
+axs[0].set_ylim([-1.2,1.2])
+axs[1].set_ylim([-1.2,1.2])
+axs[0].set_yticks([-1,0,1])
+axs[1].set_yticks([-1,0,1])
 
-axs[2].set_ylim([-1.125,1.125])
-axs[3].set_ylim([-1.125,1.125])
-axs[2].set_yticks([-1,0,1])
-axs[3].set_yticks([-1,0,1])
+axs[2].set_ylim([-3,8.5])
+axs[3].set_ylim([-8.5,3])
+axs[2].set_yticks(range(-2,9,2))
+axs[3].set_yticks(range(-8,3,2))
 
-if a_1==0.5**0.5 or lim:
-    axs[0].set_ylim([-1,2])
-    axs[1].set_ylim([-1,2])
-    axs[2].set_ylim([-3,9])
-    axs[3].set_ylim([-9,3])
-    for ax in axs:
-        ax.set_yticks(ticks=ax.get_yticks()[1:-1])
 # axs[1].tick_params(axis="y", left=False, labelleft=False, right=True, labelright=True)
 # axs[3].tick_params(axis="y", left=False, labelleft=False, right=True, labelright=True)
 axs[0].errorbar(chi_plt, w1(chi_plt, a_21).real, color=colors[3], alpha=0.8)
 axs[1].errorbar(chi_plt, w2(chi_plt, a_21).real, color=colors[3], alpha=0.8)
-axs[0].errorbar(chi,Re_1_1, Re_1_1_err, fmt="k.", capsize=3)
-axs[1].errorbar(chi,Re_2_1, Re_2_1_err, fmt="k.", capsize=3)
+axs[0].errorbar(chi,Re_1_2, Re_1_2_err, fmt="k.", capsize=3)
+axs[1].errorbar(chi,Re_2_2, Re_2_2_err, fmt="k.", capsize=3)
 
-plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images/Results"+folder_name[5:]+".pdf", format="pdf",bbox_inches="tight")
+plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Results"+folder_name[5:]+".pdf", format="pdf",bbox_inches="tight")
 
 plt.show()

@@ -320,7 +320,7 @@ Re_2_3=np.sign(s_2)*np.abs(s_2)**0.5
 Re_2_3_err=((P2_corr_err/data_ifg_matrix[0])**2+(P2_corr/data_ifg_matrix[0]**2)**2*data_ifg_matrix_err[0]**2+4*Im_1**2*Im_1_err**2)**0.5/Re_2_3/2
 
 fig = plt.figure(figsize=(5,6), dpi=150)
-gs = fig.add_gridspec(2,2 , height_ratios=(1,1), hspace=0.0, wspace=0.3)
+gs = fig.add_gridspec(2,2 , height_ratios=(1,1), hspace=0.0, wspace=0.18)
 axs = [fig.add_subplot(gs[0, 0]),fig.add_subplot(gs[0, 1]),fig.add_subplot(gs[1, 0]),fig.add_subplot(gs[1, 1])]
 axs[0].set_title("$w_{1,+}$", fontsize=13)
 axs[1].set_title("$w_{2,+}$", fontsize=13)
@@ -334,7 +334,7 @@ for ax in axs:
     ax.set_xticklabels(["${-\pi}$", "${0}$","${\pi}$"])
     ax.grid(True, ls="dotted")
 for ax in axs[2:]:
-    ax.set_xlabel("${\\chi_0}$ [rad]")
+    ax.set_xlabel("${\phi}$ [rad]")
 axs[0].tick_params(axis="x", bottom=False, labelbottom=False)
 axs[1].tick_params(axis="x", bottom=False, labelbottom=False)
 # axs[1].tick_params(axis="y", left=False, labelleft=False)
@@ -368,7 +368,7 @@ axs[0].errorbar(chi_plt, w1(chi_plt, a_21).real, color=colors[3], alpha=0.8)
 axs[1].errorbar(chi_plt, w2(chi_plt, a_21).real, color=colors[3], alpha=0.8)
 axs[0].errorbar(chi,Re_1_1, Re_1_1_err, fmt="k.", capsize=3)
 axs[1].errorbar(chi,Re_2_1, Re_2_1_err, fmt="k.", capsize=3)
-
-plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images/Results"+folder_name[5:]+".pdf", format="pdf",bbox_inches="tight")
+print(a_2**2/a_1**2, 0.59**2)
+plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Results"+folder_name[5:]+".pdf", format="pdf",bbox_inches="tight")
 
 plt.show()

@@ -14,7 +14,6 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.gridspec import GridSpec
-from matplotlib import font_manager
 plt.rcParams.update({'figure.max_open_warning': 0})
 from scipy.optimize import curve_fit as fit
 a_1=1/2**0.5
@@ -22,20 +21,6 @@ a_2=1/2**0.5
 sgn=1
 def fit_cos(x, A, B, C, D):
     return A+B*np.cos(C*x-D)
-
-font_path = "/home/aaa/root/fonts/cmunrm.ttf"
-font_manager.fontManager.addfont(font_path)
-prop = font_manager.FontProperties(fname=font_path)
-
-plt.rcParams["font.family"] = "sans-serif"
-plt.rcParams["font.sans-serif"] = [prop.get_name(), "DejaVu Sans"]  # <- DejaVu als Fallback
-plt.rcParams["font.size"] = 12
-plt.rcParams["mathtext.fontset"] = "cm"
-plt.rcParams["axes.titlesize"] = 14
-plt.rcParams["figure.dpi"] = 150
-# plt.rcParams["legend.markerscale"] = 1
-plt.rcParams["legend.fontsize"] = 11
-plt.rcParams["axes.unicode_minus"] = False  # <- richtige Variante!
 
 """
 Indium 0.8mm path2
@@ -132,12 +117,12 @@ No Indium, 3-plates interferometer
 # a_2= 0.725
 # a_2_err=0.003
 
-# P1=57079/15
-# P2=P1#63441/15
-# a_1= 0.5**0.5
-# a_1_err=0.003
-# a_2= 0.5**0.5
-# a_2_err=0.003
+# # P1=57079/15
+# # P2=P1#63441/15
+# # a_1= 0.5**0.5
+# # a_1_err=0.003
+# # a_2= 0.5**0.5
+# # a_2_err=0.003
 
 # a_21=a_2/a_1
 # lim=1
@@ -206,6 +191,7 @@ Indium 1.0, 3-plates interferometer
 # a_2= 0.570
 # a_2_err=0.006
 # a_21=a_2/a_1
+# print("a_21=",a_21)
 # lim=0
 # # inf_file_name="ifgPS1_35pt_In10_14Apr2054" #bad (wrong ps pos)
 # # inf_file_name="ifgPS1_35pt_In10_15Apr0115" #bad (wrong ps pos)
@@ -279,14 +265,19 @@ C_id=C_avg/(2*a_1*a_2)
 C_id_err=(C_err**2+C_avg**2/(a_1**2)*a_1_err**2+C_avg**2/(a_2**2)*a_2_err**2)**0.5/(2*a_1*a_2)
 print("C_avg=",C_avg, "+-",C_err, "C_ideal=", C_id, "+-", C_id_err)
 
-data_ifg_matrix_err=(data_ifg_matrix+((1-C_id)/2)**2*A_err**2+(A_avg/2)**2*C_id_err**2)**0.5
-# data_ifg_matrix_err=(data_ifg_matrix/C_id**2+((1/C_id+1)/2)**2*A_err**2+(A_avg/2-data_ifg_matrix)**2*(C_id_err/C_id**2)**2)**0.5
+# data_ifg_matrix_err=(data_ifg_matrix+((1-C_id)/2)**2*A_err**2+(A_avg/2)**2*C_id_err**2)**0.5
+data_ifg_matrix_err=(data_ifg_matrix/C_id**2+((1/C_id+1)/2)**2*A_err**2+(A_avg/2-data_ifg_matrix)**2*(C_id_err/C_id**2)**2)**0.5
 data_ifg_matrix-=A_avg*(1-C_id)
-P1_corr=C_id*P1
-P1_corr_err=(C_id**2*P1+P1**2*C_id_err**2)**0.5
-P2_corr=C_id*P2
-P2_corr_err=(C_id**2*P2+P2**2*C_id_err**2)**0.5
+# P1_corr=C_id*P1
+# P1_corr_err=(P1+C_id_err**2)**0.5
+# P2_corr=C_id*P2
+# P2_corr_err=(P2+C_id_err**2)**0.5
 
+data_ifg_matrix/=C_id
+P1_corr=P1
+P1_corr_err=P1**0.5
+P2_corr=P2
+P2_corr_err=P2**0.5
 
 chi_plt=np.linspace(chi[0], chi[-1], 1000)
 Im_1=(data_ifg_matrix[3]-data_ifg_matrix[1])/data_ifg_matrix[0]/4
@@ -319,56 +310,46 @@ s_2=P2_corr/data_ifg_matrix[0]-Im_2**2
 Re_2_3=np.sign(s_2)*np.abs(s_2)**0.5
 Re_2_3_err=((P2_corr_err/data_ifg_matrix[0])**2+(P2_corr/data_ifg_matrix[0]**2)**2*data_ifg_matrix_err[0]**2+4*Im_1**2*Im_1_err**2)**0.5/Re_2_3/2
 
-fig = plt.figure(figsize=(5,6), dpi=150)
-gs = fig.add_gridspec(2,2 , height_ratios=(1,1), hspace=0.0, wspace=0.3)
-axs = [fig.add_subplot(gs[0, 0]),fig.add_subplot(gs[0, 1]),fig.add_subplot(gs[1, 0]),fig.add_subplot(gs[1, 1])]
-axs[0].set_title("$w_{1,+}$", fontsize=13)
-axs[1].set_title("$w_{2,+}$", fontsize=13)
-axs[0].set_ylabel("Real part")
-axs[2].set_ylabel("Imaginary part")
+fig = plt.figure(figsize=(4,6), dpi=150)
+gs = fig.add_gridspec(2,1,  height_ratios=(1,1),hspace=0.0, wspace=0.)
+axs = [fig.add_subplot(gs[0, 0]),fig.add_subplot(gs[1, 0])]
+# axs[0].set_title("$w_{1,+}$", fontsize=13)
+# axs[1].set_title("$w_{2,+}$", fontsize=13)
+axs[0].set_ylabel("$w_{+,1}$", fontsize=13)
+axs[1].set_ylabel("$w_{+,2}$", fontsize=13)
 # fig.suptitle(inf_file_name)
 colors=["k","#f10d0c","#00a933","#5983b0"]
 plt.rcParams["mathtext.fontset"]="cm"
 for ax in axs:
     ax.set_xticks([-np.pi,0,np.pi])
-    ax.set_xticklabels(["${-\pi}$", "${0}$","${\pi}$"])
+    ax.set_xticklabels(["$\mathdefault{-\pi}$", "$\mathdefault{0}$","$\mathdefault{\pi}$"])
     ax.grid(True, ls="dotted")
 for ax in axs[2:]:
-    ax.set_xlabel("${\\chi_0}$ [rad]")
+    ax.set_xlabel("$\mathdefault{\\chi}$ [rad]")
 axs[0].tick_params(axis="x", bottom=False, labelbottom=False)
-axs[1].tick_params(axis="x", bottom=False, labelbottom=False)
-# axs[1].tick_params(axis="y", left=False, labelleft=False)
-# axs[3].tick_params(axis="y", left=False, labelleft=False)
-    
-axs[2].errorbar(chi,Im_1, Im_1_err, fmt="k.", capsize=3)
-axs[2].plot(chi_plt, w1(chi_plt, a_21).imag, color=colors[3], alpha=0.8 )
-axs[3].errorbar(chi,Im_2, Im_2_err, fmt="k.", capsize=3)
-axs[3].plot(chi_plt, w2(chi_plt, a_21).imag, color=colors[3], alpha=0.8 )
+# axs[1].tick_params(axis="x", bottom=False, labelbottom=False)
 
-axs[0].set_ylim([0.5,2.5])
-axs[1].set_ylim([-1.5,0.5])
-axs[0].set_yticks([1,2])
-axs[1].set_yticks([-1,-0])
+axs[0].errorbar(chi_plt, w1(chi_plt, a_21).imag, color=colors[1], alpha=0.8)
+axs[1].errorbar(chi_plt, w2(chi_plt, a_21).imag, color=colors[1], alpha=0.8)
+axs[0].errorbar(chi,Im_1, Im_1_err, fmt="v", ms=4, color=colors[0], capsize=3)
+axs[1].errorbar(chi,Im_2, Im_2_err, fmt="v", ms=4, color=colors[0], capsize=3)
 
-axs[2].set_ylim([-1.125,1.125])
-axs[3].set_ylim([-1.125,1.125])
-axs[2].set_yticks([-1,0,1])
-axs[3].set_yticks([-1,0,1])
-
-if a_1==0.5**0.5 or lim:
-    axs[0].set_ylim([-1,2])
-    axs[1].set_ylim([-1,2])
-    axs[2].set_ylim([-3,9])
-    axs[3].set_ylim([-9,3])
-    for ax in axs:
-        ax.set_yticks(ticks=ax.get_yticks()[1:-1])
+axs[0].set_ylim([-1,4])
+axs[1].set_ylim([-2,2])
+for ax in axs:
+    ax.set_yticks(ticks=ax.get_yticks()[1:-1])
 # axs[1].tick_params(axis="y", left=False, labelleft=False, right=True, labelright=True)
 # axs[3].tick_params(axis="y", left=False, labelleft=False, right=True, labelright=True)
 axs[0].errorbar(chi_plt, w1(chi_plt, a_21).real, color=colors[3], alpha=0.8)
 axs[1].errorbar(chi_plt, w2(chi_plt, a_21).real, color=colors[3], alpha=0.8)
-axs[0].errorbar(chi,Re_1_1, Re_1_1_err, fmt="k.", capsize=3)
-axs[1].errorbar(chi,Re_2_1, Re_2_1_err, fmt="k.", capsize=3)
+axs[0].errorbar(chi,Re_1_2, Re_1_2_err, fmt=".", color=colors[0], capsize=3)
+axs[1].errorbar(chi,Re_2_2, Re_2_2_err, fmt=".", color=colors[0],capsize=3)
 
-plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images/Results"+folder_name[5:]+".pdf", format="pdf",bbox_inches="tight")
+axs[1].errorbar([], [], [], color=colors[3], capsize=3, fmt=".-", markerfacecolor=colors[0], markeredgecolor=colors[0], ecolor=colors[0], alpha=0.8, label="$w^\Re_{+,i}$")
+axs[1].errorbar([], [], [], color=colors[1], capsize=3, fmt="v-", ms=4, markerfacecolor=colors[0], markeredgecolor=colors[0], ecolor=colors[0], alpha=0.8, label="$w^\Re_{+,i}$")
+
+axs[1].legend(loc=10, bbox_to_anchor=(0.5,1), framealpha=1)
+
+# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images/Results"+folder_name[5:]+".pdf", format="pdf",bbox_inches="tight")
 
 plt.show()

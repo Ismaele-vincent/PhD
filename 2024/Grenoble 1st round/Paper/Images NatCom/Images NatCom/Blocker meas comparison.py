@@ -219,38 +219,29 @@ def w1(chi, a_21):
 def w2(chi, a_21):
     return 1-w1(chi, a_21)
 
-fig = plt.figure(figsize=(4.8,6.1), dpi=150)
-gs = fig.add_gridspec(2, 2, hspace=0.0, wspace=0)
-axs = [fig.add_subplot(gs[0, 0]),fig.add_subplot(gs[0, 1]),fig.add_subplot(gs[1, 0]),fig.add_subplot(gs[1, 1])]
-axs[0].set_title("Using Eq.(19)", fontsize=12)
-axs[1].set_title("Using Eq.(24)", fontsize=12)
-axs[0].set_ylabel("$w^\Re_{+,1}$")
-axs[2].set_ylabel("$w^\Re_{+,1}$")
-axs[1].set_ylabel("${a_2/a_1\\approx 0.59}$", rotation=270, labelpad=15)
-axs[3].set_ylabel("${a_2/a_1\\approx 1}$", rotation=270, labelpad=15)
-# fig.suptitle(inf_file_name)
+fig = plt.figure(figsize=(5,3), dpi=150)
+fig_1 = plt.figure(figsize=(5,3), dpi=150)
+gs = fig.add_gridspec(1, 2, hspace=0.0, wspace=0)
+gs_1 = fig_1.add_gridspec(1, 2, hspace=0.0, wspace=0)
+axs = [fig.add_subplot(gs[0, 0]),fig_1.add_subplot(gs[0, 0]),fig.add_subplot(gs[0, 1]),fig_1.add_subplot(gs[0, 1])]
+# axs[0].set_title("Using Eq.(19)")
+# axs[1].set_title("Using Eq.(24)")
+axs[0].set_ylabel("$w^R_{+,1}$")
+axs[1].set_ylabel("$w^R_{+,1}$")
+# axs[1].set_ylabel(r"$\sin^2\left(\theta/2\right)/\cos^2\left(\theta/2\right)\approx 0.35$", rotation=270, labelpad=15)
+# axs[3].set_ylabel("${\sin^2{\left(\tfrac{\theta}{2}\right)}/\cos^2{\left(\tfrac{\theta}{2}\right)}\approx 1}$", rotation=270, labelpad=15)
+fig.suptitle("Using Eq.(14)")
+fig_1.suptitle("Using Eq.(12)")
 colors=["k","#f10d0c","#00a933","#5983b0"]
 plt.rcParams["mathtext.fontset"]="cm"
-for ax in axs:
-    ax.set_xticks([-np.pi,0,np.pi])
-    ax.set_xticklabels(["${-\pi}$", "${0}$","${\pi}$"])
-    ax.grid(True, ls="dotted")
-for ax in axs[2:]:
-    ax.set_xlabel("${\\chi_0}$ [rad]")
-axs[0].tick_params(axis="x", bottom=False, labelbottom=False)
-axs[1].tick_params(axis="x", bottom=False, labelbottom=False)
-axs[1].tick_params(axis="y", left=False, labelleft=False)
+
+# axs[0].tick_params(axis="x", bottom=False, labelbottom=False)
+# axs[1].tick_params(axis="x", bottom=False, labelbottom=False)
+axs[2].tick_params(axis="y", left=False, labelleft=False)
 axs[3].tick_params(axis="y", left=False, labelleft=False)
-axs[1].yaxis.set_label_position("right")
-axs[3].yaxis.set_label_position("right")
-axs[1].set_ylim([0.5,3])
-axs[0].set_ylim([0.5,3])
-axs[1].set_yticks(ticks=[1,2])
-axs[0].set_yticks(ticks=[1,2])
-axs[2].set_ylim([-0.5,2])
-axs[3].set_ylim([-0.5,2])
-axs[2].set_yticks(ticks=[0,1])
-axs[3].set_yticks(ticks=[0,1])
+# axs[1].yaxis.set_label_position("left")
+# axs[3].yaxis.set_label_position("left")
+
 k=0
 inf_file_names=["ifgPS1_35pt_In15_13Apr2126","ifgPS1_35pt_In00_13Apr0838"]
 for inf_file_name in inf_file_names:
@@ -364,9 +355,9 @@ for inf_file_name in inf_file_names:
     Re_3=np.sign(s_1)*np.abs(s_1)**0.5
     Re_3_err=((P1_corr_err/data_ifg_matrix[0])**2+(P1_corr/data_ifg_matrix[0]**2)**2*data_ifg_matrix_err[0]**2+4*Im_1**2*Im_1_err**2)**0.5/Re_3/2
     
-    axs[0+k].errorbar(chi_plt, w1(chi_plt, a_21).real+0*(np.amax(w1(chi_plt, a_21).real)-np.amin(w1(chi_plt, a_21).real)), fmt="-",color=colors[2], alpha=1)
+    axs[0+k].errorbar(chi_plt, w1(chi_plt, a_21).real+0*(np.amax(w1(chi_plt, a_21).real)-np.amin(w1(chi_plt, a_21).real)), fmt="-",color=colors[2], alpha=1,label="Theory")
     axs[1+k].errorbar(chi_plt, w1(chi_plt, a_21).real, fmt="-", color=colors[2], alpha=1, label="Theory")
-    axs[0+k].errorbar(chi,Re_2, Re_2_err, fmt=".", color=colors[0], capsize=3)
+    axs[0+k].errorbar(chi,Re_2, Re_2_err, fmt=".", color=colors[0], capsize=3, label="Data")
     axs[1+k].errorbar(chi,Re_1, Re_1_err, fmt=".", color=colors[0], capsize=3, label="Data")
 
     k=2
@@ -390,8 +381,13 @@ for inf_file_name in inf_file_names:
 for ax in axs:
     ax.set_xticks([-np.pi,0,np.pi])
     ax.grid(True, ls="dotted")
-axs[2].set_xticklabels(["${-\pi}$", "${0}$","${\pi}$"])
-axs[2].set_xlabel("${\chi_0}$ [rad]")
-axs[1].legend(ncol=2, framealpha=1)
-plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images/Blocker measurement comparison 2.pdf", format="pdf",bbox_inches="tight")
+    ax.set_ylim([-0.5,2.8])
+    ax.set_yticks(ticks=[0,1,2])
+    ax.set_xticklabels(["${-\pi}$", "${0}$","${\pi}$"])
+    ax.set_xlabel("${\phi}$ [rad]")
+
+axs[0].legend(loc=8,handlelength=1)
+axs[1].legend(loc=8,handlelength=1)
+fig.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Blocker measurement comparison eq 14.pdf", format="pdf",bbox_inches="tight")
+fig_1.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Blocker measurement comparison eq 12.pdf", format="pdf",bbox_inches="tight")
 plt.show()

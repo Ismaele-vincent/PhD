@@ -14,6 +14,7 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.gridspec import GridSpec
+from matplotlib import font_manager
 plt.rcParams.update({'figure.max_open_warning': 0})
 from scipy.optimize import curve_fit as fit
 a_1=1/2**0.5
@@ -21,6 +22,20 @@ a_2=1/2**0.5
 sgn=1
 def fit_cos(x, A, B, C, D):
     return A+B*np.cos(C*x-D)
+
+font_path = "/home/aaa/root/fonts/cmunrm.ttf"
+font_manager.fontManager.addfont(font_path)
+prop = font_manager.FontProperties(fname=font_path)
+
+plt.rcParams["font.family"] = "sans-serif"
+plt.rcParams["font.sans-serif"] = [prop.get_name(), "DejaVu Sans"]  # <- DejaVu als Fallback
+plt.rcParams["font.size"] = 12
+plt.rcParams["mathtext.fontset"] = "cm"
+plt.rcParams["axes.titlesize"] = 14
+plt.rcParams["figure.dpi"] = 150
+# plt.rcParams["legend.markerscale"] = 1
+plt.rcParams["legend.fontsize"] = 11
+plt.rcParams["axes.unicode_minus"] = False  # <- richtige Variante!
 
 """
 Indium 0.8mm path2
@@ -315,10 +330,10 @@ colors=["k","#f10d0c","#00a933","#5983b0"]
 plt.rcParams["mathtext.fontset"]="cm"
 for ax in axs:
     ax.set_xticks([-np.pi,0,np.pi])
-    ax.set_xticklabels(["$\mathdefault{-\pi}$", "$\mathdefault{0}$","$\mathdefault{\pi}$"])
+    ax.set_xticklabels(["${-\pi}$", "${0}$","${\pi}$"])
     ax.grid(True, ls="dotted")
 for ax in axs[2:]:
-    ax.set_xlabel("$\mathdefault{\\chi_0}$ [rad]")
+    ax.set_xlabel("${\\chi_0}$ [rad]")
 axs[0].tick_params(axis="x", bottom=False, labelbottom=False)
 axs[1].tick_params(axis="x", bottom=False, labelbottom=False)
 # axs[1].tick_params(axis="y", left=False, labelleft=False)
@@ -341,10 +356,10 @@ axs[3].set_yticks(range(-8,3,2))
 
 # axs[1].tick_params(axis="y", left=False, labelleft=False, right=True, labelright=True)
 # axs[3].tick_params(axis="y", left=False, labelleft=False, right=True, labelright=True)
-axs[0].errorbar(chi,Re_1_2, Re_1_2_err, fmt="k.", capsize=3)
-axs[1].errorbar(chi,Re_2_2, Re_2_2_err, fmt="k.", capsize=3)
 axs[0].errorbar(chi_plt, w1(chi_plt, a_21).real, color=colors[3], alpha=0.8)
 axs[1].errorbar(chi_plt, w2(chi_plt, a_21).real, color=colors[3], alpha=0.8)
+axs[0].errorbar(chi,Re_1_2, Re_1_2_err, fmt="k.", capsize=3)
+axs[1].errorbar(chi,Re_2_2, Re_2_2_err, fmt="k.", capsize=3)
 
 plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images/Results"+folder_name[5:]+".pdf", format="pdf",bbox_inches="tight")
 
