@@ -244,7 +244,7 @@ for root, dirs, files in os.walk(cleandata, topdown=False):
         p,cov=fit(fit_cos, ps_pos, data_ifg, sigma=data_ifg_err, p0=P0,  bounds=B0)
         if i==0:
             chi=ps_pos*p[2]-p[3]-np.pi/2
-            chi_plt=np.linspace(chi[0],chi[22],200)
+            chi_plt=np.linspace(chi[13],chi[-1],200)
         # P0_unb=[100000, 3, -0.5, 0.7]
         # B0_unb=([0,1,-10, 0],[1e10,4,10,1])
         # p_unb,cov_unb=fit(fit_cos_unb, ps_pos, data_ifg, p0=P0_unb,  bounds=B0_unb)
@@ -253,7 +253,7 @@ for root, dirs, files in os.walk(cleandata, topdown=False):
         C_avg+=p[1]/p[0]/4
         C_err+=p[1]**2/p[0]**4*err[0]**2+err[1]**2/p[0]**2
         A_err=err[0]**2
-        x_plt = np.linspace(ps_pos[0], ps_pos[22],200)
+        x_plt = np.linspace(ps_pos[13], ps_pos[-1],200)
         # axs[(i+2)%4].errorbar(chi,data_ifg/time,yerr=data_ifg_err/time,fmt=".", color=colors[0],capsize=3, ms=3, label="Data")
         axs[(i+2)%4].errorbar(chi_plt,fit_cos(x_plt, *p)/time, fmt="--", color=colors[3], label="Theory")
         # axs[(i+2)%4].text(1.05,0.5,labels[i], rotation=-90, ha="center", va="center", transform=axs[i].transAxes)
@@ -279,8 +279,8 @@ for ax in axs[:-2]:
 #     ax.set_facecolor("#fff2ff")
 
 for ax in axs:
-    ax.set_xticks([-3*np.pi/2,-np.pi,-np.pi/2,0,np.pi/2,np.pi,3*np.pi/2])
-    ax.set_xticklabels(["${-\\dfrac{3\pi}{2}}$","${-\pi}$","${-\\dfrac{\pi}{2}}$", "${0}$","${\\dfrac{\pi}{2}}$","${\pi}$","${\\dfrac{3\pi}{2}}$",])
+    ax.set_xticks([0,np.pi/2,np.pi,3*np.pi/2])
+    ax.set_xticklabels(["${0}$","${\\dfrac{\pi}{2}}$","${\pi}$","${\\dfrac{3\pi}{2}}$",])
     ax.grid(True, ls="dotted")  
     
 axs[0].tick_params(axis="x", bottom=False, labelbottom=False)
@@ -288,26 +288,26 @@ axs[1].tick_params(axis="x", bottom=False, labelbottom=False)
 axs[2].tick_params(axis="x", bottom=False, labelbottom=False)
 axs[3].tick_params(axis="x", bottom=False, labelbottom=False)
 
-axs[1].errorbar(chi[8],(data_ifg_matrix[0])[8]/time, (data_ifg_matrix[0]**0.5)[8]/time, fmt=".", color=colors[0],capsize=3, label="Data")
-# axs[1].vlines(chi[8],0,(data_ifg_matrix[0])[8]/time-12, color=colors[1],  lw=1) #ls=(2, (8, 3)),
-axs[3].errorbar(chi[8],(data_ifg_matrix[2])[8]/time, (data_ifg_matrix[2]**0.5)[8]/time, fmt=".", color=colors[0],capsize=3, label="Data")
-# axs[3].vlines(chi[8],(data_ifg_matrix[2])[8]/time+12,520, color=colors[1],  lw=1) #ls=(2, (8, 3)),
-# axs[3].vlines(chi[8],0,(data_ifg_matrix[2])[8]/time-12, color=colors[1],  lw=1) #ls=(2, (8, 3)),
+axs[1].errorbar(chi[26],(data_ifg_matrix[0])[26]/time, (data_ifg_matrix[0]**0.5)[26]/time, fmt=".", color=colors[0],capsize=3, label="Data")
+# axs[1].vlines(chi[26],0,(data_ifg_matrix[0])[26]/time-12, color=colors[1],  lw=1) #ls=(2, (8, 3)),
+axs[3].errorbar(chi[26],(data_ifg_matrix[2])[26]/time, (data_ifg_matrix[2]**0.5)[26]/time, fmt=".", color=colors[0],capsize=3, label="Data")
+# axs[3].vlines(chi[26],(data_ifg_matrix[2])[26]/time+12,520, color=colors[1],  lw=1) #ls=(2, (8, 3)),
+# axs[3].vlines(chi[26],0,(data_ifg_matrix[2])[26]/time-12, color=colors[1],  lw=1) #ls=(2, (8, 3)),
 
-axs[0].errorbar(chi[8],(data_ifg_matrix[1])[8]/time, (data_ifg_matrix[1]**0.5)[8]/time, fmt=".", color=colors[0],capsize=3, label="Data")
-# axs[0].vlines(chi[8],0,(data_ifg_matrix[1])[8]/time-12, color=colors[1],  lw=1) #ls=(2, (8, 3)),
-axs[2].errorbar(chi[8],(data_ifg_matrix[3])[8]/time, (data_ifg_matrix[3]**0.5)[8]/time, fmt=".", color=colors[0],capsize=3, label="Data")
-# axs[2].vlines(chi[8],(data_ifg_matrix[3])[8]/time+12,520, color=colors[1],  lw=1) #ls=(2, (8, 3)),
-print("chi=",chi[8], 3*np.pi/4)
+axs[0].errorbar(chi[26],(data_ifg_matrix[1])[26]/time, (data_ifg_matrix[1]**0.5)[26]/time, fmt=".", color=colors[0],capsize=3, label="Data")
+# axs[0].vlines(chi[26],0,(data_ifg_matrix[1])[26]/time-12, color=colors[1],  lw=1) #ls=(2, (8, 3)),
+axs[2].errorbar(chi[26],(data_ifg_matrix[3])[26]/time, (data_ifg_matrix[3]**0.5)[26]/time, fmt=".", color=colors[0],capsize=3, label="Data")
+# axs[2].vlines(chi[26],(data_ifg_matrix[3])[26]/time+12,520, color=colors[1],  lw=1) #ls=(2, (8, 3)),
+print("chi=",chi[26], 4*np.pi/5)
 
-print(abs(Dchi-Dchi[[1,2,3,0]])/np.pi*2)
+# print(abs(Dchi-Dchi[[1,2,3,0]])/np.pi*2)
 C_err=C_err**0.5/4
 A_err=A_err**0.5/4
-print("A_avg=",A_avg, "+-",A_err)
+# print("A_avg=",A_avg, "+-",A_err)
 
 C_id=C_avg/(2*a_1*a_2)
 C_id_err=(C_err**2+C_avg**2/(a_1**2)*a_1_err**2+C_avg**2/(a_2**2)*a_2_err**2)**0.5/(2*a_1*a_2)
-print("C_avg=",C_avg, "+-",C_err, "C_ideal=", C_id, "+-", C_id_err)
+# print("C_avg=",C_avg, "+-",C_err, "C_ideal=", C_id, "+-", C_id_err)
 
 # chi+=np.pi/2
 data_ifg_matrix_err=(data_ifg_matrix+((1-C_id)/2)**2*A_err**2+(A_avg/2)**2*C_id_err**2)**0.5
@@ -353,20 +353,20 @@ axs[4].set_ylim([0.5,2.5])
 axs[4].set_yticks([1,1.5,2])
 axs[4].errorbar(chi_plt, w1(chi_plt, a_21).real, fmt="--",color=colors[3], label="Theory")
 # axs[4].errorbar(chi,Re_1_1, Re_1_1_err, fmt=".", color="grey", capsize=3, label="Data")
-axs[4].errorbar(chi[8],Re_1_1[8], Re_1_1_err[8], fmt="k.", capsize=3, label="Data")
-# axs[4].errorbar(chi[8],Re_1_1[8], fmt=".",color=colors[1],  ms=15, mfc="none")
-# axs[4].vlines(chi[8],0,3, color=colors[1],  lw=1)
+axs[4].errorbar(chi[26],Re_1_1[26], Re_1_1_err[26], fmt="k.", capsize=3, label="Data")
+# axs[4].errorbar(chi[26],Re_1_1[26], fmt=".",color=colors[1],  ms=15, mfc="none")
+# axs[4].vlines(chi[26],0,3, color=colors[1],  lw=1)
 
 axs[5].set_ylim([-1.2,1.2])
 axs[5].set_yticks([-1,-0.5,0,0.5,1])
 # axs[5].errorbar(chi,Im_1, Im_1_err, fmt="k.", capsize=3,label="Data")
 axs[5].plot(chi_plt, w1(chi_plt, a_21).imag, "--",color=colors[3], label="Theory")
-axs[5].errorbar(chi[8], Im_1[8], Im_1_err[8], fmt=".", color=colors[0],capsize=3, label="Data")
-# axs[5].errorbar(chi[8], Im_1[8], Im_1_err[8], fmt="k.", capsize=3,label="Data")
-# axs[5].vlines(chi[8],-2,2, color=colors[1],  lw=1)
+axs[5].errorbar(chi[26], Im_1[26], Im_1_err[26], fmt=".", color=colors[0],capsize=3, label="Data")
+# axs[5].errorbar(chi[26], Im_1[26], Im_1_err[26], fmt="k.", capsize=3,label="Data")
+# axs[5].vlines(chi[26],-2,2, color=colors[1],  lw=1)
 
-axs[4].legend(loc=1, ncol=1, handlelength=1)
-axs[5].legend(loc=1, ncol=1, handlelength=1)
+# axs[4].legend(loc=1, ncol=1, handlelength=1)
+# axs[5].legend(loc=1, ncol=1, handlelength=1)
 # axs[i].set_ylabel("Neutron rate (count / s)")
 # axs[i].set_ylim([0,430])
 
