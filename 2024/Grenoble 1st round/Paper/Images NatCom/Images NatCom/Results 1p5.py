@@ -276,6 +276,7 @@ A_err=A_err**0.5/4
 print("A_avg=",A_avg, "+-",A_err)
 
 C_id=C_avg/(2*a_1*a_2)
+# C_id=C_avg/(P1*P2/(P1+P2)**2)**0.5/2
 C_id_err=(C_err**2+C_avg**2/(a_1**2)*a_1_err**2+C_avg**2/(a_2**2)*a_2_err**2)**0.5/(2*a_1*a_2)
 print("C_avg=",C_avg, "+-",C_err, "C_ideal=", C_id, "+-", C_id_err)
 
@@ -369,6 +370,12 @@ axs[1].errorbar(chi_plt, w2(chi_plt, a_21).real, color=colors[3], alpha=0.8)
 axs[0].errorbar(chi,Re_1_1, Re_1_1_err, fmt="k.", capsize=3)
 axs[1].errorbar(chi,Re_2_1, Re_2_1_err, fmt="k.", capsize=3)
 print(a_2**2/a_1**2, 0.59**2)
-plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Results"+folder_name[5:]+".pdf", format="pdf",bbox_inches="tight")
+# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Results"+folder_name[5:]+".pdf", format="pdf",bbox_inches="tight")
+text_1=np.array([chi, Re_1_1, Re_1_1_err, Im_1, Im_1_err])
+text_2=np.array([chi, Re_2_1, Re_2_1_err, Im_2, Im_2_err])
+
+# np.savetxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv1_unb", np.transpose(text_1))
+# np.savetxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv2_unb", np.transpose(text_2))
+
 
 plt.show()

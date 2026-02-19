@@ -230,8 +230,8 @@ axs[0].set_ylabel("$w^R_{+,1}$")
 axs[1].set_ylabel("$w^R_{+,1}$")
 # axs[1].set_ylabel(r"$\sin^2\left(\theta/2\right)/\cos^2\left(\theta/2\right)\approx 0.35$", rotation=270, labelpad=15)
 # axs[3].set_ylabel("${\sin^2{\left(\tfrac{\theta}{2}\right)}/\cos^2{\left(\tfrac{\theta}{2}\right)}\approx 1}$", rotation=270, labelpad=15)
-fig.suptitle("Using Eq.(14)")
-fig_1.suptitle("Using Eq.(12)")
+# fig.suptitle("Using Eq.(14)")
+# fig_1.suptitle("Using Eq.(12)")
 colors=["k","#f10d0c","#00a933","#5983b0"]
 plt.rcParams["mathtext.fontset"]="cm"
 
@@ -384,10 +384,14 @@ for ax in axs:
     ax.set_ylim([-0.5,2.8])
     ax.set_yticks(ticks=[0,1,2])
     ax.set_xticklabels(["${-\pi}$", "${0}$","${\pi}$"])
-    ax.set_xlabel("${\phi}$ [rad]")
+    ax.set_xlabel("Initial phase shift\n${\phi}$ [rad]")
 
-axs[0].legend(loc=8,handlelength=1)
-axs[1].legend(loc=8,handlelength=1)
+axs[0].set_title("Unbalanced")
+axs[2].set_title("Balanced")
+axs[1].set_title("Unbalanced")
+axs[3].set_title("Balanced")
+# axs[0].legend(loc=8,handlelength=1)
+# axs[1].legend(loc=8,handlelength=1)
 fig.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Blocker measurement comparison eq 14.pdf", format="pdf",bbox_inches="tight")
 fig_1.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Blocker measurement comparison eq 12.pdf", format="pdf",bbox_inches="tight")
 plt.show()
