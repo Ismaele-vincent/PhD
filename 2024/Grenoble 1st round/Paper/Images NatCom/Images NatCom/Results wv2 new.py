@@ -33,7 +33,7 @@ plt.rcParams["font.family"] = "sans-serif"
 plt.rcParams["font.sans-serif"] = [prop.get_name(), "DejaVu Sans"]  # <- DejaVu als Fallback
 plt.rcParams["font.size"] = 12
 plt.rcParams["mathtext.fontset"] = "cm"
-plt.rcParams["axes.titlesize"] = 14
+plt.rcParams["axes.titlesize"] = 12
 plt.rcParams["figure.dpi"] = 150
 # plt.rcParams["legend.markerscale"] = 1
 plt.rcParams["legend.fontsize"] = 11
@@ -80,9 +80,9 @@ axs[1].tick_params(axis="y", left=False, labelleft=False)
 axs[3].tick_params(axis="y", left=False, labelleft=False)
     
 axs[2].errorbar(chi,Im_2_unb, Im_2_unb_err, fmt="k.", capsize=3)
-axs[2].plot(chi_plt, w2(chi_plt, a_21_unb).imag, color=colors[3], alpha=0.8 )
+axs[2].plot(chi_plt, w2(chi_plt, a_21_unb).imag, color=colors[3] )
 axs[3].errorbar(chi,Im_2_bal, Im_2_bal_err, fmt="k.", capsize=3)
-axs[3].plot(chi_plt, w2(chi_plt, a_21_bal).imag, color=colors[3], alpha=0.8 )
+axs[3].plot(chi_plt, w2(chi_plt, a_21_bal).imag, color=colors[3] )
 
 axs[0].set_ylim([-1.7,1.7])
 axs[1].set_ylim([-1.7,1.7])
@@ -94,8 +94,8 @@ axs[3].set_ylim([-5,2.6])
 axs[2].set_yticks((np.arange(-4,3,1)))
 axs[3].set_yticks((np.arange(-4,3,1)))
 
-axs[0].errorbar(chi_plt, w2(chi_plt, a_21_unb).real, color=colors[3], alpha=0.8)
-axs[1].errorbar(chi_plt, w2(chi_plt, a_21_bal).real, color=colors[3], alpha=0.8)
+axs[0].errorbar(chi_plt, w2(chi_plt, a_21_unb).real, color=colors[3])
+axs[1].errorbar(chi_plt, w2(chi_plt, a_21_bal).real, color=colors[3])
 axs[0].errorbar(chi,Re_2_unb, Re_2_unb_err, fmt="k.", capsize=3)
 axs[1].errorbar(chi,Re_2_bal, Re_2_bal_err, fmt="k.", capsize=3)
 fig.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Results wv2.pdf", format="pdf",bbox_inches="tight")   

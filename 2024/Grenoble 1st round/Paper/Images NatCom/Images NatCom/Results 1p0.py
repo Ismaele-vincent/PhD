@@ -171,29 +171,30 @@ Indium 1.5, 3-plates interferometer
 """
 Indium 0.5, 3-plates interferometer
 """
-# folder_name="Symm In 0p5 path2"
-# P1=57079/15
-# P2=39190/15
-# a_1= 0.770
-# a_1_err=0.004
-# a_2= 0.638
-# a_2_err=0.005
-# a_21=a_2/a_1
-# lim=0
-# # inf_file_name="ifgPS1_35pt_In05_14Apr0929" #good-ish (phase a bit bad)
-# # inf_file_name="ifgPS1_35pt_In05_14Apr1349" #bad (wrong ps pos)
-# # inf_file_name="ifgPS1_35pt_In05_14Apr1524" #bad (wrong ps pos)
-# # inf_file_name="ifgPS1_35pt_In05_15Apr1731" #good-ish (big error bars)
-# # inf_file_name="ifgPS1_35pt_In05_15Apr1907" #good-ish (phase a bit bad)
-# # inf_file_name="ifgPS1_35pt_In05_15Apr2042" #good-ish (phase a bit bad)
-# inf_file_name="ifgPS1_35pt_In05_15Apr2218" #probably best
-# # inf_file_name="ifgPS1_35pt_In05_15Apr2354" #good-ish (1 bad point)
-# # inf_file_name="ifgPS1_35pt_In05_16Apr0130" #good
-# # inf_file_name="ifgPS1_35pt_In05_16Apr0305" #good-ish
-# # inf_file_name="ifgPS1_35pt_In05_16Apr0441" #good
-# # inf_file_name="ifgPS1_35pt_In05_16Apr0617" #good-ish (phase a bit bad)
-# # inf_file_name="ifgPS1_35pt_In05_16Apr0752" #bad, last measurement incomplete
-# points=35
+folder_name="Symm In 0p5 path2"
+P1=57079/15
+P2=39190/15
+a_1= 0.770
+a_1_err=0.004
+a_2= 0.638
+a_2_err=0.005
+a_21=a_2/a_1
+print("T2",P2/P1,"err",(1/P1**2*P2+(P2/P1**2)**2*P1)**0.5)
+lim=0
+# inf_file_name="ifgPS1_35pt_In05_14Apr0929" #good-ish (phase a bit bad)
+# inf_file_name="ifgPS1_35pt_In05_14Apr1349" #bad (wrong ps pos)
+# inf_file_name="ifgPS1_35pt_In05_14Apr1524" #bad (wrong ps pos)
+# inf_file_name="ifgPS1_35pt_In05_15Apr1731" #good-ish (big error bars)
+# inf_file_name="ifgPS1_35pt_In05_15Apr1907" #good-ish (phase a bit bad)
+# inf_file_name="ifgPS1_35pt_In05_15Apr2042" #good-ish (phase a bit bad)
+inf_file_name="ifgPS1_35pt_In05_15Apr2218" #probably best
+# inf_file_name="ifgPS1_35pt_In05_15Apr2354" #good-ish (1 bad point)
+# inf_file_name="ifgPS1_35pt_In05_16Apr0130" #good
+# inf_file_name="ifgPS1_35pt_In05_16Apr0305" #good-ish
+# inf_file_name="ifgPS1_35pt_In05_16Apr0441" #good
+# inf_file_name="ifgPS1_35pt_In05_16Apr0617" #good-ish (phase a bit bad)
+# inf_file_name="ifgPS1_35pt_In05_16Apr0752" #bad, last measurement incomplete
+points=35
 
 """
 Indium 1.0, 3-plates interferometer
@@ -206,7 +207,7 @@ a_1_err=0.004
 a_2= 0.570
 a_2_err=0.006
 a_21=a_2/a_1
-print(a_21)
+print("T2",P2/P1,"err",(1/P1**2*P2+(P2/P1**2)**2*P1)**0.5)
 lim=0
 # inf_file_name="ifgPS1_35pt_In10_14Apr2054" #bad (wrong ps pos)
 # inf_file_name="ifgPS1_35pt_In10_15Apr0115" #bad (wrong ps pos)

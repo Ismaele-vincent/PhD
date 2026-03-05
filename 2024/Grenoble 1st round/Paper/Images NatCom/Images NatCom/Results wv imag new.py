@@ -36,7 +36,7 @@ plt.rcParams["font.family"] = "sans-serif"
 plt.rcParams["font.sans-serif"] = [prop.get_name(), "DejaVu Sans"]  # <- DejaVu als Fallback
 plt.rcParams["font.size"] = 12
 plt.rcParams["mathtext.fontset"] = "cm"
-plt.rcParams["axes.titlesize"] = 14
+plt.rcParams["axes.titlesize"] = 12
 plt.rcParams["figure.dpi"] = 150
 # plt.rcParams["legend.markerscale"] = 1
 plt.rcParams["legend.fontsize"] = 11
@@ -61,64 +61,83 @@ Im_1_bal_err=wv_1_bal[:,4]
 Im_2_bal=wv_2_bal[:,3]
 Im_2_bal_err=wv_2_bal[:,4]
 
-fig = plt.figure(figsize=(5,7), dpi=150)
+fig = plt.figure(figsize=(4,7), dpi=150)
 gs_b = fig.add_gridspec(1,1)
 ax_b=fig.add_subplot(gs_b[0, 0])
 ax_b.tick_params(axis="both", bottom=False, labelbottom=False, left=False, labelleft=False)
-gs = fig.add_gridspec(2,2 , height_ratios=(1,3), hspace=0.0, wspace=0.0)
+for side in ['right','left','top','bottom']:
+    ax_b.spines[side].set_visible(False)
+    
+gs = fig.add_gridspec(2,2 , height_ratios=(1,2), hspace=0.03, wspace=0.0)
 axs = [fig.add_subplot(gs[0, 0]),fig.add_subplot(gs[0, 1]),fig.add_subplot(gs[1, 0]),fig.add_subplot(gs[1, 1])]
 # axs[0].set_title("$w_{1,+}$", fontsize=13)
 # axs[1].set_title("$w_{2,+}$", fontsize=13)
 axs[0].set_title("Path 1")
 axs[1].set_title("Path 2")
-ax_b.set_ylabel("Imaginary part of the weak value $w^\mathrm{I}_{j,+}$", labelpad=20)
+ax_b.set_ylabel("Imaginary part of the weak value $w^\mathrm{I}_{j,+}$", labelpad=25)
 # axs[0].set_ylabel("Weak value\nImag. part $w^\mathrm{I}_{j,+}$")
 # axs[2].set_ylabel("Weak value\nImag. part $w^\mathrm{I}_{j,+}$")
 # fig.suptitle(inf_file_name)
+# axs[0].text(0, 1.2, "Unbalanced", ha="center", va="center")
+# axs[1].text(0, 1.2, "Unbalanced", ha="center", va="center")
+# axs[2].text(0, 4.7, "Balanced", ha="center", va="center")
+# axs[3].text(0, 4.7, "Balanced", ha="center", va="center")
+axs[1].plot([1.07,1.07], [0,1], transform=axs[1].transAxes, lw=1.5, color="#cc00cc",clip_on=False)
+axs[1].plot([1.07,1.07], [0.25,0.75], transform=axs[1].transAxes, lw=3., color='w', clip_on=False)
+axs[1].text(1.07, 0.5, "Unbalanced", color="#cc00cc", ha="center", va="center", rotation=-90, transform=axs[1].transAxes)
+axs[3].plot([1.07,1.07], [0,1], transform=axs[3].transAxes, lw=1.5, color="#e67e22",clip_on=False)
+axs[3].plot([1.07,1.07], [0.4,0.6], transform=axs[3].transAxes, lw=3., color='w', clip_on=False)
+axs[3].text(1.07, 0.5, "Balanced", color="#e67e22", ha="center", va="center", rotation=-90, transform=axs[3].transAxes)
+
 colors=["k","#f10d0c","#00a933","#5983b0"]
 plt.rcParams["mathtext.fontset"]="cm"
 for ax in axs:
     ax.set_xticks([-np.pi,0,np.pi])
     ax.set_xticklabels(["${-\pi}$", "${0}$","${\pi}$"])
     ax.grid(True, ls="dotted")
+    # ax.set_facecolor("#f5f5f5")
+    # ax.set_facecolor("#f7f8fa") 
+    ax.set_facecolor("#fffff2")
+    
+# for ax in axs[:]:
+#     ax.set_facecolor("#fffff2")
 for ax in axs[2:]:
-    ax.set_xlabel("Initial relative phase\n$\phi$ [rad]")
+    ax.set_xlabel("Initial relative\nphase $\phi$ [rad]")
+    # ax.set_facecolor("#f7f7f7")
 axs[0].tick_params(axis="x", bottom=False, labelbottom=False)
 axs[1].tick_params(axis="x", bottom=False, labelbottom=False)
 axs[1].tick_params(axis="y", left=False, labelleft=False)
 axs[3].tick_params(axis="y", left=False, labelleft=False)
 
-
-
 for ax in axs:
-    ax.plot(chi_plt, chi_plt*0, "--", color=colors[2], lw=1)
-#     # ax.plot(chi_plt, chi_plt*0+1, "-", color=colors[1])#, label="Eigenvalue bound")
-#     # ax.fill_between(chi_plt,0,1, color=colors[2], alpha=0.07)#, label="Eigenvalue range")
-#     # ax.fill_between(chi_plt,1,3, color=colors[1], alpha=0.07)#, label="Eigenvalue range")
-#     # ax.fill_between(chi_plt,-3,0, color=colors[1], alpha=0.07)
-# axs[0].fill_between(chi_plt, 0, w1(chi_plt, a_21_unb).imag, color=colors[1], alpha=0.15)
-# axs[1].fill_between(chi_plt, 0, w2(chi_plt, a_21_unb).imag, color=colors[1], alpha=0.15)
-# axs[2].fill_between(chi_plt, 0, w1(chi_plt, a_21_bal).imag, color=colors[1], alpha=0.15)
-# axs[3].fill_between(chi_plt, 0, w2(chi_plt, a_21_bal).imag, color=colors[1], alpha=0.15)
+    ax.plot(chi_plt, chi_plt*0, "--", color=colors[2], lw=0.5)
+#     # ax.plot(chi_plt, chi_plt*0+1, "-", color=colors[3])#, label="Eigenvalue bound")
+#     # ax.fill_between(chi_plt,0,1, color=colors[0], alpha=0.07)#, label="Eigenvalue range")
+#     # ax.fill_between(chi_plt,1,3, color=colors[3], alpha=0.07)#, label="Eigenvalue range")
+#     # ax.fill_between(chi_plt,-3,0, color=colors[3], alpha=0.07)
+# axs[0].fill_between(chi_plt, 0, w1(chi_plt, a_21_unb).imag, color=colors[3], alpha=0.15)
+# axs[1].fill_between(chi_plt, 0, w2(chi_plt, a_21_unb).imag, color=colors[3], alpha=0.15)
+# axs[2].fill_between(chi_plt, 0, w1(chi_plt, a_21_bal).imag, color=colors[3], alpha=0.15)
+# axs[3].fill_between(chi_plt, 0, w2(chi_plt, a_21_bal).imag, color=colors[3], alpha=0.15)
 
-axs[1].errorbar(chi,Im_2_unb, Im_2_unb_err, fmt="k.", capsize=3)
-axs[1].plot(chi_plt, w2(chi_plt, a_21_unb).imag, color=colors[3])
-axs[3].errorbar(chi,Im_2_bal, Im_2_bal_err, fmt="k.", capsize=3)
-axs[3].plot(chi_plt, w2(chi_plt, a_21_bal).imag, color=colors[3])
+axs[1].errorbar(chi,Im_2_unb, Im_2_unb_err, fmt="k.", capsize=3, ms=4)
+axs[1].plot(chi_plt, w2(chi_plt, a_21_unb).imag, color=colors[3], lw=1.5)
+axs[3].errorbar(chi,Im_2_bal, Im_2_bal_err, fmt="k.", capsize=3, ms=4)
+axs[3].plot(chi_plt, w2(chi_plt, a_21_bal).imag, color=colors[3], lw=1.5)
 
-axs[0].set_ylim([-1.2,1.2])
-axs[1].set_ylim([-1.2,1.2])
+axs[0].set_ylim([-1.5,1.5])
+axs[1].set_ylim([-1.5,1.5])
 axs[0].set_yticks([-1,0,1])
 axs[1].set_yticks([-1,0,1])
 
-axs[2].set_ylim([-5,4.9])
-axs[3].set_ylim([-5,4.9])
+axs[2].set_ylim([-5,5])
+axs[3].set_ylim([-5,5])
 axs[2].set_yticks([-4,-2,0,2,4])
 # axs[3].set_yticks(range(-5,5,2))
 
-axs[0].errorbar(chi_plt, w1(chi_plt, a_21_unb).imag, color=colors[3])
-axs[2].errorbar(chi_plt, w1(chi_plt, a_21_bal).imag, color=colors[3])
-axs[0].errorbar(chi,Im_1_unb, Im_1_unb_err, fmt="k.", capsize=3)
-axs[2].errorbar(chi,Im_1_bal, Im_1_bal_err, fmt="k.", capsize=3)
+axs[0].errorbar(chi_plt, w1(chi_plt, a_21_unb).imag, color=colors[3], lw=1.5)
+axs[2].plot(chi_plt, w1(chi_plt, a_21_bal).imag, color=colors[3], lw=1.5)
+axs[0].errorbar(chi,Im_1_unb, Im_1_unb_err, fmt="k.", capsize=3, ms=4)
+axs[2].errorbar(chi,Im_1_bal, Im_1_bal_err, fmt="k.", capsize=3, ms=4)
 fig.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Results wv imag.pdf", format="pdf",bbox_inches="tight")   
 plt.show()

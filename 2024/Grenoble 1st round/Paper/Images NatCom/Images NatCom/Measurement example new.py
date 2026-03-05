@@ -35,7 +35,7 @@ plt.rcParams["legend.fontsize"] = 11
 plt.rcParams["axes.unicode_minus"] = False  # <- richtige Variante!
 
 colors=["k","#f10d0c","#00a933","#5983b0"]
-labels=["Intensity $I_+(\\frac{\pi}{2})$\n", "Intensity $I_+(\pi)$\n", "Intensity $I_+(\\frac{3\pi}{2})$\n", "Intensity $I_+(0)$\n"]
+labels=["Intensity $I_+(\\frac{\pi}{2})$\n", "Intensity $I_-(0)$\n", "Intensity $I_-(\\frac{\pi}{2})$\n", "Intensity $I_+(0)$\n"]
 def fit_cos(x, A, B, C, D):
     return A+B*np.cos(C*x-D)
 
@@ -246,8 +246,8 @@ for root, dirs, files in os.walk(cleandata, topdown=False):
         C_err+=p[1]**2/p[0]**4*err[0]**2+err[1]**2/p[0]**2
         A_err=err[0]**2
         x_plt = np.linspace(ps_pos[0], ps_pos[-1],200)
-        axs[(i+2)%4].errorbar(chi,data_ifg/time,yerr=data_ifg_err/time,fmt="o", color=colors[0],capsize=3, ms=3, label="Data")
-        axs[(i+2)%4].errorbar(chi_plt,fit_cos(x_plt, *p)/time, fmt="-", color=colors[3], lw=1, label="Theory")
+        axs[(i+2)%4].errorbar(chi,data_ifg/time,yerr=data_ifg_err/time,fmt=".", color=colors[0],capsize=3, ms=4, label="Data")
+        axs[(i+2)%4].plot(chi_plt,fit_cos(x_plt, *p)/time, "-", color=colors[2], lw=1.5, label="Theory")
         axs[(i+2)%4].set_ylabel(labels[i]+"[neutrons s$^{-1}$]")
         # axs[(i+2)%4].text(1.05,0.5,labels[i], rotation=-90, ha="center", va="center", transform=axs[i].transAxes)
         # print((i+2)%4)
@@ -261,20 +261,21 @@ for root, dirs, files in os.walk(cleandata, topdown=False):
         i+=1
         
 # axs[1].legend(framealpha=1, loc=1, ncol=1)
-axs[2].set_xlabel("Initial relative phase\n$\phi$ [rad]")
-axs[3].set_xlabel("Initial relative phase\n$\phi$ [rad]")
+axs[2].set_xlabel("Initial relative phase $\phi$ [rad]")
+axs[3].set_xlabel("Initial relative phase $\phi$ [rad]")
 # axs[1].text(-0.13,0,"Intensity (count/s)",rotation=90, ha="center", va="center", transform=axs[1].transAxes)
 for ax in axs:
     ax.set_xticks([-np.pi,0,np.pi])
     ax.set_xticklabels(["${-\pi}$", "${0}$","${\pi}$"])
     ax.grid(True, ls="dotted")
     ax.set_yticks([150,350,550])
+    # ax.set_facecolor("#fffff2")
+    # ax.set_facecolor("#f0f8f3")
+    ax.set_facecolor("#f7f7f7")
 
     
 axs[0].tick_params(axis="x", bottom=False, labelbottom=False)
 axs[1].tick_params(axis="x", bottom=False, labelbottom=False)
-
-
 
 # axs[i].set_ylabel("Neutron rate (count / s)")
 # axs[i].set_ylim([0,430])

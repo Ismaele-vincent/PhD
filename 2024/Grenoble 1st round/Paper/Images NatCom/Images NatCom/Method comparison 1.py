@@ -17,7 +17,6 @@ from matplotlib.gridspec import GridSpec
 from matplotlib import font_manager
 plt.rcParams.update({'figure.max_open_warning': 0})
 from scipy.optimize import curve_fit as fit
-from matplotlib.lines import Line2D
 
 def w1(chi, a_21):
     return 1/(1+a_21*np.exp(1j*chi))
@@ -45,13 +44,12 @@ plt.rcParams["axes.unicode_minus"] = False  # <- richtige Variante!
 
 a_21_unb=0.588
 a_21_bal=1
-wv_1_unb=np.loadtxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv1_unb")
-wv_1_bal=np.loadtxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv1_bal")
-wv_2_unb=np.loadtxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv2_unb")
-wv_2_bal=np.loadtxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv2_bal")
+wv_1_unb=np.loadtxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv1_unb_sw")
+wv_1_bal=np.loadtxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv1_bal_sw")
+wv_2_unb=np.loadtxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv2_unb_sw")
+wv_2_bal=np.loadtxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv2_bal_sw")
 
 chi=wv_1_unb[:,0]
-print(len(chi))
 chi_plt=np.linspace(chi[0], chi[-1], 1000)
 Re_1_unb=wv_1_unb[:,1]
 Re_1_unb_err=wv_1_unb[:,2]
@@ -76,7 +74,7 @@ axs = [fig.add_subplot(gs[0, 0]),fig.add_subplot(gs[0, 1]),fig.add_subplot(gs[1,
 # axs[1].set_title("$w_{2,+}$", fontsize=13)
 axs[0].set_title("Path 1")
 axs[1].set_title("Path 2")
-ax_b.set_ylabel("Real part of the weak value $w^\mathrm{R}_{j,+}$", labelpad=25)
+ax_b.set_ylabel("Real part of the weak value $w^\mathrm{I}_{j,+}$", labelpad=25)
 # axs[1].yaxis.set_label_position("right")
 # axs[1].set_ylabel("Unbalanced", rotation=-90, labelpad=15)
 # axs[3].yaxis.set_label_position("right")
@@ -85,10 +83,10 @@ ax_b.set_ylabel("Real part of the weak value $w^\mathrm{R}_{j,+}$", labelpad=25)
 # axs[2].set_ylabel("Weak value\nReal part $w^\mathrm{R}_{j,+}$")
 axs[1].plot([1.07,1.07], [0,1], transform=axs[1].transAxes, lw=1.5, color="#cc00cc",clip_on=False)
 axs[1].plot([1.07,1.07], [0.37,0.63], transform=axs[1].transAxes, lw=3., color='w', clip_on=False)
-axs[1].text(1.07, 0.5, "Unbalanced", color="#cc00cc", ha="center", va="center", rotation=-90, transform=axs[1].transAxes)
+axs[1].text(1.06, 0.5, "Unbalanced", ha="center", va="center", rotation=-90, transform=axs[1].transAxes)
 axs[3].plot([1.07,1.07], [0,1], transform=axs[3].transAxes, lw=1.5, color="#e67e22",clip_on=False)
 axs[3].plot([1.07,1.07], [0.30,0.7], transform=axs[3].transAxes, lw=3., color='w', clip_on=False)
-axs[3].text(1.07, 0.5, "Balanced", color="#e67e22", ha="center", va="center", rotation=-90, transform=axs[3].transAxes)
+axs[3].text(1.06, 0.5, "Balanced", ha="center", va="center", rotation=-90, transform=axs[3].transAxes)
 
 
 # axs[1].text(1.1, 0.5, "Unbalanced", ha="center", va="center", transform=axs[1].transAxes)
@@ -156,6 +154,5 @@ axs[2].errorbar(chi,Re_1_bal, Re_1_bal_err, fmt="k.", capsize=3, ms=4)
 # axs[1].text(-np.pi, 1.1,"Eigenvalue bound", color=colors[1])
 # axs[1].text(-np.pi, 1.1,"Eigenvalue range", color=colors[3])
 # axs[0].legend()
-    
-fig.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Results wv real.pdf", format="pdf",bbox_inches="tight")   
+fig.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Results wv real different method.pdf", format="pdf",bbox_inches="tight")   
 plt.show()

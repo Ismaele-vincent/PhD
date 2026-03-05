@@ -366,8 +366,13 @@ plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images N
 text_1=np.array([chi, Re_1_2, Re_1_2_err, Im_1, Im_1_err])
 text_2=np.array([chi, Re_2_2, Re_2_2_err, Im_2, Im_2_err])
 
-np.savetxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv1_bal", np.transpose(text_1))
-np.savetxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv2_bal", np.transpose(text_2))
+# np.savetxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv1_bal", np.transpose(text_1))
+# np.savetxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv2_bal", np.transpose(text_2))
 
+text_1_sw=np.array([chi, Re_1_1, Re_1_1_err, Im_1, Im_1_err])
+text_2_sw=np.array([chi, Re_2_1, Re_2_1_err, Im_2, Im_2_err])
+
+np.savetxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv1_bal_sw", np.transpose(text_1_sw))
+np.savetxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv2_bal_sw", np.transpose(text_2_sw))
 
 plt.show()

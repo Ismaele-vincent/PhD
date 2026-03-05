@@ -35,6 +35,7 @@ plt.rcParams["legend.fontsize"] = 11
 plt.rcParams["axes.unicode_minus"] = False  # <- richtige Variante!
 
 colors=["k","#f10d0c","#00a933","#5983b0"]
+
 # labels=["$\delta=\\frac{\pi}{2}$", "$\delta=\pi$", "$\delta=-\\frac{\pi}{2}$", "$\delta=0$"]
 labels=["Intensity $I_+(\\frac{\pi}{2})$", "Intensity $I_-(0)$", "Intensity $I_-(\\frac{\pi}{2})$", "Intensity $I_+(0)$"]
 def fit_cos(x, A, B, C, D):
@@ -222,7 +223,7 @@ fig = plt.figure(figsize=(2.5,6), dpi=250)
 fig_1 = plt.figure(figsize=(2.5,6), dpi=250)
 gs = fig.add_gridspec(3,1, hspace=0.0, wspace=0.4)
 gs_1 = fig_1.add_gridspec(3,1, hspace=0.0, wspace=0.4)
-axs = [fig_1.add_subplot(gs_1[0, 0]),fig.add_subplot(gs[0, 0]),fig_1.add_subplot(gs_1[1, 0]),fig.add_subplot(gs[1, 0]),fig.add_subplot(gs[2, 0]), fig_1.add_subplot(gs[2, 0]),]
+axs = [fig_1.add_subplot(gs_1[1, 0]),fig.add_subplot(gs[0, 0]),fig_1.add_subplot(gs_1[0, 0]),fig.add_subplot(gs[1, 0]),fig.add_subplot(gs[2, 0]), fig_1.add_subplot(gs[2, 0]),]
 # fig = plt.figure(figsize=(5,6), dpi=150)
 # gs = fig.add_gridspec(2,2, hspace=0.0, wspace=0)
 # axs = [fig.add_subplot(gs[0, 0]),fig.add_subplot(gs[0, 1]),fig.add_subplot(gs[1, 0]),fig.add_subplot(gs[1, 1])]
@@ -254,8 +255,8 @@ for root, dirs, files in os.walk(cleandata, topdown=False):
         C_err+=p[1]**2/p[0]**4*err[0]**2+err[1]**2/p[0]**2
         A_err=err[0]**2
         x_plt = np.linspace(ps_pos[0], ps_pos[-1],200)
-        # axs[(i+2)%4].errorbar(chi,data_ifg/time,yerr=data_ifg_err/time,fmt=".", color=colors[0],capsize=3, ms=3, label="Data")
-        axs[(i+2)%4].errorbar(chi_plt,fit_cos(x_plt, *p)/time, fmt="-", color=colors[3], label="Theory")
+        # axs[(i+2)%4].errorbar(chi,data_ifg/time,yerr=data_ifg_err/time,fmt=".", color=colors[0],capsize=3, ms=4, ms=3, label="Data")
+        axs[(i+2)%4].plot(chi_plt,fit_cos(x_plt, *p)/time, "-", color=colors[2], lw=1.5, label="Theory")
         # axs[(i+2)%4].text(1.05,0.5,labels[i], rotation=-90, ha="center", va="center", transform=axs[i].transAxes)
         axs[(i+2)%4].set_ylabel(labels[i]+"\n[neutrons $\mathrm{s}^{-1}$]")
         axs[(i+2)%4].set_ylim([70,420])
@@ -274,9 +275,9 @@ axs[5].set_xlabel("Initial relative phase\n$\phi$ [rad]")
 # axs[1].text(-0.13,0,"Interferogram (count/s)",rotation=90, ha="center", va="center", transform=axs[1].transAxes)
 for ax in axs[:-2]:
     ax.set_yticks([150,250,350])
-    ax.set_facecolor("#fffff2")
-# for ax in axs[-2:]:
-#     ax.set_facecolor("#f2ffff")    
+    ax.set_facecolor("#f7f7f7")#fffff2
+for ax in axs[-2:]:
+    ax.set_facecolor("#fffff2")    
 # for ax in axs[-2:]:
 #     ax.set_facecolor("#fff2ff")
 
@@ -290,15 +291,15 @@ axs[1].tick_params(axis="x", bottom=False, labelbottom=False)
 axs[2].tick_params(axis="x", bottom=False, labelbottom=False)
 axs[3].tick_params(axis="x", bottom=False, labelbottom=False)
 
-axs[1].errorbar(chi[8],(data_ifg_matrix[0])[8]/time, (data_ifg_matrix[0]**0.5)[8]/time, fmt=".", color=colors[0],capsize=3, label="Data")
+axs[1].errorbar(chi[8],(data_ifg_matrix[0])[8]/time, (data_ifg_matrix[0]**0.5)[8]/time, fmt=".", color=colors[0],capsize=3, ms=4, label="Data")
 # axs[1].vlines(chi[8],0,(data_ifg_matrix[0])[8]/time-12, color=colors[1],  lw=1) #ls=(2, (8, 3)),
-axs[3].errorbar(chi[8],(data_ifg_matrix[2])[8]/time, (data_ifg_matrix[2]**0.5)[8]/time, fmt=".", color=colors[0],capsize=3, label="Data")
+axs[3].errorbar(chi[8],(data_ifg_matrix[2])[8]/time, (data_ifg_matrix[2]**0.5)[8]/time, fmt=".", color=colors[0],capsize=3, ms=4, label="Data")
 # axs[3].vlines(chi[8],(data_ifg_matrix[2])[8]/time+12,520, color=colors[1],  lw=1) #ls=(2, (8, 3)),
 # axs[3].vlines(chi[8],0,(data_ifg_matrix[2])[8]/time-12, color=colors[1],  lw=1) #ls=(2, (8, 3)),
 
-axs[0].errorbar(chi[8],(data_ifg_matrix[1])[8]/time, (data_ifg_matrix[1]**0.5)[8]/time, fmt=".", color=colors[0],capsize=3, label="Data")
+axs[0].errorbar(chi[8],(data_ifg_matrix[1])[8]/time, (data_ifg_matrix[1]**0.5)[8]/time, fmt=".", color=colors[0],capsize=3, ms=4, label="Data")
 # axs[0].vlines(chi[8],0,(data_ifg_matrix[1])[8]/time-12, color=colors[1],  lw=1) #ls=(2, (8, 3)),
-axs[2].errorbar(chi[8],(data_ifg_matrix[3])[8]/time, (data_ifg_matrix[3]**0.5)[8]/time, fmt=".", color=colors[0],capsize=3, label="Data")
+axs[2].errorbar(chi[8],(data_ifg_matrix[3])[8]/time, (data_ifg_matrix[3]**0.5)[8]/time, fmt=".", color=colors[0],capsize=3, ms=4, label="Data")
 # axs[2].vlines(chi[8],(data_ifg_matrix[3])[8]/time+12,520, color=colors[1],  lw=1) #ls=(2, (8, 3)),
 print("chi=",chi[8], 4*np.pi/5)
 
@@ -341,7 +342,6 @@ Re_1_2_err=(P1_corr_err**2+(data_ifg_matrix_err[2]/4)**2+(Re_1_2-1/4)**2*data_if
 axs[4].set_ylabel("Real part of the\nweak value $w^\mathrm{R}_{+,1}$")
 axs[5].set_ylabel("Imag. part of the\nweak value $w^\mathrm{I}_{+,1}$")
 # fig.suptitle(inf_file_name)
-colors=["k","#f10d0c","#00a933","#5983b0"]
 plt.rcParams["mathtext.fontset"]="cm"
 # for ax in axs:
 #     ax.set_xticks([-np.pi,0,np.pi])
@@ -355,18 +355,18 @@ axs[1].tick_params(axis="x", bottom=False, labelbottom=False)
     
 axs[4].set_ylim([0.5,2.5])
 axs[4].set_yticks([1,1.5,2])
-axs[4].errorbar(chi_plt, w1(chi_plt, a_21).real, fmt="-",color=colors[3], label="Theory")
-# axs[4].errorbar(chi,Re_1_1, Re_1_1_err, fmt=".", color="grey", capsize=3, label="Data")
-axs[4].errorbar(chi[8],Re_1_1[8], Re_1_1_err[8], fmt="k.", capsize=3, label="Data")
+axs[4].plot(chi_plt, w1(chi_plt, a_21).real, "-",color=colors[3], lw=1.5, label="Theory")
+# axs[4].errorbar(chi,Re_1_1, Re_1_1_err, fmt=".", color="grey", capsize=3, ms=4, label="Data")
+axs[4].errorbar(chi[8],Re_1_1[8], Re_1_1_err[8], fmt="k.", capsize=3, ms=4, label="Data")
 # axs[4].errorbar(chi[8],Re_1_1[8], fmt=".",color=colors[1],  ms=15, mfc="none")
 # axs[4].vlines(chi[8],0,3, color=colors[1],  lw=1)
 
 axs[5].set_ylim([-1,1])
 axs[5].set_yticks([-0.5,0,0.5])
-# axs[5].errorbar(chi,Im_1, Im_1_err, fmt="k.", capsize=3,label="Data")
-axs[5].plot(chi_plt, w1(chi_plt, a_21).imag, "-",color=colors[3], label="Theory")
-axs[5].errorbar(chi[8], Im_1[8], Im_1_err[8], fmt=".", color=colors[0],capsize=3, label="Data")
-# axs[5].errorbar(chi[8], Im_1[8], Im_1_err[8], fmt="k.", capsize=3,label="Data")
+# axs[5].errorbar(chi,Im_1, Im_1_err, fmt="k.", capsize=3, ms=4,label="Data")
+axs[5].plot(chi_plt, w1(chi_plt, a_21).imag, "-",color=colors[3], lw=1.5, label="Theory")
+axs[5].errorbar(chi[8], Im_1[8], Im_1_err[8], fmt=".", color=colors[0],capsize=3, ms=4, label="Data")
+# axs[5].errorbar(chi[8], Im_1[8], Im_1_err[8], fmt="k.", capsize=3, ms=4,label="Data")
 # axs[5].vlines(chi[8],-2,2, color=colors[1],  lw=1)
 
 # axs[4].legend(loc=1, ncol=1, handlelength=1)

@@ -17,7 +17,6 @@ from matplotlib.gridspec import GridSpec
 from matplotlib import font_manager
 plt.rcParams.update({'figure.max_open_warning': 0})
 from scipy.optimize import curve_fit as fit
-from matplotlib.lines import Line2D
 
 def w1(chi, a_21):
     return 1/(1+a_21*np.exp(1j*chi))
@@ -45,13 +44,12 @@ plt.rcParams["axes.unicode_minus"] = False  # <- richtige Variante!
 
 a_21_unb=0.588
 a_21_bal=1
-wv_1_unb=np.loadtxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv1_unb")
-wv_1_bal=np.loadtxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv1_bal")
-wv_2_unb=np.loadtxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv2_unb")
-wv_2_bal=np.loadtxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv2_bal")
+wv_1_unb=np.loadtxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv1_unb_sw")
+wv_1_bal=np.loadtxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv1_bal_sw")
+wv_2_unb=np.loadtxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv2_unb_sw")
+wv_2_bal=np.loadtxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv2_bal_sw")
 
 chi=wv_1_unb[:,0]
-print(len(chi))
 chi_plt=np.linspace(chi[0], chi[-1], 1000)
 Re_1_unb=wv_1_unb[:,1]
 Re_1_unb_err=wv_1_unb[:,2]
@@ -63,32 +61,37 @@ Re_1_bal_err=wv_1_bal[:,2]
 Re_2_bal=wv_2_bal[:,1]
 Re_2_bal_err=wv_2_bal[:,2]
 
-fig = plt.figure(figsize=(4,7), dpi=150)
-gs_b = fig.add_gridspec(1,1)
-ax_b=fig.add_subplot(gs_b[0, 0])
-ax_b.tick_params(axis="both", bottom=False, labelbottom=False, left=False, labelleft=False)
-for side in ['right','left','top','bottom']:
-    ax_b.spines[side].set_visible(False)
+fig = plt.figure(figsize=(4,7*2/3), dpi=150)
+fig_1 = plt.figure(figsize=(4,7*2/3), dpi=150)
+# gs_b = fig.add_gridspec(1,1)
+# ax_b=fig.add_subplot(gs_b[0, 0])
+# ax_b.tick_params(axis="both", bottom=False, labelbottom=False, left=False, labelleft=False)
+# for side in ['right','left','top','bottom']:
+#     ax_b.spines[side].set_visible(False)
 
-gs = fig.add_gridspec(2,2 , height_ratios=(2,1), hspace=0.03, wspace=0.0)
-axs = [fig.add_subplot(gs[0, 0]),fig.add_subplot(gs[0, 1]),fig.add_subplot(gs[1, 0]),fig.add_subplot(gs[1, 1])]
+gs = fig.add_gridspec(1,2, wspace=0.0)
+gs_1 = fig_1.add_gridspec(1,2, wspace=0.0)
+axs = [fig.add_subplot(gs[0, 0]),fig.add_subplot(gs[0, 1]),fig_1.add_subplot(gs_1[0, 0]),fig_1.add_subplot(gs_1[0, 1])]
 # axs[0].set_title("$w_{1,+}$", fontsize=13)
 # axs[1].set_title("$w_{2,+}$", fontsize=13)
 axs[0].set_title("Path 1")
 axs[1].set_title("Path 2")
-ax_b.set_ylabel("Real part of the weak value $w^\mathrm{R}_{j,+}$", labelpad=25)
+axs[2].set_title("Path 1")
+axs[3].set_title("Path 2")
+axs[0].set_ylabel("Real part of the weak value $w^\mathrm{R}_{j,+}$", labelpad=1)
+axs[2].set_ylabel("Real part of the weak value $w^\mathrm{R}_{j,+}$", labelpad=1)
 # axs[1].yaxis.set_label_position("right")
 # axs[1].set_ylabel("Unbalanced", rotation=-90, labelpad=15)
 # axs[3].yaxis.set_label_position("right")
 # axs[3].set_ylabel("Balanced", rotation=-90, labelpad=15)
 # axs[0].set_ylabel("Weak value\nReal part $w^\mathrm{R}_{j,+}$")
 # axs[2].set_ylabel("Weak value\nReal part $w^\mathrm{R}_{j,+}$")
-axs[1].plot([1.07,1.07], [0,1], transform=axs[1].transAxes, lw=1.5, color="#cc00cc",clip_on=False)
-axs[1].plot([1.07,1.07], [0.37,0.63], transform=axs[1].transAxes, lw=3., color='w', clip_on=False)
-axs[1].text(1.07, 0.5, "Unbalanced", color="#cc00cc", ha="center", va="center", rotation=-90, transform=axs[1].transAxes)
-axs[3].plot([1.07,1.07], [0,1], transform=axs[3].transAxes, lw=1.5, color="#e67e22",clip_on=False)
-axs[3].plot([1.07,1.07], [0.30,0.7], transform=axs[3].transAxes, lw=3., color='w', clip_on=False)
-axs[3].text(1.07, 0.5, "Balanced", color="#e67e22", ha="center", va="center", rotation=-90, transform=axs[3].transAxes)
+axs[1].plot([1.08,1.08], [0,1], transform=axs[1].transAxes, lw=1.5, color="#cc00cc",clip_on=False)
+axs[1].plot([1.08,1.08], [0.2,0.8], transform=axs[1].transAxes, lw=3., color='w', clip_on=False)
+axs[1].text(1.08, 0.5, "Unbalanced - Using Eq.(14)",  color="#cc00cc", ha="center", va="center", rotation=-90, transform=axs[1].transAxes)
+axs[3].plot([1.08,1.08], [0,1], transform=axs[3].transAxes, lw=1.5, color="#e67e22",clip_on=False)
+axs[3].plot([1.08,1.08], [0.23,0.77], transform=axs[3].transAxes, lw=3., color='w', clip_on=False)
+axs[3].text(1.08, 0.5, "Balanced - Using Eq.(12)", color="#e67e22", ha="center", va="center", rotation=-90, transform=axs[3].transAxes)
 
 
 # axs[1].text(1.1, 0.5, "Unbalanced", ha="center", va="center", transform=axs[1].transAxes)
@@ -102,11 +105,11 @@ for ax in axs:
     ax.set_xticks([-np.pi,0,np.pi])
     ax.set_xticklabels(["${-\pi}$", "${0}$","${\pi}$"])
     ax.grid(True, ls="dotted")
-for ax in axs[2:]:
     ax.set_xlabel("Initial relative\nphase $\phi$ [rad]")
-axs[0].tick_params(axis="x", bottom=False, labelbottom=False)
-axs[1].tick_params(axis="x", bottom=False, labelbottom=False)
+# axs[0].tick_params(axis="x", bottom=False, labelbottom=False)
+# axs[1].tick_params(axis="x", bottom=False, labelbottom=False)
 axs[1].tick_params(axis="y", left=False, labelleft=False)
+# axs[2].tick_params(axis="y", left=False, labelleft=False)
 axs[3].tick_params(axis="y", left=False, labelleft=False)
 
 for ax in axs:
@@ -136,18 +139,12 @@ axs[1].plot(chi_plt, w2(chi_plt, a_21_unb).real, color=colors[3], lw=1.5)
 axs[3].errorbar(chi,Re_2_bal, Re_2_bal_err, fmt="k.", capsize=3, ms=4)
 axs[3].plot(chi_plt, w2(chi_plt, a_21_bal).real, color=colors[3], lw=1.5)
 
-axs[0].set_ylim([-1.5,2.5])
-axs[1].set_ylim([-1.5,2.5])
-axs[0].set_yticks([-1,0,0.5,1, 2])
-axs[1].set_yticks([-1,0,0.5,1, 2])
-axs[0].set_yticklabels([int(-1),0,0.5,1, 2])
+for ax in axs:
+    ax.set_ylim([-1.5,2.5])
+    ax.set_yticks([-1,0,0.5,1, 2])
+    ax.set_yticklabels([int(-1),0,0.5,1, 2])
 # axs[1].set_ytickslabel([-1,0,0.5,1, 2])
 
-axs[2].set_ylim([-0.5,1.5])
-axs[3].set_ylim([-0.5,1.5])
-axs[2].set_yticks([0,0.5,1])
-axs[3].set_yticks([0,0.5,1])
-axs[2].set_yticklabels([int(0),0.5,1])
 axs[0].plot(chi_plt, w1(chi_plt, a_21_unb).real, color=colors[3], lw=1.5)
 axs[2].plot(chi_plt, w1(chi_plt, a_21_bal).real, color=colors[3], lw=1.5)
 axs[0].errorbar(chi,Re_1_unb, Re_1_unb_err, fmt="k.", capsize=3, ms=4)
@@ -156,6 +153,6 @@ axs[2].errorbar(chi,Re_1_bal, Re_1_bal_err, fmt="k.", capsize=3, ms=4)
 # axs[1].text(-np.pi, 1.1,"Eigenvalue bound", color=colors[1])
 # axs[1].text(-np.pi, 1.1,"Eigenvalue range", color=colors[3])
 # axs[0].legend()
-    
-fig.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Results wv real.pdf", format="pdf",bbox_inches="tight")   
+fig.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Results wv real different method unbalanced.pdf", format="pdf",bbox_inches="tight")   
+fig_1.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Results wv real different method balanced.pdf", format="pdf",bbox_inches="tight")   
 plt.show()
