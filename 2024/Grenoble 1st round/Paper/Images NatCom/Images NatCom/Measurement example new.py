@@ -259,7 +259,7 @@ for root, dirs, files in os.walk(cleandata, topdown=False):
         Dchi[i]=p[3]
         # print(p[3])
         i+=1
-        
+
 # axs[1].legend(framealpha=1, loc=1, ncol=1)
 axs[2].set_xlabel("Initial relative phase $\phi$ [rad]")
 axs[3].set_xlabel("Initial relative phase $\phi$ [rad]")

@@ -110,7 +110,7 @@ axs[1].tick_params(axis="y", left=False, labelleft=False)
 axs[3].tick_params(axis="y", left=False, labelleft=False)
 
 for ax in axs:
-    ax.plot(chi_plt, chi_plt*0, "--", color=colors[2], lw=0.5)
+    ax.plot(chi_plt, chi_plt*0, ":", color=colors[2], lw=1)
 #     # ax.plot(chi_plt, chi_plt*0+1, "-", color=colors[3])#, label="Eigenvalue bound")
 #     # ax.fill_between(chi_plt,0,1, color=colors[0], alpha=0.07)#, label="Eigenvalue range")
 #     # ax.fill_between(chi_plt,1,3, color=colors[3], alpha=0.07)#, label="Eigenvalue range")
