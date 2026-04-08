@@ -274,48 +274,75 @@ print(abs(Dchi-Dchi[[1,2,3,0]])/np.pi*2)
 C_err=C_err**0.5/4
 A_err=A_err**0.5/4
 print("A_avg=",A_avg, "+-",A_err)
-
-C_id=C_avg/(2*a_1*a_2)
+sin_th=2*(P1*P2)**0.5/(P1+P2)
+sin_th_err=((P1-P2)**2/(P1+P2)**3)**0.5
+C_id=C_avg/(sin_th)
 # C_id=C_avg/(P1*P2/(P1+P2)**2)**0.5/2
-C_id_err=(C_err**2+C_avg**2/(a_1**2)*a_1_err**2+C_avg**2/(a_2**2)*a_2_err**2)**0.5/(2*a_1*a_2)
+C_id_err=C_id*((C_err/C_avg)**2+(sin_th_err/sin_th)**2)**0.5
 print("C_avg=",C_avg, "+-",C_err, "C_ideal=", C_id, "+-", C_id_err)
-B=A_avg*(1-C_id)
-B_err=(((1-C_id)*A_err)**2+(A_avg*C_id_err)**2)**0.5
-data_ifg_matrix_err=(data_ifg_matrix+B_err)**0.5
+B=A_avg*(1-C_id)/2
+B_err=(((1-C_id)*A_err)**2+(A_avg*C_id_err)**2)**0.5/2
+data_ifg_matrix_err=(data_ifg_matrix+B_err**2)**0.5
 # data_ifg_matrix_err=(data_ifg_matrix/C_id**2+((1/C_id+1)/2)**2*A_err**2+(A_avg/2-data_ifg_matrix)**2*(C_id_err/C_id**2)**2)**0.5
-data_ifg_matrix-=A_avg*(1-C_id)/2
+data_ifg_matrix-=B
 P1_corr=C_id*P1
 P1_corr_err=(C_id**2*P1+P1**2*C_id_err**2)**0.5
 P2_corr=C_id*P2
 P2_corr_err=(C_id**2*P2+P2**2*C_id_err**2)**0.5
 
-
 chi_plt=np.linspace(chi[0], chi[-1], 1000)
 Im_1=(data_ifg_matrix[3]-data_ifg_matrix[1])/data_ifg_matrix[0]/4
-Im_1_err=(data_ifg_matrix_err[1]**2+data_ifg_matrix_err[3]**2+(4*Im_1)**2*data_ifg_matrix_err[0]**2)**0.5/(4*abs(data_ifg_matrix[0]))
+Im_1_err=abs(Im_1)*((data_ifg_matrix_err[1]**2+data_ifg_matrix_err[3]**2)/(data_ifg_matrix[3]-data_ifg_matrix[1])**2+data_ifg_matrix_err[0]**2/data_ifg_matrix[0]**2)**0.5
+# Im_1_err_M=((data_ifg_matrix[0]**2*(data_ifg_matrix_err[1]**2+data_ifg_matrix_err[3]**2) + (data_ifg_matrix[3]-data_ifg_matrix[1])**2*data_ifg_matrix_err[0]**2)/data_ifg_matrix[0]**4)**0.5/4
+# print(abs(Im_1_err_M-Im_1_err))
+
 
 Im_2=-(data_ifg_matrix[3]-data_ifg_matrix[1])/data_ifg_matrix[0]/4
-Im_2_err=(data_ifg_matrix_err[1]**2+data_ifg_matrix_err[3]**2+(4*Im_2)**2*data_ifg_matrix_err[0]**2)**0.5/(4*abs(data_ifg_matrix[0]))
+Im_2_err=abs(Im_2)*((data_ifg_matrix_err[1]**2+data_ifg_matrix_err[3]**2)/(data_ifg_matrix[3]-data_ifg_matrix[1])**2+data_ifg_matrix_err[0]**2/data_ifg_matrix[0]**2)**0.5
 
 sa=data_ifg_matrix[2]/data_ifg_matrix[0]-4*Im_1**2
 s=np.sign(sa)*abs(sa)**0.5
 Re_1_1=(1+s)/2
-Re_1_1_err=((data_ifg_matrix_err[2]/data_ifg_matrix[0])**2+(data_ifg_matrix[2]*data_ifg_matrix_err[0]/data_ifg_matrix[0]**2)**2+64*Im_1**2*Im_1_err**2)**0.5/abs(s)/4
+Re_1_1_err=((data_ifg_matrix_err[2]/data_ifg_matrix[0])**2+(data_ifg_matrix[2]*data_ifg_matrix_err[0]/data_ifg_matrix[0]**2)**2+(8*Im_1*Im_1_err)**2)**0.5/abs(s)/4
+
+A_m=data_ifg_matrix[2]
+DA_m=data_ifg_matrix_err[2]
+B_m=data_ifg_matrix[0]
+DB_m=data_ifg_matrix_err[0]
+C_m=data_ifg_matrix[3]
+DC_m=data_ifg_matrix_err[3]
+D_m=data_ifg_matrix[1]
+DD_m=data_ifg_matrix_err[1]
+Re_1_1_err=1/4*((4*B_m**4*DA_m**2-4*A_m*B_m*(C_m-D_m)**2*DB_m**2+(C_m-D_m)**4*DB_m**2+B_m**2*(4*A_m**2*DB_m**2+(C_m-D_m)**2*(DC_m**2+DD_m**2)))/(B_m**4*(4*A_m*B_m-(C_m-D_m)**2)))**0.5
+# print(Re_1_1_err-Re_1_1_err_M, np.amax(Re_1_1_err-Re_1_1_err_M))
+
+# A_m=data_ifg_matrix[2]
+# DA_m=data_ifg_matrix_err[2]
+# B_m=data_ifg_matrix[0]
+# DB_m=data_ifg_matrix_err[0]
+# C_m=Im_1
+# DC_m=Im_1_err
+# Re_1_1_err_M=1/4*((B_m**2*DA_m**2+A_m**2*DB_m**2+64*B_m**4*C_m**2*DC_m**2)/(B_m**3*(A_m-4*B_m*C_m**2)))**0.5
+# print(Re_1_1_err-Re_1_1_err_M, np.amax(Re_1_1_err-Re_1_1_err_M))
+
 
 Re_1_2=P1_corr/data_ifg_matrix[0] + 1/4 - data_ifg_matrix[2]/(data_ifg_matrix[0]*4)
-Re_1_2_err=(P1_corr_err**2+(data_ifg_matrix_err[2]/4)**2+(Re_1_2-1/4)**2*data_ifg_matrix_err[0]**2)**0.5/abs(data_ifg_matrix[0])
+Re_1_2_err=abs(Re_1_2-1/4)*(((4*P1_corr_err)**2+data_ifg_matrix_err[2]**2)/(4*P1_corr-data_ifg_matrix[2])**2+data_ifg_matrix_err[0]**2/data_ifg_matrix[0]**2)**0.5
+# Re_1_2_err_M=1/4*(((data_ifg_matrix[2]-4*P1_corr)**2*data_ifg_matrix_err[0]**2+data_ifg_matrix[0]**2*((4*P1_corr_err)**2+data_ifg_matrix_err[2]**2))/data_ifg_matrix[0]**4)**0.5
+# print(Re_1_2_err-Re_1_2_err_M, np.amax(Re_1_2_err-Re_1_2_err_M))
 
-s_1=P1_corr/data_ifg_matrix[0]-Im_1**2
-Re_1_3=np.sign(s_1)*np.abs(s_1)**0.5
-Re_1_3_err=((P1_corr_err/data_ifg_matrix[0])**2+(P1_corr/data_ifg_matrix[0]**2)**2*data_ifg_matrix_err[0]**2+4*Im_1**2*Im_1_err**2)**0.5/Re_1_3/2
+# s_1=P1_corr/data_ifg_matrix[0]-Im_1**2
+# Re_1_3=np.sign(s_1)*np.abs(s_1)**0.5
+# Re_1_3_err=((P1_corr_err/data_ifg_matrix[0])**2+(P1_corr/data_ifg_matrix[0]**2)**2*data_ifg_matrix_err[0]**2+4*Im_1**2*Im_1_err**2)**0.5/Re_1_3/2
 
 sa=data_ifg_matrix[2]/data_ifg_matrix[0]-4*Im_2**2
 s=np.sign(sa)*abs(sa)**0.5
 Re_2_1=(1-s)/2
-Re_2_1_err=((data_ifg_matrix_err[2]/data_ifg_matrix[0])**2+(data_ifg_matrix[2]*data_ifg_matrix_err[0]/data_ifg_matrix[0]**2)**2+64*Im_1**2*Im_1_err**2)**0.5/abs(s)/4
+# Re_2_1_err=((data_ifg_matrix_err[2]/data_ifg_matrix[0])**2+(data_ifg_matrix[2]*data_ifg_matrix_err[0]/data_ifg_matrix[0]**2)**2+64*Im_1**2*Im_1_err**2)**0.5/abs(s)/4
+Re_2_1_err=Re_1_1_err
 
 Re_2_2=P2_corr/data_ifg_matrix[0] +1/4 - data_ifg_matrix[2]/(data_ifg_matrix[0]*4) 
-Re_2_2_err=(P1_corr_err**2+(data_ifg_matrix_err[2]/4)**2+(Re_2_2-1/4)**2*data_ifg_matrix_err[0]**2)**0.5/abs(data_ifg_matrix[0])
+Re_2_2_err=abs(Re_2_2-1/4)*(((4*P2_corr_err)**2+data_ifg_matrix_err[2]**2)/(4*P2_corr-data_ifg_matrix[2])**2+data_ifg_matrix_err[0]**2/data_ifg_matrix[0]**2)**0.5
 
 s_2=P2_corr/data_ifg_matrix[0]-Im_2**2
 Re_2_3=np.sign(s_2)*np.abs(s_2)**0.5
@@ -375,12 +402,12 @@ print(a_2**2/a_1**2, 0.59**2)
 text_1=np.array([chi, Re_1_1, Re_1_1_err, Im_1, Im_1_err])
 text_2=np.array([chi, Re_2_1, Re_2_1_err, Im_2, Im_2_err])
 
-# np.savetxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv1_unb", np.transpose(text_1))
-# np.savetxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv2_unb", np.transpose(text_2))
+np.savetxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv1_unb", np.transpose(text_1))
+np.savetxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv2_unb", np.transpose(text_2))
 
 text_1_sw=np.array([chi, Re_1_2, Re_1_2_err, Im_1, Im_1_err])
 text_2_sw=np.array([chi, Re_2_2, Re_2_2_err, Im_2, Im_2_err])
 
-# np.savetxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv1_unb_sw", np.transpose(text_1_sw))
-# np.savetxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv2_unb_sw", np.transpose(text_2_sw))
+np.savetxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv1_unb_sw", np.transpose(text_1_sw))
+np.savetxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv2_unb_sw", np.transpose(text_2_sw))
 plt.show()

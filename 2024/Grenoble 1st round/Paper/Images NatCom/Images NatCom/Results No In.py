@@ -361,7 +361,7 @@ axs[1].errorbar(chi_plt, w2(chi_plt, a_21).real, color=colors[3], alpha=0.8)
 axs[0].errorbar(chi,Re_1_2, Re_1_2_err, fmt="k.", capsize=3)
 axs[1].errorbar(chi,Re_2_2, Re_2_2_err, fmt="k.", capsize=3)
 
-plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Results"+folder_name[5:]+".pdf", format="pdf",bbox_inches="tight")
+# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Results"+folder_name[5:]+".pdf", format="pdf",bbox_inches="tight")
 
 text_1=np.array([chi, Re_1_2, Re_1_2_err, Im_1, Im_1_err])
 text_2=np.array([chi, Re_2_2, Re_2_2_err, Im_2, Im_2_err])
@@ -372,7 +372,7 @@ text_2=np.array([chi, Re_2_2, Re_2_2_err, Im_2, Im_2_err])
 text_1_sw=np.array([chi, Re_1_1, Re_1_1_err, Im_1, Im_1_err])
 text_2_sw=np.array([chi, Re_2_1, Re_2_1_err, Im_2, Im_2_err])
 
-np.savetxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv1_bal_sw", np.transpose(text_1_sw))
-np.savetxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv2_bal_sw", np.transpose(text_2_sw))
+# np.savetxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv1_bal_sw", np.transpose(text_1_sw))
+# np.savetxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv2_bal_sw", np.transpose(text_2_sw))
 
 plt.show()

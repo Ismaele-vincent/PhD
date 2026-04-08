@@ -9,7 +9,6 @@ inf_file_names:
 
 """
 
-
 import os
 import numpy as np
 import matplotlib.pyplot as plt
@@ -140,7 +139,7 @@ axs[3].errorbar(chi,Re_2_bal, Re_2_bal_err, fmt="k.", capsize=3, ms=4)
 axs[3].plot(chi_plt, w2(chi_plt, a_21_bal).real, color=colors[3], lw=1.5)
 
 for ax in axs:
-    ax.set_ylim([-1.5,2.5])
+    ax.set_ylim([-1.5,2.7])
     ax.set_yticks([-1,0,0.5,1, 2])
     ax.set_yticklabels([int(-1),0,0.5,1, 2])
 # axs[1].set_ytickslabel([-1,0,0.5,1, 2])
