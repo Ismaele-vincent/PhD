@@ -1,0 +1,11 @@
+28/09/2025 17:39:20:	start execution of script D:\data\Cycle 198\exp_3-16-19\rawdata\sc\Aperture_scan_ifg1_3p30s.sc	 DONE
+28/09/2025 17:39:21:	move motor	S18.axis2.phaseshifter 1 to -2.725000deg	 DONE
+28/09/2025 17:39:23:	create file	D:\data\Cycle 198\exp_3-16-19\rawdata\sc\Aperture_scan_ifg1_3p30s_28Sep1739.dat	 DONE
+room to enter remarks DONE
+28/09/2025 17:39:25:	read encoder	S18.axis2.Aperture Y		15.000000 DONE
+28/09/2025 17:39:25:	read encoder	S18.axis2.Aperture Z		10.000000 DONE
+28/09/2025 17:39:26:	move motor	S18.axis2.phaseshifter 1 to -2.625000deg	 DONE
+28/09/2025 17:39:27:	1	count	time	10.000000s/cts	O Det=66	H Det=221	Mon Det=22689	Aux Det=488	O+H=775	 DONE
+28/09/2025 17:39:39:	move motor	S18.axis2.phaseshifter 1 to -2.450000deg	 DONE
+28/09/2025 17:39:41:	2	count	time	10.000000s/cts	O Det=53	H Det=107	Mon Det=12424	Aux Det=276	O+H=436	STOPPED BY USER	28/09/2025 17:39:53:	close file and end scan	saving D:\data\Cycle 198\exp_3-16-19\rawdata\sc\Aperture_scan_ifg1_3p30s_28Sep1739.tif  DONE
+28/09/2025 17:39:53:	END OF SCRIPT	 DONE

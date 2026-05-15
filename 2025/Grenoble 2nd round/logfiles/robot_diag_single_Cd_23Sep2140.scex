@@ -1,0 +1,8 @@
+START	standard		
+CALL	robot_Zout.sc
+MS	S18.auxiliary.Robot rot big	1	deg	absolute	0.00000
+CALL	robot_Zin.sc
+F	D:\data\Cycle 198\exp_3-16-19\rawdata\sc\*.dat
+R	room to enter remarks
+E
+END

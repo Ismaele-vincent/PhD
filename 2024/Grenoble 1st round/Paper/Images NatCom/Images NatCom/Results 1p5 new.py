@@ -303,7 +303,7 @@ Im_2_err=abs(Im_2)*((data_ifg_matrix_err[1]**2+data_ifg_matrix_err[3]**2)/(data_
 sa=data_ifg_matrix[2]/data_ifg_matrix[0]-4*Im_1**2
 s=np.sign(sa)*abs(sa)**0.5
 Re_1_1=(1+s)/2
-Re_1_1_err=((data_ifg_matrix_err[2]/data_ifg_matrix[0])**2+(data_ifg_matrix[2]*data_ifg_matrix_err[0]/data_ifg_matrix[0]**2)**2+(8*Im_1*Im_1_err)**2)**0.5/abs(s)/4
+# Re_1_1_err=((data_ifg_matrix_err[2]/data_ifg_matrix[0])**2+(data_ifg_matrix[2]*data_ifg_matrix_err[0]/data_ifg_matrix[0]**2)**2+(8*Im_1*Im_1_err)**2)**0.5/abs(s)/4
 
 A_m=data_ifg_matrix[2]
 DA_m=data_ifg_matrix_err[2]
@@ -402,12 +402,12 @@ print(a_2**2/a_1**2, 0.59**2)
 text_1=np.array([chi, Re_1_1, Re_1_1_err, Im_1, Im_1_err])
 text_2=np.array([chi, Re_2_1, Re_2_1_err, Im_2, Im_2_err])
 
-np.savetxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv1_unb", np.transpose(text_1))
-np.savetxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv2_unb", np.transpose(text_2))
+# np.savetxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv1_unb", np.transpose(text_1))
+# np.savetxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv2_unb", np.transpose(text_2))
 
 text_1_sw=np.array([chi, Re_1_2, Re_1_2_err, Im_1, Im_1_err])
 text_2_sw=np.array([chi, Re_2_2, Re_2_2_err, Im_2, Im_2_err])
 
-np.savetxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv1_unb_sw", np.transpose(text_1_sw))
-np.savetxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv2_unb_sw", np.transpose(text_2_sw))
+# np.savetxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv1_unb_sw", np.transpose(text_1_sw))
+# np.savetxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv2_unb_sw", np.transpose(text_2_sw))
 plt.show()

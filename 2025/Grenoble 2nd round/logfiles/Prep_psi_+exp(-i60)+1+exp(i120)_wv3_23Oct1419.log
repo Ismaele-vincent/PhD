@@ -1,0 +1,24 @@
+23/10/2025 14:19:42:	start execution of script D:\data\Cycle 198\exp_3-16-19\rawdata\sc\Prep_psi_+exp(-i60)+1+exp(i120)_wv3.sc	 DONE
+23/10/2025 14:19:43:	move motor	S18.auxiliary.Robot Z to 207413.00000um	reached 207407.00000  DONE
+call of robot_Zout_doubleCd.sc DONE
+23/10/2025 14:19:46:	move motor	S18.axis2.phaseshifter 1 to 0.00000deg	reached -0.01099  DONE
+23/10/2025 14:19:49:	move motor	S18.axis2.phaseshifter 2 to 0.00000deg	reached 0.01099  DONE
+call of Move_PS12_parallel.sc DONE
+23/10/2025 14:19:52:	move motor	S18.axis2.phaseshifter 1 to -1.400000deg	 DONE
+23/10/2025 14:19:54:	create file	D:\data\Cycle 198\exp_3-16-19\rawdata\sc\Prep_psi_+exp(-i60)+1+exp(i120)_wv3_23Oct1419.dat	 DONE
+room to enter remarks DONE
+23/10/2025 14:19:55:	move motor	S18.axis2.phaseshifter 1 to -1.300000deg	 DONE
+23/10/2025 14:19:56:	1	count	time	5.000000s/cts	O Det=328	H Det=320	Mon Det=12350	Aux Det=1812	O+H=2460	 DONE
+23/10/2025 14:20:03:	move motor	S18.axis2.phaseshifter 1 to -1.200000deg	 DONE
+23/10/2025 14:20:05:	2	count	time	5.000000s/cts	O Det=216	H Det=377	Mon Det=12486	Aux Det=1882	O+H=2475	 DONE
+23/10/2025 14:20:11:	move motor	S18.axis2.phaseshifter 1 to -1.100000deg	 DONE
+23/10/2025 14:20:13:	3	count	time	5.000000s/cts	O Det=187	H Det=447	Mon Det=12371	Aux Det=1649	O+H=2283	 DONE
+23/10/2025 14:20:20:	move motor	S18.axis2.phaseshifter 1 to -1.000000deg	 DONE
+23/10/2025 14:20:21:	4	count	time	5.000000s/cts	O Det=279	H Det=544	Mon Det=12308	Aux Det=1506	O+H=2329	 DONE
+23/10/2025 14:20:28:	move motor	S18.axis2.phaseshifter 1 to -0.900000deg	 DONE
+23/10/2025 14:20:29:	5	count	time	5.000000s/cts	O Det=494	H Det=548	Mon Det=12458	Aux Det=1080	O+H=2122	 DONE
+23/10/2025 14:20:36:	move motor	S18.axis2.phaseshifter 1 to -0.800000deg	 DONE
+23/10/2025 14:20:37:	6	count	time	5.000000s/cts	O Det=648	H Det=611	Mon Det=12354	Aux Det=849	O+H=2108	 DONE
+23/10/2025 14:20:44:	move motor	S18.axis2.phaseshifter 1 to -0.700000deg	 DONE
+23/10/2025 14:20:46:	7	count	time	5.000000s/cts	O Det=718	H Det=542	Mon Det=12532	Aux Det=831	O+H=2091	 DONE
+23/10/2025 14:20:52:	paused

@@ -1,0 +1,24 @@
+07/10/2025 18:57:06:	start execution of script D:\data\Cycle 198\exp_3-16-19\rawdata\sc\Prep_psi_000.sc	 DONE
+07/10/2025 18:57:07:	move motor	S18.auxiliary.Robot Z to 207413.00000um	reached 207431.00000  DONE
+call of robot_Zout_doubleCd.sc DONE
+07/10/2025 18:57:10:	move motor	S18.axis2.phaseshifter 1 to -1.600000deg	 DONE
+07/10/2025 18:57:12:	create file	D:\data\Cycle 198\exp_3-16-19\rawdata\sc\Prep_psi_000_07Oct1857.dat	 DONE
+room to enter remarks DONE
+07/10/2025 18:57:13:	move motor	S18.axis2.phaseshifter 1 to -1.500000deg	 DONE
+07/10/2025 18:57:14:	1	count	time	10.000000s/cts	O Det=907	H Det=673	Mon Det=30326	Aux Det=4400	O+H=5980	 DONE
+07/10/2025 18:57:26:	move motor	S18.axis2.phaseshifter 1 to -1.400000deg	 DONE
+07/10/2025 18:57:28:	2	count	time	10.000000s/cts	O Det=1085	H Det=1037	Mon Det=30385	Aux Det=3870	O+H=5992	 DONE
+07/10/2025 18:57:39:	move motor	S18.axis2.phaseshifter 1 to -1.300000deg	 DONE
+07/10/2025 18:57:41:	3	count	time	10.000000s/cts	O Det=1124	H Det=1469	Mon Det=30360	Aux Det=2857	O+H=5450	 DONE
+07/10/2025 18:57:52:	move motor	S18.axis2.phaseshifter 1 to -1.200000deg	 DONE
+07/10/2025 18:57:54:	4	count	time	10.000000s/cts	O Det=1063	H Det=2003	Mon Det=30497	Aux Det=2076	O+H=5142	 DONE
+07/10/2025 18:58:06:	move motor	S18.axis2.phaseshifter 1 to -1.100000deg	 DONE
+07/10/2025 18:58:07:	5	count	time	10.000000s/cts	O Det=859	H Det=2410	Mon Det=30174	Aux Det=1704	O+H=4973	 DONE
+07/10/2025 18:58:19:	move motor	S18.axis2.phaseshifter 1 to -1.000000deg	 DONE
+07/10/2025 18:58:20:	6	count	time	10.000000s/cts	O Det=611	H Det=2071	Mon Det=26364	Aux Det=1748	O+H=4430	STOPPED BY USER	07/10/2025 18:58:31:	close file and end scan	 DONE
+call of ifg1_newPS_2p10s_AP.sc DONE
+07/10/2025 18:58:32:	move motor	S18.axis2.phaseshifter 1 to fit AUX COS180	-1.047530reached -1.04370  DONE
+call of Move_newPS1_ph0_12.sc DONE
+07/10/2025 18:58:35:	move motor	S18.axis2.phaseshifter 2 to -1.100000deg	 DONE
+07/10/2025 18:58:37:	create file	D:\data\Cycle 198\exp_3-16-19\rawdata\sc\Prep_psi_000_07Oct1858.dat	 DONE
+room to enter remarks DONE

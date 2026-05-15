@@ -65,7 +65,7 @@ for root, dirs, files in os.walk(sorted_fold_path, topdown=False):
             tot_data=np.loadtxt(os.path.join(root, name))[1:]
             # print(tot_data)
             time_count=tot_data[1]
-            data_count=tot_data[2]#/(tot_data[2]+tot_data[3])
+            data_count=tot_data[2]/(tot_data[2]+tot_data[3])*10000
             if ("60s_In1" in name):
                 counts=np.append(counts, np.array([(name[-13:-4],data_count,1)], dtype=dtype_new))
                 print(name)

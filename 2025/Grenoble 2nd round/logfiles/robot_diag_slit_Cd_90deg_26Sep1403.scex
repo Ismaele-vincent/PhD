@@ -1,0 +1,80 @@
+START	standard		
+CALL	robot_Zout_slit.sc
+MS	S18.auxiliary.Robot rot big	1	deg	absolute	90.00000
+MS	S18.auxiliary.Robot Diagonal	1	um	absolute	-20000.00000
+CALL	robot_Zin_slit.sc
+M	S18.auxiliary.Robot Diagonal	um	-20000.100000	FALSE
+F	D:\data\Cycle 198\exp_3-16-19\rawdata\sc\*.dat
+R	room to enter remarks
+M	S18.auxiliary.Robot Diagonal	um	-20000.000000	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	-17352.941176	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	-14705.882352	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	-12058.823528	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	-9411.764704	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	-6764.705880	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	-4117.647056	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	-1470.588232	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	1176.470592	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	3823.529416	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	6470.588240	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	9117.647064	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	11764.705888	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	14411.764712	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	17058.823536	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	19705.882360	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	22352.941184	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	25000.000008	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	27647.058832	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	30294.117656	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	32941.176480	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	35588.235304	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	38235.294128	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	40882.352952	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	43529.411776	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	46176.470600	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	48823.529424	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	51470.588248	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	54117.647072	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	56764.705896	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	59411.764720	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	62058.823544	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	64705.882368	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	67352.941192	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	70000.000016	FALSE
+C	time	5.000000
+E
+END

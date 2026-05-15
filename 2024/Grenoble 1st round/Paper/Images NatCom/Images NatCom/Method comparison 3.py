@@ -92,7 +92,6 @@ axs[3].plot([1.08,1.08], [0,1], transform=axs[3].transAxes, lw=1.5, color="#e67e
 axs[3].plot([1.08,1.08], [0.23,0.77], transform=axs[3].transAxes, lw=3., color='w', clip_on=False)
 axs[3].text(1.08, 0.5, "Balanced - Using Eq.(12)", color="#e67e22", ha="center", va="center", rotation=-90, transform=axs[3].transAxes)
 
-
 # axs[1].text(1.1, 0.5, "Unbalanced", ha="center", va="center", transform=axs[1].transAxes)
 # axs[2].text(0.25, 0.02, "Balanced", ha="center", va="center", transform=ax_b.transAxes)
 # axs[3].text(0.75, 0.02, "Balanced", ha="center", va="center", transform=ax_b.transAxes)

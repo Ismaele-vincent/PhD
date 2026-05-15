@@ -1,0 +1,24 @@
+09/10/2025 10:50:21:	start execution of script D:\data\Cycle 198\exp_3-16-19\rawdata\sc\int_meas_path213.sc	 DONE
+09/10/2025 10:50:21:	move motor	S18.auxiliary.Robot Z to 207413.00000um	reached 207426.00000  DONE
+call of robot_Zout_doubleCd.sc DONE
+09/10/2025 10:50:25:	move motor	S18.auxiliary.Robot rot big to 90.00000deg	reached 90.00000  DONE
+09/10/2025 10:50:27:	move motor	S18.auxiliary.Robot Diagonal to 26000.00000um	reached 25999.79402  DONE
+09/10/2025 10:50:51:	move motor	S18.auxiliary.Robot Z to 207413.00000um	reached 207431.00000  DONE
+call of robot_Zout_doubleCd.sc DONE
+09/10/2025 10:50:54:	move motor	S18.auxiliary.Robot rot big to 90.00000deg	reached 90.00000  DONE
+09/10/2025 10:50:57:	move motor	S18.auxiliary.Robot Z to 292012.00000um	reached 292012.00000  DONE
+call of robot_Zin_doubleCd.sc DONE
+call of Block_path13_doubleCd.sc DONE
+09/10/2025 10:51:05:	move motor	S18.auxiliary.Robot Diagonal to 25999.900000um	 DONE
+09/10/2025 10:51:11:	create file	D:\data\Cycle 198\exp_3-16-19\rawdata\sc\int_meas_path213_09Oct1051.dat	 DONE
+room to enter remarks DONE
+09/10/2025 10:51:12:	move motor	S18.auxiliary.Robot Diagonal to 26000.000000um	 DONE
+09/10/2025 10:51:18:	1	count	time	60.000000s/cts	O Det=1947	H Det=1972	Mon Det=184432	Aux Det=5601	O+H=9520	 DONE
+09/10/2025 10:52:20:	move motor	S18.auxiliary.Robot Diagonal to 48000.000000um	 DONE
+09/10/2025 10:52:35:	2	count	time	60.000000s/cts	O Det=2075	H Det=2983	Mon Det=184734	Aux Det=48	O+H=5106	 DONE
+09/10/2025 10:53:37:	move motor	S18.auxiliary.Robot Diagonal to 70000.000000um	 DONE
+09/10/2025 10:53:51:	3	count	time	60.000000s/cts	O Det=1877	H Det=1853	Mon Det=184980	Aux Det=10654	O+H=14384	 DONE
+09/10/2025 10:54:53:	close file and end scan	 DONE
+09/10/2025 10:54:54:	move motor	S18.auxiliary.Robot Z to 207413.00000um	reached 207422.00000  DONE
+call of robot_Zout_doubleCd.sc DONE
+09/10/2025 10:55:01:	END OF SCRIPT	 DONE

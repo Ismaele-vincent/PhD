@@ -1,0 +1,103 @@
+17/10/2025 10:53:22:	start execution of script D:\data\Cycle 198\exp_3-16-19\rawdata\sc\Prep_psi_+1+1+1_wv2.sc	 DONE
+17/10/2025 10:53:23:	move motor	S18.auxiliary.Robot Z to 207413.00000um	reached 207408.00000  DONE
+call of robot_Zout_doubleCd.sc DONE
+17/10/2025 10:53:26:	move motor	S18.axis2.phaseshifter 1 to 0.00000deg	reached 0.00000  DONE
+17/10/2025 10:53:29:	move motor	S18.axis2.phaseshifter 2 to 0.00000deg	reached -0.01099  DONE
+call of Move_PS12_parallel.sc DONE
+17/10/2025 10:53:33:	move motor	S18.axis2.phaseshifter 1 to -1.400000deg	 DONE
+17/10/2025 10:53:35:	create file	D:\data\Cycle 198\exp_3-16-19\rawdata\sc\Prep_psi_+1+1+1_wv2_17Oct1053.dat	 DONE
+room to enter remarks DONE
+17/10/2025 10:53:36:	move motor	S18.axis2.phaseshifter 1 to -1.300000deg	 DONE
+17/10/2025 10:53:38:	1	count	time	5.000000s/cts	O Det=378	H Det=870	Mon Det=11830	Aux Det=934	O+H=2182	 DONE
+17/10/2025 10:53:44:	move motor	S18.axis2.phaseshifter 1 to -1.200000deg	 DONE
+17/10/2025 10:53:46:	2	count	time	5.000000s/cts	O Det=558	H Det=804	Mon Det=11765	Aux Det=812	O+H=2174	 DONE
+17/10/2025 10:53:52:	move motor	S18.axis2.phaseshifter 1 to -1.100000deg	 DONE
+17/10/2025 10:53:54:	3	count	time	5.000000s/cts	O Det=619	H Det=669	Mon Det=12002	Aux Det=858	O+H=2146	 DONE
+17/10/2025 10:54:01:	move motor	S18.axis2.phaseshifter 1 to -1.000000deg	 DONE
+17/10/2025 10:54:02:	4	count	time	5.000000s/cts	O Det=580	H Det=594	Mon Det=11827	Aux Det=1196	O+H=2370	 DONE
+17/10/2025 10:54:09:	move motor	S18.axis2.phaseshifter 1 to -0.900000deg	 DONE
+17/10/2025 10:54:10:	5	count	time	5.000000s/cts	O Det=531	H Det=408	Mon Det=11902	Aux Det=1442	O+H=2381	 DONE
+17/10/2025 10:54:17:	move motor	S18.axis2.phaseshifter 1 to -0.800000deg	 DONE
+17/10/2025 10:54:19:	6	count	time	5.000000s/cts	O Det=397	H Det=326	Mon Det=11962	Aux Det=1830	O+H=2553	 DONE
+17/10/2025 10:54:25:	move motor	S18.axis2.phaseshifter 1 to -0.700000deg	 DONE
+17/10/2025 10:54:27:	7	count	time	5.000000s/cts	O Det=302	H Det=390	Mon Det=12033	Aux Det=2170	O+H=2862	 DONE
+17/10/2025 10:54:33:	move motor	S18.axis2.phaseshifter 1 to -0.600000deg	 DONE
+17/10/2025 10:54:35:	8	count	time	5.000000s/cts	O Det=183	H Det=462	Mon Det=12188	Aux Det=2094	O+H=2739	 DONE
+17/10/2025 10:54:42:	move motor	S18.axis2.phaseshifter 1 to -0.500000deg	 DONE
+17/10/2025 10:54:43:	9	count	time	5.000000s/cts	O Det=130	H Det=614	Mon Det=12100	Aux Det=1832	O+H=2576	 DONE
+17/10/2025 10:54:50:	move motor	S18.axis2.phaseshifter 1 to -0.400000deg	 DONE
+17/10/2025 10:54:51:	10	count	time	5.000000s/cts	O Det=198	H Det=792	Mon Det=11960	Aux Det=1450	O+H=2440	 DONE
+17/10/2025 10:54:58:	move motor	S18.axis2.phaseshifter 1 to -0.300000deg	 DONE
+17/10/2025 10:54:59:	11	count	time	5.000000s/cts	O Det=320	H Det=871	Mon Det=11831	Aux Det=1079	O+H=2270	 DONE
+17/10/2025 10:55:06:	move motor	S18.axis2.phaseshifter 1 to -0.200000deg	 DONE
+17/10/2025 10:55:08:	12	count	time	5.000000s/cts	O Det=463	H Det=863	Mon Det=12006	Aux Det=790	O+H=2116	 DONE
+17/10/2025 10:55:14:	move motor	S18.axis2.phaseshifter 1 to -0.100000deg	 DONE
+17/10/2025 10:55:16:	13	count	time	5.000000s/cts	O Det=583	H Det=780	Mon Det=11815	Aux Det=857	O+H=2220	 DONE
+17/10/2025 10:55:22:	move motor	S18.axis2.phaseshifter 1 to 0.000000deg	 DONE
+17/10/2025 10:55:24:	14	count	time	5.000000s/cts	O Det=596	H Det=628	Mon Det=11851	Aux Det=1069	O+H=2293	 DONE
+17/10/2025 10:55:31:	move motor	S18.axis2.phaseshifter 1 to 0.100000deg	 DONE
+17/10/2025 10:55:32:	15	count	time	5.000000s/cts	O Det=598	H Det=464	Mon Det=11917	Aux Det=1413	O+H=2475	 DONE
+17/10/2025 10:55:39:	move motor	S18.axis2.phaseshifter 1 to 0.200000deg	 DONE
+17/10/2025 10:55:40:	16	count	time	5.000000s/cts	O Det=506	H Det=346	Mon Det=12089	Aux Det=1750	O+H=2602	 DONE
+17/10/2025 10:55:47:	move motor	S18.axis2.phaseshifter 1 to 0.300000deg	 DONE
+17/10/2025 10:55:48:	17	count	time	5.000000s/cts	O Det=344	H Det=363	Mon Det=11889	Aux Det=2031	O+H=2738	 DONE
+17/10/2025 10:55:55:	move motor	S18.axis2.phaseshifter 1 to 0.400000deg	 DONE
+17/10/2025 10:55:56:	18	count	time	5.000000s/cts	O Det=250	H Det=367	Mon Det=11954	Aux Det=2065	O+H=2682	 DONE
+17/10/2025 10:56:03:	move motor	S18.axis2.phaseshifter 1 to 0.500000deg	 DONE
+17/10/2025 10:56:05:	19	count	time	5.000000s/cts	O Det=144	H Det=539	Mon Det=11922	Aux Det=1880	O+H=2563	 DONE
+17/10/2025 10:56:11:	move motor	S18.axis2.phaseshifter 1 to 0.600000deg	 DONE
+17/10/2025 10:56:13:	20	count	time	5.000000s/cts	O Det=157	H Det=691	Mon Det=12039	Aux Det=1602	O+H=2450	 DONE
+17/10/2025 10:56:19:	move motor	S18.axis2.phaseshifter 1 to 0.700000deg	 DONE
+17/10/2025 10:56:21:	21	count	time	5.000000s/cts	O Det=228	H Det=810	Mon Det=12018	Aux Det=1242	O+H=2280	 DONE
+17/10/2025 10:56:28:	close file and end scan	 DONE
+call of ifg1_newPS_2p5s_AP.sc DONE
+17/10/2025 10:56:29:	move motor	S18.axis2.phaseshifter 1 to fit AUX COS540	0.897241reached 0.88989  DONE
+17/10/2025 10:56:31:	move motor	S18.axis2.phaseshifter 2 to -1.850000deg	 DONE
+17/10/2025 10:56:33:	create file	D:\data\Cycle 198\exp_3-16-19\rawdata\sc\Prep_psi_+1+1+1_wv2_17Oct1056.dat	 DONE
+room to enter remarks DONE
+17/10/2025 10:56:34:	move motor	S18.axis2.phaseshifter 2 to -1.750000deg	 DONE
+17/10/2025 10:56:36:	1	count	time	10.000000s/cts	O Det=496	H Det=2018	Mon Det=23996	Aux Det=1499	O+H=4013	 DONE
+17/10/2025 10:56:47:	move motor	S18.axis2.phaseshifter 2 to -1.650000deg	 DONE
+17/10/2025 10:56:49:	2	count	time	10.000000s/cts	O Det=883	H Det=1740	Mon Det=24251	Aux Det=1674	O+H=4297	 DONE
+17/10/2025 10:57:01:	move motor	S18.axis2.phaseshifter 2 to -1.550000deg	 DONE
+17/10/2025 10:57:02:	3	count	time	10.000000s/cts	O Det=1333	H Det=1312	Mon Det=23775	Aux Det=1695	O+H=4340	 DONE
+17/10/2025 10:57:14:	move motor	S18.axis2.phaseshifter 2 to -1.450000deg	 DONE
+17/10/2025 10:57:15:	4	count	time	10.000000s/cts	O Det=1880	H Det=993	Mon Det=24157	Aux Det=1634	O+H=4507	 DONE
+17/10/2025 10:57:27:	move motor	S18.axis2.phaseshifter 2 to -1.350000deg	 DONE
+17/10/2025 10:57:28:	5	count	time	10.000000s/cts	O Det=2052	H Det=719	Mon Det=23918	Aux Det=1649	O+H=4420	 DONE
+17/10/2025 10:57:40:	move motor	S18.axis2.phaseshifter 2 to -1.250000deg	 DONE
+17/10/2025 10:57:42:	6	count	time	10.000000s/cts	O Det=1984	H Det=807	Mon Det=23820	Aux Det=1573	O+H=4364	 DONE
+17/10/2025 10:57:53:	move motor	S18.axis2.phaseshifter 2 to -1.150000deg	 DONE
+17/10/2025 10:57:55:	7	count	time	10.000000s/cts	O Det=1671	H Det=1118	Mon Det=23654	Aux Det=1549	O+H=4338	 DONE
+17/10/2025 10:58:06:	move motor	S18.axis2.phaseshifter 2 to -1.050000deg	 DONE
+17/10/2025 10:58:08:	8	count	time	10.000000s/cts	O Det=1163	H Det=1511	Mon Det=23581	Aux Det=1617	O+H=4291	 DONE
+17/10/2025 10:58:20:	move motor	S18.axis2.phaseshifter 2 to -0.950000deg	 DONE
+17/10/2025 10:58:21:	9	count	time	10.000000s/cts	O Det=686	H Det=1884	Mon Det=23869	Aux Det=1598	O+H=4168	 DONE
+17/10/2025 10:58:33:	move motor	S18.axis2.phaseshifter 2 to -0.850000deg	 DONE
+17/10/2025 10:58:34:	10	count	time	10.000000s/cts	O Det=440	H Det=2095	Mon Det=23878	Aux Det=1580	O+H=4115	 DONE
+17/10/2025 10:58:46:	move motor	S18.axis2.phaseshifter 2 to -0.750000deg	 DONE
+17/10/2025 10:58:47:	11	count	time	10.000000s/cts	O Det=453	H Det=2072	Mon Det=24094	Aux Det=1687	O+H=4212	 DONE
+17/10/2025 10:58:59:	move motor	S18.axis2.phaseshifter 2 to -0.650000deg	 DONE
+17/10/2025 10:59:01:	12	count	time	10.000000s/cts	O Det=779	H Det=1840	Mon Det=23781	Aux Det=1686	O+H=4305	 DONE
+17/10/2025 10:59:12:	move motor	S18.axis2.phaseshifter 2 to -0.550000deg	 DONE
+17/10/2025 10:59:14:	13	count	time	10.000000s/cts	O Det=1300	H Det=1445	Mon Det=23929	Aux Det=1674	O+H=4419	 DONE
+17/10/2025 10:59:25:	move motor	S18.axis2.phaseshifter 2 to -0.450000deg	 DONE
+17/10/2025 10:59:27:	14	count	time	10.000000s/cts	O Det=1733	H Det=1048	Mon Det=23966	Aux Det=1605	O+H=4386	 DONE
+17/10/2025 10:59:39:	move motor	S18.axis2.phaseshifter 2 to -0.350000deg	 DONE
+17/10/2025 10:59:40:	15	count	time	10.000000s/cts	O Det=2090	H Det=738	Mon Det=24049	Aux Det=1585	O+H=4413	 DONE
+17/10/2025 10:59:52:	move motor	S18.axis2.phaseshifter 2 to -0.250000deg	 DONE
+17/10/2025 10:59:53:	16	count	time	10.000000s/cts	O Det=2003	H Det=727	Mon Det=23945	Aux Det=1663	O+H=4393	 DONE
+17/10/2025 11:00:05:	move motor	S18.axis2.phaseshifter 2 to -0.150000deg	 DONE
+17/10/2025 11:00:06:	17	count	time	10.000000s/cts	O Det=1755	H Det=993	Mon Det=23599	Aux Det=1561	O+H=4309	 DONE
+17/10/2025 11:00:18:	move motor	S18.axis2.phaseshifter 2 to -0.050000deg	 DONE
+17/10/2025 11:00:20:	18	count	time	10.000000s/cts	O Det=1249	H Det=1381	Mon Det=23993	Aux Det=1716	O+H=4346	 DONE
+17/10/2025 11:00:31:	move motor	S18.axis2.phaseshifter 2 to 0.050000deg	 DONE
+17/10/2025 11:00:33:	19	count	time	10.000000s/cts	O Det=875	H Det=1801	Mon Det=23782	Aux Det=1605	O+H=4281	 DONE
+17/10/2025 11:00:44:	move motor	S18.axis2.phaseshifter 2 to 0.150000deg	 DONE
+17/10/2025 11:00:46:	20	count	time	10.000000s/cts	O Det=462	H Det=2104	Mon Det=23918	Aux Det=1649	O+H=4215	 DONE
+17/10/2025 11:00:58:	move motor	S18.axis2.phaseshifter 2 to 0.250000deg	 DONE
+17/10/2025 11:00:59:	21	count	time	10.000000s/cts	O Det=364	H Det=2218	Mon Det=24130	Aux Det=1553	O+H=4135	 DONE
+17/10/2025 11:01:11:	close file and end scan	 DONE
+call of ifg2_newPS_2p10s_AP.sc DONE
+17/10/2025 11:01:12:	move motor	S18.axis2.phaseshifter 2 to fit O COS720	0.729041reached 0.72510  DONE
+17/10/2025 11:01:14:	END OF SCRIPT	 DONE

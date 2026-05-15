@@ -65,7 +65,7 @@ for root, dirs, files in os.walk(sorted_fold_path, topdown=False):
             tot_data=np.loadtxt(os.path.join(root, name))[1:]
             # print(tot_data)
             time_count=tot_data[1]
-            data_count=tot_data[2]#/(tot_data[2]+tot_data[3])
+            data_count=tot_data[2]/(tot_data[2]+tot_data[3])*10000
             if ("60s_In1" in name):
                 counts=np.append(counts, np.array([(name[-13:-4],data_count,1)], dtype=dtype_new))
                 print(name)
@@ -123,7 +123,7 @@ Re_wv=np.array([0, w1(0, 0, 0).real, w2(0, 0, 0).real, w3(0, 0, 0).real])
 Re_wv=1-2*alpha*Re_wv
 
 fig = plt.figure(figsize=(4,4))
-fig.suptitle("$\psi=(+e^{-i\pi/3},+1,+e^{2\pi/3})/\\sqrt{3}$")
+fig.suptitle("$\psi=(+1,+1,+1)/\\sqrt{3}$")
 ax = fig.add_subplot(111)
 ax.errorbar([0,1,2,3], counts_array,yerr=counts_array_err,fmt="ko",capsize=5, ms=3, label="Data")
 ax.errorbar([0,1,2,3], Re_wv, fmt="s",color=colors[1], ms=5,label="Theory")

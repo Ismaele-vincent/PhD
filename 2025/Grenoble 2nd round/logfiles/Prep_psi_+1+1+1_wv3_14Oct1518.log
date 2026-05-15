@@ -1,0 +1,6 @@
+14/10/2025 15:18:01:	start execution of script D:\data\Cycle 198\exp_3-16-19\rawdata\sc\Prep_psi_+1+1+1_wv3.sc	 DONE
+14/10/2025 15:18:02:	move motor	S18.auxiliary.Robot Z to 207413.00000um	reached 207408.00000  DONE
+call of robot_Zout_doubleCd.sc DONE
+14/10/2025 15:18:05:	close file and end scan	 DONE
+call of ifg1_newPS_2p5s_AP.sc DONE
+14/10/2025 15:18:06:	move motor	S18.axis2.phaseshifter 1 to fit AUX COS-180	-0.893452reached -0.90088  DONE

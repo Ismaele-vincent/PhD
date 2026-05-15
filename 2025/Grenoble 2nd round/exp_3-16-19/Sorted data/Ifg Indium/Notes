@@ -1,0 +1,6 @@
+Notes:
+The measurements "count_60s_In1_+1+1+1_23Oct1915.dat","count_60s_In1_+1-i-1_23Oct1927.dat","count_60s_In1_+exp(-i60)+1+exp(i120)_23Oct1939.dat", "count_60s_In3_+1+1+1_23Oct1953.dat" have no indium inside, because in the state-preparation script the robot Z is lifted.
+ 
+The file "count_60s_No_In_+1-i-1_24Oct1348" exist in the log but not in the data
+
+The script "Prep_psi_+1-i-1_In" has been changed 2 or 3 times, but it doesn't seem wrong 

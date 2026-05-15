@@ -1,0 +1,28 @@
+13/10/2025 13:35:06:	start execution of script D:\data\Cycle 198\exp_3-16-19\rawdata\sc\ifg_wv2_psi_+1-1-i.sc	 DONE
+13/10/2025 13:35:06:	create file	D:\data\Cycle 198\exp_3-16-19\rawdata\sc\ifg_wv2_psi_+1-1-i_13Oct1335.dat	 DONE
+room to enter remarks DONE
+13/10/2025 13:35:07:	MOVE MOTOR REL	S18.axis2.phaseshifter both	deg	0.0	FALSE DONE
+13/10/2025 13:35:11:	1	count	time	30.0s/cts	O Det=2037	H Det=5751	Mon Det=93101	Aux Det=11977	O+H=19765	 DONE
+13/10/2025 13:35:43:	MOVE MOTOR REL	S18.axis2.phaseshifter both	deg	-0.07	FALSE DONE
+13/10/2025 13:35:47:	2	count	time	30.0s/cts	O Det=2759	H Det=6011	Mon Det=92883	Aux Det=10094	O+H=18864	 DONE
+13/10/2025 13:36:19:	MOVE MOTOR REL	S18.axis2.phaseshifter both	deg	-0.07	FALSE DONE
+13/10/2025 13:36:23:	3	count	time	30.0s/cts	O Det=3635	H Det=6193	Mon Det=92681	Aux Det=8214	O+H=18042	 DONE
+13/10/2025 13:36:55:	MOVE MOTOR REL	S18.axis2.phaseshifter both	deg	-0.07	FALSE DONE
+13/10/2025 13:37:00:	4	count	time	30.0s/cts	O Det=4812	H Det=5996	Mon Det=92627	Aux Det=7123	O+H=17931	 DONE
+13/10/2025 13:37:31:	MOVE MOTOR REL	S18.axis2.phaseshifter both	deg	-0.07	FALSE DONE
+13/10/2025 13:37:36:	5	count	time	30.0s/cts	O Det=5594	H Det=5359	Mon Det=92875	Aux Det=6670	O+H=17623	 DONE
+13/10/2025 13:38:07:	MOVE MOTOR REL	S18.axis2.phaseshifter both	deg	-0.07	FALSE DONE
+13/10/2025 13:38:12:	6	count	time	30.0s/cts	O Det=6104	H Det=4808	Mon Det=93010	Aux Det=6867	O+H=17779	 DONE
+13/10/2025 13:38:44:	MOVE MOTOR REL	S18.axis2.phaseshifter both	deg	-0.07	FALSE DONE
+13/10/2025 13:38:48:	7	count	time	30.0s/cts	O Det=6264	H Det=3975	Mon Det=92717	Aux Det=7964	O+H=18203	 DONE
+13/10/2025 13:39:20:	MOVE MOTOR REL	S18.axis2.phaseshifter both	deg	-0.07	FALSE DONE
+13/10/2025 13:39:24:	8	count	time	30.0s/cts	O Det=6225	H Det=3270	Mon Det=92998	Aux Det=9353	O+H=18848	 DONE
+13/10/2025 13:39:56:	MOVE MOTOR REL	S18.axis2.phaseshifter both	deg	-0.07	FALSE DONE
+13/10/2025 13:40:01:	9	count	time	30.0s/cts	O Det=5357	H Det=2851	Mon Det=92931	Aux Det=11456	O+H=19664	 DONE
+13/10/2025 13:40:32:	MOVE MOTOR REL	S18.axis2.phaseshifter both	deg	-0.07	FALSE DONE
+13/10/2025 13:40:37:	10	count	time	30.0s/cts	O Det=4866	H Det=2395	Mon Det=92816	Aux Det=13486	O+H=20747	 DONE
+13/10/2025 13:41:08:	MOVE MOTOR REL	S18.axis2.phaseshifter both	deg	-0.07	FALSE DONE
+13/10/2025 13:41:13:	11	count	time	30.0s/cts	O Det=3867	H Det=2198	Mon Det=93110	Aux Det=15199	O+H=21264	 DONE
+13/10/2025 13:41:45:	MOVE MOTOR REL	S18.axis2.phaseshifter both	deg	-0.07	FALSE DONE
+13/10/2025 13:41:49:	12	count	time	30.0s/cts	O Det=2278	H Det=1742	Mon Det=70429	Aux Det=12307	O+H=16327	STOPPED BY USER	13/10/2025 13:42:14:	close file and end scan	 DONE
+call of ifg12r_newPS_2p30s_AP.sc DONE

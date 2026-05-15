@@ -1,0 +1,7 @@
+START	standard		
+CALL	ifg2R_newPS_2p30s_0_shift45.sc
+CALL	ifg2R_newPS_2p30s_m90_shift45.sc
+CALL	ifg2R_newPS_2p30s_p90_shift45.sc
+CALL	ifg2R_newPS_2p30s_p180.sc
+CALL	int_meas_path213.sc
+END

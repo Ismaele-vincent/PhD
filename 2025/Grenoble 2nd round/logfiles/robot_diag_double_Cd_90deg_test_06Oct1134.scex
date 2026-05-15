@@ -1,0 +1,60 @@
+START	standard		
+CALL	robot_Zout_doubleCd.sc
+MS	S18.auxiliary.Robot rot big	1	deg	absolute	90.00000
+MS	S18.auxiliary.Robot Diagonal	1	um	absolute	10000.00000
+CALL	robot_Zin_doubleCd.sc
+M	S18.auxiliary.Robot Diagonal	um	9999.900000	FALSE
+F	D:\data\Cycle 198\exp_3-16-19\rawdata\sc\*.dat
+R	room to enter remarks
+M	S18.auxiliary.Robot Diagonal	um	10000.000000	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	13333.333333	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	16666.666666	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	19999.999999	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	23333.333332	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	26666.666665	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	29999.999998	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	33333.333331	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	36666.666664	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	39999.999997	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	43333.333330	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	46666.666663	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	49999.999996	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	53333.333329	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	56666.666662	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	59999.999995	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	63333.333328	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	66666.666661	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	69999.999994	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	73333.333327	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	76666.666660	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	79999.999993	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	83333.333326	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	86666.666659	FALSE
+C	time	5.000000
+M	S18.auxiliary.Robot Diagonal	um	89999.999992	FALSE
+C	time	5.000000
+E
+END

@@ -1,0 +1,10 @@
+24/10/2025 12:05:32:	start execution of script D:\data\Cycle 198\exp_3-16-19\rawdata\sc\Prep_psi_+1+1+1_In.sc	 DONE
+24/10/2025 12:05:32:	move motor	S18.axis2.phaseshifter 1 to 0.00000deg	reached -0.01099  DONE
+24/10/2025 12:05:35:	move motor	S18.axis2.phaseshifter 2 to 0.00000deg	reached 0.00000  DONE
+call of Move_PS12_parallel.sc DONE
+24/10/2025 12:05:38:	move motor	S18.axis2.phaseshifter 1 to -1.400000deg	 DONE
+24/10/2025 12:05:40:	create file	D:\data\Cycle 198\exp_3-16-19\rawdata\sc\Prep_psi_+1+1+1_In_24Oct1205.dat	 DONE
+room to enter remarks DONE
+24/10/2025 12:05:41:	move motor	S18.axis2.phaseshifter 1 to -1.300000deg	 DONE
+24/10/2025 12:05:43:	1	count	time	5.000000s/cts	O Det=356	H Det=343	Mon Det=11234	Aux Det=1599	O+H=2298	STOPPED BY USER	24/10/2025 12:05:49:	close file and end scan	 DONE
+call of ifg1_newPS_2p5s_AP.sc DONE

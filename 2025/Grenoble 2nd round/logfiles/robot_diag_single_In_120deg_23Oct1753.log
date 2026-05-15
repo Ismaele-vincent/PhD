@@ -1,0 +1,43 @@
+23/10/2025 17:53:55:	start execution of script D:\data\Cycle 198\exp_3-16-19\rawdata\sc\robot_diag_single_In_120deg.sc	 DONE
+23/10/2025 17:53:55:	move motor	S18.auxiliary.Robot Z to 207413.00000um	reached 207403.00000  DONE
+call of robot_Zout_doubleCd.sc DONE
+23/10/2025 17:54:03:	move motor	S18.auxiliary.Robot rot big to 120.00000deg	reached 120.00000  DONE
+23/10/2025 17:54:05:	move motor	S18.auxiliary.Robot Diagonal to 10000.00000um	reached 9994.44987  DONE
+23/10/2025 17:54:23:	move motor	S18.auxiliary.Robot Z to 292012.00000um	reached 292007.00000  DONE
+call of robot_Zin_doubleCd.sc DONE
+23/10/2025 17:54:31:	move motor	S18.auxiliary.Robot Diagonal to 9999.900000um	 DONE
+23/10/2025 17:54:37:	create file	D:\data\Cycle 198\exp_3-16-19\rawdata\sc\robot_diag_single_In_120deg_23Oct1754.dat	 DONE
+room to enter remarks DONE
+23/10/2025 17:54:38:	move motor	S18.auxiliary.Robot Diagonal to 10000.000000um	 DONE
+23/10/2025 17:54:44:	1	count	time	5.000000s/cts	O Det=181	H Det=258	Mon Det=13233	Aux Det=240	O+H=679	 DONE
+23/10/2025 17:54:50:	move motor	S18.auxiliary.Robot Diagonal to 13684.210526um	 DONE
+23/10/2025 17:54:58:	2	count	time	5.000000s/cts	O Det=150	H Det=203	Mon Det=13052	Aux Det=446	O+H=799	 DONE
+23/10/2025 17:55:04:	move motor	S18.auxiliary.Robot Diagonal to 17368.421052um	 DONE
+23/10/2025 17:55:12:	3	count	time	5.000000s/cts	O Det=145	H Det=154	Mon Det=12988	Aux Det=500	O+H=799	 DONE
+23/10/2025 17:55:18:	move motor	S18.auxiliary.Robot Diagonal to 21052.631578um	 DONE
+23/10/2025 17:55:26:	4	count	time	5.000000s/cts	O Det=138	H Det=151	Mon Det=13119	Aux Det=454	O+H=743	 DONE
+23/10/2025 17:55:32:	move motor	S18.auxiliary.Robot Diagonal to 24736.842104um	 DONE
+23/10/2025 17:55:40:	5	count	time	5.000000s/cts	O Det=131	H Det=152	Mon Det=13354	Aux Det=465	O+H=748	 DONE
+23/10/2025 17:55:46:	move motor	S18.auxiliary.Robot Diagonal to 28421.052630um	 DONE
+23/10/2025 17:55:54:	6	count	time	5.000000s/cts	O Det=152	H Det=133	Mon Det=13043	Aux Det=454	O+H=739	 DONE
+23/10/2025 17:56:00:	move motor	S18.auxiliary.Robot Diagonal to 32105.263156um	 DONE
+23/10/2025 17:56:08:	7	count	time	5.000000s/cts	O Det=156	H Det=138	Mon Det=13129	Aux Det=493	O+H=787	 DONE
+23/10/2025 17:56:14:	move motor	S18.auxiliary.Robot Diagonal to 35789.473682um	 DONE
+23/10/2025 17:56:22:	8	count	time	5.000000s/cts	O Det=124	H Det=143	Mon Det=13137	Aux Det=477	O+H=744	 DONE
+23/10/2025 17:56:28:	move motor	S18.auxiliary.Robot Diagonal to 39473.684208um	 DONE
+23/10/2025 17:56:36:	9	count	time	5.000000s/cts	O Det=157	H Det=162	Mon Det=12267	Aux Det=502	O+H=821	 DONE
+23/10/2025 17:56:42:	move motor	S18.auxiliary.Robot Diagonal to 43157.894734um	 DONE
+23/10/2025 17:56:50:	10	count	time	5.000000s/cts	O Det=276	H Det=243	Mon Det=12592	Aux Det=458	O+H=977	 DONE
+23/10/2025 17:56:56:	move motor	S18.auxiliary.Robot Diagonal to 46842.105260um	 DONE
+23/10/2025 17:57:04:	11	count	time	5.000000s/cts	O Det=369	H Det=290	Mon Det=12694	Aux Det=509	O+H=1168	 DONE
+23/10/2025 17:57:11:	move motor	S18.auxiliary.Robot Diagonal to 50526.315786um	 DONE
+23/10/2025 17:57:18:	12	count	time	5.000000s/cts	O Det=403	H Det=312	Mon Det=12592	Aux Det=487	O+H=1202	 DONE
+23/10/2025 17:57:25:	move motor	S18.auxiliary.Robot Diagonal to 54210.526312um	 DONE
+23/10/2025 17:57:32:	13	count	time	5.000000s/cts	O Det=424	H Det=296	Mon Det=12566	Aux Det=471	O+H=1191	 DONE
+23/10/2025 17:57:39:	move motor	S18.auxiliary.Robot Diagonal to 57894.736838um	 DONE
+23/10/2025 17:57:46:	14	count	time	5.000000s/cts	O Det=352	H Det=307	Mon Det=12439	Aux Det=428	O+H=1087	 DONE
+23/10/2025 17:57:53:	move motor	S18.auxiliary.Robot Diagonal to 61578.947364um	 DONE
+23/10/2025 17:58:00:	15	count	time	5.000000s/cts	O Det=404	H Det=287	Mon Det=12388	Aux Det=436	O+H=1127	 DONE
+23/10/2025 17:58:07:	move motor	S18.auxiliary.Robot Diagonal to 65263.157890um	 DONE
+23/10/2025 17:58:14:	16	count	time	5.000000s/cts	O Det=406	H Det=292	Mon Det=12345	Aux Det=476	O+H=1174	 DONE
+23/10/2025 17:58:21:	move motor	S18.auxiliary.Robot Diagonal to 68947.368416um	STOPPED BY USER	23/10/2025 17:58:28:	close file and end scan	 DONE

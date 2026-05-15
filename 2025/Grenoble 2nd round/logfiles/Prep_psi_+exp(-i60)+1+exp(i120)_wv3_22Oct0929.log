@@ -1,0 +1,11 @@
+22/10/2025 09:29:57:	start execution of script D:\data\Cycle 198\exp_3-16-19\rawdata\sc\Prep_psi_+exp(-i60)+1+exp(i120)_wv3.sc	 DONE
+22/10/2025 09:29:58:	move motor	S18.auxiliary.Robot Z to 207413.00000um	reached 207412.00000  DONE
+call of robot_Zout_doubleCd.sc DONE
+22/10/2025 09:30:01:	move motor	S18.axis2.phaseshifter 1 to 0.00000deg	reached -0.01099  DONE
+22/10/2025 09:30:04:	move motor	S18.axis2.phaseshifter 2 to 0.00000deg	reached 0.00000  DONE
+call of Move_PS12_parallel.sc DONE
+22/10/2025 09:30:09:	move motor	S18.axis2.phaseshifter 1 to -1.400000deg	 DONE
+22/10/2025 09:30:11:	create file	D:\data\Cycle 198\exp_3-16-19\rawdata\sc\Prep_psi_+exp(-i60)+1+exp(i120)_wv3_22Oct0930.dat	 DONE
+room to enter remarks DONE
+22/10/2025 09:30:12:	move motor	S18.axis2.phaseshifter 1 to -1.300000deg	 DONE
+22/10/2025 09:30:13:	1	count	time	5.000000s/cts	O Det=3	H Det=8	Mon Det=239	Aux Det=29	O+H=40	STOPPED BY USER	22/10/2025 09:30:15:	close file and end scan	 DONE

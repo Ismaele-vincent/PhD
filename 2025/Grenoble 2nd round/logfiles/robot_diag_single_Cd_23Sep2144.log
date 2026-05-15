@@ -1,0 +1,17 @@
+23/09/2025 21:44:19:	start execution of script D:\data\Cycle 198\exp_3-16-19\rawdata\sc\robot_diag_single_Cd.sc	 DONE
+23/09/2025 21:44:20:	move motor	S18.auxiliary.Robot Z to 86289.00000um	reached 86285.00000  DONE
+call of robot_Zout.sc DONE
+23/09/2025 21:44:30:	move motor	S18.auxiliary.Robot rot big to 0.00000deg	reached 0.00000  DONE
+23/09/2025 21:44:32:	move motor	S18.auxiliary.Robot Z to 215337.00000um	reached 215337.00000  DONE
+call of robot_Zin.sc DONE
+23/09/2025 21:44:42:	move motor	S18.auxiliary.Robot Diagonal to -60926.100000um	 DONE
+23/09/2025 21:44:48:	create file	D:\data\Cycle 198\exp_3-16-19\rawdata\sc\robot_diag_single_Cd_23Sep2144.dat	 DONE
+room to enter remarks DONE
+23/09/2025 21:44:49:	move motor	S18.auxiliary.Robot Diagonal to -60926.000000um	 DONE
+23/09/2025 21:44:55:	1	count	time	2.000000s/cts	O Det=0	H Det=0	Mon Det=0	Aux Det=1	O+H=1	 DONE
+23/09/2025 21:44:59:	move motor	S18.auxiliary.Robot Diagonal to 2242.831168um	 DONE
+23/09/2025 21:45:04:	2	count	time	2.000000s/cts	O Det=0	H Det=0	Mon Det=0	Aux Det=0	O+H=0	 DONE
+23/09/2025 21:45:08:	move motor	S18.auxiliary.Robot Diagonal to 65411.662336um	 DONE
+23/09/2025 21:45:14:	3	count	time	2.000000s/cts	O Det=0	H Det=0	Mon Det=0	Aux Det=1	O+H=1	 DONE
+23/09/2025 21:45:17:	close file and end scan	 DONE
+23/09/2025 21:45:18:	END OF SCRIPT	 DONE

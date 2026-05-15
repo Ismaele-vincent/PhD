@@ -1,0 +1,58 @@
+START	standard		
+CALL	robot_Zout_doubleCd.sc
+MS	S18.auxiliary.Robot rot big	1	deg	absolute	90.00000
+MS	S18.auxiliary.Robot Diagonal	1	um	absolute	-25000.00000
+CALL	robot_Zin_doubleCd.sc
+M	S18.auxiliary.Robot Diagonal	um	-25510.304076	FALSE
+F	D:\data\Cycle 198\exp_3-16-19\rawdata\sc\*.dat
+R	room to enter remarks
+M	S18.auxiliary.Robot Diagonal	um	-25510.204076	FALSE
+C	time	20.000000
+M	S18.auxiliary.Robot Diagonal	um	-22857.142852	FALSE
+C	time	20.000000
+M	S18.auxiliary.Robot Diagonal	um	-20204.081628	FALSE
+C	time	20.000000
+M	S18.auxiliary.Robot Diagonal	um	-17551.020404	FALSE
+C	time	20.000000
+M	S18.auxiliary.Robot Diagonal	um	-14897.959180	FALSE
+C	time	20.000000
+M	S18.auxiliary.Robot Diagonal	um	-12244.897956	FALSE
+C	time	20.000000
+M	S18.auxiliary.Robot Diagonal	um	-9591.836732	FALSE
+C	time	20.000000
+M	S18.auxiliary.Robot Diagonal	um	-6938.775508	FALSE
+C	time	20.000000
+M	S18.auxiliary.Robot Diagonal	um	-4285.714284	FALSE
+C	time	20.000000
+M	S18.auxiliary.Robot Diagonal	um	-1632.653060	FALSE
+C	time	20.000000
+M	S18.auxiliary.Robot Diagonal	um	1020.408164	FALSE
+C	time	20.000000
+M	S18.auxiliary.Robot Diagonal	um	3673.469388	FALSE
+C	time	20.000000
+M	S18.auxiliary.Robot Diagonal	um	6326.530612	FALSE
+C	time	20.000000
+M	S18.auxiliary.Robot Diagonal	um	8979.591836	FALSE
+C	time	20.000000
+M	S18.auxiliary.Robot Diagonal	um	11632.653060	FALSE
+C	time	20.000000
+M	S18.auxiliary.Robot Diagonal	um	14285.714284	FALSE
+C	time	20.000000
+M	S18.auxiliary.Robot Diagonal	um	16938.775508	FALSE
+C	time	20.000000
+M	S18.auxiliary.Robot Diagonal	um	19591.836732	FALSE
+C	time	20.000000
+M	S18.auxiliary.Robot Diagonal	um	22244.897956	FALSE
+C	time	20.000000
+M	S18.auxiliary.Robot Diagonal	um	24897.959180	FALSE
+C	time	20.000000
+M	S18.auxiliary.Robot Diagonal	um	27551.020404	FALSE
+C	time	20.000000
+M	S18.auxiliary.Robot Diagonal	um	30204.081628	FALSE
+C	time	20.000000
+M	S18.auxiliary.Robot Diagonal	um	32857.142852	FALSE
+C	time	20.000000
+M	S18.auxiliary.Robot Diagonal	um	35510.204076	FALSE
+C	time	20.000000
+E
+END

@@ -1,0 +1,16 @@
+09/10/2025 14:46:28:	start execution of script D:\data\Cycle 198\exp_3-16-19\rawdata\sc\ifg_wv1_psi_+1+1+1.sc	 DONE
+09/10/2025 14:46:29:	create file	D:\data\Cycle 198\exp_3-16-19\rawdata\sc\ifg_wv1_psi_+1+1+1_09Oct1446.dat	 DONE
+room to enter remarks DONE
+09/10/2025 14:46:30:	MOVE MOTOR REL	S18.axis2.phaseshifter 1	deg	0	FALSE DONE
+09/10/2025 14:46:33:	1	count	time	30.0s/cts	O Det=4339	H Det=4304	Mon Det=92058	Aux Det=5040	O+H=13683	 DONE
+09/10/2025 14:47:05:	MOVE MOTOR REL	S18.axis2.phaseshifter 1	deg	0.1	FALSE DONE
+09/10/2025 14:47:09:	2	count	time	30.0s/cts	O Det=3166	H Det=4696	Mon Det=92137	Aux Det=5908	O+H=13770	 DONE
+09/10/2025 14:47:40:	MOVE MOTOR REL	S18.axis2.phaseshifter 1	deg	0.1	FALSE DONE
+09/10/2025 14:47:44:	3	count	time	30.0s/cts	O Det=2130	H Det=4536	Mon Det=92214	Aux Det=7720	O+H=14386	 DONE
+09/10/2025 14:48:16:	MOVE MOTOR REL	S18.axis2.phaseshifter 1	deg	0.1	FALSE DONE
+09/10/2025 14:48:19:	4	count	time	30.0s/cts	O Det=1295	H Det=3908	Mon Det=92078	Aux Det=10503	O+H=15706	 DONE
+09/10/2025 14:48:51:	MOVE MOTOR REL	S18.axis2.phaseshifter 1	deg	0.1	FALSE DONE
+09/10/2025 14:48:54:	5	count	time	30.0s/cts	O Det=1234	H Det=3084	Mon Det=92413	Aux Det=12113	O+H=16431	 DONE
+09/10/2025 14:49:26:	MOVE MOTOR REL	S18.axis2.phaseshifter 1	deg	0.1	FALSE DONE
+09/10/2025 14:49:30:	6	count	time	30.0s/cts	O Det=1141	H Det=1735	Mon Det=68342	Aux Det=9686	O+H=12562	STOPPED BY USER	09/10/2025 14:49:53:	close file and end scan	 DONE
+call of ifg1MR_newPS_2p30s_0.sc DONE

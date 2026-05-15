@@ -1,0 +1,23 @@
+28/09/2025 18:21:41:	start execution of script D:\data\Cycle 198\exp_3-16-19\rawdata\sc\Aperture_scan_ifg1_3p30s.sc	 DONE
+28/09/2025 18:21:41:	move motor	S18.axis2.Aperture Z to 10.00000mm	reached 10.00000  DONE
+call of Move_aparture_Z10.sc DONE
+28/09/2025 18:21:46:	move motor	S18.axis2.Aperture Y to 15.00000mm	reached 15.00000  DONE
+call of Move_aparture_Y15.sc DONE
+28/09/2025 18:21:53:	move motor	S18.axis2.phaseshifter 2 to -3.100000deg	 DONE
+28/09/2025 18:21:56:	create file	D:\data\Cycle 198\exp_3-16-19\rawdata\sc\Aperture_scan_ifg1_3p30s_28Sep1821.dat	 DONE
+room to enter remarks DONE
+28/09/2025 18:21:57:	read encoder	S18.axis2.Aperture Y		15.000000 DONE
+28/09/2025 18:21:58:	read encoder	S18.axis2.Aperture Z		10.000000 DONE
+28/09/2025 18:21:59:	move motor	S18.axis2.phaseshifter 2 to -3.000000deg	 DONE
+28/09/2025 18:22:00:	1	count	time	10.000000s/cts	O Det=505	H Det=249	Mon Det=22843	Aux Det=467	O+H=1221	 DONE
+28/09/2025 18:22:12:	move motor	S18.axis2.phaseshifter 2 to -2.800000deg	 DONE
+28/09/2025 18:22:14:	2	count	time	10.000000s/cts	O Det=431	H Det=339	Mon Det=22831	Aux Det=453	O+H=1223	 DONE
+28/09/2025 18:22:25:	move motor	S18.axis2.phaseshifter 2 to -2.600000deg	 DONE
+28/09/2025 18:22:27:	3	count	time	10.000000s/cts	O Det=322	H Det=405	Mon Det=22982	Aux Det=492	O+H=1219	 DONE
+28/09/2025 18:22:39:	move motor	S18.axis2.phaseshifter 2 to -2.400000deg	 DONE
+28/09/2025 18:22:40:	4	count	time	10.000000s/cts	O Det=182	H Det=524	Mon Det=22901	Aux Det=441	O+H=1147	 DONE
+28/09/2025 18:22:52:	move motor	S18.axis2.phaseshifter 2 to -2.200000deg	 DONE
+28/09/2025 18:22:54:	5	count	time	10.000000s/cts	O Det=126	H Det=624	Mon Det=23122	Aux Det=443	O+H=1193	 DONE
+28/09/2025 18:23:06:	move motor	S18.axis2.phaseshifter 2 to -2.000000deg	STOPPED BY USER	28/09/2025 18:23:07:	close file and end scan	 DONE
+call of ifg2_3p30s_B1_ap.sc DONE
+28/09/2025 18:23:08:	move motor	S18.axis2.Aperture Y to 18.00000mm	reached 18.00000  DONE

@@ -1,0 +1,66 @@
+START	standard		
+M	S18.axis2.phaseshifter 1	deg	-0.600000	FALSE
+F	D:\data\Cycle 198\exp_3-16-19\rawdata\sc\*.dat
+R	room to enter remarks
+M	S18.axis2.phaseshifter 1	deg	-0.500000	FALSE
+C	time	30.000000
+M	S18.axis2.phaseshifter 1	deg	-0.431034	FALSE
+C	time	30.000000
+M	S18.axis2.phaseshifter 1	deg	-0.362068	FALSE
+C	time	30.000000
+M	S18.axis2.phaseshifter 1	deg	-0.293102	FALSE
+C	time	30.000000
+M	S18.axis2.phaseshifter 1	deg	-0.224136	FALSE
+C	time	30.000000
+M	S18.axis2.phaseshifter 1	deg	-0.155170	FALSE
+C	time	30.000000
+M	S18.axis2.phaseshifter 1	deg	-0.086204	FALSE
+C	time	30.000000
+M	S18.axis2.phaseshifter 1	deg	-0.017238	FALSE
+C	time	30.000000
+M	S18.axis2.phaseshifter 1	deg	0.051728	FALSE
+C	time	30.000000
+M	S18.axis2.phaseshifter 1	deg	0.120694	FALSE
+C	time	30.000000
+M	S18.axis2.phaseshifter 1	deg	0.189660	FALSE
+C	time	30.000000
+M	S18.axis2.phaseshifter 1	deg	0.258626	FALSE
+C	time	30.000000
+M	S18.axis2.phaseshifter 1	deg	0.327592	FALSE
+C	time	30.000000
+M	S18.axis2.phaseshifter 1	deg	0.396558	FALSE
+C	time	30.000000
+M	S18.axis2.phaseshifter 1	deg	0.465524	FALSE
+C	time	30.000000
+M	S18.axis2.phaseshifter 1	deg	0.534490	FALSE
+C	time	30.000000
+M	S18.axis2.phaseshifter 1	deg	0.603456	FALSE
+C	time	30.000000
+M	S18.axis2.phaseshifter 1	deg	0.672422	FALSE
+C	time	30.000000
+M	S18.axis2.phaseshifter 1	deg	0.741388	FALSE
+C	time	30.000000
+M	S18.axis2.phaseshifter 1	deg	0.810354	FALSE
+C	time	30.000000
+M	S18.axis2.phaseshifter 1	deg	0.879320	FALSE
+C	time	30.000000
+M	S18.axis2.phaseshifter 1	deg	0.948286	FALSE
+C	time	30.000000
+M	S18.axis2.phaseshifter 1	deg	1.017252	FALSE
+C	time	30.000000
+M	S18.axis2.phaseshifter 1	deg	1.086218	FALSE
+C	time	30.000000
+M	S18.axis2.phaseshifter 1	deg	1.155184	FALSE
+C	time	30.000000
+M	S18.axis2.phaseshifter 1	deg	1.224150	FALSE
+C	time	30.000000
+M	S18.axis2.phaseshifter 1	deg	1.293116	FALSE
+C	time	30.000000
+M	S18.axis2.phaseshifter 1	deg	1.362082	FALSE
+C	time	30.000000
+M	S18.axis2.phaseshifter 1	deg	1.431048	FALSE
+C	time	30.000000
+M	S18.axis2.phaseshifter 1	deg	1.500014	FALSE
+C	time	30.000000
+E
+END

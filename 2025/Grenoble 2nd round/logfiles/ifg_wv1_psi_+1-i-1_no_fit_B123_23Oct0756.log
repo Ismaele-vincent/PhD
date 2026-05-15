@@ -1,0 +1,237 @@
+23/10/2025 07:56:58:	start execution of script D:\data\Cycle 198\exp_3-16-19\rawdata\sc\ifg_wv1_psi_+1-i-1_no_fit_B123.sc	 DONE
+23/10/2025 07:56:59:	move motor	S18.auxiliary.Robot Z to 292012.00000um	reached 292008.00000  DONE
+call of robot_Zin_doubleCd.sc DONE
+23/10/2025 07:57:06:	create file	D:\data\Cycle 198\exp_3-16-19\rawdata\sc\ifg_wv1_psi_+1-i-1_no_fit_B123_B1_23Oct0757.dat	 DONE
+23/10/2025 07:57:07:	create file	D:\data\Cycle 198\exp_3-16-19\rawdata\sc\ifg_wv1_psi_+1-i-1_no_fit_B123_B2_23Oct0757.dat	 DONE
+23/10/2025 07:57:07:	create file	D:\data\Cycle 198\exp_3-16-19\rawdata\sc\ifg_wv1_psi_+1-i-1_no_fit_B123_B3_23Oct0757.dat	 DONE
+room to enter remarks DONE
+23/10/2025 07:57:08:	MOVE MOTOR REL	S18.axis2.phaseshifter 2	deg	-0.51958	FALSE DONE
+23/10/2025 07:57:12:	move motor	S18.auxiliary.Robot Diagonal to 90000.000000mm	 DONE
+23/10/2025 07:57:52:	1	count	time	20.000000s/cts	O Det=1146	H Det=1074	Mon Det=48953	Aux Det=5818	O+H=8038	 DONE
+23/10/2025 07:58:14:	move motor	S18.auxiliary.Robot Diagonal to 0.000000mm	 DONE
+23/10/2025 07:58:54:	2	count	time	20.000000s/cts	O Det=1990	H Det=916	Mon Det=49321	Aux Det=3898	O+H=6804	 DONE
+23/10/2025 07:59:16:	move motor	S18.auxiliary.Robot Diagonal to -23000.000000mm	 DONE
+23/10/2025 07:59:28:	3	count	time	20.000000s/cts	O Det=1179	H Det=1575	Mon Det=49520	Aux Det=1967	O+H=4721	 DONE
+23/10/2025 07:59:50:	MOVE MOTOR REL	S18.axis2.phaseshifter 2	deg	0.06495	FALSE DONE
+23/10/2025 07:59:53:	move motor	S18.auxiliary.Robot Diagonal to -23000.000000mm	 DONE
+23/10/2025 07:59:56:	4	count	time	20.000000s/cts	O Det=1414	H Det=1426	Mon Det=49536	Aux Det=2053	O+H=4893	 DONE
+23/10/2025 08:00:18:	move motor	S18.auxiliary.Robot Diagonal to 0.000000mm	 DONE
+23/10/2025 08:00:30:	5	count	time	20.000000s/cts	O Det=1921	H Det=1040	Mon Det=49251	Aux Det=3825	O+H=6786	 DONE
+23/10/2025 08:00:52:	move motor	S18.auxiliary.Robot Diagonal to 90000.000000mm	 DONE
+23/10/2025 08:01:32:	6	count	time	20.000000s/cts	O Det=1217	H Det=1052	Mon Det=49308	Aux Det=5992	O+H=8261	 DONE
+23/10/2025 08:01:54:	MOVE MOTOR REL	S18.axis2.phaseshifter 2	deg	0.06495	FALSE DONE
+23/10/2025 08:01:57:	move motor	S18.auxiliary.Robot Diagonal to 90000.000000mm	 DONE
+23/10/2025 08:02:00:	7	count	time	20.000000s/cts	O Det=1108	H Det=1130	Mon Det=49370	Aux Det=5988	O+H=8226	 DONE
+23/10/2025 08:02:22:	move motor	S18.auxiliary.Robot Diagonal to 0.000000mm	 DONE
+23/10/2025 08:03:02:	8	count	time	20.000000s/cts	O Det=1572	H Det=1336	Mon Det=49056	Aux Det=3775	O+H=6683	 DONE
+23/10/2025 08:03:24:	move motor	S18.auxiliary.Robot Diagonal to -23000.000000mm	 DONE
+23/10/2025 08:03:36:	9	count	time	20.000000s/cts	O Det=1709	H Det=1271	Mon Det=49167	Aux Det=1979	O+H=4959	 DONE
+23/10/2025 08:03:58:	MOVE MOTOR REL	S18.axis2.phaseshifter 2	deg	0.06495	FALSE DONE
+23/10/2025 08:04:01:	move motor	S18.auxiliary.Robot Diagonal to -23000.000000mm	 DONE
+23/10/2025 08:04:04:	10	count	time	20.000000s/cts	O Det=1832	H Det=1043	Mon Det=48885	Aux Det=1965	O+H=4840	 DONE
+23/10/2025 08:04:26:	move motor	S18.auxiliary.Robot Diagonal to 0.000000mm	 DONE
+23/10/2025 08:04:38:	11	count	time	20.000000s/cts	O Det=1485	H Det=1350	Mon Det=49316	Aux Det=3802	O+H=6637	 DONE
+23/10/2025 08:05:00:	move motor	S18.auxiliary.Robot Diagonal to 90000.000000mm	 DONE
+23/10/2025 08:05:40:	12	count	time	20.000000s/cts	O Det=1173	H Det=1084	Mon Det=48846	Aux Det=6000	O+H=8257	 DONE
+23/10/2025 08:06:02:	MOVE MOTOR REL	S18.axis2.phaseshifter 2	deg	0.06495	FALSE DONE
+23/10/2025 08:06:05:	move motor	S18.auxiliary.Robot Diagonal to 90000.000000mm	 DONE
+23/10/2025 08:06:08:	13	count	time	20.000000s/cts	O Det=1164	H Det=1106	Mon Det=49001	Aux Det=5907	O+H=8177	 DONE
+23/10/2025 08:06:30:	move motor	S18.auxiliary.Robot Diagonal to 0.000000mm	 DONE
+23/10/2025 08:07:10:	14	count	time	20.000000s/cts	O Det=1194	H Det=1710	Mon Det=49240	Aux Det=3899	O+H=6803	 DONE
+23/10/2025 08:07:32:	move motor	S18.auxiliary.Robot Diagonal to -23000.000000mm	 DONE
+23/10/2025 08:07:44:	15	count	time	20.000000s/cts	O Det=2028	H Det=937	Mon Det=49152	Aux Det=1975	O+H=4940	 DONE
+23/10/2025 08:08:06:	MOVE MOTOR REL	S18.axis2.phaseshifter 2	deg	0.06495	FALSE DONE
+23/10/2025 08:08:09:	move motor	S18.auxiliary.Robot Diagonal to -23000.000000mm	 DONE
+23/10/2025 08:08:12:	16	count	time	20.000000s/cts	O Det=1963	H Det=984	Mon Det=49311	Aux Det=1997	O+H=4944	 DONE
+23/10/2025 08:08:34:	move motor	S18.auxiliary.Robot Diagonal to 0.000000mm	 DONE
+23/10/2025 08:08:46:	17	count	time	20.000000s/cts	O Det=881	H Det=1902	Mon Det=49242	Aux Det=3725	O+H=6508	 DONE
+23/10/2025 08:09:08:	move motor	S18.auxiliary.Robot Diagonal to 90000.000000mm	 DONE
+23/10/2025 08:09:48:	18	count	time	20.000000s/cts	O Det=1022	H Det=1011	Mon Det=49079	Aux Det=6128	O+H=8161	 DONE
+23/10/2025 08:10:10:	MOVE MOTOR REL	S18.axis2.phaseshifter 2	deg	0.06495	FALSE DONE
+23/10/2025 08:10:13:	move motor	S18.auxiliary.Robot Diagonal to 90000.000000mm	 DONE
+23/10/2025 08:10:16:	19	count	time	20.000000s/cts	O Det=1029	H Det=987	Mon Det=49324	Aux Det=6119	O+H=8135	 DONE
+23/10/2025 08:10:38:	move motor	S18.auxiliary.Robot Diagonal to 0.000000mm	 DONE
+23/10/2025 08:11:18:	20	count	time	20.000000s/cts	O Det=753	H Det=2013	Mon Det=48993	Aux Det=3831	O+H=6597	 DONE
+23/10/2025 08:11:40:	move motor	S18.auxiliary.Robot Diagonal to -23000.000000mm	 DONE
+23/10/2025 08:11:52:	21	count	time	20.000000s/cts	O Det=1764	H Det=1116	Mon Det=49361	Aux Det=2005	O+H=4885	 DONE
+23/10/2025 08:12:14:	MOVE MOTOR REL	S18.axis2.phaseshifter 2	deg	0.06495	FALSE DONE
+23/10/2025 08:12:17:	move motor	S18.auxiliary.Robot Diagonal to -23000.000000mm	 DONE
+23/10/2025 08:12:20:	22	count	time	20.000000s/cts	O Det=1620	H Det=1282	Mon Det=49472	Aux Det=2104	O+H=5006	 DONE
+23/10/2025 08:12:42:	move motor	S18.auxiliary.Robot Diagonal to 0.000000mm	 DONE
+23/10/2025 08:12:54:	23	count	time	20.000000s/cts	O Det=457	H Det=2250	Mon Det=48952	Aux Det=3950	O+H=6657	 DONE
+23/10/2025 08:13:16:	move motor	S18.auxiliary.Robot Diagonal to 90000.000000mm	 DONE
+23/10/2025 08:13:56:	24	count	time	20.000000s/cts	O Det=998	H Det=991	Mon Det=49039	Aux Det=6302	O+H=8291	 DONE
+23/10/2025 08:14:18:	MOVE MOTOR REL	S18.axis2.phaseshifter 2	deg	0.06495	FALSE DONE
+23/10/2025 08:14:21:	move motor	S18.auxiliary.Robot Diagonal to 90000.000000mm	 DONE
+23/10/2025 08:14:24:	25	count	time	20.000000s/cts	O Det=1131	H Det=1096	Mon Det=48928	Aux Det=6051	O+H=8278	 DONE
+23/10/2025 08:14:46:	move motor	S18.auxiliary.Robot Diagonal to 0.000000mm	 DONE
+23/10/2025 08:15:26:	26	count	time	20.000000s/cts	O Det=408	H Det=2287	Mon Det=49131	Aux Det=3752	O+H=6447	 DONE
+23/10/2025 08:15:48:	move motor	S18.auxiliary.Robot Diagonal to -23000.000000mm	 DONE
+23/10/2025 08:16:00:	27	count	time	20.000000s/cts	O Det=912	H Det=1805	Mon Det=49151	Aux Det=2035	O+H=4752	 DONE
+23/10/2025 08:16:22:	MOVE MOTOR REL	S18.axis2.phaseshifter 2	deg	0.06495	FALSE DONE
+23/10/2025 08:16:25:	move motor	S18.auxiliary.Robot Diagonal to -23000.000000mm	 DONE
+23/10/2025 08:16:28:	28	count	time	20.000000s/cts	O Det=607	H Det=2072	Mon Det=48978	Aux Det=1978	O+H=4657	 DONE
+23/10/2025 08:16:50:	move motor	S18.auxiliary.Robot Diagonal to 0.000000mm	 DONE
+23/10/2025 08:17:02:	29	count	time	20.000000s/cts	O Det=529	H Det=2263	Mon Det=49169	Aux Det=3707	O+H=6499	 DONE
+23/10/2025 08:17:24:	move motor	S18.auxiliary.Robot Diagonal to 90000.000000mm	 DONE
+23/10/2025 08:18:04:	30	count	time	20.000000s/cts	O Det=1207	H Det=1154	Mon Det=48978	Aux Det=5711	O+H=8072	 DONE
+23/10/2025 08:18:26:	MOVE MOTOR REL	S18.axis2.phaseshifter 2	deg	0.06495	FALSE DONE
+23/10/2025 08:18:30:	move motor	S18.auxiliary.Robot Diagonal to 90000.000000mm	 DONE
+23/10/2025 08:18:33:	31	count	time	20.000000s/cts	O Det=1216	H Det=1130	Mon Det=49197	Aux Det=5626	O+H=7972	 DONE
+23/10/2025 08:18:54:	move motor	S18.auxiliary.Robot Diagonal to 0.000000mm	 DONE
+23/10/2025 08:19:35:	32	count	time	20.000000s/cts	O Det=875	H Det=1859	Mon Det=49135	Aux Det=3770	O+H=6504	 DONE
+23/10/2025 08:19:56:	move motor	S18.auxiliary.Robot Diagonal to -23000.000000mm	 DONE
+23/10/2025 08:20:08:	33	count	time	20.000000s/cts	O Det=502	H Det=2308	Mon Det=49029	Aux Det=1937	O+H=4747	 DONE
+23/10/2025 08:20:30:	MOVE MOTOR REL	S18.axis2.phaseshifter 2	deg	0.06495	FALSE DONE
+23/10/2025 08:20:34:	move motor	S18.auxiliary.Robot Diagonal to -23000.000000mm	 DONE
+23/10/2025 08:20:37:	34	count	time	20.000000s/cts	O Det=364	H Det=2294	Mon Det=48972	Aux Det=2023	O+H=4681	 DONE
+23/10/2025 08:20:58:	move motor	S18.auxiliary.Robot Diagonal to 0.000000mm	 DONE
+23/10/2025 08:21:10:	35	count	time	20.000000s/cts	O Det=953	H Det=1879	Mon Det=49021	Aux Det=3732	O+H=6564	 DONE
+23/10/2025 08:21:32:	move motor	S18.auxiliary.Robot Diagonal to 90000.000000mm	 DONE
+23/10/2025 08:22:12:	36	count	time	20.000000s/cts	O Det=1179	H Det=1111	Mon Det=49224	Aux Det=5757	O+H=8047	 DONE
+23/10/2025 08:22:34:	MOVE MOTOR REL	S18.axis2.phaseshifter 2	deg	0.06495	FALSE DONE
+23/10/2025 08:22:38:	move motor	S18.auxiliary.Robot Diagonal to 90000.000000mm	 DONE
+23/10/2025 08:22:41:	37	count	time	20.000000s/cts	O Det=1189	H Det=1099	Mon Det=49046	Aux Det=5694	O+H=7982	 DONE
+23/10/2025 08:23:02:	move motor	S18.auxiliary.Robot Diagonal to 0.000000mm	 DONE
+23/10/2025 08:23:43:	38	count	time	20.000000s/cts	O Det=1260	H Det=1585	Mon Det=49161	Aux Det=3738	O+H=6583	 DONE
+23/10/2025 08:24:04:	move motor	S18.auxiliary.Robot Diagonal to -23000.000000mm	 DONE
+23/10/2025 08:24:17:	39	count	time	20.000000s/cts	O Det=331	H Det=2404	Mon Det=49123	Aux Det=1971	O+H=4706	 DONE
+23/10/2025 08:24:38:	MOVE MOTOR REL	S18.axis2.phaseshifter 2	deg	0.06495	FALSE DONE
+23/10/2025 08:24:42:	move motor	S18.auxiliary.Robot Diagonal to -23000.000000mm	 DONE
+23/10/2025 08:24:45:	40	count	time	20.000000s/cts	O Det=419	H Det=2301	Mon Det=49025	Aux Det=1948	O+H=4668	 DONE
+23/10/2025 08:25:06:	move motor	S18.auxiliary.Robot Diagonal to 0.000000mm	 DONE
+23/10/2025 08:25:19:	41	count	time	20.000000s/cts	O Det=1601	H Det=1241	Mon Det=49140	Aux Det=3712	O+H=6554	 DONE
+23/10/2025 08:25:40:	move motor	S18.auxiliary.Robot Diagonal to 90000.000000mm	 DONE
+23/10/2025 08:26:21:	42	count	time	20.000000s/cts	O Det=1145	H Det=1054	Mon Det=49296	Aux Det=5815	O+H=8014	 DONE
+23/10/2025 08:26:42:	MOVE MOTOR REL	S18.axis2.phaseshifter 2	deg	0.06495	FALSE DONE
+23/10/2025 08:26:46:	move motor	S18.auxiliary.Robot Diagonal to 90000.000000mm	 DONE
+23/10/2025 08:26:49:	43	count	time	20.000000s/cts	O Det=1164	H Det=1160	Mon Det=48806	Aux Det=5649	O+H=7973	 DONE
+23/10/2025 08:27:10:	move motor	S18.auxiliary.Robot Diagonal to 0.000000mm	 DONE
+23/10/2025 08:27:51:	44	count	time	20.000000s/cts	O Det=1704	H Det=1162	Mon Det=48957	Aux Det=3839	O+H=6705	 DONE
+23/10/2025 08:28:12:	move motor	S18.auxiliary.Robot Diagonal to -23000.000000mm	 DONE
+23/10/2025 08:28:25:	45	count	time	20.000000s/cts	O Det=556	H Det=2144	Mon Det=49603	Aux Det=2066	O+H=4766	 DONE
+23/10/2025 08:28:46:	MOVE MOTOR REL	S18.axis2.phaseshifter 2	deg	0.06495	FALSE DONE
+23/10/2025 08:28:50:	move motor	S18.auxiliary.Robot Diagonal to -23000.000000mm	 DONE
+23/10/2025 08:28:53:	46	count	time	20.000000s/cts	O Det=824	H Det=1926	Mon Det=49169	Aux Det=2043	O+H=4793	 DONE
+23/10/2025 08:29:14:	move motor	S18.auxiliary.Robot Diagonal to 0.000000mm	 DONE
+23/10/2025 08:29:27:	47	count	time	20.000000s/cts	O Det=1781	H Det=1044	Mon Det=49329	Aux Det=3719	O+H=6544	 DONE
+23/10/2025 08:29:48:	move motor	S18.auxiliary.Robot Diagonal to 90000.000000mm	 DONE
+23/10/2025 08:30:29:	48	count	time	20.000000s/cts	O Det=1137	H Det=1116	Mon Det=49097	Aux Det=5760	O+H=8013	 DONE
+23/10/2025 08:30:50:	MOVE MOTOR REL	S18.axis2.phaseshifter 2	deg	0.06495	FALSE DONE
+23/10/2025 08:30:54:	move motor	S18.auxiliary.Robot Diagonal to 90000.000000mm	 DONE
+23/10/2025 08:30:57:	49	count	time	20.000000s/cts	O Det=1116	H Det=1217	Mon Det=48694	Aux Det=5727	O+H=8060	 DONE
+23/10/2025 08:31:18:	move motor	S18.auxiliary.Robot Diagonal to 0.000000mm	 DONE
+23/10/2025 08:31:59:	50	count	time	20.000000s/cts	O Det=1871	H Det=998	Mon Det=49554	Aux Det=3802	O+H=6671	 DONE
+23/10/2025 08:32:20:	move motor	S18.auxiliary.Robot Diagonal to -23000.000000mm	 DONE
+23/10/2025 08:32:32:	51	count	time	20.000000s/cts	O Det=1256	H Det=1628	Mon Det=48929	Aux Det=1962	O+H=4846	 DONE
+23/10/2025 08:32:54:	MOVE MOTOR REL	S18.axis2.phaseshifter 2	deg	0.06495	FALSE DONE
+23/10/2025 08:32:58:	move motor	S18.auxiliary.Robot Diagonal to -23000.000000mm	 DONE
+23/10/2025 08:33:01:	52	count	time	20.000000s/cts	O Det=1521	H Det=1394	Mon Det=49392	Aux Det=2004	O+H=4919	 DONE
+23/10/2025 08:33:22:	move motor	S18.auxiliary.Robot Diagonal to 0.000000mm	 DONE
+23/10/2025 08:33:34:	53	count	time	20.000000s/cts	O Det=1871	H Det=1036	Mon Det=49596	Aux Det=3960	O+H=6867	 DONE
+23/10/2025 08:33:56:	move motor	S18.auxiliary.Robot Diagonal to 90000.000000mm	 DONE
+23/10/2025 08:34:37:	54	count	time	20.000000s/cts	O Det=1137	H Det=1134	Mon Det=49003	Aux Det=5700	O+H=7971	 DONE
+23/10/2025 08:34:58:	MOVE MOTOR REL	S18.axis2.phaseshifter 2	deg	0.06495	FALSE DONE
+23/10/2025 08:35:02:	move motor	S18.auxiliary.Robot Diagonal to 90000.000000mm	 DONE
+23/10/2025 08:35:05:	55	count	time	20.000000s/cts	O Det=1214	H Det=1158	Mon Det=48324	Aux Det=5683	O+H=8055	 DONE
+23/10/2025 08:35:26:	move motor	S18.auxiliary.Robot Diagonal to 0.000000mm	 DONE
+23/10/2025 08:36:07:	56	count	time	20.000000s/cts	O Det=1577	H Det=1219	Mon Det=49465	Aux Det=3799	O+H=6595	 DONE
+23/10/2025 08:36:28:	move motor	S18.auxiliary.Robot Diagonal to -23000.000000mm	 DONE
+23/10/2025 08:36:41:	57	count	time	20.000000s/cts	O Det=1732	H Det=1081	Mon Det=49510	Aux Det=1954	O+H=4767	 DONE
+23/10/2025 08:37:02:	MOVE MOTOR REL	S18.axis2.phaseshifter 2	deg	0.06495	FALSE DONE
+23/10/2025 08:37:06:	move motor	S18.auxiliary.Robot Diagonal to -23000.000000mm	 DONE
+23/10/2025 08:37:09:	58	count	time	20.000000s/cts	O Det=1968	H Det=1030	Mon Det=49171	Aux Det=2053	O+H=5051	 DONE
+23/10/2025 08:37:30:	move motor	S18.auxiliary.Robot Diagonal to 0.000000mm	 DONE
+23/10/2025 08:37:43:	59	count	time	20.000000s/cts	O Det=1248	H Det=1591	Mon Det=49124	Aux Det=3717	O+H=6556	 DONE
+23/10/2025 08:38:04:	move motor	S18.auxiliary.Robot Diagonal to 90000.000000mm	 DONE
+23/10/2025 08:38:45:	60	count	time	20.000000s/cts	O Det=1149	H Det=1092	Mon Det=48784	Aux Det=5722	O+H=7963	 DONE
+23/10/2025 08:39:06:	MOVE MOTOR REL	S18.axis2.phaseshifter 2	deg	0.06495	FALSE DONE
+23/10/2025 08:39:10:	move motor	S18.auxiliary.Robot Diagonal to 90000.000000mm	 DONE
+23/10/2025 08:39:13:	61	count	time	20.000000s/cts	O Det=1183	H Det=1142	Mon Det=49337	Aux Det=5710	O+H=8035	 DONE
+23/10/2025 08:39:35:	move motor	S18.auxiliary.Robot Diagonal to 0.000000mm	 DONE
+23/10/2025 08:40:15:	62	count	time	20.000000s/cts	O Det=1153	H Det=1774	Mon Det=49044	Aux Det=3824	O+H=6751	 DONE
+23/10/2025 08:40:37:	move motor	S18.auxiliary.Robot Diagonal to -23000.000000mm	 DONE
+23/10/2025 08:40:49:	63	count	time	20.000000s/cts	O Det=1956	H Det=968	Mon Det=49056	Aux Det=2090	O+H=5014	 DONE
+23/10/2025 08:41:10:	MOVE MOTOR REL	S18.axis2.phaseshifter 2	deg	0.06495	FALSE DONE
+23/10/2025 08:41:14:	move motor	S18.auxiliary.Robot Diagonal to -23000.000000mm	 DONE
+23/10/2025 08:41:17:	64	count	time	20.000000s/cts	O Det=1815	H Det=1163	Mon Det=49121	Aux Det=2034	O+H=5012	 DONE
+23/10/2025 08:41:39:	move motor	S18.auxiliary.Robot Diagonal to 0.000000mm	 DONE
+23/10/2025 08:41:51:	65	count	time	20.000000s/cts	O Det=747	H Det=1996	Mon Det=49110	Aux Det=3861	O+H=6604	 DONE
+23/10/2025 08:42:12:	move motor	S18.auxiliary.Robot Diagonal to 90000.000000mm	 DONE
+23/10/2025 08:42:53:	66	count	time	20.000000s/cts	O Det=1137	H Det=1097	Mon Det=48974	Aux Det=5512	O+H=7746	 DONE
+23/10/2025 08:43:15:	MOVE MOTOR REL	S18.axis2.phaseshifter 2	deg	0.06495	FALSE DONE
+23/10/2025 08:43:18:	move motor	S18.auxiliary.Robot Diagonal to 90000.000000mm	 DONE
+23/10/2025 08:43:21:	67	count	time	20.000000s/cts	O Det=1189	H Det=1156	Mon Det=49107	Aux Det=5655	O+H=8000	 DONE
+23/10/2025 08:43:43:	move motor	S18.auxiliary.Robot Diagonal to 0.000000mm	 DONE
+23/10/2025 08:44:23:	68	count	time	20.000000s/cts	O Det=613	H Det=2156	Mon Det=49356	Aux Det=3729	O+H=6498	 DONE
+23/10/2025 08:44:45:	move motor	S18.auxiliary.Robot Diagonal to -23000.000000mm	 DONE
+23/10/2025 08:44:57:	69	count	time	20.000000s/cts	O Det=1483	H Det=1228	Mon Det=49168	Aux Det=2019	O+H=4730	 DONE
+23/10/2025 08:45:19:	MOVE MOTOR REL	S18.axis2.phaseshifter 2	deg	0.06495	FALSE DONE
+23/10/2025 08:45:22:	move motor	S18.auxiliary.Robot Diagonal to -23000.000000mm	 DONE
+23/10/2025 08:45:25:	70	count	time	20.000000s/cts	O Det=1247	H Det=1608	Mon Det=49396	Aux Det=1958	O+H=4813	 DONE
+23/10/2025 08:45:47:	move motor	S18.auxiliary.Robot Diagonal to 0.000000mm	 DONE
+23/10/2025 08:45:59:	71	count	time	20.000000s/cts	O Det=412	H Det=2259	Mon Det=49147	Aux Det=3738	O+H=6409	 DONE
+23/10/2025 08:46:20:	move motor	S18.auxiliary.Robot Diagonal to 90000.000000mm	 DONE
+23/10/2025 08:47:01:	72	count	time	20.000000s/cts	O Det=1212	H Det=1167	Mon Det=49462	Aux Det=5567	O+H=7946	 DONE
+23/10/2025 08:47:22:	MOVE MOTOR REL	S18.axis2.phaseshifter 2	deg	0.06495	FALSE DONE
+23/10/2025 08:47:26:	move motor	S18.auxiliary.Robot Diagonal to 90000.000000mm	 DONE
+23/10/2025 08:47:29:	73	count	time	20.000000s/cts	O Det=1177	H Det=1165	Mon Det=49831	Aux Det=5466	O+H=7808	 DONE
+23/10/2025 08:47:51:	move motor	S18.auxiliary.Robot Diagonal to 0.000000mm	 DONE
+23/10/2025 08:48:31:	74	count	time	20.000000s/cts	O Det=321	H Det=2357	Mon Det=49122	Aux Det=3729	O+H=6407	 DONE
+23/10/2025 08:48:53:	move motor	S18.auxiliary.Robot Diagonal to -23000.000000mm	 DONE
+23/10/2025 08:49:05:	75	count	time	20.000000s/cts	O Det=1007	H Det=1823	Mon Det=49699	Aux Det=1984	O+H=4814	 DONE
+23/10/2025 08:49:27:	MOVE MOTOR REL	S18.axis2.phaseshifter 2	deg	0.06495	FALSE DONE
+23/10/2025 08:49:30:	move motor	S18.auxiliary.Robot Diagonal to -23000.000000mm	 DONE
+23/10/2025 08:49:33:	76	count	time	20.000000s/cts	O Det=697	H Det=2095	Mon Det=49479	Aux Det=2032	O+H=4824	 DONE
+23/10/2025 08:49:55:	move motor	S18.auxiliary.Robot Diagonal to 0.000000mm	 DONE
+23/10/2025 08:50:07:	77	count	time	20.000000s/cts	O Det=457	H Det=2359	Mon Det=49088	Aux Det=3660	O+H=6476	 DONE
+23/10/2025 08:50:29:	move motor	S18.auxiliary.Robot Diagonal to 90000.000000mm	 DONE
+23/10/2025 08:51:09:	78	count	time	20.000000s/cts	O Det=1171	H Det=1089	Mon Det=49567	Aux Det=5586	O+H=7846	 DONE
+23/10/2025 08:51:31:	MOVE MOTOR REL	S18.axis2.phaseshifter 2	deg	0.06495	FALSE DONE
+23/10/2025 08:51:34:	move motor	S18.auxiliary.Robot Diagonal to 90000.000000mm	 DONE
+23/10/2025 08:51:37:	79	count	time	20.000000s/cts	O Det=1150	H Det=1104	Mon Det=49259	Aux Det=5481	O+H=7735	 DONE
+23/10/2025 08:51:59:	move motor	S18.auxiliary.Robot Diagonal to 0.000000mm	 DONE
+23/10/2025 08:52:39:	80	count	time	20.000000s/cts	O Det=660	H Det=2100	Mon Det=49065	Aux Det=3658	O+H=6418	 DONE
+23/10/2025 08:53:01:	move motor	S18.auxiliary.Robot Diagonal to -23000.000000mm	 DONE
+23/10/2025 08:53:13:	81	count	time	20.000000s/cts	O Det=421	H Det=2294	Mon Det=49129	Aux Det=2010	O+H=4725	 DONE
+23/10/2025 08:53:35:	MOVE MOTOR REL	S18.axis2.phaseshifter 2	deg	0.06495	FALSE DONE
+23/10/2025 08:53:38:	move motor	S18.auxiliary.Robot Diagonal to -23000.000000mm	 DONE
+23/10/2025 08:53:41:	82	count	time	20.000000s/cts	O Det=313	H Det=2361	Mon Det=49502	Aux Det=2015	O+H=4689	 DONE
+23/10/2025 08:54:03:	move motor	S18.auxiliary.Robot Diagonal to 0.000000mm	 DONE
+23/10/2025 08:54:15:	83	count	time	20.000000s/cts	O Det=934	H Det=1877	Mon Det=48975	Aux Det=3794	O+H=6605	 DONE
+23/10/2025 08:54:37:	move motor	S18.auxiliary.Robot Diagonal to 90000.000000mm	 DONE
+23/10/2025 08:55:17:	84	count	time	20.000000s/cts	O Det=1211	H Det=1148	Mon Det=49074	Aux Det=5598	O+H=7957	 DONE
+23/10/2025 08:55:39:	MOVE MOTOR REL	S18.axis2.phaseshifter 2	deg	0.06495	FALSE DONE
+23/10/2025 08:55:42:	move motor	S18.auxiliary.Robot Diagonal to 90000.000000mm	 DONE
+23/10/2025 08:55:45:	85	count	time	20.000000s/cts	O Det=1241	H Det=1165	Mon Det=49113	Aux Det=5614	O+H=8020	 DONE
+23/10/2025 08:56:07:	move motor	S18.auxiliary.Robot Diagonal to 0.000000mm	 DONE
+23/10/2025 08:56:47:	86	count	time	20.000000s/cts	O Det=1191	H Det=1620	Mon Det=49080	Aux Det=3704	O+H=6515	 DONE
+23/10/2025 08:57:09:	move motor	S18.auxiliary.Robot Diagonal to -23000.000000mm	 DONE
+23/10/2025 08:57:21:	87	count	time	20.000000s/cts	O Det=277	H Det=2323	Mon Det=49277	Aux Det=1935	O+H=4535	 DONE
+23/10/2025 08:57:43:	MOVE MOTOR REL	S18.axis2.phaseshifter 2	deg	0.06495	FALSE DONE
+23/10/2025 08:57:46:	move motor	S18.auxiliary.Robot Diagonal to -23000.000000mm	 DONE
+23/10/2025 08:57:49:	88	count	time	20.000000s/cts	O Det=409	H Det=2281	Mon Det=48938	Aux Det=2071	O+H=4761	 DONE
+23/10/2025 08:58:11:	move motor	S18.auxiliary.Robot Diagonal to 0.000000mm	 DONE
+23/10/2025 08:58:23:	89	count	time	20.000000s/cts	O Det=1587	H Det=1332	Mon Det=49471	Aux Det=3745	O+H=6664	 DONE
+23/10/2025 08:58:45:	move motor	S18.auxiliary.Robot Diagonal to 90000.000000mm	 DONE
+23/10/2025 08:59:25:	90	count	time	20.000000s/cts	O Det=1230	H Det=1171	Mon Det=48983	Aux Det=5465	O+H=7866	 DONE
+23/10/2025 08:59:47:	MOVE MOTOR REL	S18.axis2.phaseshifter 2	deg	0.06495	FALSE DONE
+23/10/2025 08:59:50:	move motor	S18.auxiliary.Robot Diagonal to 90000.000000mm	 DONE
+23/10/2025 08:59:53:	91	count	time	20.000000s/cts	O Det=1229	H Det=1176	Mon Det=49077	Aux Det=5561	O+H=7966	 DONE
+23/10/2025 09:00:15:	move motor	S18.auxiliary.Robot Diagonal to 0.000000mm	 DONE
+23/10/2025 09:00:55:	92	count	time	20.000000s/cts	O Det=1737	H Det=1102	Mon Det=49168	Aux Det=3785	O+H=6624	 DONE
+23/10/2025 09:01:17:	move motor	S18.auxiliary.Robot Diagonal to -23000.000000mm	 DONE
+23/10/2025 09:01:29:	93	count	time	20.000000s/cts	O Det=614	H Det=2137	Mon Det=49374	Aux Det=1969	O+H=4720	 DONE
+23/10/2025 09:01:51:	MOVE MOTOR REL	S18.axis2.phaseshifter 2	deg	0.06495	FALSE DONE
+23/10/2025 09:01:54:	move motor	S18.auxiliary.Robot Diagonal to -23000.000000mm	 DONE
+23/10/2025 09:01:57:	94	count	time	20.000000s/cts	O Det=952	H Det=1849	Mon Det=48859	Aux Det=2012	O+H=4813	 DONE
+23/10/2025 09:02:19:	move motor	S18.auxiliary.Robot Diagonal to 0.000000mm	 DONE
+23/10/2025 09:02:31:	95	count	time	20.000000s/cts	O Det=1927	H Det=1040	Mon Det=49324	Aux Det=3700	O+H=6667	 DONE
+23/10/2025 09:02:53:	move motor	S18.auxiliary.Robot Diagonal to 90000.000000mm	 DONE
+23/10/2025 09:03:33:	96	count	time	20.000000s/cts	O Det=1178	H Det=1111	Mon Det=49410	Aux Det=5579	O+H=7868	 DONE
+23/10/2025 09:03:55:	NO ACTION	 DONE
+23/10/2025 09:03:55:	close file and end scan	 DONE
+call of ifg2r_B123.sc DONE
+23/10/2025 09:03:56:	move motor	S18.auxiliary.Robot Z to 207413.00000um	reached 207407.00000  DONE
+call of robot_Zout_doubleCd.sc DONE
+23/10/2025 09:04:04:	END OF SCRIPT	 DONE

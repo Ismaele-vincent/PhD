@@ -1,0 +1,92 @@
+24/09/2025 23:25:34:	start execution of script D:\data\Cycle 198\exp_3-16-19\rawdata\sc\robot_diag_single_Cd_m30deg.sc	 DONE
+24/09/2025 23:25:35:	move motor	S18.auxiliary.Robot Z to 180398.00000um	reached 215069.00000  DONE
+call of robot_Zout_singleCd.sc DONE
+24/09/2025 23:25:38:	move motor	S18.auxiliary.Robot rot big to -30.00000deg	reached -30.00000  DONE
+24/09/2025 23:26:28:	move motor	S18.auxiliary.Robot Diagonal to -55000.00000um	reached -54997.15601  DONE
+24/09/2025 23:27:20:	move motor	S18.auxiliary.Robot Z to 213892.00000um	reached 215107.00000  DONE
+call of robot_Zin_singleCd.sc DONE
+24/09/2025 23:27:24:	move motor	S18.auxiliary.Robot Diagonal to -55000.100000um	 DONE
+24/09/2025 23:27:30:	create file	D:\data\Cycle 198\exp_3-16-19\rawdata\sc\robot_diag_single_Cd_m30deg_24Sep2327.dat	 DONE
+room to enter remarks DONE
+24/09/2025 23:27:31:	move motor	S18.auxiliary.Robot Diagonal to -55000.000000um	 DONE
+24/09/2025 23:27:37:	1	count	time	2.000000s/cts	O Det=2592	H Det=3221	Mon Det=4526	Aux Det=3971	O+H=9784	 DONE
+24/09/2025 23:27:41:	move motor	S18.auxiliary.Robot Diagonal to -52179.487179um	 DONE
+24/09/2025 23:27:48:	2	count	time	2.000000s/cts	O Det=2689	H Det=3106	Mon Det=4503	Aux Det=3697	O+H=9492	 DONE
+24/09/2025 23:27:51:	move motor	S18.auxiliary.Robot Diagonal to -49358.974358um	 DONE
+24/09/2025 23:27:58:	3	count	time	2.000000s/cts	O Det=3137	H Det=2410	Mon Det=4535	Aux Det=4033	O+H=9580	 DONE
+24/09/2025 23:28:02:	move motor	S18.auxiliary.Robot Diagonal to -46538.461537um	 DONE
+24/09/2025 23:28:09:	4	count	time	2.000000s/cts	O Det=2898	H Det=2588	Mon Det=4432	Aux Det=4750	O+H=10236	 DONE
+24/09/2025 23:28:13:	move motor	S18.auxiliary.Robot Diagonal to -43717.948716um	 DONE
+24/09/2025 23:28:20:	5	count	time	2.000000s/cts	O Det=2396	H Det=2361	Mon Det=4545	Aux Det=4285	O+H=9042	 DONE
+24/09/2025 23:28:24:	move motor	S18.auxiliary.Robot Diagonal to -40897.435895um	 DONE
+24/09/2025 23:28:31:	6	count	time	2.000000s/cts	O Det=3372	H Det=2229	Mon Det=4351	Aux Det=2971	O+H=8572	 DONE
+24/09/2025 23:28:34:	move motor	S18.auxiliary.Robot Diagonal to -38076.923074um	 DONE
+24/09/2025 23:28:42:	7	count	time	2.000000s/cts	O Det=2501	H Det=2585	Mon Det=4587	Aux Det=3200	O+H=8286	 DONE
+24/09/2025 23:28:45:	move motor	S18.auxiliary.Robot Diagonal to -35256.410253um	 DONE
+24/09/2025 23:28:52:	8	count	time	2.000000s/cts	O Det=2132	H Det=2488	Mon Det=4517	Aux Det=3220	O+H=7840	 DONE
+24/09/2025 23:28:56:	move motor	S18.auxiliary.Robot Diagonal to -32435.897432um	 DONE
+24/09/2025 23:29:03:	9	count	time	2.000000s/cts	O Det=1872	H Det=2411	Mon Det=4554	Aux Det=3106	O+H=7389	 DONE
+24/09/2025 23:29:07:	move motor	S18.auxiliary.Robot Diagonal to -29615.384611um	 DONE
+24/09/2025 23:29:14:	10	count	time	2.000000s/cts	O Det=1732	H Det=2143	Mon Det=4460	Aux Det=3006	O+H=6881	 DONE
+24/09/2025 23:29:18:	move motor	S18.auxiliary.Robot Diagonal to -26794.871790um	 DONE
+24/09/2025 23:29:25:	11	count	time	2.000000s/cts	O Det=1453	H Det=2028	Mon Det=4437	Aux Det=2582	O+H=6063	 DONE
+24/09/2025 23:29:28:	move motor	S18.auxiliary.Robot Diagonal to -23974.358969um	 DONE
+24/09/2025 23:29:35:	12	count	time	2.000000s/cts	O Det=1184	H Det=1940	Mon Det=4400	Aux Det=2054	O+H=5178	 DONE
+24/09/2025 23:29:39:	move motor	S18.auxiliary.Robot Diagonal to -21153.846148um	 DONE
+24/09/2025 23:29:46:	13	count	time	2.000000s/cts	O Det=1055	H Det=2105	Mon Det=4354	Aux Det=1595	O+H=4755	 DONE
+24/09/2025 23:29:50:	move motor	S18.auxiliary.Robot Diagonal to -18333.333327um	 DONE
+24/09/2025 23:29:57:	14	count	time	2.000000s/cts	O Det=1197	H Det=1824	Mon Det=4460	Aux Det=1218	O+H=4239	 DONE
+24/09/2025 23:30:01:	move motor	S18.auxiliary.Robot Diagonal to -15512.820506um	 DONE
+24/09/2025 23:30:08:	15	count	time	2.000000s/cts	O Det=1214	H Det=1734	Mon Det=4465	Aux Det=869	O+H=3817	 DONE
+24/09/2025 23:30:11:	move motor	S18.auxiliary.Robot Diagonal to -12692.307685um	 DONE
+24/09/2025 23:30:19:	16	count	time	2.000000s/cts	O Det=1283	H Det=1863	Mon Det=4593	Aux Det=635	O+H=3781	 DONE
+24/09/2025 23:30:22:	move motor	S18.auxiliary.Robot Diagonal to -9871.794864um	 DONE
+24/09/2025 23:30:29:	17	count	time	2.000000s/cts	O Det=1578	H Det=1725	Mon Det=4369	Aux Det=609	O+H=3912	 DONE
+24/09/2025 23:30:33:	move motor	S18.auxiliary.Robot Diagonal to -7051.282043um	 DONE
+24/09/2025 23:30:40:	18	count	time	2.000000s/cts	O Det=1316	H Det=2039	Mon Det=4646	Aux Det=705	O+H=4060	 DONE
+24/09/2025 23:30:44:	move motor	S18.auxiliary.Robot Diagonal to -4230.769222um	 DONE
+24/09/2025 23:30:51:	19	count	time	2.000000s/cts	O Det=1442	H Det=1862	Mon Det=4589	Aux Det=748	O+H=4052	 DONE
+24/09/2025 23:30:55:	move motor	S18.auxiliary.Robot Diagonal to -1410.256401um	 DONE
+24/09/2025 23:31:02:	20	count	time	2.000000s/cts	O Det=1517	H Det=1824	Mon Det=4553	Aux Det=749	O+H=4090	 DONE
+24/09/2025 23:31:05:	move motor	S18.auxiliary.Robot Diagonal to 1410.256420um	 DONE
+24/09/2025 23:31:13:	21	count	time	2.000000s/cts	O Det=1527	H Det=1777	Mon Det=4578	Aux Det=688	O+H=3992	 DONE
+24/09/2025 23:31:16:	move motor	S18.auxiliary.Robot Diagonal to 4230.769241um	 DONE
+24/09/2025 23:31:23:	22	count	time	2.000000s/cts	O Det=1515	H Det=1817	Mon Det=4532	Aux Det=716	O+H=4048	 DONE
+24/09/2025 23:31:27:	move motor	S18.auxiliary.Robot Diagonal to 7051.282062um	 DONE
+24/09/2025 23:31:34:	23	count	time	2.000000s/cts	O Det=1343	H Det=1643	Mon Det=4454	Aux Det=632	O+H=3618	 DONE
+24/09/2025 23:31:38:	move motor	S18.auxiliary.Robot Diagonal to 9871.794883um	 DONE
+24/09/2025 23:31:45:	24	count	time	2.000000s/cts	O Det=1159	H Det=1378	Mon Det=4577	Aux Det=613	O+H=3150	 DONE
+24/09/2025 23:31:49:	move motor	S18.auxiliary.Robot Diagonal to 12692.307704um	 DONE
+24/09/2025 23:31:56:	25	count	time	2.000000s/cts	O Det=962	H Det=1226	Mon Det=4604	Aux Det=836	O+H=3024	 DONE
+24/09/2025 23:31:59:	move motor	S18.auxiliary.Robot Diagonal to 15512.820525um	 DONE
+24/09/2025 23:32:06:	26	count	time	2.000000s/cts	O Det=977	H Det=977	Mon Det=4586	Aux Det=1066	O+H=3020	 DONE
+24/09/2025 23:32:12:	move motor	S18.auxiliary.Robot Diagonal to 18333.333346um	 DONE
+24/09/2025 23:32:19:	27	count	time	2.000000s/cts	O Det=1091	H Det=697	Mon Det=4409	Aux Det=1336	O+H=3124	 DONE
+24/09/2025 23:32:23:	move motor	S18.auxiliary.Robot Diagonal to 21153.846167um	 DONE
+24/09/2025 23:32:30:	28	count	time	2.000000s/cts	O Det=1328	H Det=754	Mon Det=4611	Aux Det=1839	O+H=3921	 DONE
+24/09/2025 23:32:33:	move motor	S18.auxiliary.Robot Diagonal to 23974.358988um	 DONE
+24/09/2025 23:32:40:	29	count	time	2.000000s/cts	O Det=1460	H Det=722	Mon Det=4586	Aux Det=2215	O+H=4397	 DONE
+24/09/2025 23:32:44:	move motor	S18.auxiliary.Robot Diagonal to 26794.871809um	 DONE
+24/09/2025 23:32:51:	30	count	time	2.000000s/cts	O Det=1889	H Det=994	Mon Det=4544	Aux Det=2408	O+H=5291	 DONE
+24/09/2025 23:32:55:	move motor	S18.auxiliary.Robot Diagonal to 29615.384630um	 DONE
+24/09/2025 23:33:02:	31	count	time	2.000000s/cts	O Det=1996	H Det=869	Mon Det=4520	Aux Det=2941	O+H=5806	 DONE
+24/09/2025 23:33:06:	move motor	S18.auxiliary.Robot Diagonal to 32435.897451um	 DONE
+24/09/2025 23:33:13:	32	count	time	2.000000s/cts	O Det=2364	H Det=1019	Mon Det=4573	Aux Det=2712	O+H=6095	 DONE
+24/09/2025 23:33:16:	move motor	S18.auxiliary.Robot Diagonal to 35256.410272um	 DONE
+24/09/2025 23:33:23:	33	count	time	2.000000s/cts	O Det=2714	H Det=1331	Mon Det=4501	Aux Det=2632	O+H=6677	 DONE
+24/09/2025 23:33:27:	move motor	S18.auxiliary.Robot Diagonal to 38076.923093um	 DONE
+24/09/2025 23:33:34:	34	count	time	2.000000s/cts	O Det=2950	H Det=1959	Mon Det=4427	Aux Det=2283	O+H=7192	 DONE
+24/09/2025 23:33:38:	move motor	S18.auxiliary.Robot Diagonal to 40897.435914um	 DONE
+24/09/2025 23:33:45:	35	count	time	2.000000s/cts	O Det=2084	H Det=1719	Mon Det=4444	Aux Det=3478	O+H=7281	 DONE
+24/09/2025 23:33:49:	move motor	S18.auxiliary.Robot Diagonal to 43717.948735um	 DONE
+24/09/2025 23:33:56:	36	count	time	2.000000s/cts	O Det=2134	H Det=1714	Mon Det=4502	Aux Det=3394	O+H=7242	 DONE
+24/09/2025 23:34:00:	move motor	S18.auxiliary.Robot Diagonal to 46538.461556um	 DONE
+24/09/2025 23:34:07:	37	count	time	2.000000s/cts	O Det=2340	H Det=1733	Mon Det=4355	Aux Det=3083	O+H=7156	 DONE
+24/09/2025 23:34:10:	move motor	S18.auxiliary.Robot Diagonal to 49358.974377um	 DONE
+24/09/2025 23:34:17:	38	count	time	2.000000s/cts	O Det=2484	H Det=2034	Mon Det=4478	Aux Det=2811	O+H=7329	 DONE
+24/09/2025 23:34:21:	move motor	S18.auxiliary.Robot Diagonal to 52179.487198um	 DONE
+24/09/2025 23:34:28:	39	count	time	2.000000s/cts	O Det=2302	H Det=1777	Mon Det=4483	Aux Det=2721	O+H=6800	 DONE
+24/09/2025 23:34:32:	move motor	S18.auxiliary.Robot Diagonal to 55000.000019um	 DONE
+24/09/2025 23:34:39:	40	count	time	2.000000s/cts	O Det=2168	H Det=2005	Mon Det=4544	Aux Det=2675	O+H=6848	 DONE
+24/09/2025 23:34:43:	close file and end scan	 DONE
+24/09/2025 23:34:43:	END OF SCRIPT	 DONE

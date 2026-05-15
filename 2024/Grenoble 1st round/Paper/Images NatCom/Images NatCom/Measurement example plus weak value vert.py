@@ -20,6 +20,11 @@ from scipy.optimize import curve_fit as fit
 a_1=1/2**0.5
 a_2=1/2**0.5
 sgn=1
+def fit_cos(x, A, B, C, D):
+    return A/2*(1+B*np.cos(C*x-D))
+colors=["k","#f10d0c","#00a933","#5983b0"]
+labels=["Intensity $I_+(\\frac{\pi}{2})$", "Intensity $I_-(0)$", "Intensity $I_-(\\frac{\pi}{2})$", "Intensity $I_+(0)$"]
+
 font_path = "/home/aaa/root/fonts/cmunrm.ttf"
 font_manager.fontManager.addfont(font_path)
 prop = font_manager.FontProperties(fname=font_path)
@@ -34,18 +39,12 @@ plt.rcParams["figure.dpi"] = 150
 plt.rcParams["legend.fontsize"] = 11
 plt.rcParams["axes.unicode_minus"] = False  # <- richtige Variante!
 
-colors=["k","#f10d0c","#00a933","#5983b0"]
-
-# labels=["$\delta=\\frac{\pi}{2}$", "$\delta=\pi$", "$\delta=-\\frac{\pi}{2}$", "$\delta=0$"]
-labels=["Intensity $I_+(\\frac{\pi}{2})$", "Intensity $I_-(0)$", "Intensity $I_-(\\frac{\pi}{2})$", "Intensity $I_+(0)$"]
-def fit_cos(x, A, B, C, D):
-    return A+B*np.cos(C*x-D)
-
-
 """
 Indium 0.8mm path2
 """
+# folder_name="Skew In 0p8 path2"
 # P1=(121375+124156)/2/10
+# P2=0.538*P1
 # a_1=0.840
 # a_1_err=0.003
 # a_2=0.542
@@ -58,7 +57,9 @@ Indium 0.8mm path2
 """
 Indium 1.8mm path2
 """
+# folder_name="Skew In 1p8 path2"
 # P1=(121375+124156)/2/10
+# P2=0.252*P1
 # a_1=0.915
 # a_1_err=0.003
 # a_2=0.404
@@ -69,7 +70,7 @@ Indium 1.8mm path2
 # points=45
 
 # """
-# Indium 0.8mm path2 (Bad, Interferogram going down)
+# Indium 0.8mm path2 (Bad, intensity going down)
 # """
 
 # # a_1=0.840
@@ -83,7 +84,7 @@ Indium 1.8mm path2
 # # points=42
 
 # """
-# Indium 0.8mm path2  (Bad, Interferogram and/or phase not good. Gets progressively better, but still not good.)
+# Indium 0.8mm path2  (Bad, intensity and/or phase not good. Gets progressively better, but still not good.)
 # """
 # # a_1=0.840
 # # a_1_err=0.003
@@ -104,7 +105,10 @@ Indium 1.8mm path2
 """
 Indium 1.8mm path2 (overall good, last two very good)
 """
+
+# folder_name="Skew In 1p8 path2"
 # P1=(121375+124156)/2/30
+# P2=0.252*P1
 # a_1=0.915
 # a_1_err=0.003
 # a_2=0.404
@@ -115,26 +119,36 @@ Indium 1.8mm path2 (overall good, last two very good)
 # # inf_file_name="ifgPS1_42pt_In18_20Mar0235" #weird amplitude
 # # inf_file_name="ifgPS1_42pt_In18_20Mar0349" 
 # # inf_file_name="ifgPS1_42pt_In18_20Mar0503" #wrong phase
-# inf_file_name="ifgPS1_42pt_In18_20Mar0617" 
-# inf_file_name="ifgPS1_42pt_In18_20Mar0731"
+# # inf_file_name="ifgPS1_42pt_In18_20Mar0617" 
+# # inf_file_name="ifgPS1_42pt_In18_20Mar0731"
 # points=42
 
 """
 No Indium, 3-plates interferometer
 """
+# folder_name="Symm No In"
 # P1=57079/15
+# P2=63441/15
 # a_1= 0.688
 # a_1_err=0.003
 # a_2= 0.725
 # a_2_err=0.003
+
+# P1=57079/15
+# P2=P1#63441/15
+# a_1= 0.5**0.5
+# a_1_err=0.003
+# a_2= 0.5**0.5
+# a_2_err=0.003
+
 # a_21=a_2/a_1
 # lim=1
 # # sgn=-1
-# inf_file_name="ifgPS1_35pt_In00_12Apr1851" #good-ish 3p
-# inf_file_name="ifgPS1_35pt_In00_12Apr2026" #good 3p
-# inf_file_name="ifgPS1_35pt_In00_13Apr0103" #good
-# inf_file_name="ifgPS1_35pt_In00_13Apr0528"  #good
-# inf_file_name="ifgPS1_35pt_In00_13Apr0703" #good
+# # inf_file_name="ifgPS1_35pt_In00_12Apr1851" #good-ish 3p
+# # inf_file_name="ifgPS1_35pt_In00_12Apr2026" #good 3p
+# # inf_file_name="ifgPS1_35pt_In00_13Apr0103" #good
+# # inf_file_name="ifgPS1_35pt_In00_13Apr0528"  #good
+# # inf_file_name="ifgPS1_35pt_In00_13Apr0703" #good
 # inf_file_name="ifgPS1_35pt_In00_13Apr0838" #good
 # points=35
 
@@ -156,11 +170,12 @@ inf_file_name="ifgPS1_35pt_In15_13Apr2126" #best
 # inf_file_name="ifgPS1_35pt_In15_14Apr0742" #very good
 points=35
 
-
 """
 Indium 0.5, 3-plates interferometer
 """
+# folder_name="Symm In 0p5 path2"
 # P1=57079/15
+# P2=39190/15
 # a_1= 0.770
 # a_1_err=0.004
 # a_2= 0.638
@@ -173,11 +188,11 @@ Indium 0.5, 3-plates interferometer
 # # inf_file_name="ifgPS1_35pt_In05_15Apr1731" #good-ish (big error bars)
 # # inf_file_name="ifgPS1_35pt_In05_15Apr1907" #good-ish (phase a bit bad)
 # # inf_file_name="ifgPS1_35pt_In05_15Apr2042" #good-ish (phase a bit bad)
-# # inf_file_name="ifgPS1_35pt_In05_15Apr2218" #probably best
+# inf_file_name="ifgPS1_35pt_In05_15Apr2218" #probably best
 # # inf_file_name="ifgPS1_35pt_In05_15Apr2354" #good-ish (1 bad point)
 # # inf_file_name="ifgPS1_35pt_In05_16Apr0130" #good
 # # inf_file_name="ifgPS1_35pt_In05_16Apr0305" #good-ish
-# inf_file_name="ifgPS1_35pt_In05_16Apr0441" #good
+# # inf_file_name="ifgPS1_35pt_In05_16Apr0441" #good
 # # inf_file_name="ifgPS1_35pt_In05_16Apr0617" #good-ish (phase a bit bad)
 # # inf_file_name="ifgPS1_35pt_In05_16Apr0752" #bad, last measurement incomplete
 # points=35
@@ -185,7 +200,7 @@ Indium 0.5, 3-plates interferometer
 """
 Indium 1.0, 3-plates interferometer
 """
-# # folder_name="Symm In 1p0 path2"
+# folder_name="Symm In 1p0 path2"
 # P1=57079/15
 # P2=27549/15
 # a_1= 0.821
@@ -193,7 +208,6 @@ Indium 1.0, 3-plates interferometer
 # a_2= 0.570
 # a_2_err=0.006
 # a_21=a_2/a_1
-# print(a_21)
 # lim=0
 # # inf_file_name="ifgPS1_35pt_In10_14Apr2054" #bad (wrong ps pos)
 # # inf_file_name="ifgPS1_35pt_In10_15Apr0115" #bad (wrong ps pos)
@@ -219,6 +233,7 @@ A_avg=0
 Dchi=np.zeros(4)
 C_avg=0
 C_err=0
+A_err=0
 fig = plt.figure(figsize=(2.5,6), dpi=250)
 fig_1 = plt.figure(figsize=(2.5,6), dpi=250)
 gs = fig.add_gridspec(3,1, hspace=0.0, wspace=0.4)
@@ -240,8 +255,8 @@ for root, dirs, files in os.walk(cleandata, topdown=False):
         data_ifg_matrix[3-i]=data_ifg
         data_ifg_err=data_ifg**0.5
         ps_pos=tot_data[:,0]
-        P0=[(np.amax(data_ifg)+np.amin(data_ifg))/2, (np.amax(data_ifg)-np.amin(data_ifg))/2, 3, -0.6+chi_0[i]]
-        B0=([np.amin(data_ifg),0,0.01,-3.5],[np.amax(data_ifg)*2,np.amax(data_ifg)*2,5, 2*np.pi])
+        P0=[(np.amax(data_ifg)+np.amin(data_ifg)), 0.7, 3, -0.6+chi_0[i]]
+        B0=([np.amin(data_ifg),0,0.01,-3.5],[np.amax(data_ifg)*2,1,5, 2*np.pi])
         p,cov=fit(fit_cos, ps_pos, data_ifg, sigma=data_ifg_err, p0=P0,  bounds=B0)
         if i==0:
             chi=ps_pos*p[2]-p[3]-np.pi/2
@@ -251,9 +266,9 @@ for root, dirs, files in os.walk(cleandata, topdown=False):
         # p_unb,cov_unb=fit(fit_cos_unb, ps_pos, data_ifg, p0=P0_unb,  bounds=B0_unb)
         err=np.diag(cov)**0.5
         A_avg+=p[0]/4
-        C_avg+=p[1]/p[0]/4
-        C_err+=p[1]**2/p[0]**4*err[0]**2+err[1]**2/p[0]**2
-        A_err=err[0]**2
+        C_avg+=p[1]/4
+        C_err+=err[1]**2
+        A_err+=err[0]**2
         x_plt = np.linspace(ps_pos[0], ps_pos[-1],200)
         # axs[(i+2)%4].errorbar(chi,data_ifg/time,yerr=data_ifg_err/time,fmt=".", color=colors[0],capsize=3, ms=4, ms=3, label="Data")
         axs[(i+2)%4].plot(chi_plt,fit_cos(x_plt, *p)/time, "-", color=colors[2], lw=1.5, label="Theory")
@@ -291,49 +306,94 @@ axs[1].tick_params(axis="x", bottom=False, labelbottom=False)
 axs[2].tick_params(axis="x", bottom=False, labelbottom=False)
 axs[3].tick_params(axis="x", bottom=False, labelbottom=False)
 
-axs[1].errorbar(chi[8],(data_ifg_matrix[0])[8]/time, (data_ifg_matrix[0]**0.5)[8]/time, fmt=".", color=colors[0],capsize=3, ms=4, label="Data")
-# axs[1].vlines(chi[8],0,(data_ifg_matrix[0])[8]/time-12, color=colors[1],  lw=1) #ls=(2, (8, 3)),
-axs[3].errorbar(chi[8],(data_ifg_matrix[2])[8]/time, (data_ifg_matrix[2]**0.5)[8]/time, fmt=".", color=colors[0],capsize=3, ms=4, label="Data")
-# axs[3].vlines(chi[8],(data_ifg_matrix[2])[8]/time+12,520, color=colors[1],  lw=1) #ls=(2, (8, 3)),
-# axs[3].vlines(chi[8],0,(data_ifg_matrix[2])[8]/time-12, color=colors[1],  lw=1) #ls=(2, (8, 3)),
+axs[1].errorbar(chi[25],(data_ifg_matrix[0])[25]/time, (data_ifg_matrix[0]**0.5)[25]/time, fmt=".", color=colors[0],capsize=3, ms=4, label="Data")
+# axs[1].vlines(chi[25],0,(data_ifg_matrix[0])[25]/time-12, color=colors[1],  lw=1) #ls=(2, (8, 3)),
+axs[3].errorbar(chi[25],(data_ifg_matrix[2])[25]/time, (data_ifg_matrix[2]**0.5)[25]/time, fmt=".", color=colors[0],capsize=3, ms=4, label="Data")
+# axs[3].vlines(chi[25],(data_ifg_matrix[2])[25]/time+12,520, color=colors[1],  lw=1) #ls=(2, (8, 3)),
+# axs[3].vlines(chi[25],0,(data_ifg_matrix[2])[25]/time-12, color=colors[1],  lw=1) #ls=(2, (8, 3)),
 
-axs[0].errorbar(chi[8],(data_ifg_matrix[1])[8]/time, (data_ifg_matrix[1]**0.5)[8]/time, fmt=".", color=colors[0],capsize=3, ms=4, label="Data")
-# axs[0].vlines(chi[8],0,(data_ifg_matrix[1])[8]/time-12, color=colors[1],  lw=1) #ls=(2, (8, 3)),
-axs[2].errorbar(chi[8],(data_ifg_matrix[3])[8]/time, (data_ifg_matrix[3]**0.5)[8]/time, fmt=".", color=colors[0],capsize=3, ms=4, label="Data")
-# axs[2].vlines(chi[8],(data_ifg_matrix[3])[8]/time+12,520, color=colors[1],  lw=1) #ls=(2, (8, 3)),
-print("chi=",chi[8], 4*np.pi/5)
+axs[0].errorbar(chi[25],(data_ifg_matrix[1])[25]/time, (data_ifg_matrix[1]**0.5)[25]/time, fmt=".", color=colors[0],capsize=3, ms=4, label="Data")
+# axs[0].vlines(chi[25],0,(data_ifg_matrix[1])[25]/time-12, color=colors[1],  lw=1) #ls=(2, (8, 3)),
+axs[2].errorbar(chi[25],(data_ifg_matrix[3])[25]/time, (data_ifg_matrix[3]**0.5)[25]/time, fmt=".", color=colors[0],capsize=3, ms=4, label="Data")
+# axs[2].vlines(chi[25],(data_ifg_matrix[3])[25]/time+12,520, color=colors[1],  lw=1) #ls=(2, (8, 3)),
+print("chi=",chi[25], 3*np.pi/4)
 
-# print(abs(Dchi-Dchi[[1,2,3,0]])/np.pi*2)
 C_err=C_err**0.5/4
 A_err=A_err**0.5/4
-# print("A_avg=",A_avg, "+-",A_err)
-
-C_id=C_avg/(2*a_1*a_2)
-C_id_err=(C_err**2+C_avg**2/(a_1**2)*a_1_err**2+C_avg**2/(a_2**2)*a_2_err**2)**0.5/(2*a_1*a_2)
-# print("C_avg=",C_avg, "+-",C_err, "C_ideal=", C_id, "+-", C_id_err)
-
-# chi+=np.pi/2
-data_ifg_matrix_err=(data_ifg_matrix+((1-C_id)/2)**2*A_err**2+(A_avg/2)**2*C_id_err**2)**0.5
+print("A_avg=",A_avg, "+-",A_err)
+sin_th=2*(P1*P2)**0.5/(P1+P2)
+sin_th_err=((P1-P2)**2/(P1+P2)**3)**0.5
+C_id=C_avg/(sin_th)
+# C_id=C_avg/(P1*P2/(P1+P2)**2)**0.5/2
+C_id_err=C_id*((C_err/C_avg)**2+(sin_th_err/sin_th)**2)**0.5
+print("C_avg=",C_avg, "+-",C_err, "C_ideal=", C_id, "+-", C_id_err)
+B=A_avg*(1-C_id)/2
+B_err=(((1-C_id)*A_err)**2+(A_avg*C_id_err)**2)**0.5/2
+data_ifg_matrix_err=(data_ifg_matrix+B_err**2)**0.5
 # data_ifg_matrix_err=(data_ifg_matrix/C_id**2+((1/C_id+1)/2)**2*A_err**2+(A_avg/2-data_ifg_matrix)**2*(C_id_err/C_id**2)**2)**0.5
-data_ifg_matrix-=A_avg*(1-C_id)
+data_ifg_matrix-=B
 P1_corr=C_id*P1
 P1_corr_err=(C_id**2*P1+P1**2*C_id_err**2)**0.5
 P2_corr=C_id*P2
 P2_corr_err=(C_id**2*P2+P2**2*C_id_err**2)**0.5
 
+chi_plt=np.linspace(chi[0], chi[-1], 1000)
 Im_1=(data_ifg_matrix[3]-data_ifg_matrix[1])/data_ifg_matrix[0]/4
-Im_1_err=(data_ifg_matrix_err[1]**2+data_ifg_matrix_err[3]**2+(4*Im_1)**2*data_ifg_matrix_err[0]**2)**0.5/(4*abs(data_ifg_matrix[0]))
+Im_1_err=abs(Im_1)*((data_ifg_matrix_err[1]**2+data_ifg_matrix_err[3]**2)/(data_ifg_matrix[3]-data_ifg_matrix[1])**2+data_ifg_matrix_err[0]**2/data_ifg_matrix[0]**2)**0.5
+# Im_1_err_M=((data_ifg_matrix[0]**2*(data_ifg_matrix_err[1]**2+data_ifg_matrix_err[3]**2) + (data_ifg_matrix[3]-data_ifg_matrix[1])**2*data_ifg_matrix_err[0]**2)/data_ifg_matrix[0]**4)**0.5/4
+# print(abs(Im_1_err_M-Im_1_err))
+
 
 Im_2=-(data_ifg_matrix[3]-data_ifg_matrix[1])/data_ifg_matrix[0]/4
-Im_2_err=(data_ifg_matrix_err[1]**2+data_ifg_matrix_err[3]**2+(4*Im_2)**2*data_ifg_matrix_err[0]**2)**0.5/(4*abs(data_ifg_matrix[0]))
+Im_2_err=abs(Im_2)*((data_ifg_matrix_err[1]**2+data_ifg_matrix_err[3]**2)/(data_ifg_matrix[3]-data_ifg_matrix[1])**2+data_ifg_matrix_err[0]**2/data_ifg_matrix[0]**2)**0.5
 
 sa=data_ifg_matrix[2]/data_ifg_matrix[0]-4*Im_1**2
 s=np.sign(sa)*abs(sa)**0.5
 Re_1_1=(1+s)/2
-Re_1_1_err=((data_ifg_matrix_err[2]/data_ifg_matrix[0])**2+(data_ifg_matrix[2]*data_ifg_matrix_err[0]/data_ifg_matrix[0]**2)**2+64*Im_1**2*Im_1_err**2)**0.5/abs(s)/4
+Re_1_1_err=((data_ifg_matrix_err[2]/data_ifg_matrix[0])**2+(data_ifg_matrix[2]*data_ifg_matrix_err[0]/data_ifg_matrix[0]**2)**2+(8*Im_1*Im_1_err)**2)**0.5/abs(s)/4
+
+A_m=data_ifg_matrix[2]
+DA_m=data_ifg_matrix_err[2]
+B_m=data_ifg_matrix[0]
+DB_m=data_ifg_matrix_err[0]
+C_m=data_ifg_matrix[3]
+DC_m=data_ifg_matrix_err[3]
+D_m=data_ifg_matrix[1]
+DD_m=data_ifg_matrix_err[1]
+Re_1_1_err=1/4*((4*B_m**4*DA_m**2-4*A_m*B_m*(C_m-D_m)**2*DB_m**2+(C_m-D_m)**4*DB_m**2+B_m**2*(4*A_m**2*DB_m**2+(C_m-D_m)**2*(DC_m**2+DD_m**2)))/(B_m**4*(4*A_m*B_m-(C_m-D_m)**2)))**0.5
+# print(Re_1_1_err-Re_1_1_err_M, np.amax(Re_1_1_err-Re_1_1_err_M))
+
+# A_m=data_ifg_matrix[2]
+# DA_m=data_ifg_matrix_err[2]
+# B_m=data_ifg_matrix[0]
+# DB_m=data_ifg_matrix_err[0]
+# C_m=Im_1
+# DC_m=Im_1_err
+# Re_1_1_err_M=1/4*((B_m**2*DA_m**2+A_m**2*DB_m**2+64*B_m**4*C_m**2*DC_m**2)/(B_m**3*(A_m-4*B_m*C_m**2)))**0.5
+# print(Re_1_1_err-Re_1_1_err_M, np.amax(Re_1_1_err-Re_1_1_err_M))
+
 
 Re_1_2=P1_corr/data_ifg_matrix[0] + 1/4 - data_ifg_matrix[2]/(data_ifg_matrix[0]*4)
-Re_1_2_err=(P1_corr_err**2+(data_ifg_matrix_err[2]/4)**2+(Re_1_2-1/4)**2*data_ifg_matrix_err[0]**2)**0.5/abs(data_ifg_matrix[0])
+Re_1_2_err=abs(Re_1_2-1/4)*(((4*P1_corr_err)**2+data_ifg_matrix_err[2]**2)/(4*P1_corr-data_ifg_matrix[2])**2+data_ifg_matrix_err[0]**2/data_ifg_matrix[0]**2)**0.5
+# Re_1_2_err_M=1/4*(((data_ifg_matrix[2]-4*P1_corr)**2*data_ifg_matrix_err[0]**2+data_ifg_matrix[0]**2*((4*P1_corr_err)**2+data_ifg_matrix_err[2]**2))/data_ifg_matrix[0]**4)**0.5
+# print(Re_1_2_err-Re_1_2_err_M, np.amax(Re_1_2_err-Re_1_2_err_M))
+
+# s_1=P1_corr/data_ifg_matrix[0]-Im_1**2
+# Re_1_3=np.sign(s_1)*np.abs(s_1)**0.5
+# Re_1_3_err=((P1_corr_err/data_ifg_matrix[0])**2+(P1_corr/data_ifg_matrix[0]**2)**2*data_ifg_matrix_err[0]**2+4*Im_1**2*Im_1_err**2)**0.5/Re_1_3/2
+
+sa=data_ifg_matrix[2]/data_ifg_matrix[0]-4*Im_2**2
+s=np.sign(sa)*abs(sa)**0.5
+Re_2_1=(1-s)/2
+# Re_2_1_err=((data_ifg_matrix_err[2]/data_ifg_matrix[0])**2+(data_ifg_matrix[2]*data_ifg_matrix_err[0]/data_ifg_matrix[0]**2)**2+64*Im_1**2*Im_1_err**2)**0.5/abs(s)/4
+Re_2_1_err=Re_1_1_err
+
+Re_2_2=P2_corr/data_ifg_matrix[0] +1/4 - data_ifg_matrix[2]/(data_ifg_matrix[0]*4) 
+Re_2_2_err=abs(Re_2_2-1/4)*(((4*P2_corr_err)**2+data_ifg_matrix_err[2]**2)/(4*P2_corr-data_ifg_matrix[2])**2+data_ifg_matrix_err[0]**2/data_ifg_matrix[0]**2)**0.5
+
+s_2=P2_corr/data_ifg_matrix[0]-Im_2**2
+Re_2_3=np.sign(s_2)*np.abs(s_2)**0.5
+Re_2_3_err=((P2_corr_err/data_ifg_matrix[0])**2+(P2_corr/data_ifg_matrix[0]**2)**2*data_ifg_matrix_err[0]**2+4*Im_1**2*Im_1_err**2)**0.5/Re_2_3/2
 
 # axs[0].set_title("$w_{1,+}$", fontsize=13)
 # axs[1].set_title("$w_{2,+}$", fontsize=13)
@@ -357,17 +417,17 @@ axs[4].set_ylim([0.5,2.5])
 axs[4].set_yticks([1,1.5,2])
 axs[4].plot(chi_plt, w1(chi_plt, a_21).real, "-",color=colors[3], lw=1.5, label="Theory")
 # axs[4].errorbar(chi,Re_1_1, Re_1_1_err, fmt=".", color="grey", capsize=3, ms=4, label="Data")
-axs[4].errorbar(chi[8],Re_1_1[8], Re_1_1_err[8], fmt="k.", capsize=3, ms=4, label="Data")
-# axs[4].errorbar(chi[8],Re_1_1[8], fmt=".",color=colors[1],  ms=15, mfc="none")
-# axs[4].vlines(chi[8],0,3, color=colors[1],  lw=1)
+axs[4].errorbar(chi[25],Re_1_1[25], Re_1_1_err[25], fmt="k.", capsize=3, ms=4, label="Data")
+# axs[4].errorbar(chi[25],Re_1_1[25], fmt=".",color=colors[1],  ms=15, mfc="none")
+# axs[4].vlines(chi[25],0,3, color=colors[1],  lw=1)
 
 axs[5].set_ylim([-1,1])
 axs[5].set_yticks([-0.5,0,0.5])
 # axs[5].errorbar(chi,Im_1, Im_1_err, fmt="k.", capsize=3, ms=4,label="Data")
 axs[5].plot(chi_plt, w1(chi_plt, a_21).imag, "-",color=colors[3], lw=1.5, label="Theory")
-axs[5].errorbar(chi[8], Im_1[8], Im_1_err[8], fmt=".", color=colors[0],capsize=3, ms=4, label="Data")
-# axs[5].errorbar(chi[8], Im_1[8], Im_1_err[8], fmt="k.", capsize=3, ms=4,label="Data")
-# axs[5].vlines(chi[8],-2,2, color=colors[1],  lw=1)
+axs[5].errorbar(chi[25], Im_1[25], Im_1_err[25], fmt=".", color=colors[0],capsize=3, ms=4, label="Data")
+# axs[5].errorbar(chi[25], Im_1[25], Im_1_err[25], fmt="k.", capsize=3, ms=4,label="Data")
+# axs[5].vlines(chi[25],-2,2, color=colors[1],  lw=1)
 
 # axs[4].legend(loc=1, ncol=1, handlelength=1)
 # axs[5].legend(loc=1, ncol=1, handlelength=1)

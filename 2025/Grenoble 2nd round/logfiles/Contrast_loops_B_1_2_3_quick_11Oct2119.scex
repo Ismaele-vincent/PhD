@@ -1,0 +1,11 @@
+START	standard		
+CALL	Block_path1_NL_doubleCd.sc
+CALL	Move_PS12_parallel.sc
+CALL	ifg1_newPS_2p10s_AP.sc
+CALL	Block_path2_doubleCd.sc
+CALL	Move_PS12_parallel.sc
+CALL	ifg1_newPS_2p10s_AP.sc
+CALL	Block_path3_NL_doubleCd.sc
+CALL	Move_PS12_parallel.sc
+CALL	ifg2_newPS_2p10s_AP.sc
+END

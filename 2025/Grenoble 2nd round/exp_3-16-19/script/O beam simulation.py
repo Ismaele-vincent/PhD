@@ -23,6 +23,13 @@ a_3=(T_3/(T_1+T_2+T_3))**0.5
 """
 psi +exp(-i pi/3) +1  +exp(i 2pi/3) 
 """
+chi_1_0=0
+chi_2_0=-np.pi/3
+chi_3_0=2*np.pi/3
+
+"""
+psi +exp(-i pi/3) +1  +exp(i 2pi/3) 
+"""
 # chi_1_0=-np.pi/3
 # chi_2_0=0
 # chi_3_0=2*np.pi/3
@@ -37,13 +44,20 @@ psi +1 -i -1
 """
 psi +1 -1 -i
 """
-chi_1_0=0
-chi_2_0=-np.pi
-chi_3_0=-np.pi/2
+# chi_1_0=0
+# chi_2_0=-np.pi
+# chi_3_0=-np.pi/2
+
+"""
+psi +1 -1 -1
+"""
+# chi_1_0=0
+# chi_2_0=np.pi
+# chi_3_0=np.pi
 
 chi=np.linspace(-np.pi, 2*np.pi, 100)
 def I_psi(chi_1,chi_2,chi_3):
-    I_psi = 1/3*abs(a_1*np.exp(1j*(chi_1_0+chi_1))+a_2*np.exp(1j*(chi_2_0+chi_2))+a_3*np.exp(1j*(chi_3_0+chi_3)))**2
+    I_psi = 1/3*abs(a_1*np.exp(-1j*(chi_1_0+chi_1))+a_2*np.exp(-1j*(chi_2_0+chi_2))+a_3*np.exp(-1j*(chi_3_0+chi_3)))**2
     return I_psi
 
 def fit_cos(x, A, B, C, D):
@@ -63,8 +77,8 @@ for i in [0,1,2,3]:
     axs[1].plot(chi, I_psi(0,chi+Dchi[i],0), colors[i])
     axs[2].plot(chi, I_psi(0,0,chi+Dchi[i]), colors[i])
 fig.legend(loc=9, ncol=4)
-axs[2].plot(np.pi/6, I_psi(0,0, np.pi/6), "ko")
-axs[1].plot(2*np.pi/3+5*np.pi/6, I_psi(0,2*np.pi/3,0), "ko")
+# axs[2].plot(np.pi/6, I_psi(0,0, np.pi/6), "ko")
+# axs[1].plot(2*np.pi/3+5*np.pi/6, I_psi(0,2*np.pi/3,0), "ko")
 for ax in axs:
     ax.set_ylim([0,1])
     ax.grid(True, ls="dotted")

@@ -1,0 +1,23 @@
+20/10/2025 18:50:39:	start execution of script D:\data\Cycle 198\exp_3-16-19\rawdata\sc\Prep_psi_+1-1-i_wv2.sc	 DONE
+20/10/2025 18:50:39:	move motor	S18.auxiliary.Robot Z to 207413.00000um	reached 207412.00000  DONE
+call of robot_Zout_doubleCd.sc DONE
+20/10/2025 18:50:42:	move motor	S18.axis2.phaseshifter 1 to 0.00000deg	reached 0.00000  DONE
+20/10/2025 18:50:45:	move motor	S18.axis2.phaseshifter 2 to 0.00000deg	reached 0.00000  DONE
+call of Move_PS12_parallel.sc DONE
+20/10/2025 18:50:49:	move motor	S18.axis2.phaseshifter 1 to -0.400000deg	 DONE
+20/10/2025 18:50:51:	create file	D:\data\Cycle 198\exp_3-16-19\rawdata\sc\Prep_psi_+1-1-i_wv2_20Oct1850.dat	 DONE
+room to enter remarks DONE
+20/10/2025 18:50:52:	move motor	S18.axis2.phaseshifter 1 to -0.300000deg	 DONE
+20/10/2025 18:50:54:	1	count	time	5.000000s/cts	O Det=436	H Det=328	Mon Det=12142	Aux Det=1815	O+H=2579	 DONE
+20/10/2025 18:51:00:	move motor	S18.axis2.phaseshifter 1 to -0.200000deg	 DONE
+20/10/2025 18:51:02:	2	count	time	5.000000s/cts	O Det=333	H Det=333	Mon Det=12042	Aux Det=2097	O+H=2763	 DONE
+20/10/2025 18:51:08:	move motor	S18.axis2.phaseshifter 1 to -0.100000deg	 DONE
+20/10/2025 18:51:10:	3	count	time	5.000000s/cts	O Det=220	H Det=460	Mon Det=12179	Aux Det=2061	O+H=2741	 DONE
+20/10/2025 18:51:17:	move motor	S18.axis2.phaseshifter 1 to 0.000000deg	 DONE
+20/10/2025 18:51:18:	4	count	time	5.000000s/cts	O Det=226	H Det=554	Mon Det=12159	Aux Det=1860	O+H=2640	 DONE
+20/10/2025 18:51:25:	move motor	S18.axis2.phaseshifter 1 to 0.100000deg	 DONE
+20/10/2025 18:51:26:	5	count	time	5.000000s/cts	O Det=338	H Det=616	Mon Det=11987	Aux Det=1518	O+H=2472	 DONE
+20/10/2025 18:51:33:	move motor	S18.axis2.phaseshifter 1 to 0.200000deg	 DONE
+20/10/2025 18:51:35:	6	count	time	5.000000s/cts	O Det=587	H Det=698	Mon Det=12063	Aux Det=1085	O+H=2370	 DONE
+20/10/2025 18:51:41:	move motor	S18.axis2.phaseshifter 1 to 0.300000deg	 DONE
+20/10/2025 18:51:43:	7	count	time	5.000000s/cts	O Det=86	H Det=81	Mon Det=1685	Aux Det=125	O+H=292	STOPPED BY USER	20/10/2025 18:51:45:	close file and end scan	 DONE

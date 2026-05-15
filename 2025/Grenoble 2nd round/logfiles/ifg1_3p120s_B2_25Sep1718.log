@@ -1,0 +1,12 @@
+25/09/2025 17:18:58:	start execution of script D:\data\Cycle 198\exp_3-16-19\rawdata\sc\ifg1_3p120s_B2.sc	 DONE
+25/09/2025 17:18:58:	move motor	S18.axis2.phaseshifter 1 to -2.725000deg	 DONE
+25/09/2025 17:19:00:	create file	D:\data\Cycle 198\exp_3-16-19\rawdata\sc\ifg1_3p120s_B2_25Sep1719.dat	 DONE
+room to enter remarks DONE
+25/09/2025 17:19:01:	read encoder	S18.auxiliary.Robot Diagonal		0.000000 DONE
+25/09/2025 17:19:02:	move motor	S18.axis2.phaseshifter 1 to -2.625000deg	 DONE
+25/09/2025 17:19:04:	1	count	time	120.000000s/cts	O Det=18087	H Det=132908	Mon Det=273011	Aux Det=266488	O+H=417483	 DONE
+25/09/2025 17:21:06:	move motor	S18.axis2.phaseshifter 1 to -2.450000deg	 DONE
+25/09/2025 17:21:07:	2	count	time	120.000000s/cts	O Det=17711	H Det=135536	Mon Det=274272	Aux Det=263718	O+H=416965	 DONE
+25/09/2025 17:23:10:	move motor	S18.axis2.phaseshifter 1 to -2.275000deg	 DONE
+25/09/2025 17:23:11:	3	count	time	120.000000s/cts	O Det=4684	H Det=53216	Mon Det=91373	Aux Det=87462	O+H=145362	STOPPED BY USER	25/09/2025 17:23:54:	close file and end scan	saving D:\data\Cycle 198\exp_3-16-19\rawdata\sc\ifg1_3p120s_B2_25Sep1719.tif  DONE
+25/09/2025 17:23:54:	END OF SCRIPT	 DONE

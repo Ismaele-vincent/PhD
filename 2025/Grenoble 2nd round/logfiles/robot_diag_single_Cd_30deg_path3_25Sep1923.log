@@ -1,0 +1,11 @@
+25/09/2025 19:23:21:	start execution of script D:\data\Cycle 198\exp_3-16-19\rawdata\sc\robot_diag_single_Cd_30deg_path3.sc	 DONE
+25/09/2025 19:23:21:	move motor	S18.auxiliary.Robot Z to 180398.00000um	reached 180398.00000  DONE
+call of robot_Zout_singleCd.sc DONE
+25/09/2025 19:23:25:	move motor	S18.auxiliary.Robot rot big to 30.00000deg	reached 30.00000  DONE
+25/09/2025 19:23:27:	move motor	S18.auxiliary.Robot Diagonal to 28000.00000um	reached 27995.28591  DONE
+25/09/2025 19:23:34:	move motor	S18.auxiliary.Robot Z to 213892.00000um	reached 213888.00000  DONE
+call of robot_Zin_singleCd.sc DONE
+25/09/2025 19:23:39:	create file	D:\data\Cycle 198\exp_3-16-19\rawdata\sc\robot_diag_single_Cd_30deg_path3_25Sep1923.dat	 DONE
+room to enter remarks DONE
+25/09/2025 19:23:40:	close file and end scan	 DONE
+25/09/2025 19:23:40:	END OF SCRIPT	 DONE

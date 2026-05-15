@@ -1,0 +1,15 @@
+06/10/2025 11:34:50:	start execution of script D:\data\Cycle 198\exp_3-16-19\rawdata\sc\robot_diag_double_Cd_90deg_test.sc	 DONE
+06/10/2025 11:34:50:	move motor	S18.auxiliary.Robot Z to 207413.00000um	reached 207412.00000  DONE
+call of robot_Zout_doubleCd.sc DONE
+06/10/2025 11:34:58:	move motor	S18.auxiliary.Robot rot big to 90.00000deg	reached 90.00000  DONE
+06/10/2025 11:35:00:	move motor	S18.auxiliary.Robot Diagonal to 10000.00000um	reached 10000.78000  DONE
+06/10/2025 11:35:41:	move motor	S18.auxiliary.Robot Z to 207413.00000um	reached 207408.00000  DONE
+call of robot_Zout_doubleCd.sc DONE
+06/10/2025 11:35:44:	move motor	S18.auxiliary.Robot rot big to 90.00000deg	reached 90.00000  DONE
+06/10/2025 11:35:47:	move motor	S18.auxiliary.Robot Z to 292012.00000um	reached 292012.00000  DONE
+call of robot_Zin_doubleCd.sc DONE
+06/10/2025 11:35:55:	move motor	S18.auxiliary.Robot Diagonal to 9999.900000um	 DONE
+06/10/2025 11:36:00:	create file	D:\data\Cycle 198\exp_3-16-19\rawdata\sc\robot_diag_double_Cd_90deg_test_06Oct1136.dat	 DONE
+room to enter remarks DONE
+06/10/2025 11:36:02:	move motor	S18.auxiliary.Robot Diagonal to 10000.000000um	STOPPED BY USER	06/10/2025 11:36:08:	close file and end scan	 DONE
+06/10/2025 11:36:08:	END OF SCRIPT	 DONE
