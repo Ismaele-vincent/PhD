@@ -67,7 +67,7 @@ C_err=0
 
 for root, dirs, files in os.walk(sorted_fold_path, topdown=False):
     files=np.sort(files)
-    data_ifg_matrix=np.zeros((3,points))
+    data_O_matrix=np.zeros((3,points))
     i=0
     C12=np.array([], dtype=dtype_new)
     C13=np.array([], dtype=dtype_new)
@@ -77,18 +77,22 @@ for root, dirs, files in os.walk(sorted_fold_path, topdown=False):
         if (name not in bad_apples):
             # print(name)
             tot_data=np.loadtxt(os.path.join(root, name))[:,1:]
-            time_ifg=tot_data[0,1]
-            data_ifg=tot_data[:,2]
-            # data_ifg_matrix[i]=data_ifg
-            data_ifg_err=data_ifg**0.5
+            time_meas=tot_data[0,1]
+            data_O_err=tot_data[:,2]**0.5/time_meas
+            data_O=tot_data[:,2]/time_meas
+            data_H_err=tot_data[:,3]**0.5/time_meas
+            data_H=tot_data[:,3]/time_meas
+            data_aux_err=tot_data[:,5]**0.5/time_meas
+            data_aux=tot_data[:,5]/time_meas
+            data_O/=(data_O+data_H+data_aux/2)*0.002
             ps_pos=tot_data[:,0]
-            P0=[(np.amax(data_ifg)+np.amin(data_ifg))/2, (np.amax(data_ifg)-np.amin(data_ifg))/2, 6, -6.6]
-            B0=([np.amin(data_ifg),0,5,-4*np.pi],[np.amax(data_ifg)*2,np.amax(data_ifg)*2,7, 1*np.pi])
-            p,cov=fit(fit_cos, ps_pos, data_ifg, sigma=data_ifg_err, p0=P0,  bounds=B0)
+            P0=[(np.amax(data_O)+np.amin(data_O))/2, (np.amax(data_O)-np.amin(data_O))/2, 6, -6.6]
+            B0=([np.amin(data_O),0,5,-4*np.pi],[np.amax(data_O)*2,np.amax(data_O)*2,7, 1*np.pi])
+            p,cov=fit(fit_cos, ps_pos, data_O, sigma=data_O_err, p0=P0,  bounds=B0)
             # print(p)
             # P0_unb=[100000, 3, -0.5, 0.7]
             # B0_unb=([0,1,-10, 0],[1e10,4,10,1])
-            # p_unb,cov_unb=fit(fit_cos_unb, ps_pos, data_ifg, p0=P0_unb,  bounds=B0_unb)
+            # p_unb,cov_unb=fit(fit_cos_unb, ps_pos, data_O, p0=P0_unb,  bounds=B0_unb)
             err=np.diag(cov)**0.5
             A=p[0]
             C=p[1]/p[0]
@@ -98,7 +102,7 @@ for root, dirs, files in os.walk(sorted_fold_path, topdown=False):
             fig = plt.figure(figsize=(8,6))
             ax = fig.add_subplot(111)
             fig.suptitle(name[:-4])
-            ax.errorbar(ps_pos,data_ifg,yerr=data_ifg_err,fmt="ko",capsize=5, ms=3)
+            ax.errorbar(ps_pos,data_O,yerr=data_O_err,fmt="ko",capsize=5, ms=3)
             ax.plot(x_plt,fit_cos(x_plt, *p), "b", label="%.2f"%C,)
             # ax.legend()
             # ax.set_ylim([0,1500])
@@ -120,7 +124,7 @@ for root, dirs, files in os.walk(sorted_fold_path, topdown=False):
                 # fig = plt.figure(figsize=(8,6))
                 # ax = fig.add_subplot(111)
                 # fig.suptitle(name[:-4])
-                # ax.errorbar(ps_pos,data_ifg,yerr=data_ifg_err,fmt="ko",capsize=5, ms=3)
+                # ax.errorbar(ps_pos,data_O,yerr=data_O_err,fmt="ko",capsize=5, ms=3)
                 # ax.plot(x_plt,fit_cos(x_plt, *p), "b", label="%.2f"%C,)
                 # ax.legend()
             if ("B123_B2" in name) and ("wv2" not in name):
@@ -136,7 +140,7 @@ for root, dirs, files in os.walk(sorted_fold_path, topdown=False):
                 # fig = plt.figure(figsize=(8,6))
                 # ax = fig.add_subplot(111)
                 # fig.suptitle(name[:-4])
-                # ax.errorbar(ps_pos,data_ifg,yerr=data_ifg_err,fmt="ko",capsize=5, ms=3)
+                # ax.errorbar(ps_pos,data_O,yerr=data_O_err,fmt="ko",capsize=5, ms=3)
                 # ax.plot(x_plt,fit_cos(x_plt, *p), "b", label="%.2f"%C,)
                 # ax.legend()
     

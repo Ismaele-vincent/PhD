@@ -22,13 +22,31 @@ chi_1=0
 chi_2=0
 chi_3=0
 
-C_12=0.69
-C_13=0.74
-C_23=0.62
+# C_12=0.69
+# C_13=0.74
+# C_23=0.62
 
-# C_12=1
-# C_13=1
-# C_23=1
+"""
+"ifg_wv1_psi_+1+1+1_no_fit_22Oct1050"
+"""
+# C_12=0.7 
+# C_13=0.73 
+# C_23=0.59
+
+"""
+"ifg_wv1_psi_+1+1+1_no_fit_22Oct2358"
+"""
+C_12=0.7 
+C_13=0.73 
+C_23=0.64
+
+"""
+"ifg_wv1_psi_+1+1+1_no_fit_24Oct2318"
+"""
+
+# C_12=0.81 
+# C_13=0.69 
+# C_23=0.48
 
 points=48
 points_per=16
@@ -47,17 +65,35 @@ inf_file_names=["ifg_wv2_psi_+1-i-1_no_fit_22Oct2033" #maybe good
 def fit_cos(x, A, B, C, D):
     return A/2*(1+B*np.cos(C*x-D))
 
+# def w1(chi_1, chi_2, chi_3):
+#     return a_1*np.exp(-1j*(chi_1_0+chi_1))/(a_1*np.exp(-1j*(chi_1_0+chi_1))+a_2*np.exp(-1j*(chi_2_0+chi_2))+a_3*np.exp(-1j*(chi_3_0+chi_3)))
+
+# def w2(chi_1, chi_2, chi_3):
+#     return a_2*np.exp(-1j*(chi_2_0+chi_2))/(a_1*np.exp(-1j*(chi_1_0+chi_1))+a_2*np.exp(-1j*(chi_2_0+chi_2))+a_3*np.exp(-1j*(chi_3_0+chi_3)))
+
+# def w3(chi_1, chi_2, chi_3):
+#     return a_3*np.exp(-1j*(chi_3_0+chi_3))/(a_1*np.exp(-1j*(chi_1_0+chi_1))+a_2*np.exp(-1j*(chi_2_0+chi_2))+a_3*np.exp(-1j*(chi_3_0+chi_3)))
+
+# def I_corr(A, chi_1, chi_2, chi_3):
+#     return A/3*(1+2*a_1*a_2*np.cos(chi_1_0+chi_1-chi_2_0-chi_2)+2*a_1*a_3*np.cos(chi_1_0+chi_1-chi_3_0-chi_3) + 2*a_2*a_3*np.cos(chi_2_0+chi_2-chi_3_0-chi_3))
+
 def w1(chi_1, chi_2, chi_3):
-    return a_1*np.exp(-1j*(chi_1_0+chi_1))/(a_1*np.exp(-1j*(chi_1_0+chi_1))+a_2*np.exp(-1j*(chi_2_0+chi_2))+a_3*np.exp(-1j*(chi_3_0+chi_3)))
+    A=a_1*np.exp(1j*(chi_1_0+chi_1))+C_12*a_2*np.exp(1j*(chi_2_0+chi_2))+C_13*a_3*np.exp(1j*(chi_3_0+chi_3))
+    B=1+2*C_12*a_1*a_2*np.cos(chi_1_0+chi_1-chi_2_0-chi_2)+2*C_13*a_1*a_3*np.cos(chi_1_0+chi_1-chi_3_0-chi_3)+2*C_23*a_2*a_3*np.cos(chi_2_0+chi_2-chi_3_0-chi_3)
+    return a_1*np.exp(-1j*(chi_1_0+chi_1))*A/B
 
 def w2(chi_1, chi_2, chi_3):
-    return a_2*np.exp(-1j*(chi_2_0+chi_2))/(a_1*np.exp(-1j*(chi_1_0+chi_1))+a_2*np.exp(-1j*(chi_2_0+chi_2))+a_3*np.exp(-1j*(chi_3_0+chi_3)))
+    A=C_12*a_1*np.exp(-1j*(chi_1_0+chi_1))+a_2*np.exp(1j*(chi_2_0+chi_2))+C_23*a_3*np.exp(1j*(chi_3_0+chi_3))
+    B=1+2*C_12*a_1*a_2*np.cos(chi_1_0+chi_1-chi_2_0-chi_2)+2*C_13*a_1*a_3*np.cos(chi_1_0+chi_1-chi_3_0-chi_3)+2*C_23*a_2*a_3*np.cos(chi_2_0+chi_2-chi_3_0-chi_3)
+    return a_2*np.exp(-1j*(chi_2_0+chi_2))*A/B
 
 def w3(chi_1, chi_2, chi_3):
-    return a_3*np.exp(-1j*(chi_3_0+chi_3))/(a_1*np.exp(-1j*(chi_1_0+chi_1))+a_2*np.exp(-1j*(chi_2_0+chi_2))+a_3*np.exp(-1j*(chi_3_0+chi_3)))
+    A=C_13*a_1*np.exp(-1j*(chi_1_0+chi_1))+C_23*a_2*np.exp(-1j*(chi_2_0+chi_2))+a_3*np.exp(1j*(chi_3_0+chi_3))
+    B=1+2*C_12*a_1*a_2*np.cos(chi_1_0+chi_1-chi_2_0-chi_2)+2*C_13*a_1*a_3*np.cos(chi_1_0+chi_1-chi_3_0-chi_3)+2*C_23*a_2*a_3*np.cos(chi_2_0+chi_2-chi_3_0-chi_3)
+    return a_3*np.exp(-1j*(chi_3_0+chi_3))*A/B
 
 def I_corr(A, chi_1, chi_2, chi_3):
-    return A/3*(1+2*a_1*a_2*np.cos(chi_1_0+chi_1-chi_2_0-chi_2)+2*a_1*a_3*np.cos(chi_1_0+chi_1-chi_3_0-chi_3) + 2*a_2*a_3*np.cos(chi_2_0+chi_2-chi_3_0-chi_3))
+    return A/3*(1+2*C_12*a_1*a_2*np.cos(chi_1_0+chi_1-chi_2_0-chi_2)+2*C_13*a_1*a_3*np.cos(chi_1_0+chi_1-chi_3_0-chi_3) + 2*C_23*a_2*a_3*np.cos(chi_2_0+chi_2-chi_3_0-chi_3))
 
 for inf_file_name in inf_file_names:
         print(inf_file_name)
@@ -65,33 +101,43 @@ for inf_file_name in inf_file_names:
         cleandata=sorted_fold_path+"/Cleantxt"
         for root, dirs, files in os.walk(cleandata, topdown=False):
             files=np.sort(files)
-            data_ifg_matrix=np.zeros((4,points))
+            data_O_matrix=np.zeros((4,points))
             name = files[0]
             # print(name)
             tot_data=np.loadtxt(os.path.join(root, name))[:,1:]
-            time_ifg=tot_data[0,1]
-            data_ifg=tot_data[:,2]
+            time_meas=tot_data[0,1]
+            S=1#(tot_data[:,2]+tot_data[:,3]+tot_data[:,5]/2)*0.0002
+            S1=((tot_data[:,2]+tot_data[:,3])+tot_data[:,5])
+            data_O_err=tot_data[:,2]**0.5/S
+            data_O=tot_data[:,2]/S
+            data_H_err=tot_data[:,3]**0.5/S
+            data_H=tot_data[:,3]/S
+            data_OH_err=(tot_data[:,2]+tot_data[:,3])**0.5/S
+            data_OH=(tot_data[:,2]+tot_data[:,3])/S
+            data_aux_err=tot_data[:,5]**0.5/S
+            data_aux=tot_data[:,5]/S
+            ps_pos=tot_data[:,0]
             int_data=np.loadtxt(os.path.join(root, files[-1]))[:,3]
             time_int=np.loadtxt(os.path.join(root, files[-1]))[0,2]
             # print("path (213) intensities =",int_data)
-I_1=int_data[1]*time_ifg/time_int
-I_2=int_data[0]*time_ifg/time_int
-I_3=int_data[2]*time_ifg/time_int
-I_1_err=int_data[1]**0.5*time_ifg/time_int
-I_2_err=int_data[0]**0.5*time_ifg/time_int
-I_3_err=int_data[2]**0.5*time_ifg/time_int
+I_1=int_data[1]*time_meas/time_int
+I_2=int_data[0]*time_meas/time_int
+I_3=int_data[2]*time_meas/time_int
+I_1_err=int_data[1]**0.5*time_meas/time_int
+I_2_err=int_data[0]**0.5*time_meas/time_int
+I_3_err=int_data[2]**0.5*time_meas/time_int
 
 a_1=(I_1/(I_1+I_2+I_3))**0.5
 a_2=(I_2/(I_1+I_2+I_3))**0.5
 a_3=(I_3/(I_1+I_2+I_3))**0.5
 
 A=(I_1+I_2+I_3)*3
-print(A)
-data_ifg_err=data_ifg**0.5
+
+data_O_err=data_O**0.5
 ps_pos=tot_data[:,0]
-P0=[(np.amax(data_ifg)+np.amin(data_ifg))/2, 0.7, 6, 4.6]
-B0=([np.amin(data_ifg)/2,0,0.01,-2*np.pi],[np.amax(data_ifg)*3,np.amax(data_ifg)*2,7, 2*np.pi])
-p,cov=fit(fit_cos, ps_pos, data_ifg, sigma=data_ifg_err, p0=P0,  bounds=B0)
+P0=[(np.amax(data_O)+np.amin(data_O))/2, 0.7, 6, 4.6]
+B0=([np.amin(data_O)/2,0,0.01,-2*np.pi],[np.amax(data_O)*3,np.amax(data_O)*2,7, 2*np.pi])
+p,cov=fit(fit_cos, ps_pos, data_O, sigma=data_O_err, p0=P0,  bounds=B0)
 err=np.diag(cov)**0.5
 A_fit=p[0]
 C_fit=p[1]
@@ -102,45 +148,52 @@ x_plt = np.linspace(ps_pos[0], ps_pos[-1],100)
 fig = plt.figure(figsize=(8,6))
 ax = fig.add_subplot(111)
 fig.suptitle(name[:-4])
-ax.errorbar(ps_pos,data_ifg,yerr=data_ifg_err,fmt="ko",capsize=5, ms=3)
+ax.errorbar(ps_pos,data_O,yerr=data_O_err,fmt="ko",capsize=5, ms=3, label="O")
+ax.errorbar(ps_pos,data_H,yerr=data_H_err,fmt="ro",capsize=5, ms=3, label="H")
+ax.errorbar(ps_pos,data_OH,yerr=data_OH_err,fmt="go",capsize=5, ms=3, label="O+H")
+ax.errorbar(ps_pos,data_aux,yerr=data_aux_err,fmt="co",capsize=5, ms=3, label="Aux")
+ax.errorbar(ps_pos,S1,yerr=data_aux_err,fmt="yo",capsize=5, ms=3, label="O+H+Aux")
 ax.plot(x_plt,fit_cos(x_plt, *p), "b")
+ax.legend()
 
 p[2]=6.1
 chi_2=(ps_pos-ps_pos[0])*p[2]-np.pi
-data_ifg+=A/3*(2*(1-C_12)*a_1*a_2*np.cos(chi_1+chi_1_0-chi_2-chi_2_0) + 2*(1-C_13)*a_1*a_3*np.cos(chi_1+chi_1_0-chi_3-chi_3_0) + 2*(1-C_23)*a_2*a_3*np.cos(chi_2+chi_2_0-chi_3-chi_3_0))
-data_ifg_matrix[3]=data_ifg
+# data_O+=A/3*(2*(1-C_12)*a_1*a_2*np.cos(chi_1+chi_1_0-chi_2-chi_2_0) + 2*(1-C_13)*a_1*a_3*np.cos(chi_1+chi_1_0-chi_3-chi_3_0) + 2*(1-C_23)*a_2*a_3*np.cos(chi_2+chi_2_0-chi_3-chi_3_0))
+data_O_matrix[3]=data_O
 i=0
 for k in [2,1,3]:
-    data_ifg_matrix[i]=np.roll(data_ifg, -4*k)
+    data_O_matrix[i]=np.roll(data_O, -4*k)
     i+=1
 
 chi_2+=np.pi
 chi_2_plt=np.linspace(chi_2[0], chi_2[-1], 1000)
 
 # chi_2_plt=np.linspace(chi_2[0], chi_2[-1], 1000)
-# data_ifg+=A/3*(2*(1-C_12)*a_1*a_2*np.cos(chi_1+chi_1_0-chi_2-chi_2_0) + 2*(1-C_13)*a_1*a_3*np.cos(chi_1+chi_1_0-chi_3-chi_3_0) + 2*(1-C_23)*a_2*a_3*np.cos(chi_2+chi_2_0-chi_3-chi_3_0))
-# data_ifg_matrix[0]=data_ifg
+# data_O+=A/3*(2*(1-C_12)*a_1*a_2*np.cos(chi_1+chi_1_0-chi_2-chi_2_0) + 2*(1-C_13)*a_1*a_3*np.cos(chi_1+chi_1_0-chi_3-chi_3_0) + 2*(1-C_23)*a_2*a_3*np.cos(chi_2+chi_2_0-chi_3-chi_3_0))
+# data_O_matrix[0]=data_O
 # i=0
 # for k in [3,1,2]:
-#     data_ifg_matrix[i+1]=np.roll(data_ifg, -4*k)
+#     data_O_matrix[i+1]=np.roll(data_O, -4*k)
 #     i+=1
 
-for k in [0,1,2,3]:
-    fig = plt.figure(figsize=(8,6))
-    ax = fig.add_subplot(111)
-    ax.set_title(k)
-    ax.errorbar(ps_pos,data_ifg_matrix[k],yerr=data_ifg_matrix[k]**0.5,fmt="ko",capsize=5, ms=3)
-data_ifg_matrix_err=data_ifg_matrix**0.5
+# for k in [0,1,2,3]:
+#     fig = plt.figure(figsize=(8,6))
+#     ax = fig.add_subplot(111)
+#     ax.set_title(k)
+#     ax.errorbar(ps_pos,data_O_matrix[k],yerr=data_O_matrix[k]**0.5,fmt="ko",capsize=5, ms=3)
+data_O_matrix_err=data_O_matrix**0.5
 
-I_0=data_ifg_matrix[0]
-I_mpi2=data_ifg_matrix[1]
-I_ppi2=data_ifg_matrix[2]
-I_pi=data_ifg_matrix[3]
+I_0=data_O_matrix[0]
+I_mpi2=data_O_matrix[1]
+I_ppi2=data_O_matrix[2]
+I_pi=data_O_matrix[3]
 
-I_0_err=data_ifg_matrix_err[0]
-I_mpi2_err=data_ifg_matrix_err[1]
-I_ppi2_err=data_ifg_matrix_err[2]
-I_pi_err=data_ifg_matrix_err[3]
+print((I_0[0]*3/A-1)/(2*a_1*a_3),C_13)
+
+I_0_err=data_O_matrix_err[0]
+I_mpi2_err=data_O_matrix_err[1]
+I_ppi2_err=data_O_matrix_err[2]
+I_pi_err=data_O_matrix_err[3]
 
 fig = plt.figure(figsize=(8,6))
 ax = fig.add_subplot(111)

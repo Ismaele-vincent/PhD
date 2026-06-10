@@ -43,10 +43,14 @@ C_12=0.69
 C_13=0.74
 C_23=0.62
 
+# C_12=0.7 
+# C_13=0.73 
+# C_23=0.64
+
 def fit_cos(x, A, B, C, D):
     return A+B*np.cos(C*x-D)
 
-bad_apples=[
+bad_apples=["count_60s_No_In_+1+1+1_23Oct1953.txt",
     ]
 good_apples=[
     ]
@@ -82,11 +86,11 @@ for root, dirs, files in os.walk(sorted_fold_path, topdown=False):
     i=0
     for name in files[:]:
         if (name not in bad_apples):
-            # print('"'+name[-13:-7]+'",')
+            print('"'+name+'",')
             tot_data=np.loadtxt(os.path.join(root, name))[1:]
             # print(tot_data)
             time_count=tot_data[1]
-            data_count=tot_data[2]
+            data_count=tot_data[2]#/(tot_data[2]+tot_data[3]+tot_data[4])
             if ("60s_In1" in name):
                 counts=np.append(counts, np.array([(name[-13:-4],data_count,1)], dtype=dtype_new))
                 # print(name)
@@ -123,11 +127,17 @@ counts_In1=counts["value"][counts["index"]==1]
 counts_In2=counts["value"][counts["index"]==2]
 counts_In3=counts["value"][counts["index"]==3]
 
-print(x_0)
-axs[0].errorbar(range(len(counts_No_In)), counts_No_In, yerr=counts_No_In**0.5, fmt="o", color=colors[0], capsize=5, ms=3, label="In0")
-axs[1].errorbar(range(len(counts_In1)), counts_In1, yerr=counts_In1**0.5, fmt="o", color=colors[1], capsize=5, ms=3, label="In1")
-axs[2].errorbar(range(len(counts_In2)), counts_In2, yerr=counts_In2**0.5, fmt="o", color=colors[2], capsize=5, ms=3, label="In2")
-axs[3].errorbar(range(len(counts_In3)), counts_In3, yerr=counts_In3**0.5, fmt="o", color=colors[3], capsize=5, ms=3, label="In3")
+counts_No_In_err=0#counts["value"][counts["index"]==0]
+counts_In1_err=0#counts["value"][counts["index"]==1]
+counts_In2_err=0#counts["value"][counts["index"]==2]
+counts_In3_err=0#counts["value"][counts["index"]==3]
+
+
+# print(x_0)
+axs[0].errorbar(range(len(counts_No_In)), counts_No_In, yerr=counts_No_In_err, fmt="o", color=colors[0], capsize=5, ms=3, label="In0")
+axs[1].errorbar(range(len(counts_In1)), counts_In1, yerr=counts_In1_err, fmt="o", color=colors[1], capsize=5, ms=3, label="In1")
+axs[2].errorbar(range(len(counts_In2)), counts_In2, yerr=counts_In2_err, fmt="o", color=colors[2], capsize=5, ms=3, label="In2")
+axs[3].errorbar(range(len(counts_In3)), counts_In3, yerr=counts_In3_err, fmt="o", color=colors[3], capsize=5, ms=3, label="In3")
 # ax[0].set_xticks(range(len(counts_In1)))
 # ax.set_xticklabels(["0","1","2","3"])
 i=0
@@ -141,7 +151,7 @@ for ax in axs:
     i+=1
 
 counts_array=np.array([np.average(counts_No_In),np.average(counts_In1),np.average(counts_In2),np.average(counts_In3)])
-counts_array_err = counts_array**0.5
+counts_array_err = 0#counts_array
 counts_array_err/=counts_array[0]
 counts_array/=counts_array[0]
 
