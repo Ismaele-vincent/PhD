@@ -26,28 +26,27 @@ C_13=0.74
 C_23=0.62
 
 """
-"ifg_wv1_psi_+1+1+1_no_fit_22Oct1050"
+"ifg_wv2_psi_+1+1+1_no_fit_22Oct1130"
 """
-C_12=0.7 
-C_13=0.73 
-C_23=0.59
+# C_12=0.72
+# C_13=0.67 
+# C_23=0.58
 
 """
-"ifg_wv1_psi_+1+1+1_no_fit_22Oct2358"
+"ifg_wv3_psi_+1-i-1_no_fit_22Oct2113"
 """
-# C_12=0.7 
-# C_13=0.73 
-# C_23=0.64
+C_12=0.74
+C_13=0.68
+C_23=0.63
 
 """
-"ifg_wv1_psi_+1+1+1_no_fit_24Oct2318"
+"ifg_wv2_psi_+1-i-1_no_fit_25Oct0552"
 """
+# C_12=0.68 
+# C_13=0.57 
+# C_23=0.50
 
-# C_12=0.81 
-# C_13=0.69 
-# C_23=0.48
-
-points=64
+points=48
 points_per=16
 
 bad_apples=[
@@ -56,11 +55,14 @@ good_apples=["ifg_wv3_psi_+1-i-1_no_fit_21Oct2128" #good-ish
              "ifg_wv3_psi_+1-i-1_no_fit_22Oct2113" #good no pi shift
              "ifg_wv3_psi_+1-i-1_no_fit_25Oct0631" #good
     ]
-inf_file_names=["ifg_wv3_psi_+1-i-1_no_fit_21Oct2128" #good-ish
+inf_file_names=["ifg_wv3_psi_+1-i-1_no_fit_22Oct2113" #good-ish
 ]
 
 def fit_cos(x, A, B, C, D):
-    return A/2*(1+B*np.cos(C*x-D))
+    return A+B*np.cos(C*x-D)
+
+def fit_C(x, C_23, D, E):
+    return A/3*(1-2*C_23*a_2*a_3*np.sin(D*x-E)+2*C_13*a_1*a_3*np.cos(D*x-E))
 
 # def w1(chi_1, chi_2, chi_3):
 #     return a_1*np.exp(-1j*(chi_1_0+chi_1))/(a_1*np.exp(-1j*(chi_1_0+chi_1))+a_2*np.exp(-1j*(chi_2_0+chi_2))+a_3*np.exp(-1j*(chi_3_0+chi_3)))
@@ -75,33 +77,44 @@ def fit_cos(x, A, B, C, D):
 #     return A/3*(1+2*a_1*a_2*np.cos(chi_1_0+chi_1-chi_2_0-chi_2)+2*a_1*a_3*np.cos(chi_1_0+chi_1-chi_3_0-chi_3) + 2*a_2*a_3*np.cos(chi_2_0+chi_2-chi_3_0-chi_3))
 
 def w1(chi_1, chi_2, chi_3):
-    A=a_1*np.exp(1j*(chi_1_0+chi_1))+C_12*a_2*np.exp(1j*(chi_2_0+chi_2))+C_13*a_3*np.exp(1j*(chi_3_0+chi_3))
-    B=1+2*C_12*a_1*a_2*np.cos(chi_1_0+chi_1-chi_2_0-chi_2)+2*C_13*a_1*a_3*np.cos(chi_1_0+chi_1-chi_3_0-chi_3)+2*C_23*a_2*a_3*np.cos(chi_2_0+chi_2-chi_3_0-chi_3)
-    return a_1*np.exp(-1j*(chi_1_0+chi_1))*A/B
+    Dchi_12=chi_1_0+chi_1-(chi_2_0+chi_2)
+    Dchi_13=chi_1_0+chi_1-(chi_3_0+chi_3)
+    Dchi_23=chi_2_0+chi_2-(chi_3_0+chi_3)
+    A=a_1**2+C_12*a_1*a_2*np.exp(-1j*Dchi_12)+C_13*a_1*a_3*np.exp(-1j*Dchi_13)
+    B=1+2*C_12*a_1*a_2*np.cos(Dchi_12)+2*C_13*a_1*a_3*np.cos(Dchi_13)+2*C_23*a_2*a_3*np.cos(Dchi_23)
+    return A/B
 
 def w2(chi_1, chi_2, chi_3):
-    A=C_12*a_1*np.exp(-1j*(chi_1_0+chi_1))+a_2*np.exp(1j*(chi_2_0+chi_2))+C_23*a_3*np.exp(1j*(chi_3_0+chi_3))
-    B=1+2*C_12*a_1*a_2*np.cos(chi_1_0+chi_1-chi_2_0-chi_2)+2*C_13*a_1*a_3*np.cos(chi_1_0+chi_1-chi_3_0-chi_3)+2*C_23*a_2*a_3*np.cos(chi_2_0+chi_2-chi_3_0-chi_3)
-    return a_2*np.exp(-1j*(chi_2_0+chi_2))*A/B
+    Dchi_12=chi_1_0+chi_1-(chi_2_0+chi_2)
+    Dchi_13=chi_1_0+chi_1-(chi_3_0+chi_3)
+    Dchi_23=chi_2_0+chi_2-(chi_3_0+chi_3)
+    A=C_12*a_1*a_2*np.exp(1j*Dchi_12)+a_2**2+C_23*a_2*a_3*np.exp(-1j*Dchi_23)
+    B=1+2*C_12*a_1*a_2*np.cos(Dchi_12)+2*C_13*a_1*a_3*np.cos(Dchi_13)+2*C_23*a_2*a_3*np.cos(Dchi_23)
+    return A/B
 
 def w3(chi_1, chi_2, chi_3):
-    A=C_13*a_1*np.exp(-1j*(chi_1_0+chi_1))+C_23*a_2*np.exp(-1j*(chi_2_0+chi_2))+a_3*np.exp(1j*(chi_3_0+chi_3))
-    B=1+2*C_12*a_1*a_2*np.cos(chi_1_0+chi_1-chi_2_0-chi_2)+2*C_13*a_1*a_3*np.cos(chi_1_0+chi_1-chi_3_0-chi_3)+2*C_23*a_2*a_3*np.cos(chi_2_0+chi_2-chi_3_0-chi_3)
-    return a_3*np.exp(-1j*(chi_3_0+chi_3))*A/B
+    Dchi_12=chi_1_0+chi_1-(chi_2_0+chi_2)
+    Dchi_13=chi_1_0+chi_1-(chi_3_0+chi_3)
+    Dchi_23=chi_2_0+chi_2-(chi_3_0+chi_3)
+    A=C_12*a_1*a_3*np.exp(1j*Dchi_13)+C_23*a_2*a_3*np.exp(1j*Dchi_23)+a_3**2
+    B=1+2*C_12*a_1*a_2*np.cos(Dchi_12)+2*C_13*a_1*a_3*np.cos(Dchi_13)+2*C_23*a_2*a_3*np.cos(Dchi_23)
+    return A/B
 
 def I_corr(A, chi_1, chi_2, chi_3):
     return A/3*(1+2*C_12*a_1*a_2*np.cos(chi_1_0+chi_1-chi_2_0-chi_2)+2*C_13*a_1*a_3*np.cos(chi_1_0+chi_1-chi_3_0-chi_3) + 2*C_23*a_2*a_3*np.cos(chi_2_0+chi_2-chi_3_0-chi_3))
 
-
+i=0
 for inf_file_name in inf_file_names:
         print(inf_file_name)
         sorted_fold_path="/home/aaa/Desktop/Fisica/PhD/2025/Grenoble 2nd round/exp_3-16-19/Sorted data/Ifg wv no fit/"+inf_file_name
         cleandata=sorted_fold_path+"/Cleantxt"
         for root, dirs, files in os.walk(cleandata, topdown=False):
             files=np.sort(files)
-            name = files[0]
+            name=files[0]
             # print(name)
-            tot_data=np.loadtxt(os.path.join(root, name))[:,1:]
+            tot_data=np.loadtxt(os.path.join(root, files[0]))[:,1:]
+            # for k in range(len(tot_data[0])-1):
+            #     tot_data[:,k+1]=np.roll(tot_data[:,k+1], -8)
             time_meas=tot_data[0,1]
             N_ifg=time_meas
             # S1=((tot_data[:,2]+tot_data[:,3])+tot_data[:,5])
@@ -141,6 +154,14 @@ C_fit_err=err[1]**2
 A_fit_err=err[0]**2
 x_plt = np.linspace(ps_pos[0], ps_pos[-1],100)
 
+# print((A_fit/A*3-1)/(2*a_1*a_2),C_12)
+
+P0_C=[C_23, 6, 4.6]
+B0_C=([0.3,0,0.01],[2,7, 2*np.pi])
+p_C,cov_C=fit(fit_C, ps_pos, data_O, sigma=data_O_err, p0=P0_C,  bounds=B0_C)
+err_C=np.diag(cov_C)**0.5
+print("C_12=",p_C[0],"+-",err_C[0],"C_13*a_1*a_3+C_23*a_2*a_3=",p_C[1],"+-",err_C[1])
+
 fig = plt.figure(figsize=(8,6))
 ax = fig.add_subplot(111)
 fig.suptitle(name[:-4])
@@ -150,6 +171,7 @@ ax.errorbar(ps_pos,data_OH,yerr=data_OH_err,fmt="go",capsize=5, ms=3, label="O+H
 ax.errorbar(ps_pos,data_aux,yerr=data_aux_err,fmt="co",capsize=5, ms=3, label="Aux")
 # ax.errorbar(ps_pos,S1,yerr=data_aux_err,fmt="yo",capsize=5, ms=3, label="O+H+Aux")
 ax.plot(x_plt,fit_cos(x_plt, *p), "b")
+ax.plot(x_plt,fit_C(x_plt, *p_C), "y--")
 ax.legend()
 
 # p[2]=6.07
@@ -158,6 +180,7 @@ data_O_matrix=np.zeros((4,points))
 data_O_matrix_err=np.zeros((4,points))
 # data_O+=A/3*(2*(1-C_12)*a_1*a_2*np.cos(chi_1+chi_1_0-chi_2-chi_2_0) + 2*(1-C_13)*a_1*a_3*np.cos(chi_1+chi_1_0-chi_3-chi_3_0) + 2*(1-C_23)*a_2*a_3*np.cos(chi_2+chi_2_0-chi_3-chi_3_0))
 data_O_matrix[3]=data_O
+data_O_matrix_err[3]=data_O_err
 i=0
 for k in [2,1,3]:
     data_O_matrix[i]=np.roll(data_O, -4*k)
@@ -178,7 +201,7 @@ chi_3_plt=np.linspace(chi_3[0], chi_3[-1], 1000)
 #     fig = plt.figure(figsize=(8,6))
 #     ax = fig.add_subplot(111)
 #     ax.set_title(k)
-#     ax.errorbar(ps_pos,data_O_matrix[k],yerr=data_O_matrix[k]**0.5,fmt="ko",capsize=5, ms=3)
+#     ax.errorbar(ps_pos,data_O_matrix[k],yerr=data_O_matrix_err[k],fmt="ko",capsize=5, ms=3)
 
 
 I_0=data_O_matrix[0]

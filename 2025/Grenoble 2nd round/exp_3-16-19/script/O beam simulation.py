@@ -23,23 +23,23 @@ a_3=(T_3/(T_1+T_2+T_3))**0.5
 """
 psi +exp(-i pi/3) +1  +exp(i 2pi/3) 
 """
-chi_1_0=0
-chi_2_0=-np.pi/3
-chi_3_0=2*np.pi/3
+# chi_1_0=0
+# chi_2_0=-np.pi/3
+# chi_3_0=2*np.pi/3
 
 """
-psi +exp(-i pi/3) +1  +exp(i 2pi/3) 
+psi +1 +exp(-i pi/3) +exp(i 2pi/3) 
 """
-# chi_1_0=-np.pi/3
-# chi_2_0=0
-# chi_3_0=2*np.pi/3
+chi_1_0=-np.pi/3
+chi_2_0=0
+chi_3_0=2*np.pi/3
 
 """
 psi +1 -i -1
 """
-# chi_1_0=0
-# chi_2_0=-np.pi/2
-# chi_3_0=-np.pi
+chi_1_0=0
+chi_2_0=-np.pi/2
+chi_3_0=-np.pi
 
 """
 psi +1 -1 -i

@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 from matplotlib.gridspec import GridSpec
 plt.rcParams.update({'figure.max_open_warning': 0})
 from scipy.optimize import curve_fit as fit
-
+import My_module_Exp_2025_1 as mymod
 state="$|\\psi_{in}>=(|1>+|2>+|3>)/\\sqrt{3}$"
 
 chi_1_0=0
@@ -22,27 +22,34 @@ chi_2=0
 chi_3=0
 
 """
+"ifg_wv1_psi_+1+1+1_No_fit_20Oct1759"
+"""
+# C_12=0.74
+# C_13=0.66
+# C_23=0.63
+
+"""
 "ifg_wv1_psi_+1+1+1_no_fit_22Oct1050"
 """
-
-C_12=0.7 
-C_13=0.73 
-C_23=0.59
+# C_12=0.72
+# C_13=0.67 
+# C_23=0.58
 
 """
 "ifg_wv1_psi_+1+1+1_no_fit_22Oct2358"
 """
-# C_12=0.7 
-# C_13=0.73 
-# C_23=0.64
+# C_12=0.74
+# C_13=0.66
+# C_23=0.63
 
 """
 "ifg_wv1_psi_+1+1+1_no_fit_24Oct2318"
 """
+# C_12=0.68 
+# C_13=0.56 
+# C_23=0.50
 
-# C_12=0.81 
-# C_13=0.69 
-# C_23=0.48
+A=266
 
 points=48
 points_per=16
@@ -50,43 +57,25 @@ points_per=16
 bad_apples=[
     ]
 good_apples=["ifg_wv1_psi_+1+1+1_No_fit_20Oct1759" #no initial pi shift 64 points
-             "ifg_wv1_psi_+1+1+1_no_fit_22Oct1050" #good C_12=0.7 C_13=0.73 C_23=0.59
-             "ifg_wv1_psi_+1+1+1_no_fit_22Oct2358" #best C_12=0.7 C_13=0.73 C_23=0.64
-             "ifg_wv1_psi_+1+1+1_no_fit_24Oct2318" #good-ish C_12=0.81 C_13=0.69 C_23=0.46
+             "ifg_wv1_psi_+1+1+1_no_fit_22Oct1050" #good
+             "ifg_wv1_psi_+1+1+1_no_fit_22Oct2358" #best
+             "ifg_wv1_psi_+1+1+1_no_fit_24Oct2318" #good-ish
              ]
 
-inf_file_names=["ifg_wv1_psi_+1+1+1_no_fit_22Oct1050" #best C_12=0.7 C_13=0.73 C_23=0.64
+inf_file_names=["ifg_wv1_psi_+1+1+1_no_fit_22Oct2358"
 ]
 
+
+C_12, C_13, C_23 = mymod.contrast(inf_file_names[0])
+print("C_12=", C_12, "C_13=", C_13, "C_23=", C_23)
+# def fit_cos(x, A, B, C, D):
+#     return A/2*(1+B*np.cos(C*x-D))
+
 def fit_cos(x, A, B, C, D):
-    return A/2*(1+B*np.cos(C*x-D))
+    return A+B*np.cos(C*x-D)
 
-# def w1(chi_1, chi_2, chi_3):
-#     return a_1*np.exp(-1j*(chi_1_0+chi_1))/(a_1*np.exp(-1j*(chi_1_0+chi_1))+a_2*np.exp(-1j*(chi_2_0+chi_2))+a_3*np.exp(-1j*(chi_3_0+chi_3)))
-
-# def w2(chi_1, chi_2, chi_3):
-#     return a_2*np.exp(-1j*(chi_2_0+chi_2))/(a_1*np.exp(-1j*(chi_1_0+chi_1))+a_2*np.exp(-1j*(chi_2_0+chi_2))+a_3*np.exp(-1j*(chi_3_0+chi_3)))
-
-# def w3(chi_1, chi_2, chi_3):
-#     return a_3*np.exp(-1j*(chi_3_0+chi_3))/(a_1*np.exp(-1j*(chi_1_0+chi_1))+a_2*np.exp(-1j*(chi_2_0+chi_2))+a_3*np.exp(-1j*(chi_3_0+chi_3)))
-
-# def I_corr(A, chi_1, chi_2, chi_3):
-#     return A/3*(1+2*a_1*a_2*np.cos(chi_1_0+chi_1-chi_2_0-chi_2)+2*a_1*a_3*np.cos(chi_1_0+chi_1-chi_3_0-chi_3) + 2*a_2*a_3*np.cos(chi_2_0+chi_2-chi_3_0-chi_3))
-
-def w1(chi_1, chi_2, chi_3):
-    A=a_1*np.exp(1j*(chi_1_0+chi_1))+C_12*a_2*np.exp(1j*(chi_2_0+chi_2))+C_13*a_3*np.exp(1j*(chi_3_0+chi_3))
-    B=1+2*C_12*a_1*a_2*np.cos(chi_1_0+chi_1-chi_2_0-chi_2)+2*C_13*a_1*a_3*np.cos(chi_1_0+chi_1-chi_3_0-chi_3)+2*C_23*a_2*a_3*np.cos(chi_2_0+chi_2-chi_3_0-chi_3)
-    return a_1*np.exp(-1j*(chi_1_0+chi_1))*A/B
-
-def w2(chi_1, chi_2, chi_3):
-    A=C_12*a_1*np.exp(-1j*(chi_1_0+chi_1))+a_2*np.exp(1j*(chi_2_0+chi_2))+C_23*a_3*np.exp(1j*(chi_3_0+chi_3))
-    B=1+2*C_12*a_1*a_2*np.cos(chi_1_0+chi_1-chi_2_0-chi_2)+2*C_13*a_1*a_3*np.cos(chi_1_0+chi_1-chi_3_0-chi_3)+2*C_23*a_2*a_3*np.cos(chi_2_0+chi_2-chi_3_0-chi_3)
-    return a_2*np.exp(-1j*(chi_2_0+chi_2))*A/B
-
-def w3(chi_1, chi_2, chi_3):
-    A=C_13*a_1*np.exp(-1j*(chi_1_0+chi_1))+C_23*a_2*np.exp(-1j*(chi_2_0+chi_2))+a_3*np.exp(1j*(chi_3_0+chi_3))
-    B=1+2*C_12*a_1*a_2*np.cos(chi_1_0+chi_1-chi_2_0-chi_2)+2*C_13*a_1*a_3*np.cos(chi_1_0+chi_1-chi_3_0-chi_3)+2*C_23*a_2*a_3*np.cos(chi_2_0+chi_2-chi_3_0-chi_3)
-    return a_3*np.exp(-1j*(chi_3_0+chi_3))*A/B
+def fit_C(x, C_23, B, D, E):
+    return A/3*(1+2*C_23*a_2*a_3+2*B*np.cos(D*x-E))
 
 def I_corr(A, chi_1, chi_2, chi_3):
     return A/3*(1+2*C_12*a_1*a_2*np.cos(chi_1_0+chi_1-chi_2_0-chi_2)+2*C_13*a_1*a_3*np.cos(chi_1_0+chi_1-chi_3_0-chi_3) + 2*C_23*a_2*a_3*np.cos(chi_2_0+chi_2-chi_3_0-chi_3))
@@ -127,7 +116,7 @@ a_2=(I_2/(I_1+I_2+I_3))**0.5
 a_3=(I_3/(I_1+I_2+I_3))**0.5
 
 A=(I_1+I_2+I_3)*3
-
+print(A)
 ps_pos=tot_data[:,0]
 P0=[(np.amax(data_O)+np.amin(data_O))/2, 0.7, 6, 4.6]
 B0=([np.amin(data_O)/2,0,0.01,-2*np.pi],[np.amax(data_O)*3,np.amax(data_O)*2,7, 2*np.pi])
@@ -139,6 +128,14 @@ C_fit_err=err[1]**2
 A_fit_err=err[0]**2
 x_plt = np.linspace(ps_pos[0], ps_pos[-1],100)
 
+P0_C=[C_23, C_12*a_1*a_2+C_13*a_1*a_3, 6, 4.6]
+B0_C=([0.3,0.3,0,0.01],[1,1,7, 2*np.pi])
+p_C,cov_C=fit(fit_C, ps_pos, data_O, sigma=data_O_err, p0=P0_C,  bounds=B0_C)
+err_C=np.diag(cov_C)**0.5
+print("C_23=",p_C[0],"+-",err_C[0],"C_12*a_1*a_2+C_13*a_1*a_3=",p_C[1],"+-",err_C[1])
+
+# print((A_fit/A*3-1)/(2*a_1*a_2),C_23)
+
 fig = plt.figure(figsize=(8,6))
 ax = fig.add_subplot(111)
 fig.suptitle(name[:-4])
@@ -148,6 +145,7 @@ ax.errorbar(ps_pos,data_OH,yerr=data_OH_err,fmt="go",capsize=5, ms=3, label="O+H
 ax.errorbar(ps_pos,data_aux,yerr=data_aux_err,fmt="co",capsize=5, ms=3, label="Aux")
 # ax.errorbar(ps_pos,S1,yerr=data_aux_err,fmt="yo",capsize=5, ms=3, label="O+H+Aux")
 ax.plot(x_plt,fit_cos(x_plt, *p), "b")
+ax.plot(x_plt,fit_C(x_plt, *p_C), "y--")
 ax.legend()
 
 chi_1=(ps_pos-ps_pos[0])*p[2]-np.pi
@@ -224,24 +222,24 @@ axs[2].tick_params(axis="x", bottom=False, labelbottom=False)
 axs[4].tick_params(axis="x", bottom=False, labelbottom=False)
 # axs[1].tick_params(axis="y", left=False, labelleft=False)
 # axs[3].tick_params(axis="y", left=False, labelleft=False)
-
+w1=mymod.w1(a_1, a_2, a_3, chi_1_plt, chi_1_0, chi_2, chi_2_0, chi_3, chi_3_0, C_12, C_13, C_23)
 axs[0].errorbar(chi_1,Re_1, Re_1_err, fmt="k.", capsize=3)
-axs[0].errorbar(chi_1_plt, w1(chi_1_plt,0,0).real, color=colors[3], alpha=0.8)
-
+axs[0].errorbar(chi_1_plt, w1.real, color=colors[3], alpha=0.8)
 axs[1].errorbar(chi_1,Im_1, Im_1_err, fmt="k.", capsize=3)
-axs[1].plot(chi_1_plt, w1(chi_1_plt,0,0).imag, color=colors[3], alpha=0.8 )
+axs[1].plot(chi_1_plt, w1.imag, color=colors[3], alpha=0.8 )
 
+w2=mymod.w2(a_1, a_2, a_3, chi_1_plt, chi_1_0, chi_2, chi_2_0, chi_3, chi_3_0, C_12, C_13, C_23)
 # axs[2].errorbar(chi_1,Re_1, Re_1_err, fmt="k.", capsize=3)
-axs[2].errorbar(chi_1_plt, w2(chi_1_plt,0,0).real, color=colors[3], alpha=0.8)
-
+axs[2].errorbar(chi_1_plt, w2.real, color=colors[3], alpha=0.8)
 # axs[3].errorbar(chi_1,Im_1, Im_1_err, fmt="k.", capsize=3)
-axs[3].plot(chi_1_plt, w2(chi_1_plt,0,0).imag, color=colors[3], alpha=0.8 )
+axs[3].plot(chi_1_plt, w2.imag, color=colors[3], alpha=0.8 )
 
+w3=mymod.w3(a_1, a_2, a_3, chi_1_plt, chi_1_0, chi_2, chi_2_0, chi_3, chi_3_0, C_12, C_13, C_23)
 # axs[4].errorbar(chi_1,Re_1, Re_1_err, fmt="k.", capsize=3)
-axs[4].errorbar(chi_1_plt, w3(chi_1_plt,0,0).real, color=colors[3], alpha=0.8)
+axs[4].errorbar(chi_1_plt, w3.real, color=colors[3], alpha=0.8)
 
 # axs[5].errorbar(chi_1,Im_1, Im_1_err, fmt="k.", capsize=3)
-axs[5].plot(chi_1_plt, w3(chi_1_plt,0,0).imag, color=colors[3], alpha=0.8 )
+axs[5].plot(chi_1_plt, w3.imag, color=colors[3], alpha=0.8 )
 
 for ax in axs:
     ax.set_xticks(chi_1[::8])

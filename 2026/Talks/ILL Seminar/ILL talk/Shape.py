@@ -16,8 +16,8 @@ plt.rcParams["legend.fontsize"] = 11
 plt.rcParams["axes.unicode_minus"] = False
 
 # Data
-x = np.array([1, 2])
-heights = np.array([1,0])
+x = np.array([1, 2, 3])
+heights = np.array([0,0,1])
 
 colors = [
     "#D97A00",  # burnt orange
@@ -35,22 +35,24 @@ ax.bar(
     x,
     heights,
     width=0.6,
-    color=colors,
+    color="k",
     edgecolor="black"
 )
-
+ax.plot(1,0.06, "ok", ms=20, clip_on=False)
+ax.plot(2,0.06, "^k", ms=20, clip_on=False)
+ax.plot(3,1.08, "Dk", ms=20, clip_on=False)
 # Axes
 ax.set_xlabel(r'$\lambda_1$', fontsize=14)
 ax.set_ylabel(r'$\mu(\lambda)$', fontsize=14)
 
-ax.set_xlim(0.5, 2.5)
-ax.set_ylim(0, 1)
+ax.set_xlim(0.5, 3.5)
+ax.set_ylim(0, 1.2)
 
-ax.set_xticks([1, 2])
-ax.set_xticklabels(["circle", "square"])
+ax.set_xticks([1, 2, 3])
+# ax.set_xticklabels(["circle", "square", "romboid"])
 
-ax.set_yticks([1])
-ax.set_yticklabels(['1'])
+ax.set_yticks([1/3,2/3,1])
+ax.set_yticklabels(['1/3','2/3','1'])
 
 # Light horizontal grid
 ax.grid(axis='y', color='lightgray', linestyle='-', linewidth=0.8)

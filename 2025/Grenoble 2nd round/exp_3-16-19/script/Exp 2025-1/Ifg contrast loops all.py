@@ -78,9 +78,9 @@ for root, dirs, files in os.walk(sorted_fold_path, topdown=False):
             tot_data=np.loadtxt(os.path.join(root, name))
             time_meas=tot_data[0,1]
             if ("B1" not in name):
-                S=1#tot_data[:,5]/np.average(tot_data[:,5])
+                S=time_meas*tot_data[:,5]/np.average(tot_data[:,5])
             else:
-                S=1#(tot_data[:,2]+tot_data[:,3]+tot_data[:,5]/2)*0.02/time_meas
+                S=time_meas#
             data_O_err=tot_data[:,2]**0.5/S
             data_O=tot_data[:,2]/S
             data_H_err=tot_data[:,3]**0.5/S
@@ -90,6 +90,7 @@ for root, dirs, files in os.walk(sorted_fold_path, topdown=False):
             data_aux_err=tot_data[:,5]**0.5/S
             data_aux=tot_data[:,5]/S
             ps_pos=tot_data[:,0]
+            
             P0_O=[(np.amax(data_O)+np.amin(data_O))/2, 0.6, 6, -6.6]
             B0_O=([np.amin(data_O),0,5,-4*np.pi],[np.amax(data_O)*2,1,7, 1*np.pi])
             p_O,cov=fit(fit_cos, ps_pos, data_O, sigma=data_O_err, p0=P0_O,  bounds=B0_O)
@@ -98,7 +99,7 @@ for root, dirs, files in os.walk(sorted_fold_path, topdown=False):
             A_O=p_O[0]
             A_O_err=err_O[0]
             C_O_fit=p_O[1]
-            C_O_fit=p_O[1]*A_O
+            # C_O_fit=p_O[1]*A_O
             C_O_fit_err=err_O[1]
             
             P0_aux=[(np.amax(data_aux)+np.amin(data_aux))/2, 0.6, 6, -6.6]
@@ -109,7 +110,7 @@ for root, dirs, files in os.walk(sorted_fold_path, topdown=False):
             A_aux=p_aux[0]
             A_aux_err=err_aux[0]
             C_aux_fit=p_aux[1]
-            C_aux_fit=p_aux[1]*A_aux
+            # C_aux_fit=p_aux[1]*A_aux
             C_aux_fit_err=err_aux[1]   
             
             P0_H=[(np.amax(data_H)+np.amin(data_H))/2, 0.6, 6, -6.6]
@@ -120,7 +121,7 @@ for root, dirs, files in os.walk(sorted_fold_path, topdown=False):
             A_H=p_H[0]
             A_H_err=err_H[0]
             C_H_fit=p_H[1]
-            C_H_fit=p_H[1]*A_H
+            # C_H_fit=p_H[1]*A_H
             C_H_fit_err=err_H[1] 
             
             P0_OH=[(np.amax(data_OH)+np.amin(data_OH))/2, 0.6, 6, -6.6]
@@ -131,7 +132,7 @@ for root, dirs, files in os.walk(sorted_fold_path, topdown=False):
             A_OH=p_OH[0]
             A_OH_err=err_OH[0]
             C_OH_fit=p_OH[1]
-            C_OH_fit=p_OH[1]*A_OH
+            # C_OH_fit=p_OH[1]*A_OH
             C_OH_fit_err=err_OH[1] 
             
             ps_plt = np.linspace(ps_pos[0], ps_pos[-1],100)
