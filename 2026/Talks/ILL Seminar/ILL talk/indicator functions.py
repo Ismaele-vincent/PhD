@@ -36,15 +36,15 @@ ax.bar(
     x,
     heights,
     width=0.6,
-    color="black",
+    color="white",
     edgecolor="black"
 )
-ax.plot(1,prob[0]+0.06, "ok", ms=20, clip_on=False)
-ax.plot(2,prob[1]+0.06, "^k", ms=20, clip_on=False)
-ax.plot(3,prob[2]+0.08, "Dk", ms=20, clip_on=False)
+# ax.plot(1,prob[0]+0.06, "ok", ms=20, clip_on=False)
+# ax.plot(2,prob[1]+0.06, "^k", ms=20, clip_on=False)
+# ax.plot(3,prob[2]+0.08, "Dk", ms=20, clip_on=False)
 # Axes
 ax.set_xlabel(r'$\lambda_1$', fontsize=14)
-ax.set_ylabel(r'$\mu(\lambda_1)$', fontsize=14)
+ax.set_ylabel(r'$\xi(3|\lambda_1)$', fontsize=14)
 
 ax.set_xlim(0.5, 3.5)
 ax.set_ylim(0, 1.2)
@@ -63,5 +63,5 @@ ax.set_axisbelow(True)
 ax.spines['top'].set_visible(False)
 ax.spines['right'].set_visible(False) 
 plt.tight_layout()
-plt.savefig("/home/aaa/Desktop/Fisica/PhD/2026/Talks/ILL Seminar/Classical pure state.svg", format="svg", bbox_inches='tight', pad_inches=0, transparent=True)
+plt.savefig("/home/aaa/Desktop/Fisica/PhD/2026/Talks/ILL Seminar/Classical indicator function 3 big.svg", format="svg", bbox_inches='tight', pad_inches=0, transparent=True)
 plt.show()

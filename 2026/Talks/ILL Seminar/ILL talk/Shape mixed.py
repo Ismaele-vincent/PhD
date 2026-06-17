@@ -16,7 +16,7 @@ plt.rcParams["legend.fontsize"] = 11
 plt.rcParams["axes.unicode_minus"] = False
 
 # Data
-prob=np.array([0,0,1])
+prob=np.array([0.25,0,0.75])
 x = np.array([1, 2, 3])
 heights = np.array(prob)
 
@@ -63,5 +63,5 @@ ax.set_axisbelow(True)
 ax.spines['top'].set_visible(False)
 ax.spines['right'].set_visible(False) 
 plt.tight_layout()
-plt.savefig("/home/aaa/Desktop/Fisica/PhD/2026/Talks/ILL Seminar/Classical pure state.svg", format="svg", bbox_inches='tight', pad_inches=0, transparent=True)
+plt.savefig("/home/aaa/Desktop/Fisica/PhD/2026/Talks/ILL Seminar/Classical mixed state.svg", format="svg", bbox_inches='tight', pad_inches=0, transparent=True)
 plt.show()
