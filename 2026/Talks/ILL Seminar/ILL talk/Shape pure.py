@@ -16,8 +16,8 @@ plt.rcParams["legend.fontsize"] = 11
 plt.rcParams["axes.unicode_minus"] = False
 
 # Data
-prob=np.array([0,0,1])
-x = np.array([1, 2, 3])
+prob=np.array([0,1])
+x = np.array([1, 2])
 heights = np.array(prob)
 
 colors = [
@@ -30,7 +30,7 @@ colors = [
 ]
 
 # Figure
-fig, ax = plt.subplots(figsize=(8, 4.5), dpi=250)
+fig, ax = plt.subplots(figsize=(4, 3.5), dpi=250)
 
 ax.bar(
     x,
@@ -39,21 +39,21 @@ ax.bar(
     color="black",
     edgecolor="black"
 )
-ax.plot(1,prob[0]+0.06, "ok", ms=20, clip_on=False)
-ax.plot(2,prob[1]+0.06, "^k", ms=20, clip_on=False)
-ax.plot(3,prob[2]+0.08, "Dk", ms=20, clip_on=False)
+ax.plot(1,prob[0]+0.07, "ok", ms=20, clip_on=False)
+ax.plot(2,prob[1]+0.07, "^k", ms=20, clip_on=False)
+# ax.plot(3,prob[2]+0.08, "Dk", ms=20, clip_on=False)
 # Axes
 ax.set_xlabel(r'$\lambda_1$', fontsize=14)
-ax.set_ylabel(r'$\mu(\lambda_1)$', fontsize=14)
+ax.set_ylabel(r'$\mu(\lambda_1|P)$', fontsize=14)
 
-ax.set_xlim(0.5, 3.5)
-ax.set_ylim(0, 1.2)
+ax.set_xlim(0.5, 2.5)
+ax.set_ylim(0, 1)
 
-ax.set_xticks([1, 2, 3])
+ax.set_xticks([1, 2])
 # ax.set_xticklabels(["circle", "square", "romboid"])
 
-ax.set_yticks([0,1/4,2/4,3/4,1])
-ax.set_yticklabels(['0','0.25','0.5','0.75','1'])
+ax.set_yticks([0,1/2,1])
+ax.set_yticklabels(['0','0.5','1'])
 
 # Light horizontal grid
 ax.grid(axis='y', color='lightgray', linestyle='-', linewidth=0.8)
@@ -63,5 +63,5 @@ ax.set_axisbelow(True)
 ax.spines['top'].set_visible(False)
 ax.spines['right'].set_visible(False) 
 plt.tight_layout()
-plt.savefig("/home/aaa/Desktop/Fisica/PhD/2026/Talks/ILL Seminar/Classical pure state.svg", format="svg", bbox_inches='tight', pad_inches=0, transparent=True)
+plt.savefig("/home/aaa/Desktop/Fisica/PhD/2026/Talks/ILL Seminar/Classical pure state shape.svg", format="svg", bbox_inches='tight', pad_inches=0, transparent=True)
 plt.show()

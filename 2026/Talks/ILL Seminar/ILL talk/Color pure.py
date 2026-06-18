@@ -16,7 +16,7 @@ plt.rcParams["legend.fontsize"] = 11
 plt.rcParams["axes.unicode_minus"] = False
 
 # Data
-prob=np.array([0.5,0.5])
+prob=np.array([0,1])
 x = np.array([1, 2])
 heights = np.array(prob)
 
@@ -39,12 +39,12 @@ ax.bar(
     color="black",
     edgecolor="black"
 )
-ax.plot(1,prob[0]+0.07, "ok", ms=20, clip_on=False)
-ax.plot(2,prob[1]+0.07, "^k", ms=20, clip_on=False)
+ax.plot(1,prob[0]+0.07, "s", color=colors[1], ms=20, clip_on=False)
+ax.plot(2,prob[1]+0.07, "s", color=colors[2], ms=20, clip_on=False)
 # ax.plot(3,prob[2]+0.08, "Dk", ms=20, clip_on=False)
 # Axes
-ax.set_xlabel(r'$\lambda_1$', fontsize=14)
-ax.set_ylabel(r'$\mu(\lambda_1|P)$', fontsize=14)
+ax.set_xlabel(r'$\lambda_2$', fontsize=14)
+ax.set_ylabel(r'$\mu(\lambda_2|P)$', fontsize=14)
 
 ax.set_xlim(0.5, 2.5)
 ax.set_ylim(0, 1)
@@ -63,5 +63,5 @@ ax.set_axisbelow(True)
 ax.spines['top'].set_visible(False)
 ax.spines['right'].set_visible(False) 
 plt.tight_layout()
-plt.savefig("/home/aaa/Desktop/Fisica/PhD/2026/Talks/ILL Seminar/Classical mixed state shape.svg", format="svg", bbox_inches='tight', pad_inches=0, transparent=True)
+plt.savefig("/home/aaa/Desktop/Fisica/PhD/2026/Talks/ILL Seminar/Classical pure state color.svg", format="svg", bbox_inches='tight', pad_inches=0, transparent=True)
 plt.show()

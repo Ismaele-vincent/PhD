@@ -22,14 +22,14 @@ fig = plt.figure(figsize=(8, 6))
 ax = fig.add_subplot(111, projection='3d')
 
 # Positions of the bars
-x = np.array([1, 2, 1])
-y = np.array([1, 2, 3])
-z = np.zeros(3)
+x = np.array([1, 1, 2, 2])
+y = np.array([1, 2, 1, 2])
+z = np.zeros(4)
 
 # Dimensions of the bars
-dx = np.full(3, 0.6)
-dy = np.full(3, 0.6)
-dz = np.array([2/10, 5/10, 3/10])
+dx = np.full(4, 0.6)
+dy = np.full(4, 0.6)
+dz = np.array([1/4, 1/4, 1/4, 1/4])
 
 
 # Colors
@@ -37,16 +37,21 @@ colors = [
     "#D97A00",  # burnt orange
     "#c32d9b",  # magenta
     "#006699",  # TU blue
-    # "#2A9D8F",  # teal
-    # "#7A8F3A",  # olive green
-    # "#6A4C93"   # deep violet
+    "#2A9D8F",  # teal
+    "#7A8F3A",  # olive green
+    "#6A4C93"   # deep violet
 ]
 
+#Draw symbols
+# ax.plot(1,1,0.8, "o", color=colors[1], ms=20, clip_on=False)
+# ax.plot(1,2,0.8, "o", color=colors[2], ms=20, clip_on=False)
+# ax.plot(2,1,0.8, "^", color=colors[1], ms=20, clip_on=False)
+# ax.plot(2,2,0.8, "^", color=colors[2], ms=20, clip_on=False)
 # Draw bars
 ax.bar3d(x - dx/2, y - dy/2, z,
          dx, dy, dz,
-         color=colors,
-         edgecolor='black',
+         color="black",
+         edgecolor='white',
          shade=True)
 
 # # Remove background
@@ -54,13 +59,12 @@ ax.bar3d(x - dx/2, y - dy/2, z,
 
 # Draw grid lines on z=0 plane
 for xg in [1.5, 2.5]:
-    ax.plot([xg, xg], [0.5, 3.5], [0, 0],
+    ax.plot([xg, xg], [0.5, 2.5], [0, 0],
             color='lightgray', linewidth=1)
 
-for yg in [1.5, 2.5, 3.5]:
+for yg in [1.5, 2.5]:
     ax.plot([0.5, 2.5], [yg, yg], [0, 0],
             color='lightgray', linewidth=1)
-
 # Remove pane backgrounds
 ax.xaxis.pane.fill = False
 ax.yaxis.pane.fill = False
@@ -77,21 +81,21 @@ ax.yaxis.pane.set_edgecolor((1, 1, 1, 0))
 # Axis labels
 ax.set_xlabel(r'$\lambda_1$', fontsize=14, labelpad=10)
 ax.set_ylabel(r'$\lambda_2$', fontsize=14, labelpad=10)
-ax.text(0.2,3,1.1,r'$\mu(\lambda)$', fontsize=14)
+ax.text(0.5,2,1.15,r'$\mu(\lambda_1,\lambda_2|P)$', fontsize=14, ha="center", va="center")
 # ax.zaxis.set_label_coords(2.05, -0.025)
 # ax.set_box_aspect(None, zoom=0.85)
 # Axis limits
 ax.set_xlim(0.5, 2.5)
-ax.set_ylim(0.5, 3.5)
+ax.set_ylim(0.5, 2.5)
 ax.set_zlim(0, 1)
 
 # Ticks
 ax.set_xticks([1, 2])
-ax.set_xticklabels(["circle", "square"])
-ax.set_yticks([1, 2, 3])
-ax.set_yticklabels(["orange", "purple", "blue"])
-ax.set_zticks([1])
-ax.set_zticklabels(['1'])
+ax.set_xticklabels(["1", "2"])
+ax.set_yticks([1, 2])
+ax.set_yticklabels(["1", "2"])
+ax.set_zticks([0.5,1])
+ax.set_zticklabels(['0.5','1'])
 
 # ax.set_zticks([1/3, 2/3, 1])
 # ax.set_zticklabels([r'$1/3$', r'$2/3$', '1'])
@@ -102,13 +106,14 @@ ax.xaxis.pane.fill = False
 ax.yaxis.pane.fill = False
 # ax.zaxis.pane.fill = False
 
-# ax.yaxis.set_ticks_position('lower')
+# ax.yaxis.set_ticks_position('upper')
 
 ax.xaxis.pane.set_edgecolor('w')
 # ax.yaxis.pane.set_edgecolor('w')
 # ax.zaxis.pane.set_edgecolor('w')
 
 # Viewing angle
-ax.view_init(elev=20, azim=220)
+ax.view_init(elev=15, azim=240)
 # plt.tight_layout()
+plt.savefig("/home/aaa/Desktop/Fisica/PhD/2026/Talks/ILL Seminar/Classical joint mixed.svg", format="svg", bbox_inches='tight', pad_inches=0, transparent=True)
 plt.show()
