@@ -31,16 +31,16 @@ chi_3=0
 """
 "ifg_wv2_psi_+1+1+1_no_fit_23Oct0034"
 """
-# C_12=0.74
-# C_13=0.66
-# C_23=0.63
+C_12=0.74
+C_13=0.66
+C_23=0.63
 
-"""
-"ifg_wv2_psi_+1+1+1_no_fit_24Oct2354"
-"""
-C_12=0.68 
-C_13=0.56 
-C_23=0.50
+# """
+# "ifg_wv2_psi_+1+1+1_no_fit_24Oct2354"
+# """
+# C_12=0.68 
+# C_13=0.56 
+# C_23=0.50
 
 points=48
 points_per=16
@@ -54,8 +54,8 @@ good_apples=["ifg_wv2_psi_+1+1+1_no_fit_22Oct1130" #good
             ]
 
 inf_file_names=[#"ifg_wv2_psi_+1+1+1_no_fit_22Oct1130" #good 
-             # "ifg_wv2_psi_+1+1+1_no_fit_23Oct0034" #best 
-             "ifg_wv2_psi_+1+1+1_no_fit_24Oct2354" #good
+             "ifg_wv2_psi_+1+1+1_no_fit_23Oct0034" #best 
+             # "ifg_wv2_psi_+1+1+1_no_fit_24Oct2354" #good
 ]
 
 def fit_cos(x, A, B, C, D):
@@ -137,7 +137,7 @@ I_3_err=int_data[2]**0.5/time_int
 a_1=(I_1/(I_1+I_2+I_3))**0.5
 a_2=(I_2/(I_1+I_2+I_3))**0.5
 a_3=(I_3/(I_1+I_2+I_3))**0.5
-
+print(a_1,a_2,a_3)
 A=(I_1+I_2+I_3)*3
 
 ps_pos=tot_data[:,0]
@@ -271,5 +271,8 @@ for ax in axs:
     ax.grid(True, ls="dotted")
 for ax in axs[:]:
     ax.set_xlabel("$\mathdefault{\\chi_2}$ [rad]")
-    
+
+text_1=np.array([chi_2, Re_2, Re_2_err, Im_2, Im_2_err])
+np.savetxt("/home/aaa/Desktop/Fisica/PhD/2026/Talks/ILL Seminar/Wv2_3_path.txt", np.transpose(text_1))
+
 plt.show()

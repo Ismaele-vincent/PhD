@@ -247,5 +247,8 @@ for ax in axs:
     ax.grid(True, ls="dotted")
 for ax in axs[:]:
     ax.set_xlabel("$\mathdefault{\\chi_1}$ [rad]")
-    
+
+text_1=np.array([chi_1, Re_1, Re_1_err, Im_1, Im_1_err])
+np.savetxt("/home/aaa/Desktop/Fisica/PhD/2026/Talks/ILL Seminar/Wv1_3_path.txt", np.transpose(text_1))
+
 plt.show()

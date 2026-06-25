@@ -32,16 +32,16 @@ chi_3=0
 """
 "ifg_wv3_psi_+1+1+1_no_fit_23Oct0111"
 """
-# C_12=0.74
-# C_13=0.66
-# C_23=0.63
+C_12=0.74
+C_13=0.66
+C_23=0.63
 
 """
 "ifg_wv3_psi_+1+1+1_no_fit_25Oct0031"
 """
-C_12=0.68 
-C_13=0.56 
-C_23=0.50
+# C_12=0.68 
+# C_13=0.56 
+# C_23=0.50
 
 points=48
 points_per=16
@@ -50,8 +50,8 @@ bad_apples=[
       ]
 
 inf_file_names=[#"ifg_wv3_psi_+1+1+1_no_fit_22Oct1212" #good
-               # "ifg_wv3_psi_+1+1+1_no_fit_23Oct0111" #best
-               "ifg_wv3_psi_+1+1+1_no_fit_25Oct0031" #good C_12=0.81 C_13=0.69 C_23=0.46
+               "ifg_wv3_psi_+1+1+1_no_fit_23Oct0111" #best
+               # "ifg_wv3_psi_+1+1+1_no_fit_25Oct0031" #good C_12=0.81 C_13=0.69 C_23=0.46
                ]
 
 def fit_cos(x, A, B, C, D):
@@ -267,5 +267,7 @@ for ax in axs:
     ax.grid(True, ls="dotted")
 for ax in axs[:]:
     ax.set_xlabel("$\mathdefault{\\chi_3}$ [rad]")
-    
+text_1=np.array([chi_3, Re_3, Re_3_err, Im_3, Im_3_err])
+np.savetxt("/home/aaa/Desktop/Fisica/PhD/2026/Talks/ILL Seminar/Wv3_3_path.txt", np.transpose(text_1))
+
 plt.show()
