@@ -50,8 +50,8 @@ for root1, dirs1, files1 in os.walk(sc_fold_path, topdown=False):
                 with open(cleandata+"/"+dat_name[:-4]+chi_names[i]+".txt", 'w') as f:
                         np.savetxt(f, cleantxt_ifg, delimiter="\t", header= "ps_pos exposure_time(s) O-Beam H-Beam Monitor AUX-Beam time(s) O+H+AUX encod1 encod2", fmt='%i %f %.1f %i %i %i %i %i %i %f %f')
                 i+=1
-            int_file_path="/home/aaa/Desktop/Fisica/PhD/2025/Grenoble 2nd round/exp_3-16-19/rawdata/sc/ifg_wv3_psi_+1-1-1_no_fit_22Oct1455.dat"#os.path.join(root1, inf_file[-1])
-            # int_file_path=os.path.join(root1, inf_file[-1])
+            # int_file_path="/home/aaa/Desktop/Fisica/PhD/2025/Grenoble 2nd round/exp_3-16-19/rawdata/sc/ifg_wv3_psi_+1-1-1_no_fit_22Oct1455.dat"#os.path.join(root1, inf_file[-1])
+            int_file_path=os.path.join(root1, inf_file[-1])
             cleantxt_int=np.loadtxt(int_file_path, encoding='windows-1252', comments="*",skiprows=13,delimiter="\t")
             # print(cleantxt_int)
             with open(cleandata+"/"+inf_file[-1][:-4]+".txt", 'w') as f:

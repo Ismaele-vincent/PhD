@@ -11,8 +11,14 @@ import matplotlib.pyplot as plt
 from matplotlib.gridspec import GridSpec
 plt.rcParams.update({'figure.max_open_warning': 0})
 from scipy.optimize import curve_fit as fit
-
+import My_module_Exp_2025_1 as mymod
 state="$|\\psi_{in}>=(|1>+exp(-i60)|2>+exp(i120)|3>)/\\sqrt{3}$"
+
+def fit_cos(x, A, B, C, D):
+    return A+B*np.cos(C*x-D)
+
+def fit_C(x, C_23, B, D, E):
+    return A/3*(1-2*C_23*a_2*a_3+2*B*np.cos(D*x-E))
 
 chi_1_0=np.pi/3
 chi_2_0=0
@@ -58,56 +64,14 @@ inf_file_names=[
              # "ifg_wv1_psi_+1+exp(-i60)+exp(i120)_no_fit_24Oct2117" #good probably
 ]
 
-# def fit_cos(x, A, B, C, D):
-#     return A/2*(1+B*np.cos(C*x-D))
+correct=1
 
-def fit_cos(x, A, B, C, D):
-    return A+B*np.cos(C*x-D)
-
-def fit_C(x, C_23, B, D, E):
-    return A/3*(1-2*C_23*a_2*a_3+2*B*np.cos(D*x-E))
-
-# def w1(chi_1, chi_2, chi_3):
-#     return a_1*np.exp(-1j*(chi_1_0+chi_1))/(a_1*np.exp(-1j*(chi_1_0+chi_1))+a_2*np.exp(-1j*(chi_2_0+chi_2))+a_3*np.exp(-1j*(chi_3_0+chi_3)))
-
-# def w2(chi_1, chi_2, chi_3):
-#     return a_2*np.exp(-1j*(chi_2_0+chi_2))/(a_1*np.exp(-1j*(chi_1_0+chi_1))+a_2*np.exp(-1j*(chi_2_0+chi_2))+a_3*np.exp(-1j*(chi_3_0+chi_3)))
-
-# def w3(chi_1, chi_2, chi_3):
-#     return a_3*np.exp(-1j*(chi_3_0+chi_3))/(a_1*np.exp(-1j*(chi_1_0+chi_1))+a_2*np.exp(-1j*(chi_2_0+chi_2))+a_3*np.exp(-1j*(chi_3_0+chi_3)))
-
-# def I_corr(A, chi_1, chi_2, chi_3):
-#     return A/3*(1+2*a_1*a_2*np.cos(chi_1_0+chi_1-chi_2_0-chi_2)+2*a_1*a_3*np.cos(chi_1_0+chi_1-chi_3_0-chi_3) + 2*a_2*a_3*np.cos(chi_2_0+chi_2-chi_3_0-chi_3))
-
-def w1(chi_1, chi_2, chi_3):
-    Dchi_12=chi_1_0+chi_1-(chi_2_0+chi_2)
-    Dchi_13=chi_1_0+chi_1-(chi_3_0+chi_3)
-    Dchi_23=chi_2_0+chi_2-(chi_3_0+chi_3)
-    A=a_1**2+C_12*a_1*a_2*np.exp(-1j*Dchi_12)+C_13*a_1*a_3*np.exp(-1j*Dchi_13)
-    B=1+2*C_12*a_1*a_2*np.cos(Dchi_12)+2*C_13*a_1*a_3*np.cos(Dchi_13)+2*C_23*a_2*a_3*np.cos(Dchi_23)
-    return A/B
-
-def w2(chi_1, chi_2, chi_3):
-    Dchi_12=chi_1_0+chi_1-(chi_2_0+chi_2)
-    Dchi_13=chi_1_0+chi_1-(chi_3_0+chi_3)
-    Dchi_23=chi_2_0+chi_2-(chi_3_0+chi_3)
-    A=C_12*a_1*a_2*np.exp(1j*Dchi_12)+a_2**2+C_23*a_2*a_3*np.exp(-1j*Dchi_23)
-    B=1+2*C_12*a_1*a_2*np.cos(Dchi_12)+2*C_13*a_1*a_3*np.cos(Dchi_13)+2*C_23*a_2*a_3*np.cos(Dchi_23)
-    return A/B
-
-def w3(chi_1, chi_2, chi_3):
-    Dchi_12=chi_1_0+chi_1-(chi_2_0+chi_2)
-    Dchi_13=chi_1_0+chi_1-(chi_3_0+chi_3)
-    Dchi_23=chi_2_0+chi_2-(chi_3_0+chi_3)
-    A=C_12*a_1*a_3*np.exp(1j*Dchi_13)+C_23*a_2*a_3*np.exp(1j*Dchi_23)+a_3**2
-    B=1+2*C_12*a_1*a_2*np.cos(Dchi_12)+2*C_13*a_1*a_3*np.cos(Dchi_13)+2*C_23*a_2*a_3*np.cos(Dchi_23)
-    return A/B
-
-def I_corr(A, chi_1, chi_2, chi_3):
-    return A/3*(1+2*C_12*a_1*a_2*np.cos(chi_1_0+chi_1-chi_2_0-chi_2)+2*C_13*a_1*a_3*np.cos(chi_1_0+chi_1-chi_3_0-chi_3) + 2*C_23*a_2*a_3*np.cos(chi_2_0+chi_2-chi_3_0-chi_3))
+C_12, C_13, C_23 = mymod.contrast(inf_file_names[0])
+# C_12, C_13, C_23 = mymod.contrast("group_p1m1m1_23_Oct")
+print("C_12=", C_12, "C_13=", C_13, "C_23=", C_23)
 
 for inf_file_name in inf_file_names:
-        print(inf_file_name)
+        # print(inf_file_name)
         sorted_fold_path="/home/aaa/Desktop/Fisica/PhD/2025/Grenoble 2nd round/exp_3-16-19/Sorted data/Ifg wv no fit/"+inf_file_name
         cleandata=sorted_fold_path+"/Cleantxt"
         for root, dirs, files in os.walk(cleandata, topdown=False):
@@ -116,7 +80,7 @@ for inf_file_name in inf_file_names:
             # print(name)
             tot_data=np.loadtxt(os.path.join(root, name))[:,1:]
             time_meas=tot_data[0,1]
-            N_ifg=time_meas#tot_data[:,5]/np.average(tot_data[:,5])*time_meas
+            N_ifg=time_meas#*tot_data[:,5]/np.average(tot_data[:,5])
             # S1=((tot_data[:,2]+tot_data[:,3])+tot_data[:,5])
             data_O_err=tot_data[:,2]**0.5/N_ifg
             data_O=tot_data[:,2]/N_ifg
@@ -154,8 +118,8 @@ C_fit_err=err[1]**2
 A_fit_err=err[0]**2
 x_plt = np.linspace(ps_pos[0], ps_pos[-1],100)
 
-P0_C=[C_23, C_12*a_1*a_2-C_13*a_1*a_3, 6, 4.6]
-B0_C=([0.3,0.0,0,0.01],[1,1,7, 2*np.pi])
+P0_C=[C_23, C_12*a_1*a_2+C_13*a_1*a_3, 6, 4.6]
+B0_C=([0.3,0.3,0,0.01],[1,1,7, 2*np.pi])
 p_C,cov_C=fit(fit_C, ps_pos, data_O, sigma=data_O_err, p0=P0_C,  bounds=B0_C)
 err_C=np.diag(cov_C)**0.5
 print("C_23=",p_C[0],"+-",err_C[0],"C_12*a_1*a_2+C_13*a_1*a_3=",p_C[1],"+-",err_C[1])
@@ -168,16 +132,17 @@ fig.suptitle(name[:-4])
 ax.errorbar(ps_pos,data_O,yerr=data_O_err,fmt="ko",capsize=5, ms=3, label="O")
 ax.errorbar(ps_pos,data_H,yerr=data_H_err,fmt="ro",capsize=5, ms=3, label="H")
 ax.errorbar(ps_pos,data_OH,yerr=data_OH_err,fmt="go",capsize=5, ms=3, label="O+H")
-# ax.errorbar(ps_pos,data_aux,yerr=data_aux_err,fmt="co",capsize=5, ms=3, label="Aux")
+ax.errorbar(ps_pos,data_aux,yerr=data_aux_err,fmt="co",capsize=5, ms=3, label="Aux")
 # ax.errorbar(ps_pos,S1,yerr=data_aux_err,fmt="yo",capsize=5, ms=3, label="O+H+Aux")
 ax.plot(x_plt,fit_cos(x_plt, *p), "b")
 ax.plot(x_plt,fit_C(x_plt, *p_C), "y--")
 ax.legend()
 
-chi_1=(ps_pos-ps_pos[0])*p[2]-np.pi
+chi_1=(ps_pos-ps_pos[0])*p_C[2]-np.pi
 data_O_matrix=np.zeros((4,points))
 data_O_matrix_err=np.zeros((4,points))
-# data_O+=A/3*(2*(1-C_12)*a_1*a_2*np.cos(chi_1+chi_1_0-chi_2-chi_2_0) + 2*(1-C_13)*a_1*a_3*np.cos(chi_1+chi_1_0-chi_3-chi_3_0) + 2*(1-C_23)*a_2*a_3*np.cos(chi_2+chi_2_0-chi_3-chi_3_0))
+if correct:
+    data_O+=A/3*(2*(1-C_12)*a_1*a_2*np.cos(chi_1+chi_1_0-chi_2-chi_2_0) + 2*(1-C_13)*a_1*a_3*np.cos(chi_1+chi_1_0-chi_3-chi_3_0) + 2*(1-C_23)*a_2*a_3*np.cos(chi_2+chi_2_0-chi_3-chi_3_0))
 data_O_matrix[3]=data_O
 i=0
 for k in [2,1,3]:
@@ -207,18 +172,21 @@ I_mpi2=data_O_matrix[1]
 I_ppi2=data_O_matrix[2]
 I_pi=data_O_matrix[3]
 
-print((3/(2*A)*((I_0[0]+I_pi[0]))-1)/(2*a_2*a_3),C_23)
+# print((3/(2*A)*((I_0[0]+I_pi[0]))-1)/(2*a_2*a_3),C_23)
 
 I_0_err=data_O_matrix_err[0]
 I_mpi2_err=data_O_matrix_err[1]
 I_ppi2_err=data_O_matrix_err[2]
 I_pi_err=data_O_matrix_err[3]
 
+
 fig = plt.figure(figsize=(8,6))
 ax = fig.add_subplot(111)
 ax.errorbar(chi_1, I_0,yerr=I_0_err,fmt="ko",capsize=5, ms=3)
-ax.plot(chi_1_plt, I_corr(A, chi_1_plt, chi_2, chi_3))
-
+if correct:
+    ax.plot(chi_1_plt, mymod.I_corr(A, a_1, a_2, a_3, chi_1_plt, chi_1_0, chi_2, chi_2_0, chi_3, chi_3_0, 1, 1, 1))
+else:
+    ax.plot(chi_1_plt, mymod.I_corr(A, a_1, a_2, a_3, chi_1_plt, chi_1_0, chi_2, chi_2_0, chi_3, chi_3_0, C_12, C_13, C_23))
 Im_1=(I_ppi2-I_mpi2)/I_0/4
 Im_1_err=(I_mpi2_err**2+I_pi_err**2+(4*Im_1)**2*I_0_err**2)**0.5/(4*abs(I_0))
 
@@ -249,23 +217,30 @@ axs[4].tick_params(axis="x", bottom=False, labelbottom=False)
 # axs[1].tick_params(axis="y", left=False, labelleft=False)
 # axs[3].tick_params(axis="y", left=False, labelleft=False)
 
+w1=mymod.w1(a_1, a_2, a_3, chi_1_plt, chi_1_0, chi_2, chi_2_0, chi_3, chi_3_0, C_12, C_13, C_23)
+if correct:
+    w1=mymod.w1(a_1, a_2, a_3, chi_1_plt, chi_1_0, chi_2, chi_2_0, chi_3, chi_3_0, 1, 1, 1)
 axs[0].errorbar(chi_1,Re_1, Re_1_err, fmt="k.", capsize=3)
-axs[0].errorbar(chi_1_plt, w1(chi_1_plt,0,0).real, color=colors[3], alpha=0.8)
-
+axs[0].errorbar(chi_1_plt, w1.real, color=colors[3], alpha=0.8)
 axs[1].errorbar(chi_1,Im_1, Im_1_err, fmt="k.", capsize=3)
-axs[1].plot(chi_1_plt, w1(chi_1_plt,0,0).imag, color=colors[3], alpha=0.8 )
+axs[1].plot(chi_1_plt, w1.imag, color=colors[3], alpha=0.8 )
 
-# axs[2].errorbar(chi_1,Re_1, Re_1_err, fmt="k.", capsize=3)
-axs[2].errorbar(chi_1_plt, w2(chi_1_plt,0,0).real, color=colors[3], alpha=0.8)
+w2=mymod.w2(a_1, a_2, a_3, chi_1_plt, chi_1_0, chi_2, chi_2_0, chi_3, chi_3_0, C_12, C_13, C_23)
+if correct:
+    w2=mymod.w2(a_1, a_2, a_3, chi_1_plt, chi_1_0, chi_2, chi_2_0, chi_3, chi_3_0, 1, 1, 1)
+# axs[2].errorbar(chi_2,Re_2, Re_2_err, fmt="k.", capsize=3)
+axs[2].errorbar(chi_1_plt, w2.real, color=colors[3], alpha=0.8)
+# axs[3].errorbar(chi_2,Im_2, Im_2_err, fmt="k.", capsize=3)
+axs[3].plot(chi_1_plt, w2.imag, color=colors[3], alpha=0.8 )
 
-# axs[3].errorbar(chi_1,Im_1, Im_1_err, fmt="k.", capsize=3)
-axs[3].plot(chi_1_plt, w2(chi_1_plt,0,0).imag, color=colors[3], alpha=0.8 )
+w3=mymod.w3(a_1, a_2, a_3, chi_1_plt, chi_1_0, chi_2, chi_2_0, chi_3, chi_3_0, C_12, C_13, C_23)
+if correct:
+    w3=mymod.w3(a_1, a_2, a_3, chi_1_plt, chi_1_0, chi_2, chi_2_0, chi_3, chi_3_0, 1, 1, 1)
+# axs[4].errorbar(chi_3,Re_3, Re_3_err, fmt="k.", capsize=3)
+axs[4].errorbar(chi_1_plt, w3.real, color=colors[3], alpha=0.8)
 
-# axs[4].errorbar(chi_1,Re_1, Re_1_err, fmt="k.", capsize=3)
-axs[4].errorbar(chi_1_plt, w3(chi_1_plt,0,0).real, color=colors[3], alpha=0.8)
-
-# axs[5].errorbar(chi_1,Im_1, Im_1_err, fmt="k.", capsize=3)
-axs[5].plot(chi_1_plt, w3(chi_1_plt,0,0).imag, color=colors[3], alpha=0.8 )
+# axs[5].errorbar(chi_3,Im_3, Im_3_err, fmt="k.", capsize=3)
+axs[5].plot(chi_1_plt, w3.imag, color=colors[3], alpha=0.8 )
 
 for ax in axs:
     ax.set_xticks(chi_1[::8])
@@ -273,5 +248,15 @@ for ax in axs:
     ax.grid(True, ls="dotted")
 for ax in axs[:]:
     ax.set_xlabel("$\mathdefault{\\chi_1}$ [rad]")
-    
+
+text_1=np.array([chi_1, Re_1, Re_1_err, Im_1, Im_1_err])
+if correct:
+    np.savetxt("/home/aaa/Desktop/Fisica/PhD/2025/Grenoble 2nd round/exp_3-16-19/Sorted data/Ifg wv no fit/Results Corrected/"+inf_file_names[0]+".txt", np.transpose(text_1))
+else:
+    np.savetxt("/home/aaa/Desktop/Fisica/PhD/2025/Grenoble 2nd round/exp_3-16-19/Sorted data/Ifg wv no fit/Results Uncorrected/"+inf_file_names[0]+".txt", np.transpose(text_1))
+
+text_int=np.array([a_1, a_2, a_3])
+np.savetxt("/home/aaa/Desktop/Fisica/PhD/2025/Grenoble 2nd round/exp_3-16-19/Sorted data/Ifg wv no fit/Results Corrected/"+inf_file_names[0]+"_int.txt", text_int)    
+np.savetxt("/home/aaa/Desktop/Fisica/PhD/2025/Grenoble 2nd round/exp_3-16-19/Sorted data/Ifg wv no fit/Results Uncorrected/"+inf_file_names[0]+"_int.txt", text_int)
+
 plt.show()

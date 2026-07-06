@@ -110,7 +110,7 @@ for ax in axs:
 # axs[1].tick_params(axis="x", bottom=False, labelbottom=False)
 axs[1].tick_params(axis="y", left=False, labelleft=False)
 axs[3].tick_params(axis="y", left=False, labelleft=False)
-
+# print(str("%.2f" % (axs[1].get_yticks(),)))
 for ax in axs:
     ax.plot(chi_plt, chi_plt*0, "-", color=colors[1], lw=0.5)
     ax.plot(chi_plt, chi_plt*0+1, "-", color=colors[1], lw=0.5)
