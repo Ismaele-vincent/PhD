@@ -1,0 +1,31 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.gridspec import GridSpec
+plt.rcParams.update({'figure.max_open_warning': 0})
+
+
+fig = plt.figure(figsize=(5,6), dpi=250)
+gs = fig.add_gridspec(5,1 , hspace=0.1, wspace=0)
+axs = [fig.add_subplot(gs[0, 0]),fig.add_subplot(gs[1, 0]),fig.add_subplot(gs[2, 0]),fig.add_subplot(gs[3, 0]),fig.add_subplot(gs[4, 0])]
+axs[2].set_ylabel("Uncertainty according to Eq. ____")
+axs[-1].set_xlabel("$\phi$ [rad]")
+phi_plt=np.linspace(-2*np.pi, 2*np.pi, 200)
+phi=np.linspace(-2*np.pi, 2*np.pi, 10)
+radius=["1","0.75", "0.5","0.25","0"]
+for ax in axs[:-1]:
+    ax.tick_params(axis="x", bottom=False, labelbottom=False)
+i=0
+for ax in axs:
+    ax.plot(phi_plt, 0.5+0.5*np.cos(phi_plt), "k", label="Theory")
+    ax.plot(phi, 0.55+0.5*np.cos(phi), "r.", label="LHS of Eq. __")
+    ax.plot(phi, 0.45+0.5*np.cos(phi), "b.", label="RHS of Eq. __")
+    ax.text(1.025,0.5, "r="+radius[i], transform=ax.transAxes, ha="center", va="center", rotation=-90)
+    i+=1
+axs[0].legend(ncol=3,bbox_to_anchor=(0.5,0.92), loc='center',  bbox_transform=fig.transFigure)
+for ax in axs:
+    ax.set_xticks([-2*np.pi,-np.pi,0,np.pi,2*np.pi])
+    ax.set_xticklabels(["${-2\pi}$", "${-\pi}$", "${0}$","${\pi}$","${2\pi}$"])
+    ax.grid(True, ls="dotted")
+plt.savefig("/home/aaa/Desktop/Fisica/PhD/2025/Kazu's experiment/plot example.pdf", format="pdf",bbox_inches="tight")
+
+plt.show()

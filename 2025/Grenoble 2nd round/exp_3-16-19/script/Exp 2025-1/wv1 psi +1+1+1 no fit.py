@@ -12,13 +12,14 @@ from matplotlib.gridspec import GridSpec
 plt.rcParams.update({'figure.max_open_warning': 0})
 from scipy.optimize import curve_fit as fit
 import My_module_Exp_2025_1 as mymod
-state="$|\\psi_{in}>=(|1>+|2>+|3>)/\\sqrt{3}$"
 
 def fit_cos(x, A, B, C, D):
     return A+B*np.cos(C*x-D)
 
 def fit_C(x, C_23, B, D, E):
     return A/3*(1+2*C_23*a_2*a_3+2*B*np.cos(D*x-E))
+
+state="$|\\psi_{in}>=(|1>+|2>+|3>)/\\sqrt{3}$"
 
 chi_1_0=0
 chi_2_0=0
