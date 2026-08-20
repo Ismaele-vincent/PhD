@@ -39,8 +39,6 @@ chi_1=0
 chi_2=0
 chi_3=0
 
-a_1,a_2,a_3= 0.5766514664872535 , 0.5679749644572251 , 0.5871472051965597
-
 inf_file_names=["ifg_wv1_psi_+exp(-i60)+1+exp(i120)_no_fit_22Oct2158", "ifg_wv2_psi_+exp(-i60)+1+exp(i120)_no_fit_22Oct2237", "ifg_wv3_psi_+exp(-i60)+1+exp(i120)_no_fit_22Oct2317"]
 
 C_12, C_13, C_23 = 1,1,1
@@ -50,9 +48,12 @@ fold_results="/home/aaa/Desktop/Fisica/PhD/2025/Grenoble 2nd round/exp_3-16-19/S
 wv_1=np.loadtxt(fold_results+inf_file_names[0]+".txt")
 wv_2=np.loadtxt(fold_results+inf_file_names[1]+".txt")
 wv_3=np.loadtxt(fold_results+inf_file_names[2]+".txt")
-a_vec_1 = np.loadtxt(fold_results+inf_file_names[0]+"_int.txt")
-a_vec_2 = np.loadtxt(fold_results+inf_file_names[1]+"_int.txt")
-a_vec_3 = np.loadtxt(fold_results+inf_file_names[2]+"_int.txt")
+# a_vec_1 = np.loadtxt(fold_results+inf_file_names[0]+"_int.txt")
+# a_vec_2 = np.loadtxt(fold_results+inf_file_names[1]+"_int.txt")
+# a_vec_3 = np.loadtxt(fold_results+inf_file_names[2]+"_int.txt")
+a_vec_1 = [1/3**0.5, 1/3**0.5, 1/3**0.5]
+a_vec_2 = [1/3**0.5, 1/3**0.5, 1/3**0.5]
+a_vec_3 = [1/3**0.5, 1/3**0.5, 1/3**0.5]
 
 chi_1=wv_1[:,0]-2*np.pi
 chi_2=wv_2[:,0]-2*np.pi

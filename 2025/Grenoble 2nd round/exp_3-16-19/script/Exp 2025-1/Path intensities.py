@@ -46,6 +46,8 @@ a_1_err=(a_1*(1-a_1)/(I_1+I_2+I_3))**0.5
 a_2_err=(a_2*(1-a_2)/(I_1+I_2+I_3))**0.5
 a_3_err=(a_3*(1-a_3)/(I_1+I_2+I_3))**0.5
 
+
+
 fig = plt.figure(figsize=(8,6))
 ax = fig.add_subplot(111)
 ax.errorbar(np.arange(len(a_1)), a_1,yerr=a_1_err,fmt="r-o",capsize=5, ms=3, label="Path 1")

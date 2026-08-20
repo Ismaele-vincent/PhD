@@ -137,9 +137,9 @@ for root, dirs, files in os.walk(sorted_fold_path, topdown=False):
 
 # axs[1].legend(framealpha=1, loc=1, ncol=1)
 # axs[0].set_title(state) 
-axs[0].set_xlabel("Initial relative phase $\phi_1$ [rad]")
-axs[1].set_xlabel("Initial relative phase $\phi_2$ [rad]")
-axs[2].set_xlabel("Initial relative phase $\phi_3$ [rad]")
+axs[0].set_xlabel("Initial relative phase $\phi_1$ [$\pi$]")
+axs[1].set_xlabel("Initial relative phase $\phi_2$ [$\pi$]")
+axs[2].set_xlabel("Initial relative phase $\phi_3$ [$\pi$]")
 # axs[1].text(-0.13,0,"Intensity (count/s)",rotation=90, ha="center", va="center", transform=axs[1].transAxes)
 i=0
 yrange=axs[0].get_ylim()
@@ -153,7 +153,8 @@ for ax in axs:
     # For the minor ticks, use no labels; default NullFormatter.
     ax.xaxis.set_minor_locator(MultipleLocator(np.pi/2))
     # ax.set_xticks(np.linspace(0, 6*np.pi, 18)+chi_0s[(i+3)%3])
-    # ax.set_xticklabels("")#(["${-\pi}$", "${0}$","${\pi}$"])
+    print(ax.get_xticks()/np.pi)
+    ax.set_xticklabels((ax.get_xticks()/np.pi).astype(int))
     ax.grid(True, which="both", ls="dotted")
     # ax.set_yticks([150,350,550])
     # ax.set_facecolor("#fffff2")
@@ -197,10 +198,5 @@ for ax in axs:
 #     ax1.tick_params(axis="x", bottom=False, labelbottom=False)
 # axs1[-1].tick_params(axis="x", bottom=True, labelbottom=True)
 fig.savefig("/home/aaa/Desktop/Fisica/PhD/2025/Grenoble 2nd round/Report/Measurement example.pdf", format="pdf",bbox_inches="tight")   
-
-
-
-
-
 
 plt.show()

@@ -16,8 +16,11 @@ import My_module_Exp_2025_1 as mymod
 def fit_cos(x, A, B, C, D):
     return A+B*np.cos(C*x-D)
 
+# def fit_C(x, C_23, B, D, E):
+#     return A/3*(1+2*C_23*a_2*a_3+2*B*np.cos(D*x-E))
+
 def fit_C(x, C_23, B, D, E):
-    return A/3*(1+2*C_23*a_2*a_3+2*B*np.cos(D*x-E))
+    return A/3*(1+2*C_23+2*B*np.cos(D*x-E))
 
 state="$|\\psi_{in}>=(|1>+|2>+|3>)/\\sqrt{3}$"
 
@@ -63,18 +66,18 @@ points_per=16
 
 bad_apples=[
     ]
-good_apples=["ifg_wv1_psi_+1+1+1_No_fit_20Oct1759" #no initial pi shift 64 points
-             "ifg_wv1_psi_+1+1+1_no_fit_22Oct1050" #good
-             "ifg_wv1_psi_+1+1+1_no_fit_22Oct2358" #best
-             "ifg_wv1_psi_+1+1+1_no_fit_24Oct2318" #good-ish
-             ]
 
-inf_file_names=["ifg_wv1_psi_+1+1+1_no_fit_22Oct2358"
+inf_file_names=[
+                # "ifg_wv1_psi_+1+1+1_No_fit_20Oct1759" #no initial pi shift 64 points
+                # "ifg_wv1_psi_+1+1+1_no_fit_22Oct1050" #best?
+                "ifg_wv1_psi_+1+1+1_no_fit_22Oct2358" #best
+                # "ifg_wv1_psi_+1+1+1_no_fit_24Oct2318" #good-ish
 ]
 
-correct=0
-
+correct=1
 C_12, C_13, C_23 = mymod.contrast(inf_file_names[0])
+if correct:
+    C_12, C_12_err, C_13, C_13_err, C_23, C_23_err = mymod.CandA(inf_file_names[0])
 print("C_12=", C_12, "C_13=", C_13, "C_23=", C_23)
 
 for inf_file_name in inf_file_names:
@@ -111,10 +114,11 @@ I_3_err=int_data[2]**0.5/time_int
 a_1=(I_1/(I_1+I_2+I_3))**0.5
 a_2=(I_2/(I_1+I_2+I_3))**0.5
 a_3=(I_3/(I_1+I_2+I_3))**0.5
-
-# a_1,a_2,a_3= 0.5766514664872535 , 0.5679749644572251 , 0.587147205196559
+if correct:
+    a_1,a_2,a_3=1/3**0.5,1/3**0.5,1/3**0.5
 
 A=(I_1+I_2+I_3)*3
+A_err=(I_1_err**2+I_2_err**2+I_3_err**2)**0.5*3
 print(A)
 ps_pos=tot_data[:,0]
 P0=[(np.amax(data_O)+np.amin(data_O))/2, 0.7, 6, 4.6]
@@ -128,7 +132,7 @@ A_fit_err=err[0]**2
 x_plt = np.linspace(ps_pos[0], ps_pos[-1],100)
 
 P0_C=[C_23, C_12*a_1*a_2+C_13*a_1*a_3, 6, 4.6]
-B0_C=([0.3,0.3,0,0.01],[1,1,7, 2*np.pi])
+B0_C=([0.0,0.0,0,0.01],[1,1,7, 2*np.pi])
 p_C,cov_C=fit(fit_C, ps_pos, data_O, sigma=data_O_err, p0=P0_C,  bounds=B0_C)
 err_C=np.diag(cov_C)**0.5
 print("C_23=",p_C[0],"+-",err_C[0],"C_12*a_1*a_2+C_13*a_1*a_3=",p_C[1],"+-",err_C[1])
@@ -151,8 +155,12 @@ chi_1=(ps_pos-ps_pos[0])*p[2]-np.pi
 data_O_matrix=np.zeros((4,points))
 data_O_matrix_err=np.zeros((4,points))
 if correct:
-    data_O+=A/3*(2*(1-C_12)*a_1*a_2*np.cos(chi_1+chi_1_0-chi_2-chi_2_0) + 2*(1-C_13)*a_1*a_3*np.cos(chi_1+chi_1_0-chi_3-chi_3_0) + 2*(1-C_23)*a_2*a_3*np.cos(chi_2+chi_2_0-chi_3-chi_3_0))
+    corr=A/3*(2*(1-C_12)*a_1*a_2*np.cos(chi_1+chi_1_0-chi_2-chi_2_0) + 2*(1-C_13)*a_1*a_3*np.cos(chi_1+chi_1_0-chi_3-chi_3_0) + 2*(1-C_23)*a_2*a_3*np.cos(chi_2+chi_2_0-chi_3-chi_3_0))
+    # data_O+=A/3*(2*(1-C_12)*a_1*a_2*np.cos(chi_1+chi_1_0-chi_2-chi_2_0) + 2*(1-C_13)*a_1*a_3*np.cos(chi_1+chi_1_0-chi_3-chi_3_0) + 2*(1-C_23)*a_2*a_3*np.cos(chi_2+chi_2_0-chi_3-chi_3_0))
+    data_O+=corr
+    data_O_err=(data_O_err**2+(A_err*corr/A/3)**2 + (A*2/9)**2*((C_12_err*np.cos(chi_1+chi_1_0-chi_2-chi_2_0))**2+(C_13_err*np.cos(chi_1+chi_1_0-chi_3-chi_3_0))**2+(C_23_err*np.cos(chi_2+chi_2_0-chi_3-chi_3_0))**2))**0.5
 data_O_matrix[3]=data_O
+data_O_matrix_err[3]=data_O_err
 i=0
 for k in [2,1,3]:
     data_O_matrix[i]=np.roll(data_O, -4*k)
@@ -255,6 +263,7 @@ for ax in axs:
     ax.set_xticks(chi_1[::8])
     # ax.set_xticklabels((chi_1[::8]/np.pi).astype(str))
     ax.grid(True, ls="dotted")
+    # ax.set_ylim([-5,5])
 for ax in axs[:]:
     ax.set_xlabel("$\mathdefault{\\chi_1}$ [rad]")
 

@@ -60,8 +60,8 @@ Re_1_bal_err=wv_1_bal[:,2]
 Re_2_bal=wv_2_bal[:,1]
 Re_2_bal_err=wv_2_bal[:,2]
 
-fig = plt.figure(figsize=(4,7*2/3), dpi=150)
-fig_1 = plt.figure(figsize=(4,7*2/3), dpi=150)
+fig = plt.figure(figsize=(4,7*2/3), dpi=350)
+fig_1 = plt.figure(figsize=(4,7*2/3), dpi=350)
 # gs_b = fig.add_gridspec(1,1)
 # ax_b=fig.add_subplot(gs_b[0, 0])
 # ax_b.tick_params(axis="both", bottom=False, labelbottom=False, left=False, labelleft=False)
@@ -151,6 +151,6 @@ axs[2].errorbar(chi,Re_1_bal, Re_1_bal_err, fmt="k.", capsize=3, ms=4)
 # axs[1].text(-np.pi, 1.1,"Eigenvalue bound", color=colors[1])
 # axs[1].text(-np.pi, 1.1,"Eigenvalue range", color=colors[3])
 # axs[0].legend()
-# fig.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Results wv real different method unbalanced.pdf", format="pdf",bbox_inches="tight")   
-# fig_1.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Results wv real different method balanced.pdf", format="pdf",bbox_inches="tight")   
+fig.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Review npj QI/Results wv real different method unbalanced.pdf", format="pdf",bbox_inches="tight")   
+fig_1.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Review npj QI/Results wv real different method balanced.pdf", format="pdf",bbox_inches="tight")   
 plt.show()

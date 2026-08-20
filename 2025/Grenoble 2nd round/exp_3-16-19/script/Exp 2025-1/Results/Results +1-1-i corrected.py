@@ -39,7 +39,7 @@ chi_1=0
 chi_2=0
 chi_3=0
 
-a_1,a_2,a_3= 0.5766514664872535 , 0.5679749644572251 , 0.5871472051965597
+# a_1,a_2,a_3= 0.5766514664872535 , 0.5679749644572251 , 0.5871472051965597
 
 inf_file_names=["ifg_wv1_psi_+1-1-i_no_fit_22Oct1515", "ifg_wv2_psi_+1-1-i_no_fit_22Oct1559","ifg_wv3_psi_+1-1-i_no_fit_22Oct1643"]
 # inf_file_names=["ifg_wv1_psi_+1-1-i_no_fit_23Oct0350",]
@@ -52,9 +52,12 @@ fold_results="/home/aaa/Desktop/Fisica/PhD/2025/Grenoble 2nd round/exp_3-16-19/S
 wv_1=np.loadtxt(fold_results+inf_file_names[0]+".txt")
 wv_2=np.loadtxt(fold_results+inf_file_names[1]+".txt")
 wv_3=np.loadtxt(fold_results+inf_file_names[2]+".txt")
-a_vec_1 = np.loadtxt(fold_results+inf_file_names[0]+"_int.txt")
-a_vec_2 = np.loadtxt(fold_results+inf_file_names[1]+"_int.txt")
-a_vec_3 = np.loadtxt(fold_results+inf_file_names[2]+"_int.txt")
+# a_vec_1 = np.loadtxt(fold_results+inf_file_names[0]+"_int.txt")
+# a_vec_2 = np.loadtxt(fold_results+inf_file_names[1]+"_int.txt")
+# a_vec_3 = np.loadtxt(fold_results+inf_file_names[2]+"_int.txt")
+a_vec_1 = [1/3**0.5, 1/3**0.5, 1/3**0.5]
+a_vec_2 = [1/3**0.5, 1/3**0.5, 1/3**0.5]
+a_vec_3 = [1/3**0.5, 1/3**0.5, 1/3**0.5]
 
 
 chi_1=wv_1[:,0]-2*np.pi
@@ -120,19 +123,19 @@ axs[0].plot(chi_1_plt, chi_1_plt*0+1, "-", color=colors[1], lw=0.5)
 axs[0].plot(chi_1_plt, chi_1_plt*0+1/3, ":", color=colors[2], lw=1)#, label="Eigenvalue bound")
 # ax.fill_between(chi_1_plt,0,1, color=colors[3], alpha=0.07)#, label="Eigenvalue range")
 axs[0].fill_between(chi_1_plt,1,3, color="#fceeee")#, label="Eigenvalue range")
-axs[0].fill_between(chi_1_plt,-3,0, color="#fceeee")
+axs[0].fill_between(chi_1_plt,-3.5,0, color="#fceeee")
 axs[1].plot(chi_2_plt, chi_2_plt*0, "-", color=colors[1], lw=0.5)
 axs[1].plot(chi_2_plt, chi_2_plt*0+1, "-", color=colors[1], lw=0.5)
 axs[1].plot(chi_2_plt, chi_2_plt*0+1/3, ":", color=colors[2], lw=1)#, label="Eigenvalue bound")
 # ax.fill_between(chi_2_plt,0,1, color=colors[3], alpha=0.07)#, label="Eigenvalue range")
 axs[1].fill_between(chi_2_plt,1,3, color="#fceeee")#, label="Eigenvalue range")
-axs[1].fill_between(chi_2_plt,-3,0, color="#fceeee")
+axs[1].fill_between(chi_2_plt,-3.5,0, color="#fceeee")
 axs[2].plot(chi_1_plt, chi_3_plt*0, "-", color=colors[1], lw=0.5)
 axs[2].plot(chi_3_plt, chi_3_plt*0+1, "-", color=colors[1], lw=0.5)
 axs[2].plot(chi_3_plt, chi_3_plt*0+1/3, ":", color=colors[2], lw=1)#, label="Eigenvalue bound")
 # ax.fill_between(chi_1_plt,0,1, color=colors[3], alpha=0.07)#, label="Eigenvalue range")
 axs[2].fill_between(chi_1_plt,1,3, color="#fceeee")#, label="Eigenvalue range")
-axs[2].fill_between(chi_1_plt,-3,0, color="#fceeee")
+axs[2].fill_between(chi_1_plt,-3.5,0, color="#fceeee")
 
 axs[0].errorbar(chi_1,Re_1, Re_1_err, fmt="k.", capsize=3, ms=4)
 axs[0].plot(chi_1_plt, w1.real, color=colors[3], lw=1.5)
@@ -142,8 +145,8 @@ axs[2].errorbar(chi_3,Re_3, Re_3_err, fmt="k.", capsize=3, ms=4)
 axs[2].plot(chi_3_plt, w3.real, color=colors[3], lw=1.5)
 
 for ax in axs:
-    ax.set_ylim([-2.8,1.4])
-    ax.set_yticks([-2.5,-2.0,-1.5,-1.0,-0.5,0, 0.5, 1.0])
+    ax.set_ylim([-3.2,1.4])
+    ax.set_yticks([-3,-2.0, -1.0,0, 1.0])
     # ax.set_yticklabels([-0.4,0, 0.4])
 
 axs1[0].set_ylabel("Imaginary part of\nthe weak value")
@@ -173,9 +176,9 @@ axs1[2].errorbar(chi_3,Im_3, Im_3_err, fmt="k.", capsize=3, ms=4)
 axs1[2].plot(chi_3_plt, w3.imag, color=colors[3], lw=1.5)
 
 for ax in axs1:
-    # ax.set_ylim([-0.55,0.55])
-    ax.set_yticks([-0.5,0, 0.5])
-    ax.set_yticklabels([-0.5,0, 0.5])
+    ax.set_ylim([-2,2])
+#     ax.set_yticks([-0.5,0, 0.5])
+#     ax.set_yticklabels([-0.5,0, 0.5])
 
 # axs[1].text(-np.pi, 1.1,"Eigenvalue bound", color=colors[1])
 # axs[1].text(-np.pi, 1.1,"Eigenvalue range", color=colors[3])

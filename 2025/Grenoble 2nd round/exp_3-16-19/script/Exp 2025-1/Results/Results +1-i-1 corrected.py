@@ -39,8 +39,6 @@ chi_1=0
 chi_2=0
 chi_3=0
 
-a_1,a_2,a_3= 0.5766514664872535 , 0.5679749644572251 , 0.5871472051965597
-
 inf_file_names=["ifg_wv1_psi_+1-i-1_no_fit_22Oct1954","ifg_wv2_psi_+1-i-1_no_fit_22Oct2033", "ifg_wv3_psi_+1-i-1_no_fit_22Oct2113"]
 # inf_file_names=["ifg_wv1_psi_+1-i-1_no_fit_25Oct0512","ifg_wv2_psi_+1-i-1_no_fit_25Oct0552", "ifg_wv3_psi_+1-i-1_no_fit_25Oct0631"]
 
@@ -51,9 +49,13 @@ fold_results="/home/aaa/Desktop/Fisica/PhD/2025/Grenoble 2nd round/exp_3-16-19/S
 wv_1=np.loadtxt(fold_results+inf_file_names[0]+".txt")
 wv_2=np.loadtxt(fold_results+inf_file_names[1]+".txt")
 wv_3=np.loadtxt(fold_results+inf_file_names[2]+".txt")
-a_vec_1 = np.loadtxt(fold_results+inf_file_names[0]+"_int.txt")
-a_vec_2 = np.loadtxt(fold_results+inf_file_names[1]+"_int.txt")
-a_vec_3 = np.loadtxt(fold_results+inf_file_names[2]+"_int.txt")
+# a_vec_1 = np.loadtxt(fold_results+inf_file_names[0]+"_int.txt")
+# a_vec_2 = np.loadtxt(fold_results+inf_file_names[1]+"_int.txt")
+# a_vec_3 = np.loadtxt(fold_results+inf_file_names[2]+"_int.txt")
+a_vec_1 = [1/3**0.5, 1/3**0.5, 1/3**0.5]
+a_vec_2 = [1/3**0.5, 1/3**0.5, 1/3**0.5]
+a_vec_3 = [1/3**0.5, 1/3**0.5, 1/3**0.5]
+
 
 chi_1=wv_1[:,0]-2*np.pi
 chi_2=wv_2[:,0]-2*np.pi
@@ -171,9 +173,9 @@ axs1[2].errorbar(chi_3,Im_3, Im_3_err, fmt="k.", capsize=3, ms=4)
 axs1[2].plot(chi_3_plt, w3.imag, color=colors[3], lw=1.5)
 
 for ax in axs1:
-    # ax.set_ylim([-0.55,0.55])
-    ax.set_yticks([-0.5,0, 0.5])
-    ax.set_yticklabels([-0.5,0, 0.5])
+    ax.set_ylim([-2,2])
+    ax.set_yticks([-1,0, 1])
+    # ax.set_yticklabels([-0.5,0, 0.5])
 
 # axs[1].text(-np.pi, 1.1,"Eigenvalue bound", color=colors[1])
 # axs[1].text(-np.pi, 1.1,"Eigenvalue range", color=colors[3])

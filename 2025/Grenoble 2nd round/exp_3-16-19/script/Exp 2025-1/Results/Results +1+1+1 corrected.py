@@ -39,10 +39,8 @@ chi_1=0
 chi_2=0
 chi_3=0
 
-a_1,a_2,a_3= 0.5766514664872535 , 0.5679749644572251 , 0.5871472051965597
-
 inf_file_names=["ifg_wv1_psi_+1+1+1_no_fit_22Oct2358", "ifg_wv2_psi_+1+1+1_no_fit_23Oct0034","ifg_wv3_psi_+1+1+1_no_fit_23Oct0111"]
-
+# inf_file_names=["ifg_wv1_psi_+1+1+1_no_fit_22Oct1050", "ifg_wv2_psi_+1+1+1_no_fit_22Oct1130", "ifg_wv3_psi_+1+1+1_no_fit_22Oct1212"]
 C_12, C_13, C_23 = 1,1,1
 print("C_12=", C_12, "C_13=", C_13, "C_23=", C_23)
 
@@ -50,9 +48,13 @@ fold_results="/home/aaa/Desktop/Fisica/PhD/2025/Grenoble 2nd round/exp_3-16-19/S
 wv_1=np.loadtxt(fold_results+inf_file_names[0]+".txt")
 wv_2=np.loadtxt(fold_results+inf_file_names[1]+".txt")
 wv_3=np.loadtxt(fold_results+inf_file_names[2]+".txt")
-a_vec_1 = np.loadtxt(fold_results+inf_file_names[0]+"_int.txt")
-a_vec_2 = np.loadtxt(fold_results+inf_file_names[1]+"_int.txt")
-a_vec_3 = np.loadtxt(fold_results+inf_file_names[2]+"_int.txt")
+# a_vec_1 = np.loadtxt(fold_results+inf_file_names[0]+"_int.txt")
+# a_vec_2 = np.loadtxt(fold_results+inf_file_names[1]+"_int.txt")
+# a_vec_3 = np.loadtxt(fold_results+inf_file_names[2]+"_int.txt")
+a_vec_1 = [1/3**0.5, 1/3**0.5, 1/3**0.5]
+a_vec_2 = [1/3**0.5, 1/3**0.5, 1/3**0.5]
+a_vec_3 = [1/3**0.5, 1/3**0.5, 1/3**0.5]
+
 
 chi_1=wv_1[:,0]-2*np.pi
 chi_2=wv_2[:,0]-2*np.pi
@@ -178,7 +180,7 @@ for ax in axs1:
 # axs[1].text(-np.pi, 1.1,"Eigenvalue range", color=colors[3])
 # axs[0].legend()
 
-fig.savefig("/home/aaa/Desktop/Fisica/PhD/2025/Grenoble 2nd round/Report/Results/Results_"+(inf_file_names[0])[12:18]+"_corrected.pdf",format='pdf', bbox_inches='tight', pad_inches=0, transparent=False)   
+fig.savefig("/home/aaa/Desktop/Fisica/PhD/2025/Grenoble 2nd round/Report/Results/Results_"+(inf_file_names[0])[12:18]+"_corrected.svg",format='svg', bbox_inches='tight', pad_inches=0, transparent=False)   
 
 plt.show()
 

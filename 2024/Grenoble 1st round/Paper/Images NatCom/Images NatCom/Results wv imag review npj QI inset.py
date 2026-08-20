@@ -64,7 +64,7 @@ Im_1_bal_err=wv_1_bal[:,4]
 Im_2_bal=wv_2_bal[:,3]
 Im_2_bal_err=wv_2_bal[:,4]
 
-fig = plt.figure(figsize=(4,7), dpi=150)
+fig = plt.figure(figsize=(4,7), dpi=350)
 gs_b = fig.add_gridspec(6,2 , hspace=0.1, wspace=0.0)
 axs_b=[fig.add_subplot(gs_b[:, :]),fig.add_subplot(gs_b[:2, :]),fig.add_subplot(gs_b[2:, :])]
 

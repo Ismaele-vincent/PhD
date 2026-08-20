@@ -280,6 +280,6 @@ axs[1].tick_params(axis="x", bottom=False, labelbottom=False)
 # axs[i].set_ylabel("Neutron rate (count / s)")
 # axs[i].set_ylim([0,430])
 
-fig.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Measurement example next setup 0.pdf", format="pdf",bbox_inches="tight")   
-fig_1.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Measurement example next setup pi2.pdf", format="pdf",bbox_inches="tight")
+# fig.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Measurement example next setup 0.pdf", format="pdf",bbox_inches="tight")   
+# fig_1.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Measurement example next setup pi2.pdf", format="pdf",bbox_inches="tight")
 plt.show()

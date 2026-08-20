@@ -226,6 +226,26 @@ def w2(chi, a_21):
 
 print(inf_file_name)
 sorted_fold_path="/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/exp_CRG-3125/Sorted data/Ifg/"+inf_file_name
+
+wv_1_unb=np.loadtxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv1_unb")
+wv_1_bal=np.loadtxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv1_bal")
+wv_2_unb=np.loadtxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv2_unb")
+wv_2_bal=np.loadtxt("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Images NatCom/Wv2_bal")
+
+chi=wv_1_unb[:,0]
+print(len(chi))
+chi_plt=np.linspace(chi[0], chi[-1], 1000)
+Re_1=wv_1_unb[:,1]
+Re_1_err=wv_1_unb[:,2]
+Re_2=wv_2_unb[:,1]
+Re_2_err=wv_2_unb[:,2]
+
+Im_1=wv_1_unb[:,3]
+Im_1_err=wv_1_unb[:,4]
+Im_2=wv_2_unb[:,3]
+Im_2_err=wv_2_unb[:,4]
+
+
 cleandata=sorted_fold_path+"/Cleantxt"
 chi_0=[0, np.pi/2, np.pi, 3*np.pi/2]
 i=0
@@ -234,8 +254,8 @@ Dchi=np.zeros(4)
 C_avg=0
 C_err=0
 A_err=0
-fig = plt.figure(figsize=(2.5,6), dpi=250)
-fig_1 = plt.figure(figsize=(2.5,6), dpi=250)
+fig = plt.figure(figsize=(2.5,6), dpi=300)
+fig_1 = plt.figure(figsize=(2.5,6), dpi=300)
 gs = fig.add_gridspec(3,1, hspace=0.0, wspace=0.4)
 gs_1 = fig_1.add_gridspec(3,1, hspace=0.0, wspace=0.4)
 axs = [fig_1.add_subplot(gs_1[1, 0]),fig.add_subplot(gs[0, 0]),fig_1.add_subplot(gs_1[0, 0]),fig.add_subplot(gs[1, 0]),fig.add_subplot(gs[2, 0]), fig_1.add_subplot(gs[2, 0]),]
@@ -318,83 +338,6 @@ axs[2].errorbar(chi[25],(data_ifg_matrix[3])[25]/time, (data_ifg_matrix[3]**0.5)
 # axs[2].vlines(chi[25],(data_ifg_matrix[3])[25]/time+12,520, color=colors[1],  lw=1) #ls=(2, (8, 3)),
 print("chi=",chi[25], 3*np.pi/4)
 
-C_err=C_err**0.5/4
-A_err=A_err**0.5/4
-print("A_avg=",A_avg, "+-",A_err)
-sin_th=2*(P1*P2)**0.5/(P1+P2)
-sin_th_err=((P1-P2)**2/(P1+P2)**3)**0.5
-C_id=C_avg/(sin_th)
-# C_id=C_avg/(P1*P2/(P1+P2)**2)**0.5/2
-C_id_err=C_id*((C_err/C_avg)**2+(sin_th_err/sin_th)**2)**0.5
-print("C_avg=",C_avg, "+-",C_err, "C_ideal=", C_id, "+-", C_id_err)
-B=A_avg*(1-C_id)/2
-B_err=(((1-C_id)*A_err)**2+(A_avg*C_id_err)**2)**0.5/2
-data_ifg_matrix_err=(data_ifg_matrix+B_err**2)**0.5
-# data_ifg_matrix_err=(data_ifg_matrix/C_id**2+((1/C_id+1)/2)**2*A_err**2+(A_avg/2-data_ifg_matrix)**2*(C_id_err/C_id**2)**2)**0.5
-data_ifg_matrix-=B
-P1_corr=C_id*P1
-P1_corr_err=(C_id**2*P1+P1**2*C_id_err**2)**0.5
-P2_corr=C_id*P2
-P2_corr_err=(C_id**2*P2+P2**2*C_id_err**2)**0.5
-
-chi_plt=np.linspace(chi[0], chi[-1], 1000)
-Im_1=(data_ifg_matrix[3]-data_ifg_matrix[1])/data_ifg_matrix[0]/4
-Im_1_err=abs(Im_1)*((data_ifg_matrix_err[1]**2+data_ifg_matrix_err[3]**2)/(data_ifg_matrix[3]-data_ifg_matrix[1])**2+data_ifg_matrix_err[0]**2/data_ifg_matrix[0]**2)**0.5
-# Im_1_err_M=((data_ifg_matrix[0]**2*(data_ifg_matrix_err[1]**2+data_ifg_matrix_err[3]**2) + (data_ifg_matrix[3]-data_ifg_matrix[1])**2*data_ifg_matrix_err[0]**2)/data_ifg_matrix[0]**4)**0.5/4
-# print(abs(Im_1_err_M-Im_1_err))
-
-
-Im_2=-(data_ifg_matrix[3]-data_ifg_matrix[1])/data_ifg_matrix[0]/4
-Im_2_err=abs(Im_2)*((data_ifg_matrix_err[1]**2+data_ifg_matrix_err[3]**2)/(data_ifg_matrix[3]-data_ifg_matrix[1])**2+data_ifg_matrix_err[0]**2/data_ifg_matrix[0]**2)**0.5
-
-sa=data_ifg_matrix[2]/data_ifg_matrix[0]-4*Im_1**2
-s=np.sign(sa)*abs(sa)**0.5
-Re_1_1=(1+s)/2
-Re_1_1_err=((data_ifg_matrix_err[2]/data_ifg_matrix[0])**2+(data_ifg_matrix[2]*data_ifg_matrix_err[0]/data_ifg_matrix[0]**2)**2+(8*Im_1*Im_1_err)**2)**0.5/abs(s)/4
-
-A_m=data_ifg_matrix[2]
-DA_m=data_ifg_matrix_err[2]
-B_m=data_ifg_matrix[0]
-DB_m=data_ifg_matrix_err[0]
-C_m=data_ifg_matrix[3]
-DC_m=data_ifg_matrix_err[3]
-D_m=data_ifg_matrix[1]
-DD_m=data_ifg_matrix_err[1]
-Re_1_1_err=1/4*((4*B_m**4*DA_m**2-4*A_m*B_m*(C_m-D_m)**2*DB_m**2+(C_m-D_m)**4*DB_m**2+B_m**2*(4*A_m**2*DB_m**2+(C_m-D_m)**2*(DC_m**2+DD_m**2)))/(B_m**4*(4*A_m*B_m-(C_m-D_m)**2)))**0.5
-# print(Re_1_1_err-Re_1_1_err_M, np.amax(Re_1_1_err-Re_1_1_err_M))
-
-# A_m=data_ifg_matrix[2]
-# DA_m=data_ifg_matrix_err[2]
-# B_m=data_ifg_matrix[0]
-# DB_m=data_ifg_matrix_err[0]
-# C_m=Im_1
-# DC_m=Im_1_err
-# Re_1_1_err_M=1/4*((B_m**2*DA_m**2+A_m**2*DB_m**2+64*B_m**4*C_m**2*DC_m**2)/(B_m**3*(A_m-4*B_m*C_m**2)))**0.5
-# print(Re_1_1_err-Re_1_1_err_M, np.amax(Re_1_1_err-Re_1_1_err_M))
-
-
-Re_1_2=P1_corr/data_ifg_matrix[0] + 1/4 - data_ifg_matrix[2]/(data_ifg_matrix[0]*4)
-Re_1_2_err=abs(Re_1_2-1/4)*(((4*P1_corr_err)**2+data_ifg_matrix_err[2]**2)/(4*P1_corr-data_ifg_matrix[2])**2+data_ifg_matrix_err[0]**2/data_ifg_matrix[0]**2)**0.5
-# Re_1_2_err_M=1/4*(((data_ifg_matrix[2]-4*P1_corr)**2*data_ifg_matrix_err[0]**2+data_ifg_matrix[0]**2*((4*P1_corr_err)**2+data_ifg_matrix_err[2]**2))/data_ifg_matrix[0]**4)**0.5
-# print(Re_1_2_err-Re_1_2_err_M, np.amax(Re_1_2_err-Re_1_2_err_M))
-
-# s_1=P1_corr/data_ifg_matrix[0]-Im_1**2
-# Re_1_3=np.sign(s_1)*np.abs(s_1)**0.5
-# Re_1_3_err=((P1_corr_err/data_ifg_matrix[0])**2+(P1_corr/data_ifg_matrix[0]**2)**2*data_ifg_matrix_err[0]**2+4*Im_1**2*Im_1_err**2)**0.5/Re_1_3/2
-
-sa=data_ifg_matrix[2]/data_ifg_matrix[0]-4*Im_2**2
-s=np.sign(sa)*abs(sa)**0.5
-Re_2_1=(1-s)/2
-# Re_2_1_err=((data_ifg_matrix_err[2]/data_ifg_matrix[0])**2+(data_ifg_matrix[2]*data_ifg_matrix_err[0]/data_ifg_matrix[0]**2)**2+64*Im_1**2*Im_1_err**2)**0.5/abs(s)/4
-Re_2_1_err=Re_1_1_err
-
-Re_2_2=P2_corr/data_ifg_matrix[0] +1/4 - data_ifg_matrix[2]/(data_ifg_matrix[0]*4) 
-Re_2_2_err=abs(Re_2_2-1/4)*(((4*P2_corr_err)**2+data_ifg_matrix_err[2]**2)/(4*P2_corr-data_ifg_matrix[2])**2+data_ifg_matrix_err[0]**2/data_ifg_matrix[0]**2)**0.5
-
-s_2=P2_corr/data_ifg_matrix[0]-Im_2**2
-Re_2_3=np.sign(s_2)*np.abs(s_2)**0.5
-Re_2_3_err=((P2_corr_err/data_ifg_matrix[0])**2+(P2_corr/data_ifg_matrix[0]**2)**2*data_ifg_matrix_err[0]**2+4*Im_1**2*Im_1_err**2)**0.5/Re_2_3/2
-
 # axs[0].set_title("$w_{1,+}$", fontsize=13)
 # axs[1].set_title("$w_{2,+}$", fontsize=13)
 # axs[4].set_ylabel("Weak value\n(real part)")
@@ -412,13 +355,13 @@ axs[0].tick_params(axis="x", bottom=False, labelbottom=False)
 axs[1].tick_params(axis="x", bottom=False, labelbottom=False)
 # axs[1].tick_params(axis="y", left=False, labelleft=False)
 # axs[3].tick_params(axis="y", left=False, labelleft=False)
-    
+
 axs[4].set_ylim([0.5,2.5])
 axs[4].set_yticks([1,1.5,2])
 axs[4].plot(chi_plt, w1(chi_plt, a_21).real, "-",color=colors[3], lw=1.5, label="Theory")
-# axs[4].errorbar(chi,Re_1_1, Re_1_1_err, fmt=".", color="grey", capsize=3, ms=4, label="Data")
-axs[4].errorbar(chi[25],Re_1_1[25], Re_1_1_err[25], fmt="k.", capsize=3, ms=4, label="Data")
-# axs[4].errorbar(chi[25],Re_1_1[25], fmt=".",color=colors[1],  ms=15, mfc="none")
+# axs[4].errorbar(chi,Re_1, Re_1_err, fmt=".", color="grey", capsize=3, ms=4, label="Data")
+axs[4].errorbar(chi[25],Re_1[25], Re_1_err[25], fmt="k.", capsize=3, ms=4, label="Data")
+# axs[4].errorbar(chi[25],Re_1[25], fmt=".",color=colors[1],  ms=15, mfc="none")
 # axs[4].vlines(chi[25],0,3, color=colors[1],  lw=1)
 
 axs[5].set_ylim([-1,1])
@@ -434,6 +377,10 @@ axs[5].errorbar(chi[25], Im_1[25], Im_1_err[25], fmt=".", color=colors[0],capsiz
 # axs[i].set_ylabel("Neutron rate (count / s)")
 # axs[i].set_ylim([0,430])
 
-fig.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Measurement example and wv real.pdf", format="pdf",bbox_inches="tight")
-fig_1.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Measurement example and wv imag.pdf", format="pdf",bbox_inches="tight")
+# fig.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Measurement example and wv real.pdf", format="pdf",bbox_inches="tight")
+# fig_1.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Images NatCom/Measurement example and wv imag.pdf", format="pdf",bbox_inches="tight")
+
+fig.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Review npj QI/Measurement example and wv real.pdf", format="pdf",bbox_inches="tight")
+fig_1.savefig("/home/aaa/Desktop/Fisica/PhD/2024/Grenoble 1st round/Paper/Review npj QI/Measurement example and wv imag.pdf", format="pdf",bbox_inches="tight")
+
 plt.show()

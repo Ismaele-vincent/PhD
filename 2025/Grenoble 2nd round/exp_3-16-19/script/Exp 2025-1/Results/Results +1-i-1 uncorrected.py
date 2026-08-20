@@ -39,8 +39,6 @@ chi_1=0
 chi_2=0
 chi_3=0
 
-a_1,a_2,a_3= 0.5766514664872535 , 0.5679749644572251 , 0.5871472051965597
-
 inf_file_names=["ifg_wv1_psi_+1-i-1_no_fit_22Oct1954","ifg_wv2_psi_+1-i-1_no_fit_22Oct2033", "ifg_wv3_psi_+1-i-1_no_fit_22Oct2113"]
 # inf_file_names=["ifg_wv1_psi_+1-i-1_no_fit_25Oct0512","ifg_wv2_psi_+1-i-1_no_fit_25Oct0552", "ifg_wv3_psi_+1-i-1_no_fit_25Oct0631"]
 

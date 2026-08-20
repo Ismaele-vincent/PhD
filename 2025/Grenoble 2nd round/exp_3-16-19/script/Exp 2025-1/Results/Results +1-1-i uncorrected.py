@@ -39,8 +39,6 @@ chi_1=0
 chi_2=0
 chi_3=0
 
-a_1,a_2,a_3= 0.5766514664872535 , 0.5679749644572251 , 0.5871472051965597
-
 inf_file_names=["ifg_wv1_psi_+1-1-i_no_fit_22Oct1515", "ifg_wv2_psi_+1-1-i_no_fit_22Oct1559","ifg_wv3_psi_+1-1-i_no_fit_22Oct1643"]
 # inf_file_names=["ifg_wv1_psi_+1-1-i_no_fit_23Oct0350",]
 # inf_file_names=["ifg_wv1_psi_+1-1-i_no_fit_25Oct0309", "ifg_wv2_psi_+1-1-i_no_fit_25Oct0348","ifg_wv3_psi_+1-1-i_no_fit_25Oct0428"]
@@ -55,7 +53,6 @@ wv_3=np.loadtxt(fold_results+inf_file_names[2]+".txt")
 a_vec_1 = np.loadtxt(fold_results+inf_file_names[0]+"_int.txt")
 a_vec_2 = np.loadtxt(fold_results+inf_file_names[1]+"_int.txt")
 a_vec_3 = np.loadtxt(fold_results+inf_file_names[2]+"_int.txt")
-
 
 chi_1=wv_1[:,0]-2*np.pi
 chi_2=wv_2[:,0]-2*np.pi

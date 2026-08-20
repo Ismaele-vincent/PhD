@@ -39,8 +39,6 @@ chi_1=0
 chi_2=0
 chi_3=0
 
-a_1,a_2,a_3= 0.5766514664872535 , 0.5679749644572251 , 0.5871472051965597
-
 inf_file_names=["ifg_wv1_psi_+1+exp(-i60)+exp(i120)_no_fit_22Oct1732", "ifg_wv2_psi_+1+exp(-i60)+exp(i120)_no_fit_22Oct1812", "ifg_wv3_psi_+1+exp(-i60)+exp(i120)_no_fit_22Oct1852"]
 
 C_12, C_13, C_23 = mymod.contrast(inf_file_names[0])

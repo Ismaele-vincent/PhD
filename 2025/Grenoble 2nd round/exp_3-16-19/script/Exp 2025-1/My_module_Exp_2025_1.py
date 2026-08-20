@@ -138,3 +138,158 @@ def contrast(name):
         
     return [C_12,C_13,C_23]
 
+"""
+Contrast and amplitude
+"""
+def CandA(name):
+    group_p1p1p1_20_Oct = ["ifg_wv1_psi_+1+1+1_No_fit_20Oct1759"]
+    group_p1p1p1_22_Oct_morning = ["ifg_wv1_psi_+1+1+1_no_fit_22Oct1050", "ifg_wv2_psi_+1+1+1_no_fit_22Oct1130", "ifg_wv3_psi_+1+1+1_no_fit_22Oct1212"]
+    group_p1p1p1_22_Oct_evening = ["ifg_wv1_psi_+1+1+1_no_fit_22Oct2358", "ifg_wv2_psi_+1+1+1_no_fit_23Oct0034", "ifg_wv3_psi_+1+1+1_no_fit_23Oct0111"]
+    group_p1p1p1_24_Oct = ["ifg_wv1_psi_+1+1+1_no_fit_24Oct2318", "ifg_wv2_psi_+1+1+1_no_fit_24Oct2354", "ifg_wv3_psi_+1+1+1_no_fit_25Oct0031"]
+    
+    group_p1m1m1_22_Oct = ["ifg_wv1_psi_+1-1-1_no_fit_22Oct1257", "ifg_wv2_psi_+1-1-1_no_fit_22Oct1338", "ifg_wv3_psi_+1-1-1_no_fit_22Oct1426"]
+    group_p1m1m1_23_Oct = ["ifg_wv1_psi_+1-1-1_no_fit_23Oct0152", "ifg_wv2_psi_+1-1-1_no_fit_23Oct0229", "ifg_wv3_psi_+1-1-1_no_fit_23Oct0305"]
+    group_p1m1m1_25_Oct = ["ifg_wv1_psi_+1-1-1_no_fit_25Oct0112", "ifg_wv2_psi_+1-1-1_no_fit_25Oct0148", "ifg_wv3_psi_+1-1-1_no_fit_25Oct0225"]
+    
+    group_p1mPi3p2Pi3_22_Oct_morning = ["ifg_wv3_psi_+exp(-i60)+1+exp(i120)_no_fit_22Oct0943"]
+    group_p1mPi3p2Pi3_22_Oct_evening = ["ifg_wv1_psi_+1+exp(-i60)+exp(i120)_no_fit_22Oct1732", "ifg_wv2_psi_+1+exp(-i60)+exp(i120)_no_fit_22Oct1812", "ifg_wv3_psi_+1+exp(-i60)+exp(i120)_no_fit_22Oct1852"]
+    group_p1mPi3p2Pi3_24_Oct = ["ifg_wv1_psi_+1+exp(-i60)+exp(i120)_no_fit_24Oct2117"]
+    
+    group_p1m1mi_22_Oct_morning = ["ifg_wv1_psi_+1-1-i_no_fit_22Oct1515", "ifg_wv2_psi_+1-1-i_no_fit_22Oct1559", "ifg_wv3_psi_+1-1-i_no_fit_22Oct1643"]
+    group_p1m1mi_22_Oct_evening = ["ifg_wv1_psi_+1-1-i_no_fit_23Oct0350",]
+    group_p1m1mi_25_Oct = ["ifg_wv1_psi_+1-1-i_no_fit_25Oct0309", "ifg_wv2_psi_+1-1-i_no_fit_25Oct0348","ifg_wv3_psi_+1-1-i_no_fit_25Oct0428"]
+
+    group_p1mim1_22_Oct_evening = ["ifg_wv1_psi_+1-i-1_no_fit_22Oct1954","ifg_wv2_psi_+1-i-1_no_fit_22Oct2033", "ifg_wv3_psi_+1-i-1_no_fit_22Oct2113"]
+    group_p1mim1_25_Oct = ["ifg_wv2_psi_+exp(-i60)+1+exp(i120)_no_fit_24Oct1953","ifg_wv1_psi_+1-i-1_no_fit_25Oct0512","ifg_wv2_psi_+1-i-1_no_fit_25Oct0552", "ifg_wv3_psi_+1-i-1_no_fit_25Oct0631"]
+    
+    group_mPi3p1p2Pi3_22_Oct=["ifg_wv1_psi_+exp(-i60)+1+exp(i120)_no_fit_22Oct2158", "ifg_wv2_psi_+exp(-i60)+1+exp(i120)_no_fit_22Oct2237", "ifg_wv3_psi_+exp(-i60)+1+exp(i120)_no_fit_22Oct2317"]
+    
+    if name in group_p1p1p1_20_Oct or name=="group_p1p1p1_20_Oct":
+        C_12=0.236
+        C_12_err=0.002
+        C_13=0.223
+        C_13_err=0.005
+        C_23=0.215
+        C_23_err=0.003
+        
+    if name in group_p1p1p1_22_Oct_morning or name=="group_p1p1p1_22_Oct_morning" or name=="22_Oct_morning":
+        C_12=0.237
+        C_12_err=0.003
+        C_13=0.227 
+        C_13_err=0.005 
+        C_23=0.195
+        C_23_err=0.003
+        
+    if name in group_p1p1p1_22_Oct_evening or name=="group_p1p1p1_22_Oct_evening" or name=="22_Oct_evening":
+        C_12=0.236
+        C_12_err=0.002
+        C_13=0.223
+        C_13_err=0.005
+        C_23=0.215
+        C_23_err=0.003
+    
+    if name in group_p1p1p1_24_Oct or name=="group_p1p1p1_24_Oct":
+        C_12=0.219 
+        C_12_err=0.003 
+        C_13=0.191 
+        C_13_err=0.003 
+        C_23=0.171
+        C_23_err=0.004
+    
+    if name in group_p1m1m1_22_Oct or name=="group_p1m1m1_22_Oct":
+        C_12=0.246 
+        C_12_err=0.001
+        C_13=0.230 
+        C_13_err=0.003 
+        C_23=0.219 
+        C_23_err=0.003
+    
+    if name in group_p1m1m1_23_Oct or name=="group_p1m1m1_23_Oct":
+        C_12=0.248
+        C_12_err=0.001
+        C_13=0.231 
+        C_13_err=0.002
+        C_23=0.217
+        C_23_err=0.003
+        
+    if name in group_p1m1m1_25_Oct or name=="group_p1m1m1_25_Oct":
+        C_12=0.259 
+        C_12_err=0.001 
+        C_13=0.214
+        C_13_err=0.003 
+        C_23=0.154
+        C_23_err=0.003
+
+    if name in group_p1mPi3p2Pi3_22_Oct_morning or name=="group_p1mPi3p2Pi3_22_Oct_morning":
+        C_12=0.237
+        C_12_err=0.003
+        C_13=0.227 
+        C_13_err=0.005 
+        C_23=0.195
+        C_23_err=0.003          
+
+    if name in group_p1mPi3p2Pi3_22_Oct_evening or name=="group_p1mPi3p2Pi3_22_Oct_evening":
+        C_12=0.236
+        C_12_err=0.002
+        C_13=0.223
+        C_13_err=0.005
+        C_23=0.215
+        C_23_err=0.003    
+    
+    if name in group_p1mPi3p2Pi3_24_Oct or name=="group_p1mPi3p2Pi3_24_Oct":
+        C_12=0.219 
+        C_12_err=0.003 
+        C_13=0.191 
+        C_13_err=0.003 
+        C_23=0.171
+        C_23_err=0.004  
+        
+    if name in group_p1m1mi_22_Oct_morning or name=="group_p1m1mi_22_Oct_morning":
+        C_12=0.246 
+        C_12_err=0.001
+        C_13=0.230 
+        C_13_err=0.003 
+        C_23=0.219 
+        C_23_err=0.003
+        
+    if name in group_p1m1mi_22_Oct_evening or name=="group_p1m1mi_22_Oct_evening":
+        C_12=0.246 
+        C_12_err=0.001
+        C_13=0.230 
+        C_13_err=0.003 
+        C_23=0.219 
+        C_23_err=0.003
+        
+    if name in group_p1m1mi_25_Oct or name=="group_p1m1mi_25_Oct":
+        C_12=0.236
+        C_12_err=0.002
+        C_13=0.223
+        C_13_err=0.005
+        C_23=0.215
+        C_23_err=0.003
+        
+    if name in group_p1mim1_22_Oct_evening or name=="group_p1mim1_22_Oct_evening":
+        C_12=0.236
+        C_12_err=0.002
+        C_13=0.223
+        C_13_err=0.005
+        C_23=0.215
+        C_23_err=0.003
+    
+    if name in group_p1mim1_25_Oct or name=="group_p1mim1_25_Oct":
+        C_12=0.236
+        C_12_err=0.002
+        C_13=0.223
+        C_13_err=0.005
+        C_23=0.215
+        C_23_err=0.003
+        
+    if name in group_mPi3p1p2Pi3_22_Oct or name=="group_mPi3p1p2Pi3_22_Oct":
+        C_12=0.236
+        C_12_err=0.002
+        C_13=0.223
+        C_13_err=0.005
+        C_23=0.215
+        C_23_err=0.003
+        
+    return [C_12*3, C_12_err*3, C_13*3, C_13_err*3, C_23*3, C_23_err*3]

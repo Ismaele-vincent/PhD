@@ -41,10 +41,12 @@ inf_file_names=[
                 # "ifg_wv3_psi_+1-1-i_no_fit_25Oct0428" #not good
 ]
 
-correct=0
+correct=1
 
-# C_12, C_13, C_23 = mymod.contrast(inf_file_names[0])
-C_12, C_13, C_23 = mymod.contrast("group_p1m1m1_22_Oct")
+C_12, C_13, C_23 = mymod.contrast(inf_file_names[0])
+# C_12, C_13, C_23 = mymod.contrast("group_p1m1m1_22_Oct")
+if correct:
+    C_12, C_12_err, C_13, C_13_err, C_23, C_23_err = mymod.CandA(inf_file_names[0])
 print("C_12=", C_12, "C_13=", C_13, "C_23=", C_23)
 
 for inf_file_name in inf_file_names:
@@ -81,8 +83,11 @@ I_3_err=int_data[2]**0.5/time_int
 a_1=(I_1/(I_1+I_2+I_3))**0.5
 a_2=(I_2/(I_1+I_2+I_3))**0.5
 a_3=(I_3/(I_1+I_2+I_3))**0.5
+if correct:
+    a_1,a_2,a_3=1/3**0.5,1/3**0.5,1/3**0.5
 
 A=(I_1+I_2+I_3)*3
+A_err=(I_1_err**2+I_2_err**2+I_3_err**2)**0.5*3
 # print(A)
 ps_pos=tot_data[:,0]
 P0=[(np.amax(data_O)+np.amin(data_O))/2, 10, 6.4, -2.6]
@@ -118,8 +123,12 @@ chi_3=(ps_pos-ps_pos[0])*p_C[2]-np.pi
 data_O_matrix=np.zeros((4,points))
 data_O_matrix_err=np.zeros((4,points))
 if correct:
-    data_O+=A/3*(2*(1-C_12)*a_1*a_2*np.cos(chi_1+chi_1_0-chi_2-chi_2_0) + 2*(1-C_13)*a_1*a_3*np.cos(chi_1+chi_1_0-chi_3-chi_3_0) + 2*(1-C_23)*a_2*a_3*np.cos(chi_2+chi_2_0-chi_3-chi_3_0))
+    corr=A/3*(2*(1-C_12)*a_1*a_2*np.cos(chi_1+chi_1_0-chi_2-chi_2_0) + 2*(1-C_13)*a_1*a_3*np.cos(chi_1+chi_1_0-chi_3-chi_3_0) + 2*(1-C_23)*a_2*a_3*np.cos(chi_2+chi_2_0-chi_3-chi_3_0))
+    # data_O+=A/3*(2*(1-C_12)*a_1*a_2*np.cos(chi_1+chi_1_0-chi_2-chi_2_0) + 2*(1-C_13)*a_1*a_3*np.cos(chi_1+chi_1_0-chi_3-chi_3_0) + 2*(1-C_23)*a_2*a_3*np.cos(chi_2+chi_2_0-chi_3-chi_3_0))
+    data_O+=corr
+    data_O_err=(data_O_err**2+(A_err*corr/A/3)**2 + (A*2/9)**2*((C_12_err*np.cos(chi_1+chi_1_0-chi_2-chi_2_0))**2+(C_13_err*np.cos(chi_1+chi_1_0-chi_3-chi_3_0))**2+(C_23_err*np.cos(chi_2+chi_2_0-chi_3-chi_3_0))**2))**0.5
 data_O_matrix[3]=data_O
+data_O_matrix_err[3]=data_O_err
 i=0
 for k in [2,1,3]:
     data_O_matrix[i]=np.roll(data_O, -4*k)

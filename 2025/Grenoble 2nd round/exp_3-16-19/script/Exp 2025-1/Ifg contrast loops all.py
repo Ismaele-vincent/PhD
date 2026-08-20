@@ -78,7 +78,7 @@ for root, dirs, files in os.walk(sorted_fold_path, topdown=False):
             tot_data=np.loadtxt(os.path.join(root, name))
             time_meas=tot_data[0,1]
             if ("B1" not in name):
-                S=time_meas*tot_data[:,5]/np.average(tot_data[:,5])
+                S=time_meas#*tot_data[:,5]/np.average(tot_data[:,5])
             else:
                 S=time_meas#
             data_O_err=tot_data[:,2]**0.5/S
@@ -135,27 +135,28 @@ for root, dirs, files in os.walk(sorted_fold_path, topdown=False):
             # C_OH_fit=p_OH[1]*A_OH
             C_OH_fit_err=err_OH[1] 
             
+            print(A_OH*C_OH_fit/(A_aux*C_aux_fit))
+            
             ps_plt = np.linspace(ps_pos[0], ps_pos[-1],100)
             chi= ps_pos*p_O[-2]-p_O[-1]
             chi_plt = np.linspace(chi[0], chi[-1],100)
             fig = plt.figure(figsize=(8,6))
             ax = fig.add_subplot(111)
             fig.suptitle(name[:-4])
-            ax.errorbar(chi,data_O,yerr=data_O_err,fmt="ro",capsize=5, ms=3)
-            ax.plot(chi_plt,fit_cos(ps_plt, *p_O), "r", label="O C="+"%.2f"%C_O_fit,)
-            ax.errorbar(chi,data_H,yerr=data_H_err,fmt="yo",capsize=5, ms=3)
-            ax.plot(chi_plt,fit_cos(ps_plt, *p_H), "y", label="H C="+"%.2f"%C_H_fit,)
-            ax.errorbar(chi,data_aux,yerr=data_aux_err,fmt="go",capsize=5, ms=3)
-            ax.plot(chi_plt,fit_cos(ps_plt, *p_aux), "g", label="Aux C="+"%.2f"%C_aux_fit,)
-            ax.errorbar(chi,data_OH,yerr=data_OH_err,fmt="bo",capsize=5, ms=3)
-            ax.plot(chi_plt,fit_cos(ps_plt, *p_OH), "b", label="O+H C="+"%.2f"%C_OH_fit,)
-            # ax.errorbar(chi,S,yerr=data_O_err,fmt="ro",capsize=5, ms=3)
+            # ax.errorbar(chi,data_O,yerr=data_O_err,fmt="ro",capsize=5, ms=3)
+            # ax.plot(chi_plt,fit_cos(ps_plt, *p_O), "r", label="O C="+"%.2f"%C_O_fit,)
+            # ax.errorbar(chi,data_H,yerr=data_H_err,fmt="yo",capsize=5, ms=3)
+            # ax.plot(chi_plt,fit_cos(ps_plt, *p_H), "y", label="H C="+"%.2f"%C_H_fit,)
+            # ax.errorbar(chi,data_aux,yerr=data_aux_err,fmt="go",capsize=5, ms=3)
+            # ax.plot(chi_plt,fit_cos(ps_plt, *p_aux), "g", label="Aux C="+"%.2f"%C_aux_fit,)
+            # ax.errorbar(chi,data_OH,yerr=data_OH_err,fmt="bo",capsize=5, ms=3)
+            # ax.plot(chi_plt,fit_cos(ps_plt, *p_OH), "b", label="O+H C="+"%.2f"%C_OH_fit,)
+            ax.errorbar(chi,data_aux/data_OH,yerr=data_O_err*0,fmt="ko",capsize=5, ms=3)
             # ax.legend(loc=4, ncol=4)
             y_max=ax.get_ylim()[1]
             ax.set_ylim([0,y_max])
             ax.set_xlabel("$\chi$ ("+name[-17:-14]+")")
             ax.set_ylabel("Arb.")
-
 
             if ("B1_ps1" in name):
                 C_O=np.append(C_O, np.array([(name[-17:-4], name[-13:-4],C_O_fit,1)], dtype=dtype_new))
