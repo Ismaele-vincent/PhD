@@ -161,5 +161,7 @@ ax.set_xticks([0,1,2,3])
 ax.legend()
 # ax1.legend()
 ax.set_xlabel("$\\alpha_1$")
-plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Images/Alpha1xalpha2_example.pdf", format="pdf",bbox_inches="tight")
+with open("/home/aaa/Desktop/Fisica/PhD/2026/Dissertation/Images/Experiment 1/Alpha12_calibration.txt","w") as f:
+    np.savetxt(f,np.transpose([current*p[0],current*p[1],C,C_err]), header="alpha1 alpha2 C C_err")
+# plt.savefig("/home/aaa/Desktop/Fisica/PhD/2023/Grenoble 4th round/Paper/Images/Alpha1xalpha2_example.pdf", format="pdf",bbox_inches="tight")
 plt.show()

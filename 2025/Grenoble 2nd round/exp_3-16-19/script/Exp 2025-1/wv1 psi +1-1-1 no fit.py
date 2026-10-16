@@ -141,6 +141,7 @@ ax.plot(x_plt,fit_C(x_plt, *p_C), "y--")
 ax.legend()
 
 chi_1=(ps_pos-ps_pos[0])*p_C[2]-np.pi
+
 data_O_matrix=np.zeros((4,points))
 data_O_matrix_err=np.zeros((4,points))
 if correct:
@@ -184,6 +185,9 @@ I_0_err=data_O_matrix_err[0]
 I_mpi2_err=data_O_matrix_err[1]
 I_ppi2_err=data_O_matrix_err[2]
 I_pi_err=data_O_matrix_err[3]
+
+text_ifg=np.array([chi_1, I_0, I_0_err])
+np.savetxt("/home/aaa/Desktop/Fisica/PhD/2025/Grenoble 2nd round/Report/Ifg example (0pipi)/"+inf_file_names[0]+".txt", np.transpose(text_ifg))
 
 
 fig = plt.figure(figsize=(8,6))

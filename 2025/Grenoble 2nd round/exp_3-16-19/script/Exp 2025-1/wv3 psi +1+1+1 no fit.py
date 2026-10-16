@@ -65,7 +65,7 @@ inf_file_names=[
                 # "ifg_wv3_psi_+1+1+1_no_fit_25Oct0031" #good C_12=0.81 C_13=0.69 C_23=0.46
                ]
 
-correct=1
+correct=0
 
 C_12, C_13, C_23 = mymod.contrast(inf_file_names[0])
 if correct:
@@ -186,6 +186,9 @@ I_0_err=data_O_matrix_err[0]
 I_mpi2_err=data_O_matrix_err[1]
 I_ppi2_err=data_O_matrix_err[2]
 I_pi_err=data_O_matrix_err[3]
+
+text_ifg=np.array([chi_3, I_0, I_0_err])
+np.savetxt("/home/aaa/Desktop/Fisica/PhD/2025/Grenoble 2nd round/Report/Ifg example (000)/"+inf_file_names[0]+".txt", np.transpose(text_ifg))
 
 fig = plt.figure(figsize=(8,6))
 ax = fig.add_subplot(111)

@@ -58,11 +58,11 @@ points_per=16
 
 inf_file_names=[
                 # "ifg_wv3_psi_+1-i-1_no_fit_21Oct2128" #good-ish
-                # "ifg_wv3_psi_+1-i-1_no_fit_22Oct2113" #best
-                "ifg_wv3_psi_+1-i-1_no_fit_25Oct0631" #good
+                "ifg_wv3_psi_+1-i-1_no_fit_22Oct2113" #best
+                # "ifg_wv3_psi_+1-i-1_no_fit_25Oct0631" #good
 ]
 
-correct=1
+correct=0
 
 C_12, C_13, C_23 = mymod.contrast(inf_file_names[0])
 # C_12, C_13, C_23 = mymod.contrast("group_p1m1m1_22_Oct")
@@ -184,6 +184,9 @@ I_0_err=data_O_matrix_err[0]
 I_mpi2_err=data_O_matrix_err[1]
 I_ppi2_err=data_O_matrix_err[2]
 I_pi_err=data_O_matrix_err[3]
+
+text_ifg=np.array([chi_3, I_0, I_0_err])
+np.savetxt("/home/aaa/Desktop/Fisica/PhD/2025/Grenoble 2nd round/Report/Ifg example (0mpi2mpi)/"+inf_file_names[0]+".txt", np.transpose(text_ifg))
 
 fig = plt.figure(figsize=(8,6))
 ax = fig.add_subplot(111)

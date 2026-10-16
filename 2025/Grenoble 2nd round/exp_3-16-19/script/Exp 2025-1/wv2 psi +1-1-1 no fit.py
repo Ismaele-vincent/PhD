@@ -185,6 +185,9 @@ I_mpi2_err=data_O_matrix_err[1]
 I_ppi2_err=data_O_matrix_err[2]
 I_pi_err=data_O_matrix_err[3]
 
+text_ifg=np.array([chi_2, I_0, I_0_err])
+np.savetxt("/home/aaa/Desktop/Fisica/PhD/2025/Grenoble 2nd round/Report/Ifg example (0pipi)/"+inf_file_names[0]+".txt", np.transpose(text_ifg))
+
 fig = plt.figure(figsize=(8,6))
 ax = fig.add_subplot(111)
 ax.errorbar(chi_2, I_0,yerr=I_0_err,fmt="ko",capsize=5, ms=3)

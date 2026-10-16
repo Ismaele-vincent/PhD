@@ -180,6 +180,6 @@ for ax in axs1:
 # axs[1].text(-np.pi, 1.1,"Eigenvalue range", color=colors[3])
 # axs[0].legend()
 
-fig.savefig("/home/aaa/Desktop/Fisica/PhD/2025/Grenoble 2nd round/Report/Results/Results_"+(inf_file_names[0])[12:18]+"_uncorrected.pdf",format='pdf', bbox_inches='tight', pad_inches=0, transparent=False)   
+# fig.savefig("/home/aaa/Desktop/Fisica/PhD/2025/Grenoble 2nd round/Report/Results/Results_"+(inf_file_names[0])[12:18]+"_uncorrected.pdf",format='pdf', bbox_inches='tight', pad_inches=0, transparent=False)   
 
 plt.show()

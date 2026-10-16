@@ -32,7 +32,6 @@ plt.rcParams["figure.dpi"] = 150
 plt.rcParams["legend.fontsize"] = 11
 plt.rcParams["axes.unicode_minus"] = False  # <- richtige Variante!
 
-
 chi_1_0=np.pi
 chi_2_0=0
 chi_3_0=0
@@ -182,6 +181,6 @@ for ax in axs1:
 # axs[1].text(-np.pi, 1.1,"Eigenvalue range", color=colors[3])
 # axs[0].legend()
 
-fig.savefig("/home/aaa/Desktop/Fisica/PhD/2025/Grenoble 2nd round/Report/Results/Results_"+(inf_file_names[0])[12:18]+"_corrected.pdf",format='pdf', bbox_inches='tight', pad_inches=0, transparent=False)   
+# fig.savefig("/home/aaa/Desktop/Fisica/PhD/2025/Grenoble 2nd round/Report/Results/Results_"+(inf_file_names[0])[12:18]+"_corrected.pdf",format='pdf', bbox_inches='tight', pad_inches=0, transparent=False)   
 
 plt.show()

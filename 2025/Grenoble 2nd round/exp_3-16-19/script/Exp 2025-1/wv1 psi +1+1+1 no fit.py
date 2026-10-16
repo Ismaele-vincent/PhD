@@ -74,7 +74,7 @@ inf_file_names=[
                 # "ifg_wv1_psi_+1+1+1_no_fit_24Oct2318" #good-ish
 ]
 
-correct=1
+correct=0
 C_12, C_13, C_23 = mymod.contrast(inf_file_names[0])
 if correct:
     C_12, C_12_err, C_13, C_13_err, C_23, C_23_err = mymod.CandA(inf_file_names[0])
@@ -114,6 +114,7 @@ I_3_err=int_data[2]**0.5/time_int
 a_1=(I_1/(I_1+I_2+I_3))**0.5
 a_2=(I_2/(I_1+I_2+I_3))**0.5
 a_3=(I_3/(I_1+I_2+I_3))**0.5
+print("Int=",a_1**2,a_2**2, a_3**2)
 if correct:
     a_1,a_2,a_3=1/3**0.5,1/3**0.5,1/3**0.5
 
@@ -152,6 +153,7 @@ ax.plot(x_plt,fit_C(x_plt, *p_C), "y--")
 ax.legend()
 
 chi_1=(ps_pos-ps_pos[0])*p[2]-np.pi
+
 data_O_matrix=np.zeros((4,points))
 data_O_matrix_err=np.zeros((4,points))
 if correct:
@@ -196,6 +198,8 @@ I_mpi2_err=data_O_matrix_err[1]
 I_ppi2_err=data_O_matrix_err[2]
 I_pi_err=data_O_matrix_err[3]
 
+text_ifg=np.array([chi_1, I_0, I_0_err])
+np.savetxt("/home/aaa/Desktop/Fisica/PhD/2025/Grenoble 2nd round/Report/Ifg example (000)/"+inf_file_names[0]+".txt", np.transpose(text_ifg))
 
 fig = plt.figure(figsize=(8,6))
 ax = fig.add_subplot(111)

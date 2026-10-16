@@ -58,10 +58,10 @@ points_per=16
 inf_file_names=[
                 # "ifg_wv2_psi_+1+1+1_no_fit_22Oct1130" #good 
                 "ifg_wv2_psi_+1+1+1_no_fit_23Oct0034" #best 
-                "ifg_wv2_psi_+1+1+1_no_fit_24Oct2354" #good
+                # "ifg_wv2_psi_+1+1+1_no_fit_24Oct2354" #good
 ]
 
-correct=1
+correct=0
 C_12, C_13, C_23 = mymod.contrast(inf_file_names[0])
 if correct:
     C_12, C_12_err, C_13, C_13_err, C_23, C_23_err = mymod.CandA(inf_file_names[0])
@@ -182,6 +182,9 @@ I_0_err=data_O_matrix_err[0]
 I_mpi2_err=data_O_matrix_err[1]
 I_ppi2_err=data_O_matrix_err[2]
 I_pi_err=data_O_matrix_err[3]
+
+text_ifg=np.array([chi_2, I_0, I_0_err])
+np.savetxt("/home/aaa/Desktop/Fisica/PhD/2025/Grenoble 2nd round/Report/Ifg example (000)/"+inf_file_names[0]+".txt", np.transpose(text_ifg))
 
 fig = plt.figure(figsize=(8,6))
 ax = fig.add_subplot(111)

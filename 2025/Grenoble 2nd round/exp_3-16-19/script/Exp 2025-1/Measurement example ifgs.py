@@ -197,6 +197,6 @@ for ax in axs:
 #     ax1.set_facecolor("#f7f7f7")
 #     ax1.tick_params(axis="x", bottom=False, labelbottom=False)
 # axs1[-1].tick_params(axis="x", bottom=True, labelbottom=True)
-fig.savefig("/home/aaa/Desktop/Fisica/PhD/2025/Grenoble 2nd round/Report/Measurement example.pdf", format="pdf",bbox_inches="tight")   
+# fig.savefig("/home/aaa/Desktop/Fisica/PhD/2025/Grenoble 2nd round/Report/Measurement example.pdf", format="pdf",bbox_inches="tight")   
 
 plt.show()

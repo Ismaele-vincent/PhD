@@ -60,11 +60,11 @@ bad_apples=[
 
 inf_file_names=[
             # "ifg_wv1_psi_+1+exp(-i60)+exp(i120)_no_fit_21Oct1303" #good, just wrong initial position
-             # "ifg_wv1_psi_+1+exp(-i60)+exp(i120)_no_fit_22Oct1732" #best
-             "ifg_wv1_psi_+1+exp(-i60)+exp(i120)_no_fit_24Oct2117" #good probably
+             "ifg_wv1_psi_+1+exp(-i60)+exp(i120)_no_fit_22Oct1732" #best
+             # "ifg_wv1_psi_+1+exp(-i60)+exp(i120)_no_fit_24Oct2117" #good probably
 ]
 
-correct=1
+correct=0
 
 C_12, C_13, C_23 = mymod.contrast(inf_file_names[0])
 # C_12, C_13, C_23 = mymod.contrast("group_p1m1m1_23_Oct")
@@ -188,6 +188,8 @@ I_mpi2_err=data_O_matrix_err[1]
 I_ppi2_err=data_O_matrix_err[2]
 I_pi_err=data_O_matrix_err[3]
 
+text_ifg=np.array([chi_1, I_0, I_0_err])
+np.savetxt("/home/aaa/Desktop/Fisica/PhD/2025/Grenoble 2nd round/Report/Ifg example (0pi32pi3)/"+inf_file_names[0]+".txt", np.transpose(text_ifg))
 
 fig = plt.figure(figsize=(8,6))
 ax = fig.add_subplot(111)
