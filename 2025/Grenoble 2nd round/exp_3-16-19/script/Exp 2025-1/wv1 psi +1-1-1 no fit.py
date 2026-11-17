@@ -59,7 +59,7 @@ inf_file_names=[
                 # "ifg_wv1_psi_+1-1-1_no_fit_25Oct0112" #intensity going down
 ]
 
-correct=1
+correct=0
 
 C_12, C_13, C_23 = mymod.contrast(inf_file_names[0])
 # C_12, C_13, C_23 = mymod.contrast("group_p1m1m1_23_Oct")
@@ -268,5 +268,9 @@ else:
 text_int=np.array([a_1, a_2, a_3])
 np.savetxt("/home/aaa/Desktop/Fisica/PhD/2025/Grenoble 2nd round/exp_3-16-19/Sorted data/Ifg wv no fit/Results Corrected/"+inf_file_names[0]+"_int.txt", text_int)    
 np.savetxt("/home/aaa/Desktop/Fisica/PhD/2025/Grenoble 2nd round/exp_3-16-19/Sorted data/Ifg wv no fit/Results Uncorrected/"+inf_file_names[0]+"_int.txt", text_int)
+
+text_Ij=np.array([I_1, I_2, I_3])
+np.savetxt("/home/aaa/Desktop/Fisica/PhD/2025/Grenoble 2nd round/exp_3-16-19/Sorted data/Ifg wv no fit/Results Corrected/"+inf_file_names[0]+"_Ij.txt", text_Ij)
+
 
 plt.show()

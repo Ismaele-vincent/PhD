@@ -187,8 +187,12 @@ I_mpi2_err=data_O_matrix_err[1]
 I_ppi2_err=data_O_matrix_err[2]
 I_pi_err=data_O_matrix_err[3]
 
+# text_ifg=np.array([chi_3, I_0, I_0_err])
+# np.savetxt("/home/aaa/Desktop/Fisica/PhD/2025/Grenoble 2nd round/Report/Ifg example (000)/"+inf_file_names[0]+".txt", np.transpose(text_ifg))
+
 text_ifg=np.array([chi_3, I_0, I_0_err])
-np.savetxt("/home/aaa/Desktop/Fisica/PhD/2025/Grenoble 2nd round/Report/Ifg example (000)/"+inf_file_names[0]+".txt", np.transpose(text_ifg))
+np.savetxt("/home/aaa/Desktop/Fisica/PhD/2025/Grenoble 2nd round/Report/Ifg example (000) ver 2/"+inf_file_names[0]+".txt", np.transpose(text_ifg))
+
 
 fig = plt.figure(figsize=(8,6))
 ax = fig.add_subplot(111)
@@ -267,5 +271,8 @@ else:
 text_int=np.array([a_1, a_2, a_3])
 np.savetxt("/home/aaa/Desktop/Fisica/PhD/2025/Grenoble 2nd round/exp_3-16-19/Sorted data/Ifg wv no fit/Results Corrected/"+inf_file_names[0]+"_int.txt", text_int)    
 np.savetxt("/home/aaa/Desktop/Fisica/PhD/2025/Grenoble 2nd round/exp_3-16-19/Sorted data/Ifg wv no fit/Results Uncorrected/"+inf_file_names[0]+"_int.txt", text_int)
+
+text_Ij=np.array([I_1, I_2, I_3])
+np.savetxt("/home/aaa/Desktop/Fisica/PhD/2025/Grenoble 2nd round/exp_3-16-19/Sorted data/Ifg wv no fit/Results Corrected/"+inf_file_names[0]+"_Ij.txt", text_Ij)
 
 plt.show()

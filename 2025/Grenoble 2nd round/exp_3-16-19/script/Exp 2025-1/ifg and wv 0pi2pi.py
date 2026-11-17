@@ -19,9 +19,10 @@ plt.rcParams.update({'figure.max_open_warning': 0})
 from scipy.optimize import curve_fit as fit
 from matplotlib.ticker import (MultipleLocator, AutoMinorLocator)
 import My_module_Exp_2025_1 as mymod
+import matplotlib.transforms as mtransforms
 
-def fit_cos(x, A, B, C):
-    return A*(1+B*np.cos(x-C))/2
+def fit_cos(x, A, B, C, D):
+    return A*(1+B*np.cos(C*x+D))/2
 
 font_path = "/home/aaa/root/fonts/cmunrm.ttf"
 font_manager.fontManager.addfont(font_path)
@@ -38,18 +39,20 @@ plt.rcParams["legend.fontsize"] = 11
 plt.rcParams["axes.unicode_minus"] = False  # <- richtige Variante!
 
 state=r"$|\psi_{0,-\frac{\pi}{2},-\pi}> \approx \frac{1}{\sqrt{3}}(|1>-\mathrm{i}|2>-|3>)$"
+vec_phi=r"$\vec\phi=(0,\pi/2,\pi)$"
 colors=["k","#f10d0c","#00a933","#5983b0", "#D97A00", "#c32d9b",  "#006699"]
 
 phi_1_0=0
 phi_2_0=-np.pi/2
 phi_3_0=-np.pi
 
-phi=np.array([phi_1_0,phi_2_0,phi_3_0])
+phi_0=np.array([phi_1_0,phi_2_0,phi_3_0])
 N=21
 
 ifg_fold_path="/home/aaa/Desktop/Fisica/PhD/2025/Grenoble 2nd round/Report/Ifg example (0mpi2mpi)/"
 inf_file_names=["ifg_wv1_psi_+1-i-1_no_fit_22Oct1954","ifg_wv2_psi_+1-i-1_no_fit_22Oct2033", "ifg_wv3_psi_+1-i-1_no_fit_22Oct2113"]
-C_12, C_13, C_23 = 1,1,1
+# C_12, C_13, C_23 = 1,1,1
+C_12, C_13, C_23 = mymod.contrast(inf_file_names[0]) 
 # print("C_12=", C_12, "C_13=", C_13, "C_23=", C_23)
 
 fold_results="/home/aaa/Desktop/Fisica/PhD/2025/Grenoble 2nd round/exp_3-16-19/Sorted data/Ifg wv no fit/Results Corrected/"
@@ -68,19 +71,19 @@ for root, dirs, files in os.walk(ifg_fold_path, topdown=False):
         tot_data=np.loadtxt(os.path.join(root, name))
         if "wv1" in name:
             # print("wv1",name)
-            phi_1=tot_data[:N,0]+phi[0]
+            phi_1=tot_data[:N,0]
             I_1=tot_data[:N,1]
             I_1_err=tot_data[:N,2]
             phi_1_plt=np.linspace(phi_1[0],phi_1[-1],200)
         if "wv2" in name:
             # print("wv2",name)
-            phi_2=tot_data[:N,0]+phi[1]
+            phi_2=tot_data[:N,0]
             I_2=tot_data[:N,1]
             I_2_err=tot_data[:N,2]
             phi_2_plt=np.linspace(phi_2[0],phi_2[-1],200)
         if "wv3" in name:
             # print("wv3",name)
-            phi_3=tot_data[:N,0]+phi[2]
+            phi_3=tot_data[:N,0]
             I_3=tot_data[:N,1]
             I_3_err=tot_data[:N,2]
             phi_3_plt=np.linspace(phi_3[0],phi_3[-1],200)
@@ -95,39 +98,70 @@ gs = fig.add_gridspec(3,3, hspace=0.1, wspace=0.1)
 axs_ifg = [fig.add_subplot(gs[0, 0]),fig.add_subplot(gs[0, 1]),fig.add_subplot(gs[0, 2])]
 
 for i in [0,1,2]:
-    phi_aux=phi[i]
-    phi_plt_aux=phi_plt[i]
+    phi_aux=np.arange(N)*np.pi/8 
+    phi_plt_aux=np.linspace(0, (N-1)*np.pi/8,200)
     I_aux=I[i]
     I_aux_err=I_err[i]
     
-    P0=[(np.amax(I[i])+np.amin(I[i]))/2, 0.7, 0]
-    B0=([np.amin(I_aux)/2,0,-2*np.pi],[np.amax(I_aux)*3, 1,2*np.pi])
+    P0=[(np.amax(I[i])+np.amin(I[i]))/2, 0.7,1,0]
+    B0=([np.amin(I_aux)/2,0,0.8,-2*np.pi],[np.amax(I_aux)*3, 1, 1.2, 2*np.pi])
     p,cov=fit(fit_cos, phi_aux, I_aux, sigma=I_aux_err, p0=P0,  bounds=B0)
     # if i==0:
-    #     axs_ifg[0].errorbar(phi_aux[0],I_aux[0],fmt="o", color=colors[1], ms=10, mfc="none")
-    #     axs_ifg[i].errorbar([phi_aux[0],phi_aux[4]],[50,50], fmt="-|", color=colors[0], lw=1)
-    #     axs_ifg[0].vlines(phi_aux[0],I_aux[0]+15, 50, color=colors[1], linestyle="--", lw=1, clip_on=False)
     #     axs_ifg[0].errorbar(phi_aux[4],I_aux[4],fmt="o", color=colors[1], ms=10, mfc="none")
-    #     axs_ifg[0].text((phi_aux[4]+phi_aux[0])/2, 60, "$\\frac{\\pi}{2}$", color=colors[0],  va="bottom", ha="center")
-    #     axs_ifg[0].vlines(phi_aux[4], I_aux[4]+15, 50, color=colors[1], linestyle="--", lw=1, clip_on=False)
+    #     axs_ifg[0].errorbar([phi_aux[4],phi_aux[8]],[200,200], fmt="-|", color=colors[0], lw=1)
+    #     axs_ifg[0].vlines(phi_aux[4],I_aux[4]+15, 200, color=colors[1], linestyle="--", lw=1, clip_on=False)
+    #     axs_ifg[0].errorbar(phi_aux[8],I_aux[8],fmt="o", color=colors[1], ms=10, mfc="none")
+    #     axs_ifg[0].text((phi_aux[8]+phi_aux[4])/2, 205, "$\\frac{\\pi}{2}$", color=colors[0],  va="bottom", ha="center")
+    #     axs_ifg[0].vlines(phi_aux[8], I_aux[8]+15, 200, color=colors[1], linestyle="--", lw=1, clip_on=False)
+    # phi[i]=phi_0[i]+np.arange(N)*np.pi/8    
     err=np.diag(cov)**0.5
-    axs_ifg[i].errorbar(phi_aux,I_aux,yerr=I_aux_err,fmt=".", color=colors[0],capsize=3, ms=4, label="Data")
-    axs_ifg[i].plot(phi_plt_aux,fit_cos(phi_plt_aux, *p), "-", color=colors[2], lw=1.5, label="Theory")
+    phi[i]=phi_0[i]+phi_aux*p[2]
+    phi_plt[i]=phi_0[i]+phi_plt_aux*p[2]
+    # axs_ifg[i].errorbar(phi_aux[0],I_aux[0],fmt="o", color=colors[4], ms=10, mfc="none")
+    axs_ifg[i].errorbar(phi[i],I_aux,yerr=I_aux_err,fmt=".", color=colors[0],capsize=3, ms=4, label="Data")
+    # axs_ifg[i].plot(phi_plt[i],fit_cos(phi_plt[i], *p), "-", color=colors[2], lw=1.5, label="Theory")
+    axs_ifg[i].errorbar(phi[i][0],I_aux[0],I_aux_err[0],fmt=".", color=colors[4],capsize=3, ms=4)
 axs_ifg[0].set_ylabel("Intensity\n[counts s$^{-1}$]")
 
+phi_1=phi[0]
+phi_2=phi[1]
+phi_3=phi[2]
+
+phi_1_plt=phi_plt[0]
+phi_2_plt=phi_plt[1]
+phi_3_plt=phi_plt[2]
+
+I_vec_1 = np.loadtxt(fold_results+inf_file_names[0]+"_Ij.txt")
+I_vec_2 = np.loadtxt(fold_results+inf_file_names[1]+"_Ij.txt")
+I_vec_3 = np.loadtxt(fold_results+inf_file_names[2]+"_Ij.txt")
+I_plt=np.array([I_vec_1, I_vec_2, I_vec_3])
+I_theory_1=mymod.I_corr(np.sum(I_plt[0])*3, *(I_plt[0]/np.sum(I_plt[0]))**0.5, phi_1_plt, 0, 0, phi_2_0, 0, phi_3_0, C_12, C_13, C_23)
+I_theory_2=mymod.I_corr(np.sum(I_plt[1])*3, *(I_plt[1]/np.sum(I_plt[1]))**0.5, 0, phi_1_0, phi_2_plt, 0, 0, phi_3_0, C_12, C_13, C_23)
+I_theory_3=mymod.I_corr(np.sum(I_plt[2])*3, *(I_plt[2]/np.sum(I_plt[2]))**0.5, 0, phi_1_0, 0, phi_2_0, phi_3_plt, 0, C_12, C_13, C_23)
+I_theory=np.array([I_theory_1, I_theory_2, I_theory_3])
+for i in [0,1,2]:
+    axs_ifg[i].plot(phi_plt[i],I_theory[i], "-", color=colors[2], lw=1.5, label="Theory")
+
 i=0
-yrange=axs_ifg[0].get_ylim()
+xrange=axs_ifg[0].get_xlim()
 # print(yrange)
 for ax in axs_ifg:
-    ax.set_ylim(0,250)
+    ax.set_ylim(0,150)
     ax.xaxis.set_major_locator(MultipleLocator(np.pi))
     ax.xaxis.set_major_formatter('{x:.2f}')
     ax.xaxis.set_minor_locator(MultipleLocator(np.pi/2))
     ax.tick_params(axis="x", which='both', bottom=False, labelbottom=False)
+    ax.yaxis.set_major_formatter('{x:.0f}')
+    ax.yaxis.set_minor_locator(MultipleLocator(50))
     x_labels_int=(ax.get_xticks()/np.pi).astype(int)
     ax.grid(True, which="both", ls="dotted")
     ax.set_facecolor("#f7f7f7")
+    trans = mtransforms.blended_transform_factory(ax.transData,  ax.transAxes)
+    ax.annotate("", xy=(phi_0[i], 0), xytext=(phi_0[i],1), xycoords=ax.get_xaxis_transform(), textcoords=ax.get_xaxis_transform(), ha="center", va="center", color=colors[4], arrowprops=dict(arrowstyle="-", linestyle=":",color=colors[4], lw=1, clip_on=False, shrinkA=0, shrinkB=0))
+    # ax.arrow("", xy=(phi_0[i], axs_ifg[0].get_ylim()), xytext=(phi_0[i],-0.45), xycoords=ax.get_xaxis_transform(), textcoords=ax.get_xaxis_transform(), ha="center", va="center", arrowprops=dict(arrowstyle="->", color=colors[5], lw=1, clip_on=False, shrinkA=0, shrinkB=0))
     i+=1
+# ax.text(x_text, y_text, "Label", transform=trans, ha="center", va="center", bbox=dict(facecolor="white", edgecolor="none", pad=2), clip_on=False)
+# axs_ifg[1].annotate(vec_phi, xy=(phi_0[0], -0.45), xytext=(phi_0[0]-0.5,-0.45), xycoords=axs_ifg[2].get_xaxis_transform(), textcoords=axs_ifg[0].get_xaxis_transform(), ha="right", va="center", bbox=dict(facecolor="white", edgecolor="none", pad=2), arrowprops=dict(arrowstyle="-", color=colors[5], lw=1, clip_on=False, shrinkA=0, shrinkB=0))
 axs_ifg[1].tick_params(axis="y", left=False, labelleft=False)
 axs_ifg[2].tick_params(axis="y", left=False, labelleft=False)
 axs_ifg[0].set_title("Path 1")
@@ -158,15 +192,15 @@ Im_2_err=wv_2[:,4]
 Im_3=wv_3[:,3]
 Im_3_err=wv_3[:,4]
 
-w1=mymod.w1(*a_vec_1,  phi_1_plt, 0, 0, phi_2_0, 0, phi_3_0, C_12, C_13, C_23)
-w2=mymod.w2(*a_vec_2,  0, phi_1_0, phi_2_plt, 0, 0, phi_3_0, C_12, C_13, C_23)
-w3=mymod.w3(*a_vec_3,  0, phi_1_0, 0, phi_2_0, phi_3_plt, 0, C_12, C_13, C_23)
+w1=mymod.w1(*a_vec_1,  phi_1_plt, 0, 0, phi_2_0, 0, phi_3_0, 1, 1, 1)
+w2=mymod.w2(*a_vec_2,  0, phi_1_0, phi_2_plt, 0, 0, phi_3_0, 1, 1, 1)
+w3=mymod.w3(*a_vec_3,  0, phi_1_0, 0, phi_2_0, phi_3_plt, 0, 1, 1, 1)
 
 axs_re = [fig.add_subplot(gs[1, 0]),fig.add_subplot(gs[1, 1]),fig.add_subplot(gs[1, 2])]
 axs_im = [fig.add_subplot(gs[2, 0]),fig.add_subplot(gs[2, 1]),fig.add_subplot(gs[2, 2])]
 
 axs_re[0].set_ylabel("Real part of\nthe weak value")
-
+i=0
 for ax in axs_re:
     ax.xaxis.set_major_locator(MultipleLocator(np.pi))
     ax.xaxis.set_major_formatter('{x:.2f}')
@@ -175,32 +209,22 @@ for ax in axs_re:
     ax.set_facecolor("#fffff2")
     ax.tick_params(axis="x", which='both', bottom=False, labelbottom=False)
     ax.grid(True, ls="dotted")
-    ax.set_ylim([-3.5,1.3])
-    ax.yaxis.set_major_locator(MultipleLocator(2))
+    ax.set_ylim([-3.5,1.7])
+    ax.set_xlim(axs_ifg[i].get_xlim())
+    ax.yaxis.set_major_locator(MultipleLocator(1))
     ax.yaxis.set_major_formatter('{x:.0f}')
-    ax.yaxis.set_minor_locator(MultipleLocator(1))
-    ax.yaxis.set_minor_formatter('{x:.0f}')
+    ax.yaxis.set_minor_locator(MultipleLocator(0.5))
+    ax.annotate("", xy=(phi_0[i], 0), xytext=(phi_0[i],1), xycoords=ax.get_xaxis_transform(), textcoords=ax.get_xaxis_transform(), ha="center", va="center", color=colors[4], arrowprops=dict(arrowstyle="-", linestyle=":",color=colors[4], lw=1, clip_on=False, shrinkA=0, shrinkB=0))
+    # ax.yaxis.set_minor_formatter('{x:.1f}')
+    i+=1
 axs_re[1].tick_params(axis="y", which='both', left=False, labelleft=False)
 axs_re[2].tick_params(axis="y", which='both', left=False, labelleft=False)
-
-axs_re[0].plot(phi_1_plt, phi_1_plt*0, "-", color=colors[1], lw=0.5)
-axs_re[0].plot(phi_1_plt, phi_1_plt*0+1, "-", color=colors[1], lw=0.5)
-axs_re[0].plot(phi_1_plt, phi_1_plt*0+1/3, ":", color=colors[2], lw=1)#, label="Eigenvalue bound")
-# ax.fill_between(phi_1_plt,0,1, color=colors[3], alpha=0.07)#, label="Eigenvalue range")
-axs_re[0].fill_between(phi_1_plt,1,3, color="#fceeee")#, label="Eigenvalue range")
-axs_re[0].fill_between(phi_1_plt,-3,0, color="#fceeee")
-axs_re[1].plot(phi_2_plt, phi_2_plt*0, "-", color=colors[1], lw=0.5)
-axs_re[1].plot(phi_2_plt, phi_2_plt*0+1, "-", color=colors[1], lw=0.5)
-axs_re[1].plot(phi_2_plt, phi_2_plt*0+1/3, ":", color=colors[2], lw=1)#, label="Eigenvalue bound")
-# ax.fill_between(phi_2_plt,0,1, color=colors[3], alpha=0.07)#, label="Eigenvalue range")
-axs_re[1].fill_between(phi_2_plt,1,3, color="#fceeee")#, label="Eigenvalue range")
-axs_re[1].fill_between(phi_2_plt,-3,0, color="#fceeee")
-axs_re[2].plot(phi_3_plt, phi_3_plt*0, "-", color=colors[1], lw=0.5)
-axs_re[2].plot(phi_3_plt, phi_3_plt*0+1, "-", color=colors[1], lw=0.5)
-axs_re[2].plot(phi_3_plt, phi_3_plt*0+1/3, ":", color=colors[2], lw=1)#, label="Eigenvalue bound")
-# ax.fill_between(phi_1_plt,0,1, color=colors[3], alpha=0.07)#, label="Eigenvalue range")
-axs_re[2].fill_between(phi_3_plt,1,3, color="#fceeee")#, label="Eigenvalue range")
-axs_re[2].fill_between(phi_3_plt,-3,0, color="#fceeee")
+for ax in axs_re:
+    ax.plot(ax.get_xlim(), [0,0], "-", color=colors[1], lw=0.5)
+    ax.plot(ax.get_xlim(), [1,1], "-", color=colors[1], lw=0.5)
+    ax.plot(ax.get_xlim(), [1/3,1/3], ":", color=colors[2], lw=1)
+    ax.fill_between(ax.get_xlim(),1,ax.get_ylim()[1], color="#fceeee")#, label="Eigenvalue range")
+    ax.fill_between(ax.get_xlim(),ax.get_ylim()[0],0, color="#fceeee")
 
 axs_re[0].errorbar(phi_1,Re_1, Re_1_err, fmt="k.", capsize=3, ms=4)
 axs_re[0].plot(phi_1_plt, w1.real, color=colors[3], lw=1.5)
@@ -209,10 +233,15 @@ axs_re[1].plot(phi_2_plt, w2.real, color=colors[3], lw=1.5)
 axs_re[2].errorbar(phi_3,Re_3, Re_3_err, fmt="k.", capsize=3, ms=4)
 axs_re[2].plot(phi_3_plt, w3.real, color=colors[3], lw=1.5)
 
-axs_im[0].set_ylabel("Imaginary part of\nthe weak value")
+# axs_re[0].errorbar(phi_1[0],Re_1[0],fmt="o", color=colors[4], ms=10, mfc="none")
+# axs_re[1].errorbar(phi_2[0],Re_2[0],fmt="o", color=colors[4], ms=10, mfc="none")
+# axs_re[2].errorbar(phi_3[0],Re_3[0],fmt="o", color=colors[4], ms=10, mfc="none")
 
-colors=["k","#f10d0c","#00a933","#5983b0", "#fffff2"]
-plt.rcParams["mathtext.fontset"]="cm"
+axs_re[0].errorbar(phi_1[0],Re_1[0], Re_1_err[0], fmt=".", color=colors[4],capsize=3, ms=4)
+axs_re[1].errorbar(phi_2[0],Re_2[0], Re_2_err[0], fmt=".", color=colors[4],capsize=3, ms=4)
+axs_re[2].errorbar(phi_3[0],Re_3[0], Re_3_err[0], fmt=".", color=colors[4],capsize=3, ms=4)
+
+axs_im[0].set_ylabel("Imaginary part of\nthe weak value")
 
 axs_im[0].set_xlabel("$\phi_1$ [rad]")
 axs_im[1].set_xlabel("$\phi_2$ [rad]")
@@ -226,6 +255,14 @@ axs_im[1].errorbar(phi_2,Im_2, Im_2_err, fmt="k.", capsize=3, ms=4)
 axs_im[1].plot(phi_2_plt, w2.imag, color=colors[3], lw=1.5)
 axs_im[2].errorbar(phi_3,Im_3, Im_3_err, fmt="k.", capsize=3, ms=4)
 axs_im[2].plot(phi_3_plt, w3.imag, color=colors[3], lw=1.5)
+
+# axs_im[0].errorbar(phi_1[0],Im_1[0],fmt="o", color=colors[4], ms=10, mfc="none")
+# axs_im[1].errorbar(phi_2[0],Im_2[0],fmt="o", color=colors[4], ms=10, mfc="none")
+# axs_im[2].errorbar(phi_3[0],Im_3[0],fmt="o", color=colors[4], ms=10, mfc="none")
+
+axs_im[0].errorbar(phi_1[0],Im_1[0], Im_1_err[0], fmt=".", color=colors[4],capsize=3, ms=4)
+axs_im[1].errorbar(phi_2[0],Im_2[0], Im_2_err[0], fmt=".", color=colors[4],capsize=3, ms=4)
+axs_im[2].errorbar(phi_3[0],Im_3[0], Im_3_err[0], fmt=".", color=colors[4],capsize=3, ms=4)
 
 i=0
 for ax in axs_im:
@@ -245,8 +282,19 @@ for ax in axs_im:
     ax.yaxis.set_major_formatter('{x:.0f}')
     ax.yaxis.set_minor_locator(MultipleLocator(0.5))
     # ax.yaxis.set_minor_formatter('{x:.1f}')
+    # ax.annotate("", xy=(phi_0[i], 0), xytext=(phi_0[i],3.45), xycoords=ax.get_xaxis_transform(), textcoords=ax.get_xaxis_transform(), ha="center", va="center", color=colors[4], arrowprops=dict(arrowstyle="-", linestyle=":",color=colors[4], lw=1, clip_on=False, shrinkA=0, shrinkB=0))
+    # ax.annotate("", xy=(phi_0[i], -0.18), xytext=(phi_0[i],-0.45), xycoords=ax.get_xaxis_transform(), textcoords=ax.get_xaxis_transform(), ha="center", va="center", arrowprops=dict(arrowstyle="->", color=colors[5], lw=1, clip_on=False, shrinkA=0, shrinkB=0))
+    ax.annotate("", xy=(phi_0[i], 0), xytext=(phi_0[i],1), xycoords=ax.get_xaxis_transform(), textcoords=ax.get_xaxis_transform(), ha="center", va="center", color=colors[4], arrowprops=dict(arrowstyle="-", linestyle=":",color=colors[4], lw=1, clip_on=False, shrinkA=0, shrinkB=0))
     i+=1
+    
+# axs_im[0].annotate("", xy=(phi_0[2], 3.45), xytext=(phi_0[0],3.45), xycoords=axs_im[2].get_xaxis_transform(), textcoords=axs_im[0].get_xaxis_transform(), ha="center", va="center", color=colors[4], bbox=dict(facecolor="white", edgecolor="none", pad=2), arrowprops=dict(arrowstyle="-", linestyle=":",color=colors[4], lw=1, clip_on=False, shrinkA=0, shrinkB=0))
+# axs_im[2].annotate(vec_phi, xy=(phi_0[2], 3.45), xytext=(phi_0[1],3.45), xycoords=axs_im[2].get_xaxis_transform(), textcoords=axs_im[1].get_xaxis_transform(), ha="center", va="center", color=colors[4], bbox=dict(facecolor="white", edgecolor="none", pad=2))
+# axs_im[0].annotate(vec_phi, xy=(phi_0[0], 3.45), xytext=(phi_0[0],3.45), xycoords=axs_im[2].get_xaxis_transform(), textcoords=axs_im[1].get_xaxis_transform(), ha="center", va="center", color=colors[4], bbox=dict(facecolor="white", edgecolor="none", pad=2), arrowprops=dict(arrowstyle="-", linestyle=":",color=colors[4], lw=1, clip_on=False, shrinkA=0, shrinkB=0))
+# axs_im[1].annotate(vec_phi, xy=(phi_0[0], 3.5), xytext=(phi_0[0],3.5), xycoords=axs_im[2].get_xaxis_transform(), textcoords=axs_im[1].get_xaxis_transform(), ha="center", va="center", bbox=dict(facecolor="white", edgecolor="none", pad=2), arrowprops=dict(arrowstyle="-", color=colors[4], lw=1, clip_on=False, shrinkA=0, shrinkB=0))
+# axs_im[1].annotate(vec_phi, xy=(phi_0[0], 3.5), xytext=(phi_0[0],3.5), xycoords=axs_im[2].get_xaxis_transform(), textcoords=axs_im[1].get_xaxis_transform(), ha="center", va="center", bbox=dict(facecolor="white", edgecolor="none", pad=2), arrowprops=dict(arrowstyle="-", color=colors[4], lw=1, clip_on=False, shrinkA=0, shrinkB=0))
+# axs_im[1].annotate(vec_phi, xy=(phi_0[0], -0.45), xytext=(phi_0[0]-0.5,-0.45), xycoords=axs_im[2].get_xaxis_transform(), textcoords=axs_im[0].get_xaxis_transform(), ha="right", va="center", bbox=dict(facecolor="white", edgecolor="none", pad=2), arrowprops=dict(arrowstyle="-", color=colors[5], lw=1, clip_on=False, shrinkA=0, shrinkB=0))
 
-fig.savefig("/home/aaa/Desktop/Fisica/PhD/2025/Grenoble 2nd round/Paper/Images/Ifg and wv 0mpi2mpi.pdf", format="pdf",bbox_inches="tight")
+# ax.annotate(state, xy=(phi_0[0], -0.15), xytext=(phi_0[i],-0.45), xycoords=ax.get_xaxis_transform(), textcoords=ax.get_xaxis_transform(), ha="center", va="center", arrowprops=dict(arrowstyle="->", color=colors[5], lw=1, clip_on=False))
+# fig.savefig("/home/aaa/Desktop/Fisica/PhD/2025/Grenoble 2nd round/Paper/Images/Ifg and wv 0mpi2mpi.pdf", format="pdf",bbox_inches="tight")
 
 plt.show()

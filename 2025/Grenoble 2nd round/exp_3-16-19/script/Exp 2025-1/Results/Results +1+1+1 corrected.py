@@ -39,8 +39,8 @@ chi_1=0
 chi_2=0
 chi_3=0
 
-inf_file_names=["ifg_wv1_psi_+1+1+1_no_fit_22Oct2358", "ifg_wv2_psi_+1+1+1_no_fit_23Oct0034","ifg_wv3_psi_+1+1+1_no_fit_23Oct0111"]
-# inf_file_names=["ifg_wv1_psi_+1+1+1_no_fit_22Oct1050", "ifg_wv2_psi_+1+1+1_no_fit_22Oct1130", "ifg_wv3_psi_+1+1+1_no_fit_22Oct1212"]
+# inf_file_names=["ifg_wv1_psi_+1+1+1_no_fit_22Oct2358", "ifg_wv2_psi_+1+1+1_no_fit_23Oct0034","ifg_wv3_psi_+1+1+1_no_fit_23Oct0111"]
+inf_file_names=["ifg_wv1_psi_+1+1+1_no_fit_22Oct1050", "ifg_wv2_psi_+1+1+1_no_fit_22Oct1130", "ifg_wv3_psi_+1+1+1_no_fit_22Oct1212"]
 C_12, C_13, C_23 = 1,1,1
 print("C_12=", C_12, "C_13=", C_13, "C_23=", C_23)
 

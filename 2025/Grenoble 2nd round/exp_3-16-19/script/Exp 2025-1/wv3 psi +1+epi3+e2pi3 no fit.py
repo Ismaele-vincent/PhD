@@ -266,4 +266,7 @@ text_int=np.array([a_1, a_2, a_3])
 np.savetxt("/home/aaa/Desktop/Fisica/PhD/2025/Grenoble 2nd round/exp_3-16-19/Sorted data/Ifg wv no fit/Results Corrected/"+inf_file_names[0]+"_int.txt", text_int)    
 np.savetxt("/home/aaa/Desktop/Fisica/PhD/2025/Grenoble 2nd round/exp_3-16-19/Sorted data/Ifg wv no fit/Results Uncorrected/"+inf_file_names[0]+"_int.txt", text_int)
 
+text_Ij=np.array([I_1, I_2, I_3])
+np.savetxt("/home/aaa/Desktop/Fisica/PhD/2025/Grenoble 2nd round/exp_3-16-19/Sorted data/Ifg wv no fit/Results Corrected/"+inf_file_names[0]+"_Ij.txt", text_Ij)
+
 plt.show()
